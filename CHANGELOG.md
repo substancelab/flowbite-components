@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 * Button component (first component, wee!)
+* Input components
+* InputField components
 
 ### Changes
 
