@@ -74,4 +74,19 @@ class Flowbite::ButtonTest < Minitest::Test
     render_inline(Flowbite::Button::Pill.new(label: "Click me", size: :xs))
     assert_selector("button.text-white.bg-blue-700.text-xs")
   end
+
+  def test_renders_outline_button_in_default_style
+    render_inline(Flowbite::Button::Outline.new(label: "Click me"))
+    assert_selector("button.text-blue-700.border-blue-700")
+  end
+
+  def test_renders_outline_button_in_green_style
+    render_inline(Flowbite::Button::Outline.new(label: "Click me", style: :green))
+    assert_selector("button.text-green-700.border-green-700")
+  end
+
+  def test_renders_outline_button_in_different_sizes
+    render_inline(Flowbite::Button::Outline.new(label: "Click me", size: :xs, style: :green))
+    assert_selector("button.text-green-700.border-green-700.text-xs")
+  end
 end
