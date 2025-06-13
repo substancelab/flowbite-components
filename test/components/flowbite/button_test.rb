@@ -89,4 +89,9 @@ class Flowbite::ButtonTest < Minitest::Test
     render_inline(Flowbite::Button::Outline.new(label: "Click me", size: :xs, style: :green))
     assert_selector("button.text-green-700.border-green-700.text-xs")
   end
+
+  def test_passes_attributes_to_button_tag
+    render_inline(Flowbite::Button.new(label: "Click me", data: {controller: "button"}))
+    assert_selector("button[data-controller='button']")
+  end
 end

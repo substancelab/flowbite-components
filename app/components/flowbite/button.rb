@@ -7,6 +7,9 @@ module Flowbite
   #
   # @param label [String] The text to display on the button.
   # @param type [Symbol] The type of the button. Default is :button.
+  #
+  # All other parameters are optional and are passed directly to the button tag
+  # as HTML attributes.
   class Button < ViewComponent::Base
     SIZES = {
       xs: ["text-xs", "px-3", "py-2"],
@@ -41,21 +44,22 @@ module Flowbite
       # rubocop:enable Layout/LineLength
     end
 
-    attr_reader :label, :size, :style, :type
+    attr_reader :button_attributes, :label, :size, :style, :type
 
-    def initialize(label:, size: :default, style: :default, type: :button)
+    def initialize(label:, size: :default, style: :default, type: :button, **button_attributes)
       super
       @label = label
       @size = size
       @style = style
       @type = type
+      @button_attributes = button_attributes
     end
 
     def call
       content_tag(
         :button,
         label,
-        class: classes
+        **options
       )
     end
 
@@ -63,6 +67,12 @@ module Flowbite
 
     def classes
       self.class.classes(size: size, state: :default, style: style)
+    end
+
+    def options
+      {
+        class: classes
+      }.merge(button_attributes)
     end
   end
 end
