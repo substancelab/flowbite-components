@@ -14,7 +14,7 @@ module Flowbite
         ERROR = :error
       ].freeze
 
-      attr_reader :size, :style
+      attr_reader :input_attributes, :size, :style
 
       class << self
         def classes(size: :default, state: :default, style: :default)
@@ -35,10 +35,11 @@ module Flowbite
         # rubocop:enable Layout/LineLength
       end
 
-      def initialize(form, attribute, size: :default)
+      def initialize(form, attribute, input_attributes: {}, size: :default)
         super
         @attribute = attribute
         @form = form
+        @input_attributes = input_attributes
         @object = form.object
         @size = size
       end
@@ -48,7 +49,7 @@ module Flowbite
         @form.send(
           input_field_type,
           @attribute,
-          class: classes
+          **options
         )
       end
 
@@ -66,6 +67,13 @@ module Flowbite
 
       def errors?
         @object.errors.include?(@attribute.intern)
+      end
+
+      # Returns the options argument for the input field
+      def options
+        {
+          class: classes
+        }.merge(input_attributes)
       end
 
       private
