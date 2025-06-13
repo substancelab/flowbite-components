@@ -94,4 +94,19 @@ class Flowbite::ButtonTest < Minitest::Test
     render_inline(Flowbite::Button.new(label: "Click me", data: {controller: "button"}))
     assert_selector("button[data-controller='button']")
   end
+
+  def test_defaults_to_a_button_with_no_type
+    render_inline(Flowbite::Button.new(label: "Click me"))
+    assert_selector("button:not([type])")
+  end
+
+  def test_renders_a_basic_button
+    render_inline(Flowbite::Button.new(label: "Click me", type: "button"))
+    assert_selector("button[type='button']")
+  end
+
+  def test_renders_a_submit_button
+    render_inline(Flowbite::Button.new(label: "Click me", type: "submit"))
+    assert_selector("button[type='submit']")
+  end
 end

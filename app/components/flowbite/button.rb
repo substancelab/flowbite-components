@@ -6,7 +6,6 @@ module Flowbite
   # See https://flowbite.com/docs/components/buttons/
   #
   # @param label [String] The text to display on the button.
-  # @param type [Symbol] The type of the button. Default is :button.
   #
   # All other parameters are optional and are passed directly to the button tag
   # as HTML attributes.
@@ -44,14 +43,13 @@ module Flowbite
       # rubocop:enable Layout/LineLength
     end
 
-    attr_reader :button_attributes, :label, :size, :style, :type
+    attr_reader :button_attributes, :label, :size, :style
 
-    def initialize(label:, size: :default, style: :default, type: :button, **button_attributes)
+    def initialize(label:, size: :default, style: :default, **button_attributes)
       super
       @label = label
       @size = size
       @style = style
-      @type = type
       @button_attributes = button_attributes
     end
 
