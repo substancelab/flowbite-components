@@ -25,14 +25,17 @@ module Flowbite
       def call
         tag.p(
           @hint,
-          class: classes,
-          id: "#{@form.object_name}_#{@attribute}_hint"
+          **{
+            class: classes,
+            id: "#{@form.object_name}_#{@attribute}_hint"
+          }.merge(@attributes)
         )
       end
 
-      def initialize(form, attribute, hint:)
+      def initialize(form, attribute, hint:, **attributes)
         super
         @attribute = attribute
+        @attributes = attributes
         @form = form
         @hint = hint
         @object = form.object
