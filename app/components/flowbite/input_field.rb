@@ -73,7 +73,7 @@ module Flowbite
     def hint
       return unless hint?
 
-      render(Flowbite::Input::Hint.new(@form, @attribute, hint: @hint))
+      render(Flowbite::Input::Hint.new(@form, @attribute, hint: @hint, id: id_for_hint_element))
     end
 
     # Returns the HTML to use for the actual input field element.
@@ -100,7 +100,7 @@ module Flowbite
     def default_input_attributes
       if hint?
         {
-          "aria-describedby": "#{@form.object_name}_#{@attribute}_hint"
+          "aria-describedby": id_for_hint_element
         }
       else
         {}
@@ -110,6 +110,10 @@ module Flowbite
     # Returns true if the input field has a hint, false otherwise.
     def hint?
       @hint.present?
+    end
+
+    def id_for_hint_element
+      "#{@form.object_name}_#{@attribute}_hint"
     end
   end
 end
