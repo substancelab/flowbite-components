@@ -81,7 +81,7 @@ module Flowbite
       render(input_component.new(
         @form,
         @attribute,
-        input_attributes: @input_attributes,
+        input_attributes: default_input_attributes.merge(@input_attributes),
         size: @size
       ))
     end
@@ -92,6 +92,20 @@ module Flowbite
     end
 
     protected
+
+    # Returns a Hash with the default attributes to apply to the input element.
+    #
+    # The default attributes can be overriden by passing the `input_attributes`
+    # argument to the constructor.
+    def default_input_attributes
+      if hint?
+        {
+          "aria-describedby": "#{@form.object_name}_#{@attribute}_hint"
+        }
+      else
+        {}
+      end
+    end
 
     # Returns true if the input field has a hint, false otherwise.
     def hint?

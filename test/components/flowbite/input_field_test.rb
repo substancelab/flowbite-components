@@ -25,6 +25,13 @@ class Flowbite::InputFieldTest < Minitest::Test
     assert_selector("p", text: "What's the title?")
   end
 
+  def test_adds_aria_attributes_for_hint
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, hint: "What's the title?"))
+
+    assert_selector("input[aria-describedby='book_title_hint']")
+    assert_selector("p#book_title_hint", text: "What's the title?")
+  end
+
   def test_renders_an_input_element
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title))
 

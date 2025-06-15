@@ -25,7 +25,8 @@ module Flowbite
       def call
         tag.p(
           @hint,
-          class: classes
+          class: classes,
+          id: "#{@form.object_name}_#{@attribute}_hint"
         )
       end
 
