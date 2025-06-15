@@ -1,7 +1,7 @@
 <div>
   <%= label %>
   <%= input %>
-
+  <%= hint %>
   <% errors.each do |error| %>
     <%= render(Flowbite::Input::ValidationError.new(:message => error.upcase_first)) %>
   <% end %>

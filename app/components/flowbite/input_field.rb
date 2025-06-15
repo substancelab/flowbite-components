@@ -26,6 +26,10 @@ module Flowbite
   #
   # Supports additional arguments:
   #
+  # @param hint [String] A hint to display below the input field, providing
+  # additional context or instructions for the user. This is optional. See
+  # https://flowbite.com/docs/forms/input-field/#helper-text
+  #
   # @param input_attributes [Hash] Additional HTML attributes to pass to the
   # input element.
   #
@@ -51,10 +55,11 @@ module Flowbite
       @object.errors[@attribute] || []
     end
 
-    def initialize(attribute:, form:, input_attributes: {}, size: :default)
+    def initialize(attribute:, form:, hint: nil, input_attributes: {}, size: :default)
       super
       @attribute = attribute
       @form = form
+      @hint = hint
       @object = form.object
       @size = size
       @input_attributes = input_attributes
@@ -62,6 +67,13 @@ module Flowbite
 
     def input_component
       ::Flowbite::Input::Field
+    end
+
+    # Returns the HTML to use for the hint element if any
+    def hint
+      return unless hint?
+
+      render(Flowbite::Input::Hint.new(@form, @attribute, hint: @hint))
     end
 
     # Returns the HTML to use for the actual input field element.
@@ -77,6 +89,13 @@ module Flowbite
     # Returns the HTML to use for the label element
     def label
       render(Flowbite::Input::Label.new(@form, @attribute))
+    end
+
+    protected
+
+    # Returns true if the input field has a hint, false otherwise.
+    def hint?
+      @hint.present?
     end
   end
 end
