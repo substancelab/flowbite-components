@@ -1,12 +1,50 @@
 # frozen_string_literal: true
 
 module Flowbite
+  # A form element for a single field, containing label, input field, error
+  # messages, helper text and whatever else is needed for a user friendly input
+  # experience.
+  #
+  # @see https://flowbite.com/docs/forms/input-field/
+  #
   # The input field is an important part of the form element that can be used to
   # create interactive controls to accept data from the user based on multiple
   # input types, such as text, email, number, password, URL, phone number, and
   # more.
   #
-  # @see https://flowbite.com/docs/forms/input/
+  # Usually you'd use one of the subclasses of this class which implement the
+  # different input types, like `Flowbite::InputField::Text`,
+  # `Flowbite::InputField::Email`, etc.
+  #
+  # Expects 2 arguments:
+  #
+  # @param attribute [Symbol] The name of the attribute to render in this input
+  # field.
+  #
+  # @param form [ActionView::Helpers::FormBuilder] The form builder object that
+  # will be used to generate the input field.
+  #
+  # Supports additional arguments:
+  #
+  # @param input_attributes [Hash] Additional HTML attributes to pass to the
+  # input element.
+  #
+  # @param size [Symbol] The size of the input field. Can be one of `:sm`,
+  # `:md`, or `:lg`. Defaults to `:md`.
+  #
+  # Sample usage
+  #
+  #     <% form_for @person do |form| %>
+  #       <%= render(
+  #         Flowbite::InputField::Number.new(
+  #           :attribute => :name,
+  #           :form => form
+  #         )
+  #       ) %>
+  #     <% end %>
+  #
+  # To render an input without labels or error messages etc, use
+  # `Flowbite::Input::Field` instead.
   class InputField < ViewComponent::Base
     # Returns the errors for attribute
     def errors

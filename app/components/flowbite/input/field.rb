@@ -2,6 +2,11 @@
 
 module Flowbite
   module Input
+    # The indivdual input component for use in forms without labels or error
+    # messages.
+    #
+    # To render a complete input field with labels and error messages, use
+    # `Flowbite::InputField` instead.
     class Field < ViewComponent::Base
       SIZES = {
         sm: ["p-2", "text-xs"],
