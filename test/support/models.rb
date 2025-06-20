@@ -42,9 +42,10 @@ end
 class User
   include ActiveModel::Model
 
-  attr_accessor :name, :email, :phone
+  attr_accessor :name, :email, :phone, :password
 
-  validates :name, presence: true
   validates :email, presence: true
+  validates :name, presence: true
+  validates :password, presence: true
   validates :phone, presence: true
 end
