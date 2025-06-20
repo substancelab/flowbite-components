@@ -1,0 +1,40 @@
+# frozen_string_literal: true
+
+# This file defines some example ActiveModel objects for use in tests.
+
+class Article
+  include ActiveModel::Model
+
+  attr_accessor :title, :content, :summary
+
+  validates :title, presence: true
+  validates :content, presence: true
+end
+
+class Book
+  include ActiveModel::Model
+
+  attr_accessor :title, :author, :published_at
+
+  validates :title, presence: true
+  validates :author, presence: true
+end
+
+class Product
+  include ActiveModel::Model
+
+  attr_accessor :name, :price, :quantity
+
+  validates :name, presence: true
+  validates :price, presence: true
+end
+
+class User
+  include ActiveModel::Model
+
+  attr_accessor :name, :email, :phone
+
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :phone, presence: true
+end

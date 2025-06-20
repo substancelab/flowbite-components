@@ -1,16 +1,9 @@
 require "test_helper"
 
+require "support/models"
+
 class Flowbite::Input::DateTest < Minitest::Test
   include ViewComponent::TestHelpers
-
-  class Book
-    include ActiveModel::Model
-
-    attr_accessor :title, :author, :published_at
-
-    validates :title, presence: true
-    validates :author, presence: true
-  end
 
   def setup
     @book = Book.new(published_at: Date.new(1925, 4, 10))

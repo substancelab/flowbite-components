@@ -1,16 +1,9 @@
 require "test_helper"
 
+require "support/models"
+
 class Flowbite::Input::TextareaTest < Minitest::Test
   include ViewComponent::TestHelpers
-
-  class Article
-    include ActiveModel::Model
-
-    attr_accessor :title, :content, :summary
-
-    validates :title, presence: true
-    validates :content, presence: true
-  end
 
   def setup
     @article = Article.new(title: "Test Article", content: "This is the article content.\nIt has multiple lines.")

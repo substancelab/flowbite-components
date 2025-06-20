@@ -1,16 +1,9 @@
 require "test_helper"
 
+require "support/models"
+
 class Flowbite::Input::FieldTest < Minitest::Test
   include ViewComponent::TestHelpers
-
-  class Book
-    include ActiveModel::Model
-
-    attr_accessor :title, :author, :published_at
-
-    validates :title, presence: true
-    validates :author, presence: true
-  end
 
   def setup
     @book = Book.new(title: "The Great Gatsby", author: "F. Scott Fitzgerald")

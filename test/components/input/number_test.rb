@@ -1,16 +1,9 @@
 require "test_helper"
 
+require "support/models"
+
 class Flowbite::Input::NumberTest < Minitest::Test
   include ViewComponent::TestHelpers
-
-  class Product
-    include ActiveModel::Model
-
-    attr_accessor :name, :price, :quantity
-
-    validates :name, presence: true
-    validates :price, presence: true
-  end
 
   def setup
     @product = Product.new(name: "Widget", price: 19.99, quantity: 5)

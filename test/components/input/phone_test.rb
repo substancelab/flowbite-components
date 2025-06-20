@@ -1,16 +1,9 @@
 require "test_helper"
 
+require "support/models"
+
 class Flowbite::Input::PhoneTest < Minitest::Test
   include ViewComponent::TestHelpers
-
-  class User
-    include ActiveModel::Model
-
-    attr_accessor :name, :email, :phone
-
-    validates :name, presence: true
-    validates :phone, presence: true
-  end
 
   def setup
     @user = User.new(name: "John Doe", phone: "+1-555-123-4567")
