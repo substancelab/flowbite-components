@@ -5,10 +5,11 @@
 class Article
   include ActiveModel::Model
 
-  attr_accessor :title, :content, :summary
+  attr_accessor :category_id, :title, :content, :summary
 
-  validates :title, presence: true
+  validates :category_id, presence: true
   validates :content, presence: true
+  validates :title, presence: true
 end
 
 class Book
@@ -18,6 +19,15 @@ class Book
 
   validates :title, presence: true
   validates :author, presence: true
+end
+
+class Category
+  attr_reader :id, :name
+
+  def initialize(id, name)
+    @id = id
+    @name = name
+  end
 end
 
 class Product
