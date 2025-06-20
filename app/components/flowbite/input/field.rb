@@ -25,7 +25,18 @@ module Flowbite
         def classes(size: :default, state: :default, style: :default)
           style = styles.fetch(style)
           state_classes = style.fetch(state)
-          state_classes + SIZES.fetch(size)
+          state_classes + sizes.fetch(size)
+        end
+
+        # Returns the sizes this Field supports.
+        #
+        # This is effectively the SIZES constant, but provided as a method to
+        # return the constant from the current class, not the superclass.
+        #
+        # @return [Hash] A hash mapping size names to their corresponding CSS
+        # classes.
+        def sizes
+          const_get(:SIZES)
         end
 
         # rubocop:disable Layout/LineLength
