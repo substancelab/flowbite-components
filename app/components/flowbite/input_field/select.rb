@@ -3,11 +3,9 @@
 module Flowbite
   class InputField
     class Select < InputField
-      def initialize(form:, attribute:, collection:, text_method: :to_s, value_method: :to_s)
-        super(form: form, attribute: attribute)
+      def initialize(attribute:, form:, collection: [], hint: nil, input_attributes: {}, size: :default)
+        super(attribute: attribute, form: form, hint: hint, input_attributes: input_attributes, size: size)
         @collection = collection
-        @text_method = text_method
-        @value_method = value_method
       end
 
       def input
@@ -15,9 +13,9 @@ module Flowbite
           input_component.new(
             @form,
             @attribute,
-            @collection,
-            @value_method,
-            @text_method
+            collection: @collection,
+            input_attributes: @input_attributes,
+            size: @size
           )
         )
       end

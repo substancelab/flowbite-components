@@ -15,11 +15,9 @@ module Flowbite
       }.freeze
 
 
-      def initialize(form, attribute, collection: [], input_attributes: {}, size: :default, **html_options)
+      def initialize(form, attribute, collection: [], input_attributes: {}, size: :default)
         super(form, attribute, input_attributes: input_attributes, size: size)
-
         @collection = collection
-        @html_options = html_options
       end
 
       # Returns the HTML to use for the actual input field element.
@@ -44,7 +42,7 @@ module Flowbite
       def html_options
         {
           class: classes
-        }.merge(@html_options)
+        }.merge(@input_attributes)
       end
 
       # Returns the options argument for the select method

@@ -58,7 +58,7 @@ class Flowbite::Input::SelectTest < Minitest::Test
   end
 
   def test_adds_attributes_to_input
-    render_inline(Flowbite::Input::Select.new(@form, :category_id, collection: @categories.map { |c| [c.name, c.id] }, "data-controller": "interactive"))
+    render_inline(Flowbite::Input::Select.new(@form, :category_id, collection: @categories.map { |c| [c.name, c.id] }, input_attributes: {"data-controller": "interactive"}))
 
     assert_selector("select[name='article[category_id]'][data-controller='interactive']")
   end

@@ -6,7 +6,7 @@ class Flowbite::InputFieldTest < Minitest::Test
   include ViewComponent::TestHelpers
 
   def setup
-    @book = Book.new(title: "The Great Gatsby", author: "F. Scott Fitzgerald")
+    @book = Book.new(title: "The Great Gatsby", author: "F. Scott Fitzgerald", state: "read")
     @view_context = ActionController::Base.new.view_context
     @form = ActionView::Helpers::FormBuilder.new(:book, @book, @view_context, {})
   end
@@ -44,5 +44,17 @@ class Flowbite::InputFieldTest < Minitest::Test
 
     assert_component_rendered
     assert_selector("input[type='text'][placeholder='Enter title']")
+  end
+
+  def test_renders_a_large_select_element
+    render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], size: :lg))
+
+    assert_selector("select.text-base.px-4.py-3")
+  end
+
+  def test_passes_input_attributes_to_select_element
+    render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], input_attributes: {"data-key": "state-select"}))
+
+    assert_selector("select[data-key='state-select']")
   end
 end

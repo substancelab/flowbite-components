@@ -15,7 +15,7 @@ end
 class Book
   include ActiveModel::Model
 
-  attr_accessor :title, :author, :published_at
+  attr_accessor :title, :author, :published_at, :state
 
   validates :title, presence: true
   validates :author, presence: true
