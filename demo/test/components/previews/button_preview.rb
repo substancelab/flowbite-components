@@ -6,11 +6,11 @@ class ButtonPreview < Lookbook::Preview
   # or link within your website.
 
   def default
-    render(Flowbite::Button.new(label: "Click me"))
+    render(Flowbite::Button.new(label: "Default"))
   end
 
   def alternative
-    render(Flowbite::Button.new(label: "Click me", style: :alternative))
+    render(Flowbite::Button.new(label: "Alternative", style: :alternative))
   end
 
   # @!endgroup
@@ -18,44 +18,36 @@ class ButtonPreview < Lookbook::Preview
   # @!group Pills
   # The button pills can be used as an alternative style by using fully rounded edges.
 
-  # @label Default
   def pill_default
-    render(Flowbite::Button::Pill.new(label: "Click me", style: :default))
+    render(Flowbite::Button::Pill.new(label: "Default", style: :default))
   end
 
-  # @label Alternative
   def pill_alternative
-    render(Flowbite::Button::Pill.new(label: "Click me", style: :alternative))
+    render(Flowbite::Button::Pill.new(label: "Alternative", style: :alternative))
   end
 
-  # @label Dark
   def pill_dark
-    render(Flowbite::Button::Pill.new(label: "Click me", style: :dark))
+    render(Flowbite::Button::Pill.new(label: "Dark", style: :dark))
   end
 
-  # @label Light
   def pill_light
-    render(Flowbite::Button::Pill.new(label: "Click me", style: :light))
+    render(Flowbite::Button::Pill.new(label: "Light", style: :light))
   end
 
-  # @label Green
   def pill_green
-    render(Flowbite::Button::Pill.new(label: "Click me", style: :green))
+    render(Flowbite::Button::Pill.new(label: "Green", style: :green))
   end
 
-  # @label Purple
   def pill_purple
-    render(Flowbite::Button::Pill.new(label: "Click me", style: :purple))
+    render(Flowbite::Button::Pill.new(label: "Purple", style: :purple))
   end
 
-  # @label Red
   def pill_red
-    render(Flowbite::Button::Pill.new(label: "Click me", style: :red))
+    render(Flowbite::Button::Pill.new(label: "Red", style: :red))
   end
 
-  # @label Yellow
   def pill_yellow
-    render(Flowbite::Button::Pill.new(label: "Click me", style: :yellow))
+    render(Flowbite::Button::Pill.new(label: "Yellow", style: :yellow))
   end
 
   # @!endgroup
