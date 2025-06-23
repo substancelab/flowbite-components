@@ -1,3 +1,9 @@
+PATH
+  remote: ../..
+  specs:
+    flowbite-view_components (0.1.0)
+      view_component
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -265,6 +271,7 @@ PLATFORMS
 
 DEPENDENCIES
   debug
+  flowbite-view_components!
   listen
   lookbook (>= 2.3.11)
   propshaft
