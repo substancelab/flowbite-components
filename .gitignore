@@ -6,3 +6,6 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+/demo/storage/*.sqlite3
+/demo/tmp/
