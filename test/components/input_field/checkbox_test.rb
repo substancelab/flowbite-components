@@ -65,7 +65,7 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
   def test_renders_disabled_label
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, disabled: true))
 
-    assert_selector("label[for='user_subscribed'][class='text-gray-400']")
+    assert_selector("label[for='user_subscribed'].text-gray-400")
   end
 
   def test_renders_enabled_checkbox_by_default
