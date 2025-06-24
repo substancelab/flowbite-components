@@ -117,6 +117,11 @@ module Flowbite
       end
     end
 
+    # Returns true if the input field is disabled, false otherwise.
+    def disabled?
+      !!@disabled
+    end
+
     # Returns true if the input field has a hint, false otherwise.
     def hint?
       @hint.present?

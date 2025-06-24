@@ -20,7 +20,7 @@ module Flowbite
             @form,
             @attribute,
             hint_attributes: {
-              class: "text-xs font-normal text-gray-500 dark:text-gray-300",
+              class: hint_classes,
               id: id_for_hint_element
             },
             hint: @hint
@@ -35,10 +35,28 @@ module Flowbite
             @form,
             @attribute,
             label_attributes: {
-              class: "font-medium text-gray-900 dark:text-gray-300"
+              class: label_classes
             }
           )
         )
+      end
+
+      private
+
+      def hint_classes
+        if disabled?
+          "text-xs font-normal text-gray-400 dark:text-gray-500"
+        else
+          "text-xs font-normal text-gray-500 dark:text-gray-300"
+        end
+      end
+
+      def label_classes
+        if disabled?
+          "font-medium text-gray-400 dark:text-gray-500"
+        else
+          "font-medium text-gray-900 dark:text-gray-300"
+        end
       end
     end
   end

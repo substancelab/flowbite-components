@@ -112,6 +112,11 @@ class InputFieldPreview < Lookbook::Preview
     render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form, disabled: true))
   end
 
+  def disabled_checked_check_box
+    person.confirmation = true
+    render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form, disabled: true))
+  end
+
   # @!endgroup
 
   private

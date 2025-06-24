@@ -6,6 +6,7 @@ module Flowbite
     class Label < ViewComponent::Base
       STATES = [
         DEFAULT = :default,
+        DISABLED = :disabled,
         ERROR = :error
       ].freeze
 
@@ -19,6 +20,7 @@ module Flowbite
           {
             default: Flowbite::Style.new(
               default: ["block", "mb-2", "text-sm", "font-medium", "text-gray-900", "dark:text-white"],
+              disabled: ["block", "mb-2", "text-sm", "font-medium", "text-gray-400", "dark:text-gray-500"],
               error: ["block", "mb-2", "text-sm", "font-medium", "text-red-700", "dark:text-red-500"]
             )
           }.freeze
@@ -36,9 +38,10 @@ module Flowbite
         @object.errors.include?(@attribute.intern)
       end
 
-      def initialize(form, attribute, label_attributes: {})
+      def initialize(form, attribute, disabled: false, label_attributes: {})
         super
         @attribute = attribute
+        @disabled = disabled
         @form = form
         @object = form.object
         @label_attributes = label_attributes
@@ -51,17 +54,20 @@ module Flowbite
 
       protected
 
+      def disabled?
+        !!@disabled
+      end
+
       # Returns the state of the label.
       #
       # See the STATES constant for valid values.
       #
       # @return [Symbol] the state of the label
       def state
-        if errors?
-          ERROR
-        else
-          DEFAULT
-        end
+        return DISABLED if disabled?
+        return ERROR if errors?
+
+        DEFAULT
       end
 
       private

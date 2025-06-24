@@ -25,6 +25,12 @@ class Flowbite::Input::LabelTest < Minitest::Test
     assert_selector("label[for='book_title'].text-gray-900")
   end
 
+  def test_renders_in_disabled_state
+    render_inline(Flowbite::Input::Label.new(@form, :title, disabled: true))
+
+    assert_selector("label[for='book_title'].text-gray-400")
+  end
+
   def test_renders_in_error_state
     @book.errors.add(:title, :invalid)
     render_inline(Flowbite::Input::Label.new(@form, :title))
