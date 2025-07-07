@@ -5,6 +5,10 @@ module Flowbite
     # The indivdual input component for use in forms without labels or error
     # messages.
     #
+    # Use this when you want to render an input field on its own without any
+    # surrounding elements, ie as a building block in more complex input
+    # components.
+    #
     # To render a complete input field with labels and error messages, use
     # `Flowbite::InputField` instead.
     class Field < ViewComponent::Base
