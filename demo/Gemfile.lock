@@ -2,7 +2,7 @@ PATH
   remote: ../..
   specs:
     flowbite-view_components (0.1.0)
-      view_component
+      view_component (= 4.0.0.rc2)
 
 GEM
   remote: https://rubygems.org/
@@ -139,7 +139,6 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
-    method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.25.5)
     net-imap (0.5.7)
@@ -256,10 +255,9 @@ GEM
       concurrent-ruby (~> 1.0)
     uri (1.0.3)
     useragent (0.16.11)
-    view_component (3.23.2)
-      activesupport (>= 5.2.0, < 8.1)
+    view_component (4.0.0.rc2)
+      activesupport (>= 7.1.0, < 8.1)
       concurrent-ruby (~> 1)
-      method_source (~> 1.0)
     websocket-driver (0.7.7)
       base64
       websocket-extensions (>= 0.1.0)

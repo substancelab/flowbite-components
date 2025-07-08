@@ -4,7 +4,6 @@ module Flowbite
   module Input
     class ValidationError < ViewComponent::Base
       def initialize(message:)
-        super
         @message = message
       end
 

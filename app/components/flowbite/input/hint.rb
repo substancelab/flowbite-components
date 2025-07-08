@@ -32,7 +32,6 @@ module Flowbite
       end
 
       def initialize(attribute:, form:, hint:, hint_attributes: {})
-        super
         @attribute = attribute
         @form = form
         @hint = hint

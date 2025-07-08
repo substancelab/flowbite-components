@@ -46,7 +46,6 @@ module Flowbite
     attr_reader :button_attributes, :label, :size, :style
 
     def initialize(label:, size: :default, style: :default, **button_attributes)
-      super
       @label = label
       @size = size
       @style = style

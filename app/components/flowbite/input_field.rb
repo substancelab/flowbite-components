@@ -59,7 +59,6 @@ module Flowbite
     end
 
     def initialize(attribute:, form:, disabled: false, hint: nil, input_attributes: {}, size: :default)
-      super
       @attribute = attribute
       @disabled = disabled
       @form = form
