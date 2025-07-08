@@ -38,7 +38,7 @@ module Flowbite
         @object.errors.include?(@attribute.intern)
       end
 
-      def initialize(form, attribute, disabled: false, label_attributes: {})
+      def initialize(attribute:, form:, disabled: false, label_attributes: {})
         super
         @attribute = attribute
         @disabled = disabled

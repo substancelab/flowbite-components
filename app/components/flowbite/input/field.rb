@@ -57,7 +57,7 @@ module Flowbite
         # rubocop:enable Layout/LineLength
       end
 
-      def initialize(form, attribute, disabled: false, input_attributes: {}, size: :default)
+      def initialize(attribute:, form:, disabled: false, input_attributes: {}, size: :default)
         super
         @attribute = attribute
         @disabled = disabled

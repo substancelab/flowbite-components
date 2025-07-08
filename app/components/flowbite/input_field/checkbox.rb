@@ -17,8 +17,8 @@ module Flowbite
 
         render(
           Flowbite::Input::Hint.new(
-            @form,
-            @attribute,
+            attribute: @attribute,
+            form: @form,
             hint_attributes: {
               class: hint_classes,
               id: id_for_hint_element
@@ -32,8 +32,8 @@ module Flowbite
       def label
         render(
           Flowbite::Input::Label.new(
-            @form,
-            @attribute,
+            attribute: @attribute,
+            form: @form,
             label_attributes: {
               class: label_classes
             }

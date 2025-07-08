@@ -11,9 +11,9 @@ module Flowbite
       def input
         render(
           input_component.new(
-            @form,
-            @attribute,
+            attribute: @attribute,
             collection: @collection,
+            form: @form,
             input_attributes: @input_attributes,
             size: @size
           )

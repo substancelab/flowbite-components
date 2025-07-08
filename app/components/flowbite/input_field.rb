@@ -78,8 +78,8 @@ module Flowbite
       return unless hint?
 
       render(Flowbite::Input::Hint.new(
-        @form,
-        @attribute,
+        attribute: @attribute,
+        form: @form,
         hint: @hint,
         hint_attributes: {id: id_for_hint_element}
       ))
@@ -88,8 +88,8 @@ module Flowbite
     # Returns the HTML to use for the actual input field element.
     def input
       render(input_component.new(
-        @form,
-        @attribute,
+        form: @form,
+        attribute: @attribute,
         disabled: @disabled,
         input_attributes: default_input_attributes.merge(@input_attributes),
         size: @size
@@ -98,7 +98,7 @@ module Flowbite
 
     # Returns the HTML to use for the label element
     def label
-      render(Flowbite::Input::Label.new(@form, @attribute))
+      render(Flowbite::Input::Label.new(form: @form, attribute: @attribute))
     end
 
     protected

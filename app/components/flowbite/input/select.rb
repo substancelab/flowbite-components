@@ -14,8 +14,8 @@ module Flowbite
         lg: ["px-4", "py-3", "text-base"]
       }.freeze
 
-      def initialize(form, attribute, collection: [], disabled: false, input_attributes: {}, size: :default)
-        super(form, attribute, disabled: disabled, input_attributes: input_attributes, size: size)
+      def initialize(form:, attribute:, collection: [], disabled: false, input_attributes: {}, size: :default)
+        super(form: form, attribute: attribute, disabled: disabled, input_attributes: input_attributes, size: size)
         @collection = collection
       end
 
