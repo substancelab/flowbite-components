@@ -44,4 +44,13 @@ class Flowbite::Input::LabelTest < Minitest::Test
 
     assert_selector("label.toggle")
   end
+
+  def test_renders_specified_label_text
+    render_inline(
+      Flowbite::Input::Label.new(form: @form, attribute: :title)
+        .with_content("This is not the default label")
+    )
+
+    assert_selector("label[for='book_title']", text: "This is not the default label")
+  end
 end

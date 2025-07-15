@@ -28,10 +28,11 @@ module Flowbite
       end
 
       def call
-        @form.label(
-          @attribute,
-          **options
-        )
+        if content?
+          @form.label(@attribute, content, **options)
+        else
+          @form.label(@attribute, **options)
+        end
       end
 
       def errors?
