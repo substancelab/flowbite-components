@@ -30,6 +30,15 @@ module Flowbite
   # additional context or instructions for the user. This is optional. See
   # https://flowbite.com/docs/forms/input-field/#helper-text
   #
+  # @param label [Hash] A hash with options for the label. These are passed to
+  # Flowbite::Input::Label, see that for details. Can contain:
+  # - `content`: The content of the label. If not provided, the label will
+  #   default to the attribute name.
+  # - `label_attributes`: A hash of additional HTML attributes to apply to the
+  #   label element.
+  # - `options`: A hash of additional options to pass to the label component.
+  #   This can be used to set the class, for example.
+  #
   # @param disabled [Boolean] Whether the input field should be disabled.
   # Defaults to `false`.
   #
@@ -53,17 +62,20 @@ module Flowbite
   # To render an input without labels or error messages etc, use
   # `Flowbite::Input::Field` instead.
   class InputField < ViewComponent::Base
+    renders_one :label
+
     # Returns the errors for attribute
     def errors
       @object.errors[@attribute] || []
     end
 
-    def initialize(attribute:, form:, disabled: false, hint: nil, input_attributes: {}, size: :default)
+    def initialize(attribute:, form:, disabled: false, hint: nil, input_attributes: {}, label: {}, size: :default)
       @attribute = attribute
       @disabled = disabled
       @form = form
       @hint = hint
       @input_attributes = input_attributes
+      @label = label
       @object = form.object
       @size = size
     end
@@ -95,11 +107,6 @@ module Flowbite
       ))
     end
 
-    # Returns the HTML to use for the label element
-    def label
-      render(Flowbite::Input::Label.new(form: @form, attribute: @attribute))
-    end
-
     protected
 
     # Returns a Hash with the default attributes to apply to the input element.
@@ -113,6 +120,23 @@ module Flowbite
         }
       else
         {}
+      end
+    end
+
+    def default_label
+      label_options = @label.dup
+      label_content = label_options.delete(:content)
+
+      arguments = {
+        attribute: @attribute,
+        form: @form
+      }.merge(label_options)
+
+      component = Flowbite::Input::Label.new(**arguments)
+      if label_content
+        component.with_content(label_content)
+      else
+        component
       end
     end
 

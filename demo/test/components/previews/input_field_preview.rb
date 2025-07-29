@@ -119,6 +119,54 @@ class InputFieldPreview < Lookbook::Preview
 
   # @!endgroup
 
+  # @!group Customization options
+  #
+  # @display classes w-full
+
+  def input_with_default_label
+    render(
+      Flowbite::InputField::Text.new(
+        attribute: :first_name,
+        form: form
+      )
+    )
+  end
+
+  def input_with_specified_label_text
+    render(
+      Flowbite::InputField::Text.new(
+        attribute: :first_name,
+        form: form,
+        label: {content: "Custom label text"}
+      )
+    )
+  end
+
+  def input_with_specified_label_options
+    render(
+      Flowbite::InputField::Text.new(
+        attribute: :first_name,
+        form: form,
+        label: {options: {class: "custom-label-class"}}
+      )
+    )
+  end
+
+  def input_with_custom_label
+    render(
+      Flowbite::InputField::Text.new(
+        attribute: :first_name,
+        form: form
+      )
+    ) do |input|
+      input.with_label do
+        "This is a custom label replacing the entire label"
+      end
+    end
+  end
+
+  # @!endgroup
+
   private
 
   def form

@@ -39,12 +39,13 @@ module Flowbite
         @object.errors.include?(@attribute.intern)
       end
 
-      def initialize(attribute:, form:, disabled: false, label_attributes: {})
+      def initialize(attribute:, form:, disabled: false, label_attributes: {}, options: {})
         @attribute = attribute
         @disabled = disabled
         @form = form
         @object = form.object
         @label_attributes = label_attributes
+        @options = options
       end
 
       # Returns an array with the CSS classes to apply to the label element
@@ -75,7 +76,7 @@ module Flowbite
       def options
         {
           class: classes
-        }.merge(@label_attributes)
+        }.merge(@label_attributes).merge(@options)
       end
     end
   end

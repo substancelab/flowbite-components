@@ -39,6 +39,52 @@ class Flowbite::InputFieldTest < Minitest::Test
     assert_selector("label[for='book_title']")
   end
 
+  def test_renders_a_label_with_specified_content
+    render_inline(
+      Flowbite::InputField.new(form: @form, attribute: :title, label: {content: "Custom label"})
+    )
+
+    assert_selector("label[for='book_title']", text: "Custom label")
+  end
+
+  def test_renders_a_label_with_specified_attributes
+    render_inline(
+      Flowbite::InputField.new(form: @form, attribute: :title, label: {label_attributes: {class: "custom-label"}})
+    )
+
+    assert_selector("label[for='book_title'].custom-label")
+  end
+
+  def test_replaces_the_label_component_using_with_label_content
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title)) do |field|
+      field
+        .with_label_content("<label id=\"my-label\">Custom label</label>".html_safe)
+    end
+
+    assert_no_selector("label[for='book_title'].custom-class")
+    assert_selector("label#my-label", text: "Custom label")
+  end
+
+  def test_replaces_the_label_component_using_with_label_and_with_content
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title)) do |field|
+      field
+        .with_label.with_content("Custom label")
+    end
+
+    assert_no_selector("label[for='book_title'].custom-class")
+    assert_text("Custom label")
+  end
+
+  def test_replaces_the_label_component_using_with_label
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title)) do |field|
+      field
+        .with_label { "Block with a full component" }
+    end
+
+    assert_no_selector("label[for='book_title']")
+    assert_text("Block with a full component")
+  end
+
   def test_passes_input_attributes_to_input_element
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input_attributes: {placeholder: "Enter title"}))
 
