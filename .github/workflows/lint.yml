@@ -1,4 +1,4 @@
-name: StandardRB
+name: Lint
 
 on:
   push:
@@ -24,5 +24,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run standardrb
+    - name: standardrb
       run: bundle exec rake standard
+    - name: herb
+      run: bundle exec herb analyze app/components/ --non-interactive
