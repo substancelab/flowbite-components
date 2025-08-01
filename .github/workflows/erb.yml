@@ -1,4 +1,4 @@
-name: Lint
+name: ERB
 
 on:
   push:
@@ -10,13 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  test:
-
+  lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         ruby-version: ['3.4']
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up Ruby
