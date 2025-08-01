@@ -13,4 +13,5 @@ gem "sqlite3"
 gem "capybara"
 gem "minitest"
 
+gem "herb"
 gem "standard"
