@@ -25,9 +25,8 @@ module Flowbite
       def call
         tag.p(
           @hint,
-          **{
-            class: classes,
-          }.merge(@hint_attributes)
+          class: classes,
+          **@hint_attributes
         )
       end
 
