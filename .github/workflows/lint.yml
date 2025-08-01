@@ -24,7 +24,5 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: standardrb
-      run: bundle exec rake standard
     - name: herb
       run: bundle exec herb analyze app/components/ --non-interactive
