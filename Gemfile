@@ -13,4 +13,4 @@ gem "sqlite3"
 gem "capybara"
 gem "minitest"
 
-gem "standard", "~> 1.49"
+gem "standard"
