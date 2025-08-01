@@ -1,4 +1,4 @@
-name: Lint
+name: ERB
 
 on:
   push:
@@ -10,13 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  test:
-
+  lint:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         ruby-version: ['3.4']
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up Ruby
@@ -24,7 +22,5 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: standardrb
-      run: bundle exec rake standard
     - name: herb
       run: bundle exec herb analyze app/components/ --non-interactive
