@@ -34,7 +34,7 @@ module Flowbite
   # Flowbite::Input::Label, see that for details. Can contain:
   # - `content`: The content of the label. If not provided, the label will
   #   default to the attribute name.
-  # - `label_attributes`: A hash of additional HTML attributes to apply to the
+  # - `label_options`: A hash of additional HTML attributes to apply to the
   #   label element.
   # - `options`: A hash of additional options to pass to the label component.
   #   This can be used to set the class, for example.
@@ -42,7 +42,7 @@ module Flowbite
   # @param disabled [Boolean] Whether the input field should be disabled.
   # Defaults to `false`.
   #
-  # @param input_attributes [Hash] Additional HTML attributes to pass to the
+  # @param input_options [Hash] Additional HTML attributes to pass to the
   # input element.
   #
   # @param size [Symbol] The size of the input field. Can be one of `:sm`,
@@ -69,12 +69,12 @@ module Flowbite
       @object.errors[@attribute] || []
     end
 
-    def initialize(attribute:, form:, disabled: false, hint: nil, input_attributes: {}, label: {}, size: :default)
+    def initialize(attribute:, form:, disabled: false, hint: nil, input_options: {}, label: {}, size: :default)
       @attribute = attribute
       @disabled = disabled
       @form = form
       @hint = hint
-      @input_attributes = input_attributes
+      @input_options = input_options
       @label = label
       @object = form.object
       @size = size
@@ -102,7 +102,7 @@ module Flowbite
         form: @form,
         attribute: @attribute,
         disabled: @disabled,
-        input_attributes: default_input_attributes.merge(@input_attributes),
+        input_options: default_input_options.merge(@input_options),
         size: @size
       ))
     end
@@ -111,9 +111,9 @@ module Flowbite
 
     # Returns a Hash with the default attributes to apply to the input element.
     #
-    # The default attributes can be overriden by passing the `input_attributes`
+    # The default attributes can be overriden by passing the `input_options`
     # argument to the constructor.
-    def default_input_attributes
+    def default_input_options
       if hint?
         {
           "aria-describedby": id_for_hint_element

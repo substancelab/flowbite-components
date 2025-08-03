@@ -55,7 +55,7 @@ class Flowbite::Input::FieldTest < Minitest::Test
   end
 
   def test_adds_attributes_to_input
-    render_inline(Flowbite::Input::Field.new(form: @form, attribute: :title, input_attributes: {placeholder: "Enter title"}))
+    render_inline(Flowbite::Input::Field.new(form: @form, attribute: :title, input_options: {placeholder: "Enter title"}))
 
     assert_component_rendered
     assert_selector("input[name='book[title]'][placeholder='Enter title']")

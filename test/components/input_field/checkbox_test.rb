@@ -50,8 +50,8 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
     assert_selector("p#user_subscribed_hint", text: "Check to receive updates")
   end
 
-  def test_passes_input_attributes_to_input_element
-    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, input_attributes: {"data-controller": "checkbox"}))
+  def test_passes_input_options_to_input_element
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, input_options: {"data-controller": "checkbox"}))
 
     assert_selector("input[type='checkbox'][data-controller='checkbox']")
   end

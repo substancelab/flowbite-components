@@ -39,12 +39,12 @@ module Flowbite
         @object.errors.include?(@attribute.intern)
       end
 
-      def initialize(attribute:, form:, disabled: false, label_attributes: {}, options: {})
+      def initialize(attribute:, form:, disabled: false, label_options: {}, options: {})
         @attribute = attribute
         @disabled = disabled
         @form = form
         @object = form.object
-        @label_attributes = label_attributes
+        @label_options = label_options
         @options = options
       end
 
@@ -76,7 +76,7 @@ module Flowbite
       def options
         {
           class: classes
-        }.merge(@label_attributes).merge(@options)
+        }.merge(@label_options).merge(@options)
       end
     end
   end

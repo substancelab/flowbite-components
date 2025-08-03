@@ -49,7 +49,7 @@ class Flowbite::Input::PhoneTest < Minitest::Test
   end
 
   def test_adds_attributes_to_input
-    render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone, input_attributes: {placeholder: "Enter phone number"}))
+    render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone, input_options: {placeholder: "Enter phone number"}))
 
     assert_selector("input[name='user[phone]'][placeholder='Enter phone number']")
   end
