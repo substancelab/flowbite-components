@@ -14,8 +14,8 @@ module Flowbite
         lg: ["px-4", "py-3", "text-base"]
       }.freeze
 
-      def initialize(form:, attribute:, collection: [], disabled: false, input_attributes: {}, size: :default)
-        super(form: form, attribute: attribute, disabled: disabled, input_attributes: input_attributes, size: size)
+      def initialize(form:, attribute:, collection: [], disabled: false, input_options: {}, size: :default)
+        super(form: form, attribute: attribute, disabled: disabled, input_options: input_options, size: size)
         @collection = collection
       end
 
@@ -42,7 +42,7 @@ module Flowbite
         {
           class: classes,
           disabled: disabled?
-        }.merge(@input_attributes)
+        }.merge(@input_options)
       end
 
       # Returns the options argument for the select method

@@ -49,7 +49,7 @@ class Flowbite::InputFieldTest < Minitest::Test
 
   def test_renders_a_label_with_specified_attributes
     render_inline(
-      Flowbite::InputField.new(form: @form, attribute: :title, label: {label_attributes: {class: "custom-label"}})
+      Flowbite::InputField.new(form: @form, attribute: :title, label: {label_options: {class: "custom-label"}})
     )
 
     assert_selector("label[for='book_title'].custom-label")
@@ -85,8 +85,8 @@ class Flowbite::InputFieldTest < Minitest::Test
     assert_text("Block with a full component")
   end
 
-  def test_passes_input_attributes_to_input_element
-    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input_attributes: {placeholder: "Enter title"}))
+  def test_passes_input_options_to_input_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input_options: {placeholder: "Enter title"}))
 
     assert_component_rendered
     assert_selector("input[type='text'][placeholder='Enter title']")
@@ -98,8 +98,8 @@ class Flowbite::InputFieldTest < Minitest::Test
     assert_selector("select.text-base.px-4.py-3")
   end
 
-  def test_passes_input_attributes_to_select_element
-    render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], input_attributes: {"data-key": "state-select"}))
+  def test_passes_input_options_to_select_element
+    render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], input_options: {"data-key": "state-select"}))
 
     assert_selector("select[data-key='state-select']")
   end

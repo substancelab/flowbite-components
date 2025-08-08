@@ -49,7 +49,7 @@ class Flowbite::Input::NumberTest < Minitest::Test
   end
 
   def test_adds_attributes_to_input
-    render_inline(Flowbite::Input::Number.new(form: @form, attribute: :price, input_attributes: {placeholder: "Enter price", step: "0.01"}))
+    render_inline(Flowbite::Input::Number.new(form: @form, attribute: :price, input_options: {placeholder: "Enter price", step: "0.01"}))
 
     assert_selector("input[name='product[price]'][placeholder='Enter price'][step='0.01']")
   end

@@ -49,7 +49,7 @@ class Flowbite::Input::PasswordTest < Minitest::Test
   end
 
   def test_adds_attributes_to_input
-    render_inline(Flowbite::Input::Password.new(form: @form, attribute: :password, input_attributes: {placeholder: "Enter password"}))
+    render_inline(Flowbite::Input::Password.new(form: @form, attribute: :password, input_options: {placeholder: "Enter password"}))
 
     assert_selector("input[name='user[password]'][placeholder='Enter password']")
   end

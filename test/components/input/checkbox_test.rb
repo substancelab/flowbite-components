@@ -44,13 +44,13 @@ class Flowbite::Input::CheckboxTest < Minitest::Test
   end
 
   def test_adds_attributes_to_input
-    render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, input_attributes: {"data-controller": "checkbox"}))
+    render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, input_options: {"data-controller": "checkbox"}))
 
     assert_selector("input[name='user[subscribed]'][data-controller='checkbox']")
   end
 
   def test_renders_a_hidden_input_for_the_unchecked_case
-    render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, input_attributes: {"data-controller": "checkbox"}))
+    render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, input_options: {"data-controller": "checkbox"}))
 
     assert_selector("input[type='hidden'][name='user[subscribed]'][value='0']", visible: false)
   end
