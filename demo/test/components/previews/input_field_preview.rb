@@ -31,6 +31,10 @@ class InputFieldPreview < Lookbook::Preview
     render(Flowbite::InputField::Phone.new(attribute: :phone_number, form: form))
   end
 
+  def url
+    render(Flowbite::InputField::Url.new(attribute: :website_url, form: form))
+  end
+
   def text_area
     render(Flowbite::InputField::Textarea.new(attribute: :company, form: form))
   end
@@ -102,6 +106,10 @@ class InputFieldPreview < Lookbook::Preview
 
   def disabled_tel
     render(Flowbite::InputField::Phone.new(attribute: :phone_number, form: form, disabled: true))
+  end
+
+  def disabled_url
+    render(Flowbite::InputField::Url.new(attribute: :website_url, form: form, disabled: true))
   end
 
   def disabled_text_area
