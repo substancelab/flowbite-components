@@ -62,6 +62,7 @@ module Flowbite
   # To render an input without labels or error messages etc, use
   # `Flowbite::Input::Field` instead.
   class InputField < ViewComponent::Base
+    renders_one :input
     renders_one :label
 
     # Returns the errors for attribute
@@ -96,17 +97,6 @@ module Flowbite
       ))
     end
 
-    # Returns the HTML to use for the actual input field element.
-    def input
-      render(input_component.new(
-        form: @form,
-        attribute: @attribute,
-        disabled: @disabled,
-        input_options: default_input_options.merge(@input_options),
-        size: @size
-      ))
-    end
-
     protected
 
     # Returns a Hash with the default attributes to apply to the input element.
@@ -121,6 +111,17 @@ module Flowbite
       else
         {}
       end
+    end
+
+    # Returns the HTML to use for the default input element.
+    def default_input
+      render(input_component.new(
+        form: @form,
+        attribute: @attribute,
+        disabled: @disabled,
+        input_options: default_input_options.merge(@input_options),
+        size: @size
+      ))
     end
 
     def default_label
