@@ -34,12 +34,12 @@ class RadioButtonPreview < Lookbook::Preview
   # @display classes w-full
 
   def disabled_radio_button
-    render(Flowbite::InputField::RadioButton.new(attribute: :state, form: form, value: "visible", disabled: true))
+    render(Flowbite::InputField::RadioButton.new(attribute: :state, form: form, label: {content: "Disabled radio"}, value: "visible", disabled: true))
   end
 
   def disabled_checked_radio_button
     person.state = "visible"
-    render(Flowbite::InputField::RadioButton.new(attribute: :state, form: form, value: "visible", disabled: true))
+    render(Flowbite::InputField::RadioButton.new(attribute: :state, form: form, label: {content: "Disabled checked"}, value: "visible", disabled: true))
   end
 
   # @!endgroup
