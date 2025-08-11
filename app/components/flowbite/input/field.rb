@@ -61,7 +61,7 @@ module Flowbite
         @attribute = attribute
         @disabled = disabled
         @form = form
-        @input_options = input_options
+        @input_options = input_options || {}
         @object = form.object
         @size = size
       end

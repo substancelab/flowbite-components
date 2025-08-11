@@ -38,7 +38,7 @@ class Flowbite::InputField::PasswordTest < Minitest::Test
   end
 
   def test_passes_input_options_to_input_element
-    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password, input_options: {placeholder: "Enter password"}))
+    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password, input: {input_options: {placeholder: "Enter password"}}))
 
     assert_selector("input[type='password'][placeholder='Enter password']")
   end
