@@ -42,7 +42,7 @@ module Flowbite
         {
           class: classes,
           disabled: disabled?
-        }.merge(@input_options)
+        }.merge(input_options)
       end
 
       # Returns the options argument for the select method

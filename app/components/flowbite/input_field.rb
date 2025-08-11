@@ -70,12 +70,12 @@ module Flowbite
       @object.errors[@attribute] || []
     end
 
-    def initialize(attribute:, form:, disabled: false, hint: nil, input_options: {}, label: {}, size: :default)
+    def initialize(attribute:, form:, disabled: false, hint: nil, input: {}, label: {}, size: :default)
       @attribute = attribute
       @disabled = disabled
       @form = form
       @hint = hint
-      @input_options = input_options
+      @input = input
       @label = label
       @object = form.object
       @size = size
@@ -119,7 +119,7 @@ module Flowbite
         form: @form,
         attribute: @attribute,
         disabled: @disabled,
-        input_options: default_input_options.merge(@input_options),
+        input_options: input_options,
         size: @size
       ))
     end
@@ -153,6 +153,10 @@ module Flowbite
 
     def id_for_hint_element
       "#{@form.object_name}_#{@attribute}_hint"
+    end
+
+    def input_options
+      default_input_options.merge(@input[:input_options] || {})
     end
   end
 end
