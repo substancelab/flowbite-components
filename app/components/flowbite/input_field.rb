@@ -125,20 +125,26 @@ module Flowbite
     end
 
     def default_label
-      label_options = @label.dup
-      label_content = label_options.delete(:content)
-
-      arguments = {
-        attribute: @attribute,
-        form: @form
-      }.merge(label_options)
-
-      component = Flowbite::Input::Label.new(**arguments)
-      if label_content
-        component.with_content(label_content)
+      component = Flowbite::Input::Label.new(**default_label_options)
+      if default_label_content
+        component.with_content(default_label_content)
       else
         component
       end
+    end
+
+    def default_label_content
+      @label[:content]
+    end
+
+    def default_label_options
+      label_options = @label.dup
+      label_options.delete(:content)
+
+      {
+        attribute: @attribute,
+        form: @form
+      }.merge(label_options)
     end
 
     # Returns true if the input field is disabled, false otherwise.

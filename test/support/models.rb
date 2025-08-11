@@ -5,10 +5,11 @@
 class Article
   include ActiveModel::Model
 
-  attr_accessor :category_id, :title, :content, :summary
+  attr_accessor :category_id, :title, :content, :summary, :state
 
   validates :category_id, presence: true
   validates :content, presence: true
+  validates :state, presence: true
   validates :title, presence: true
 end
 
