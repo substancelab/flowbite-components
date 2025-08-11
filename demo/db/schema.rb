@@ -21,6 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_23_130235) do
     t.string "email"
     t.string "password"
     t.boolean "confirmation"
+    t.string "state", default: "hidden"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -10,6 +10,7 @@ class CreatePeople < ActiveRecord::Migration[8.0]
       t.string :email
       t.string :password
       t.boolean :confirmation
+      t.string :state, default: "hidden"
 
       t.timestamps
     end
