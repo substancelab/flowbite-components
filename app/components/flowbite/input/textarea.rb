@@ -16,12 +16,13 @@ module Flowbite
         end
         # rubocop:enable Layout/LineLength
       end
+
       # Returns the HTML to use for the actual input field element.
       def call
         @form.send(
           input_field_type,
           @attribute,
-          **options
+          **input_options
         )
       end
 
