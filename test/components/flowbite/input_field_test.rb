@@ -115,4 +115,10 @@ class Flowbite::InputFieldTest < Minitest::Test
 
     assert_no_selector("input[disabled]")
   end
+
+  def test_renders_disabled_select
+    render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], disabled: true))
+
+    assert_selector("select[disabled]")
+  end
 end
