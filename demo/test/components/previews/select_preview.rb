@@ -13,12 +13,13 @@ class SelectPreview < Lookbook::Preview
   # this page you will find multiple options, styles, sizes, and variants built
   # with the utility classes from Tailwind CSS also available in dark mode.
   #
-  # @display classes w-full
 
+  # @display classes w-full
   def select_input_field
     render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"]))
   end
 
+  # @display classes w-full
   def disabled_select
     render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], disabled: true))
   end
