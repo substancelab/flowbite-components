@@ -60,4 +60,9 @@ class Flowbite::Input::FieldTest < Minitest::Test
     assert_component_rendered
     assert_selector("input[name='book[title]'][placeholder='Enter title']")
   end
+
+  def test_defaults_input_options_to_a_hash
+    component = Flowbite::Input::Field.new(form: @form, attribute: :title)
+    assert_equal({}, component.input_options)
+  end
 end
