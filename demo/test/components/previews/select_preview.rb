@@ -19,6 +19,10 @@ class SelectPreview < Lookbook::Preview
     render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"]))
   end
 
+  def disabled_select
+    render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], disabled: true))
+  end
+
   # @group Sizes
   #
   # @display classes w-full

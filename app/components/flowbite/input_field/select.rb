@@ -3,8 +3,8 @@
 module Flowbite
   class InputField
     class Select < InputField
-      def initialize(attribute:, form:, collection: [], hint: nil, input_options: {}, size: :default)
-        super(attribute: attribute, form: form, hint: hint, input_options: input_options, size: size)
+      def initialize(attribute:, form:, collection: [], disabled: false, hint: nil, input_options: {}, size: :default)
+        super(attribute: attribute, disabled: disabled, form: form, hint: hint, input_options: input_options, size: size)
         @collection = collection
       end
 
@@ -13,6 +13,7 @@ module Flowbite
           input_component.new(
             attribute: @attribute,
             collection: @collection,
+            disabled: @disabled,
             form: @form,
             input_options: @input_options,
             size: @size
