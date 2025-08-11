@@ -39,6 +39,10 @@ class InputFieldPreview < Lookbook::Preview
     render(Flowbite::InputField::Textarea.new(attribute: :company, form: form))
   end
 
+  def file
+    render(Flowbite::InputField::File.new(attribute: :avatar, form: form))
+  end
+
   def check_box
     render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form))
   end
@@ -114,6 +118,10 @@ class InputFieldPreview < Lookbook::Preview
 
   def disabled_text_area
     render(Flowbite::InputField::Textarea.new(attribute: :company, form: form, disabled: true))
+  end
+
+  def disabled_file
+    render(Flowbite::InputField::File.new(attribute: :avatar, form: form, disabled: true))
   end
 
   def disabled_check_box
