@@ -40,7 +40,7 @@ class Flowbite::Input::LabelTest < Minitest::Test
   end
 
   def test_sets_class_attribute
-    render_inline(Flowbite::Input::Label.new(form: @form, attribute: :title, label_options: {class: "toggle"}))
+    render_inline(Flowbite::Input::Label.new(form: @form, attribute: :title, options: {class: "toggle"}))
 
     assert_selector("label.toggle")
   end

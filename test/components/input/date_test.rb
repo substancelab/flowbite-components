@@ -49,7 +49,7 @@ class Flowbite::Input::DateTest < Minitest::Test
   end
 
   def test_adds_attributes_to_input
-    render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at, input_options: {placeholder: "Enter publish date"}))
+    render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at, options: {placeholder: "Enter publish date"}))
 
     assert_selector("input[name='book[published_at]'][placeholder='Enter publish date']")
   end

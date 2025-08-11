@@ -34,7 +34,7 @@ module Flowbite
           Flowbite::Input::Label.new(
             attribute: @attribute,
             form: @form,
-            label_options: {
+            options: {
               class: label_classes
             }
           )

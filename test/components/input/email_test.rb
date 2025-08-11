@@ -49,7 +49,7 @@ class Flowbite::Input::EmailTest < Minitest::Test
   end
 
   def test_adds_attributes_to_input
-    render_inline(Flowbite::Input::Email.new(form: @form, attribute: :email, input_options: {placeholder: "Enter email address"}))
+    render_inline(Flowbite::Input::Email.new(form: @form, attribute: :email, options: {placeholder: "Enter email address"}))
 
     assert_selector("input[name='user[email]'][placeholder='Enter email address']")
   end

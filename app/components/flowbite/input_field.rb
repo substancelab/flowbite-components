@@ -34,16 +34,16 @@ module Flowbite
   # Flowbite::Input::Label, see that for details. Can contain:
   # - `content`: The content of the label. If not provided, the label will
   #   default to the attribute name.
-  # - `label_options`: A hash of additional HTML attributes to apply to the
-  #   label element.
   # - `options`: A hash of additional options to pass to the label component.
   #   This can be used to set the class, for example.
   #
   # @param disabled [Boolean] Whether the input field should be disabled.
   # Defaults to `false`.
   #
-  # @param input_options [Hash] Additional HTML attributes to pass to the
-  # input element.
+  # @param input [Hash] A hash with options for the default input component.
+  # These are passed to the input components constructor, so see whatever
+  # component is being used for details. Can contain:
+  # - `options`: Additional HTML attributes to pass to the input element.
   #
   # @param size [Symbol] The size of the input field. Can be one of `:sm`,
   # `:md`, or `:lg`. Defaults to `:md`.
@@ -101,7 +101,7 @@ module Flowbite
 
     # Returns a Hash with the default attributes to apply to the input element.
     #
-    # The default attributes can be overriden by passing the `input_options`
+    # The default attributes can be overriden by passing the `input[options]`
     # argument to the constructor.
     def default_input_options
       if hint?
@@ -119,7 +119,7 @@ module Flowbite
         form: @form,
         attribute: @attribute,
         disabled: @disabled,
-        input_options: input_options,
+        options: input_options,
         size: @size
       ))
     end
@@ -156,7 +156,7 @@ module Flowbite
     end
 
     def input_options
-      default_input_options.merge(@input[:input_options] || {})
+      default_input_options.merge(@input[:options] || {})
     end
   end
 end

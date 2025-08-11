@@ -15,7 +15,7 @@ module Flowbite
             collection: @collection,
             disabled: @disabled,
             form: @form,
-            input_options: input_options,
+            options: input_options,
             size: @size
           )
         )

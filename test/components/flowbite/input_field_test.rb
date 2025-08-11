@@ -49,7 +49,7 @@ class Flowbite::InputFieldTest < Minitest::Test
 
   def test_renders_a_label_with_specified_attributes
     render_inline(
-      Flowbite::InputField.new(form: @form, attribute: :title, label: {label_options: {class: "custom-label"}})
+      Flowbite::InputField.new(form: @form, attribute: :title, label: {options: {class: "custom-label"}})
     )
 
     assert_selector("label[for='book_title'].custom-label")
@@ -86,7 +86,7 @@ class Flowbite::InputFieldTest < Minitest::Test
   end
 
   def test_passes_input_options_to_input_element
-    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input: {input_options: {placeholder: "Enter title"}}))
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input: {options: {placeholder: "Enter title"}}))
 
     assert_component_rendered
     assert_selector("input[type='text'][placeholder='Enter title']")
@@ -99,7 +99,7 @@ class Flowbite::InputFieldTest < Minitest::Test
   end
 
   def test_passes_input_options_to_select_element
-    render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], input: {input_options: {"data-key": "state-select"}}))
+    render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], input: {options: {"data-key": "state-select"}}))
 
     assert_selector("select[data-key='state-select']")
   end

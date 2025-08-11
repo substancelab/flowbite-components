@@ -49,7 +49,7 @@ class Flowbite::Input::TextareaTest < Minitest::Test
   end
 
   def test_adds_attributes_to_textarea
-    render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content, input_options: {placeholder: "Enter article content", rows: 10}))
+    render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content, options: {placeholder: "Enter article content", rows: 10}))
 
     assert_selector("textarea[name='article[content]'][placeholder='Enter article content'][rows='10']")
   end
