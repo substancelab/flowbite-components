@@ -49,7 +49,7 @@ class Flowbite::InputFieldTest < Minitest::Test
 
   def test_renders_a_label_with_specified_attributes
     render_inline(
-      Flowbite::InputField.new(form: @form, attribute: :title, label: {label_options: {class: "custom-label"}})
+      Flowbite::InputField.new(form: @form, attribute: :title, label: {options: {class: "custom-label"}})
     )
 
     assert_selector("label[for='book_title'].custom-label")

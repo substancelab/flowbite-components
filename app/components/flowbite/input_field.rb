@@ -34,8 +34,6 @@ module Flowbite
   # Flowbite::Input::Label, see that for details. Can contain:
   # - `content`: The content of the label. If not provided, the label will
   #   default to the attribute name.
-  # - `label_options`: A hash of additional HTML attributes to apply to the
-  #   label element.
   # - `options`: A hash of additional options to pass to the label component.
   #   This can be used to set the class, for example.
   #
