@@ -111,6 +111,7 @@ module Flowbite
     # The default attributes can be overriden by passing the `hint[options]`
     # argument to the constructor.
     def default_hint_options
+      return {} unless @hint
       hint_options = @hint.dup
       hint_options.delete(:content)
 
