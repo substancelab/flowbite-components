@@ -18,7 +18,7 @@ module Flowbite
         component = Flowbite::Input::Hint.new(
           attribute: @attribute,
           form: @form,
-          hint_attributes: {
+          options: {
             class: hint_classes,
             id: id_for_hint_element
           }

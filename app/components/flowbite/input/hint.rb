@@ -26,14 +26,14 @@ module Flowbite
         tag.p(
           content,
           class: classes,
-          **@hint_attributes
+          **@options
         )
       end
 
-      def initialize(attribute:, form:, hint_attributes: {})
+      def initialize(attribute:, form:, options: {})
         @attribute = attribute
         @form = form
-        @hint_attributes = hint_attributes
+        @options = options
         @object = form.object
       end
 

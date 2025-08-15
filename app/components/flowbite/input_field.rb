@@ -95,7 +95,7 @@ module Flowbite
       component = Flowbite::Input::Hint.new(
         attribute: @attribute,
         form: @form,
-        hint_attributes: default_hint_options
+        options: default_hint_options
       ).with_content(default_hint_content)
       render(component)
     end
