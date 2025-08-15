@@ -1,7 +1,7 @@
 PATH
   remote: ../..
   specs:
-    flowbite-view_components (0.1.0)
+    flowbite-components (0.1.0)
       view_component (>= 4.0.0)
 
 GEM
@@ -279,7 +279,7 @@ PLATFORMS
 
 DEPENDENCIES
   debug
-  flowbite-view_components!
+  flowbite-components!
   listen
   lookbook (>= 2.3.11)
   propshaft

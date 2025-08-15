@@ -1,9 +1,9 @@
 require "rails/engine"
 
 module Flowbite
-  module ViewComponents
+  module Components
     class Engine < ::Rails::Engine
-      isolate_namespace Flowbite::ViewComponents
+      isolate_namespace Flowbite::Components
 
       config.autoload_paths = [
         "#{root}/app/components"

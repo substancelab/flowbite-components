@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in flowbite-view_components.gemspec
+# Specify your gem's dependencies in flowbite-components.gemspec
 gemspec
 
 gem "irb"

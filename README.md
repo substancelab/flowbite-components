@@ -1,11 +1,11 @@
-# Flowbite ViewComponents
+# Flowbite Components
 
-[![Gem Version](https://badge.fury.io/rb/flowbite-view_components.svg)](https://rubygems.org/gems/flowbite-view_components)
-[![Ruby Tests](https://github.com/substancelab/flowbite-view_components/workflows/Ruby/badge.svg)](https://github.com/substancelab/flowbite-view_components/actions)
+[![Gem Version](https://badge.fury.io/rb/flowbite-components.svg)](https://rubygems.org/gems/flowbite-components)
+[![Ruby Tests](https://github.com/substancelab/flowbite-components/workflows/Ruby/badge.svg)](https://github.com/substancelab/flowbite-components/actions)
 
 Unofficial, open source implementation of [Flowbite](https://flowbite.com/) components for Rails applications, built using [ViewComponent](https://viewcomponent.org/).
 
-Flowbite ViewComponents provides a comprehensive library of UI components following the Flowbite design system, implemented as Rails ViewComponents with full Tailwind CSS integration and dark mode support.
+Flowbite Components provides a comprehensive library of UI components following the Flowbite design system, implemented as Rails ViewComponents with full Tailwind CSS integration and dark mode support.
 
 ## Features
 
@@ -22,7 +22,7 @@ Flowbite ViewComponents provides a comprehensive library of UI components follow
 Add the gem to your application's Gemfile:
 
 ```ruby
-gem 'flowbite-view_components'
+gem 'flowbite-components'
 ```
 
 Then execute:
@@ -52,7 +52,7 @@ Add Flowbite to your Tailwind CSS configuration. In your `app/assets/tailwind/ap
 ```css
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
-@import "../builds/tailwind/flowbite_view_components";
+@import "../builds/tailwind/flowbite-components";
 ```
 
 ## Usage examples
@@ -223,7 +223,7 @@ This library includes Lookbook previews for all components. To view them:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/substancelab/flowbite-view_components](https://github.com/substancelab/flowbite-view_components).
+Bug reports and pull requests are welcome on GitHub at [https://github.com/substancelab/flowbite-components](https://github.com/substancelab/flowbite-components).
 
 ### Development Guidelines
 

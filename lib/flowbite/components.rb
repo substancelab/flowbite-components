@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require_relative "view_components/engine"
-require_relative "view_components/version"
+require_relative "components/engine"
+require_relative "components/version"
 
 require "view_component"
 
 module Flowbite
-  module ViewComponents
+  module Components
     class Error < StandardError; end
     # Your code goes here...
   end
