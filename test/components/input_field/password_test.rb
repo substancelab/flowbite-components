@@ -24,14 +24,14 @@ class Flowbite::InputField::PasswordTest < Minitest::Test
   end
 
   def test_renders_a_hint
-    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password, hint: "Enter a secure password"))
+    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password, hint: {content: "Enter a secure password"}))
 
     assert_selector("input[type='password']")
     assert_selector("p", text: "Enter a secure password")
   end
 
   def test_adds_aria_attributes_for_hint
-    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password, hint: "Enter a secure password"))
+    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password, hint: {content: "Enter a secure password"}))
 
     assert_selector("input[aria-describedby='user_password_hint']")
     assert_selector("p#user_password_hint", text: "Enter a secure password")

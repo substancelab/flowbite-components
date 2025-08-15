@@ -62,6 +62,7 @@ module Flowbite
   # To render an input without labels or error messages etc, use
   # `Flowbite::Input::Field` instead.
   class InputField < ViewComponent::Base
+    renders_one :hint
     renders_one :input
     renders_one :label
 
@@ -85,19 +86,39 @@ module Flowbite
       ::Flowbite::Input::Field
     end
 
+    protected
+
     # Returns the HTML to use for the hint element if any
-    def hint
+    def default_hint
       return unless hint?
 
-      render(Flowbite::Input::Hint.new(
+      component = Flowbite::Input::Hint.new(
         attribute: @attribute,
         form: @form,
-        hint: @hint,
-        hint_attributes: {id: id_for_hint_element}
-      ))
+        options: default_hint_options
+      ).with_content(default_hint_content)
+      render(component)
     end
 
-    protected
+    def default_hint_content
+      return nil unless @hint
+
+      @hint[:content]
+    end
+
+    # Returns a Hash with the default attributes to apply to the hint element.
+    #
+    # The default attributes can be overriden by passing the `hint[options]`
+    # argument to the constructor.
+    def default_hint_options
+      return {} unless @hint
+      hint_options = @hint.dup
+      hint_options.delete(:content)
+
+      {
+        id: id_for_hint_element
+      }.merge(hint_options[:options] || {})
+    end
 
     # Returns a Hash with the default attributes to apply to the input element.
     #

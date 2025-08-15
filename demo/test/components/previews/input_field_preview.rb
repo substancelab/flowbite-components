@@ -81,7 +81,7 @@ class InputFieldPreview < Lookbook::Preview
       Flowbite::InputField::Text.new(
         attribute: :email,
         form: form,
-        hint: "We’ll never share your details."
+        hint: {content: "We’ll never share your details."}
       )
     )
   end

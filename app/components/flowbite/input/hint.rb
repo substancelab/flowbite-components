@@ -24,17 +24,16 @@ module Flowbite
 
       def call
         tag.p(
-          @hint,
+          content,
           class: classes,
-          **@hint_attributes
+          **@options
         )
       end
 
-      def initialize(attribute:, form:, hint:, hint_attributes: {})
+      def initialize(attribute:, form:, options: {})
         @attribute = attribute
         @form = form
-        @hint = hint
-        @hint_attributes = hint_attributes
+        @options = options
         @object = form.object
       end
 

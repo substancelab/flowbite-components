@@ -24,14 +24,14 @@ class Flowbite::InputField::FileTest < Minitest::Test
   end
 
   def test_renders_a_hint
-    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, hint: "Upload your profile picture"))
+    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, hint: {content: "Upload your profile picture"}))
 
     assert_selector("input[type='file']")
     assert_selector("p", text: "Upload your profile picture")
   end
 
   def test_adds_aria_attributes_for_hint
-    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, hint: "Upload your profile picture"))
+    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, hint: {content: "Upload your profile picture"}))
 
     assert_selector("input[aria-describedby='user_avatar_hint']")
     assert_selector("p#user_avatar_hint", text: "Upload your profile picture")
