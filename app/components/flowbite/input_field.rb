@@ -116,7 +116,7 @@ module Flowbite
 
       {
         id: id_for_hint_element
-      }.merge(hint_options || {})
+      }.merge(hint_options[:options] || {})
     end
 
     # Returns a Hash with the default attributes to apply to the input element.

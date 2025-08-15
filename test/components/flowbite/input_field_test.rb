@@ -25,6 +25,12 @@ class Flowbite::InputFieldTest < Minitest::Test
     assert_selector("p#book_title_hint", text: "What's the title?")
   end
 
+  def test_adds_extra_attributes_to_hint
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, hint: {content: "What's the title?", options: {class: "custom-hint-class"}}))
+
+    assert_selector("p#book_title_hint.custom-hint-class", text: "What's the title?")
+  end
+
   def test_renders_an_input_element
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title))
 

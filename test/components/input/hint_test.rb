@@ -18,9 +18,15 @@ class Flowbite::Input::HintTest < Minitest::Test
     assert_selector("p.text-sm.text-gray-500", text: "What's the title?")
   end
 
-  def test_accepts_custom_attributes
+  def test_accepts_custom_id
     render_inline(Flowbite::Input::Hint.new(form: @form, attribute: :title, options: {id: "custom_hint"})) { "What's the title?" }
 
     assert_selector("p#custom_hint.text-sm.text-gray-500", text: "What's the title?")
+  end
+
+  def test_accepts_custom_attributes
+    render_inline(Flowbite::Input::Hint.new(form: @form, attribute: :title, options: {class: "custom-class"})) { "What's the title?" }
+
+    assert_selector("p.custom-class", text: "What's the title?")
   end
 end
