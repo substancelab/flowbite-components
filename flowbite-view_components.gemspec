@@ -3,7 +3,7 @@
 require_relative "lib/flowbite/view_components/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "flowbite-view_components"
+  spec.name = "flowbite-components"
   spec.version = Flowbite::ViewComponents::VERSION
   spec.authors = ["Jakob Skjerning"]
   spec.email = ["jakob@mentalized.net"]
