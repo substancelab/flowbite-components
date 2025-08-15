@@ -24,14 +24,14 @@ class Flowbite::InputField::UrlTest < Minitest::Test
   end
 
   def test_renders_a_hint
-    render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url, hint: "Enter your website URL"))
+    render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url, hint: {content: "Enter your website URL"}))
 
     assert_selector("input[type='url']")
     assert_selector("p", text: "Enter your website URL")
   end
 
   def test_adds_aria_attributes_for_hint
-    render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url, hint: "Enter your website URL"))
+    render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url, hint: {content: "Enter your website URL"}))
 
     assert_selector("input[aria-describedby='user_website_url_hint']")
     assert_selector("p#user_website_url_hint", text: "Enter your website URL")
