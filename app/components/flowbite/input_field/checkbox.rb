@@ -15,17 +15,15 @@ module Flowbite
       def hint
         return unless hint?
 
-        render(
-          Flowbite::Input::Hint.new(
-            attribute: @attribute,
-            form: @form,
-            hint_attributes: {
-              class: hint_classes,
-              id: id_for_hint_element
-            },
-            hint: @hint
-          )
-        )
+        component = Flowbite::Input::Hint.new(
+          attribute: @attribute,
+          form: @form,
+          hint_attributes: {
+            class: hint_classes,
+            id: id_for_hint_element
+          }
+        ).with_content(@hint)
+        render(component)
       end
 
       # Returns the HTML to use for the label element

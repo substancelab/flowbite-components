@@ -89,12 +89,12 @@ module Flowbite
     def hint
       return unless hint?
 
-      render(Flowbite::Input::Hint.new(
+      component = Flowbite::Input::Hint.new(
         attribute: @attribute,
         form: @form,
-        hint: @hint,
         hint_attributes: {id: id_for_hint_element}
-      ))
+      ).with_content(@hint)
+      render(component)
     end
 
     protected
