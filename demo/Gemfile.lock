@@ -94,6 +94,7 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     drb (2.2.3)
+    erb (5.0.2)
     erubi (1.13.1)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -109,7 +110,7 @@ GEM
     htmlentities (4.3.4)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    io-console (0.8.0)
+    io-console (0.8.1)
     irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
@@ -167,6 +168,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.9-x86_64-linux-musl)
       racc (~> 1.4)
+    parklife (0.7.0)
+      nokogiri
+      rack-test
+      thor
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -175,7 +180,7 @@ GEM
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    psych (5.2.3)
+    psych (5.2.6)
       date
       stringio
     public_suffix (6.0.2)
@@ -219,14 +224,15 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
-    rake (13.2.1)
+    rake (13.3.0)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (6.13.1)
+    rdoc (6.14.2)
+      erb
       psych (>= 4.0.0)
     redcarpet (3.6.1)
-    reline (0.6.1)
+    reline (0.6.2)
       io-console (~> 0.5)
     rouge (4.5.2)
     securerandom (0.4.1)
@@ -239,23 +245,23 @@ GEM
     sqlite3 (2.6.0-x86_64-linux-gnu)
     sqlite3 (2.6.0-x86_64-linux-musl)
     stringio (3.1.7)
-    tailwindcss-rails (4.0.0)
+    tailwindcss-rails (4.3.0)
       railties (>= 7.0.0)
       tailwindcss-ruby (~> 4.0)
-    tailwindcss-ruby (4.1.10)
-    tailwindcss-ruby (4.1.10-aarch64-linux-gnu)
-    tailwindcss-ruby (4.1.10-aarch64-linux-musl)
-    tailwindcss-ruby (4.1.10-arm64-darwin)
-    tailwindcss-ruby (4.1.10-x86_64-darwin)
-    tailwindcss-ruby (4.1.10-x86_64-linux-gnu)
-    tailwindcss-ruby (4.1.10-x86_64-linux-musl)
+    tailwindcss-ruby (4.1.11)
+    tailwindcss-ruby (4.1.11-aarch64-linux-gnu)
+    tailwindcss-ruby (4.1.11-aarch64-linux-musl)
+    tailwindcss-ruby (4.1.11-arm64-darwin)
+    tailwindcss-ruby (4.1.11-x86_64-darwin)
+    tailwindcss-ruby (4.1.11-x86_64-linux-gnu)
+    tailwindcss-ruby (4.1.11-x86_64-linux-musl)
     thor (1.4.0)
     timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uri (1.0.3)
     useragent (0.16.11)
-    view_component (4.0.1)
+    view_component (4.0.2)
       activesupport (>= 7.1.0, < 8.1)
       concurrent-ruby (~> 1)
     websocket-driver (0.7.7)
@@ -263,7 +269,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     yard (0.9.37)
-    zeitwerk (2.7.2)
+    zeitwerk (2.7.3)
 
 PLATFORMS
   aarch64-linux
@@ -282,11 +288,12 @@ DEPENDENCIES
   flowbite-components!
   listen
   lookbook (>= 2.3.11)
+  parklife
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
   sqlite3 (>= 2.1)
-  tailwindcss-rails (~> 4.0.0)
+  tailwindcss-rails (~> 4.3)
   tzinfo-data
 
 BUNDLED WITH
