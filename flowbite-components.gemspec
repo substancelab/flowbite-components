@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Jakob Skjerning"]
   spec.email = ["jakob@mentalized.net"]
 
-  spec.summary = "Flowbite components for Rails applications"
-  spec.description = "A library of Flowbite View Components to be used in Rails applications."
+  spec.summary = "ViewComponents using the Flowbite design system"
+  spec.description = "A library of View Components based on the Flowbite design system to be used in Rails applications."
   spec.homepage = "https://github.com/substancelab/flowbite-components"
   spec.required_ruby_version = ">= 3.1.0"
 
