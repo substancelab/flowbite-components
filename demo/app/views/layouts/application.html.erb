@@ -22,8 +22,32 @@
   </head>
 
   <body>
+    <header>
+      <%= link_to("Flowbite Components", root_path) %>
+    </header>
     <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+      <article>
+        <%= yield %>
+      </article>
     </main>
+
+    <footer class="container mx-auto mt-28 px-5 flex">
+      <div>
+        <div>
+          <%= link_to("GitHub", "https://github.com/substancelab/flowbite-components") %>
+          <%= link_to("RubyGems", "https://rubygems.org/gems/flowbite-components") %>
+          <%= link_to("RubyDoc documentation", "https://www.rubydoc.info/gems/flowbite-components/") %>
+        </div>
+
+        <div>
+          Licensed under the <%= link_to("MIT License", "https://github.com/substancelab/flowbite-components/blob/main/LICENSE") %>, except where otherwise stated
+        </div>
+
+        <div>
+          The Flowbite name and logos are trademarks of <%= link_to("Bergside Inc", "https://flowbite.com/brand/") %>.
+          The Tailwind name and logos are trademarks of <%= link_to("Tailwind Labs Inc", "https://tailwindcss.com/brand") %>.
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
