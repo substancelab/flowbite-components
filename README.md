@@ -52,7 +52,7 @@ Add Flowbite to your Tailwind CSS configuration. In your `app/assets/tailwind/ap
 ```css
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
-@import "../builds/tailwind/flowbite-components";
+@import "../builds/tailwind/flowbite_components";
 ```
 
 ## Usage examples

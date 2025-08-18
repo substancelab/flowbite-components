@@ -5,4 +5,4 @@
 @plugin "flowbite/plugin";
 
 /* Include CSS classes used by the components in the final CSS */
-@source "../../../../app/components/flowbite";
+@import "../builds/tailwind/flowbite_components";
