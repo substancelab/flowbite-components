@@ -23,6 +23,7 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+        working-directory: ./demo
     - uses: actions/configure-pages@v5
       id: pages
 
