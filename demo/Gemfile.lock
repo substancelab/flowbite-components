@@ -168,6 +168,10 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.9-x86_64-linux-musl)
       racc (~> 1.4)
+    parklife (0.7.0)
+      nokogiri
+      rack-test
+      thor
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -284,6 +288,7 @@ DEPENDENCIES
   flowbite-components!
   listen
   lookbook (>= 2.3.11)
+  parklife
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)

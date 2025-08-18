@@ -8,5 +8,6 @@
 /tmp/
 
 /demo/app/assets/builds
+/demo/build
 /demo/storage/*.sqlite3
 /demo/tmp/

@@ -15,6 +15,8 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "flowbite-components", path: "../.." # Load the gem files from the parent directory
 gem "tailwindcss-rails", "~> 4.3"
 
+gem "parklife"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
