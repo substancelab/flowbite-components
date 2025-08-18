@@ -6,3 +6,7 @@
 
 /* Include CSS classes used by the components in the final CSS */
 @import "../builds/tailwind/flowbite_components";
+
+footer a {
+  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+}
