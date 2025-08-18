@@ -1,25 +1,65 @@
-<h1 class="font-bold text-4xl">Rails meets Flowbite</h1>
-<p>UI component library for Rails, built using ViewComponents, Flowbite, and Tailwind CSS.</p>
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Rails meets Flowbite</h1>
+    <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">UI component library for Rails, built using ViewComponents, Flowbite, and Tailwind CSS.</p>
+    <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+      <%= link_to("https://github.com/substancelab/flowbite-components?tab=readme-ov-file#installation", class: "inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900") do %>
+          Get started
+        <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      <% end %>
+      <%= link_to(lookbook_path, class: "py-3 px-5 sm:ms-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700") do %>
+          View components
+      <% end %>
+    </div>
+  </div>
+</section>
 
-<div>
-  <%= link_to("Get started", "https://github.com/substancelab/flowbite-components?tab=readme-ov-file#installation") %>
-  <%= link_to("View components", "/lookbook") %>
-</div>
+<div class="flex flex-col gap-6 sm:flex-row">
+  <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 sm:flex-1">
+    <svg class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M18 5h-.7c.229-.467.349-.98.351-1.5a3.5 3.5 0 0 0-3.5-3.5c-1.717 0-3.215 1.2-4.331 2.481C8.4.842 6.949 0 5.5 0A3.5 3.5 0 0 0 2 3.5c.003.52.123 1.033.351 1.5H2a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2ZM8.058 5H5.5a1.5 1.5 0 0 1 0-3c.9 0 2 .754 3.092 2.122-.219.337-.392.635-.534.878Zm6.1 0h-3.742c.933-1.368 2.371-3 3.739-3a1.5 1.5 0 0 1 0 3h.003ZM11 13H9v7h2v-7Zm-4 0H2v5a2 2 0 0 0 2 2h3v-7Zm6 0v7h3a2 2 0 0 0 2-2v-5h-5Z" /></svg>
+    <%= link_to("https://flowbite.com/") do %>
+      <h2 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Designed by Flowbite</h2>
+    <% end %>
+    <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Open-source library of over 600+ UI components, sections, and pages.</p>
+    <%= link_to("https://flowbite.com/", class: "inline-flex font-medium items-center text-blue-600 hover:underline") do %>
+      Flowbite documentation
+      <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"/></svg>
+    <% end %>
+  </div>
 
-<div>
-  <h2>Designed by Flowbite</h2>
-  <p>Open-source library of over 600+ UI components, sections, and pages.</p>
-  <%= link_to("Flowbite", "https://flowbite.com") %>
-</div>
+  <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 sm:flex-1">
+    <svg class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M18 5h-.7c.229-.467.349-.98.351-1.5a3.5 3.5 0 0 0-3.5-3.5c-1.717 0-3.215 1.2-4.331 2.481C8.4.842 6.949 0 5.5 0A3.5 3.5 0 0 0 2 3.5c.003.52.123 1.033.351 1.5H2a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2ZM8.058 5H5.5a1.5 1.5 0 0 1 0-3c.9 0 2 .754 3.092 2.122-.219.337-.392.635-.534.878Zm6.1 0h-3.742c.933-1.368 2.371-3 3.739-3a1.5 1.5 0 0 1 0 3h.003ZM11 13H9v7h2v-7Zm-4 0H2v5a2 2 0 0 0 2 2h3v-7Zm6 0v7h3a2 2 0 0 0 2-2v-5h-5Z"/>
+    </svg>
+    <%= link_to("https://tailwindcss.com") do %>
+      <h2 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Powered by Tailwind CSS</h2>
+    <% end %>
+    <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Utility-first CSS framework that can be composed to build any design, directly in your markup.</p>
+    <%= link_to("https://tailwindcss.com", class: "inline-flex font-medium items-center text-blue-600 hover:underline") do %>
+      Tailwind CSS documentation
+      <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"/>
+      </svg>
+    <% end %>
+  </div>
 
-<div>
-  <h2>Powered by Tailwind CSS</h2>
-  <p>Utility-first CSS framework that can be composed to build any design, directly in your markup.</p>
-  <%= link_to("Tailwind CSS", "https://tailwindcss.com") %>
-</div>
-
-<div>
-  <h2>Built with ViewComponent</h2>
-  <p>Reusable, testable & encapsulated view components for Ruby on Rails.</p>
-  <%= link_to("ViewComponent", "https://viewcomponent.org") %>
+  <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 sm:flex-1">
+    <svg class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M18 5h-.7c.229-.467.349-.98.351-1.5a3.5 3.5 0 0 0-3.5-3.5c-1.717 0-3.215 1.2-4.331 2.481C8.4.842 6.949 0 5.5 0A3.5 3.5 0 0 0 2 3.5c.003.52.123 1.033.351 1.5H2a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2ZM8.058 5H5.5a1.5 1.5 0 0 1 0-3c.9 0 2 .754 3.092 2.122-.219.337-.392.635-.534.878Zm6.1 0h-3.742c.933-1.368 2.371-3 3.739-3a1.5 1.5 0 0 1 0 3h.003ZM11 13H9v7h2v-7Zm-4 0H2v5a2 2 0 0 0 2 2h3v-7Zm6 0v7h3a2 2 0 0 0 2-2v-5h-5Z"/>
+    </svg>
+    <%= link_to("https://viewcomponent.org") do %>
+      <h2 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Built with ViewComponent</h2>
+    <% end %>
+    <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Reusable, testable & encapsulated view components for Ruby on Rails.</p>
+    <%= link_to("https://viewcomponent.org", class: "inline-flex font-medium items-center text-blue-600 hover:underline") do %>
+      ViewComponent documentation
+      <svg class="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"/>
+      </svg>
+    <% end %>
+  </div>
 </div>
