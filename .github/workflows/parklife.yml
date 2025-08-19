@@ -40,7 +40,7 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       if: github.ref == 'refs/heads/main' # Only upload on main branch.
       with:
-        path: build/
+        path: demo/build/
 
   deploy:
     environment:
