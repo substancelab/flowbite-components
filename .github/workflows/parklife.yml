@@ -23,6 +23,12 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+        working-directory: ./demo
+    - uses: actions/setup-node@v4
+      with:
+        cache: 'npm'
+        cache-dependency-path: ./demo/package-lock.json
+    - run: npm install
     - uses: actions/configure-pages@v5
       id: pages
 
