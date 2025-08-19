@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#index"
 
-  Rails.application.routes.draw do
-    mount Lookbook::Engine, at: "/lookbook"
+  if defined?(Lookbook)
+    Rails.application.routes.draw do
+      mount Lookbook::Engine, at: "/lookbook"
+    end
   end
 end
