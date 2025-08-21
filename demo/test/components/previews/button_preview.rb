@@ -16,6 +16,30 @@ class ButtonPreview < Lookbook::Preview
     render(Flowbite::Button.new(label: "Alternative", style: :alternative))
   end
 
+  def dark
+    render(Flowbite::Button.new(label: "Dark", style: :dark))
+  end
+
+  def light
+    render(Flowbite::Button.new(label: "Light", style: :light))
+  end
+
+  def green
+    render(Flowbite::Button.new(label: "Green", style: :green))
+  end
+
+  def red
+    render(Flowbite::Button.new(label: "Red", style: :red))
+  end
+
+  def yellow
+    render(Flowbite::Button.new(label: "Yellow", style: :yellow))
+  end
+
+  def purple
+    render(Flowbite::Button.new(label: "Purple", style: :purple))
+  end
+
   # @!endgroup
 
   # @!group Pills
