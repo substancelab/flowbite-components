@@ -25,11 +25,11 @@ class ButtonPreview < Lookbook::Preview
   # @display classes flex flex-wrap
 
   def xs_button
-    render(Flowbite::Button.new(label: "XS", size: :xs))
+    render(Flowbite::Button.new(label: "Extra small", size: :xs))
   end
 
   def sm_button
-    render(Flowbite::Button.new(label: "SM", size: :sm))
+    render(Flowbite::Button.new(label: "Small", size: :sm))
   end
 
   def default_button
@@ -37,11 +37,11 @@ class ButtonPreview < Lookbook::Preview
   end
 
   def lg_button
-    render(Flowbite::Button.new(label: "LG", size: :lg))
+    render(Flowbite::Button.new(label: "Large", size: :lg))
   end
 
   def xl_button
-    render(Flowbite::Button.new(label: "XL", size: :xl))
+    render(Flowbite::Button.new(label: "Extra large", size: :xl))
   end
 
   # @!endgroup
