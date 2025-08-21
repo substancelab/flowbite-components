@@ -42,6 +42,34 @@ class ButtonPreview < Lookbook::Preview
 
   # @!endgroup
 
+  # @!group Sizes
+  #
+  # Use these examples if you want to use smaller or larger buttons.
+  #
+  # @display classes flex flex-wrap
+
+  def xs_button
+    render(Flowbite::Button.new(label: "Extra small", size: :xs))
+  end
+
+  def sm_button
+    render(Flowbite::Button.new(label: "Small", size: :sm))
+  end
+
+  def default_button
+    render(Flowbite::Button.new(label: "Default", size: :default))
+  end
+
+  def lg_button
+    render(Flowbite::Button.new(label: "Large", size: :lg))
+  end
+
+  def xl_button
+    render(Flowbite::Button.new(label: "Extra large", size: :xl))
+  end
+
+  # @!endgroup
+
   # @!group Pills
   #
   # The button pills can be used as an alternative style by using fully rounded edges.
