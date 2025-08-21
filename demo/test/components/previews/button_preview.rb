@@ -6,7 +6,7 @@ class ButtonPreview < Lookbook::Preview
   # Use these default button styles with multiple colors to indicate an action
   # or link within your website.
   #
-  # @display classes flex flex-wrap
+  # @display classes flex flex-wrap space-x-2
 
   def default
     render(Flowbite::Button.new(label: "Default"))
@@ -46,7 +46,7 @@ class ButtonPreview < Lookbook::Preview
   #
   # The button pills can be used as an alternative style by using fully rounded edges.
   #
-  # @display classes flex
+  # @display classes flex flex-wrap space-x-2
   def pill_default
     render(Flowbite::Button::Pill.new(label: "Default", style: :default))
   end
