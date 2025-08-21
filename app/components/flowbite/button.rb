@@ -48,7 +48,7 @@ module Flowbite
             default: ["text-gray-900", "bg-white", "border", "border-gray-300", "hover:bg-gray-100", "focus:ring-4", "focus:ring-gray-100", "font-medium", "rounded-lg", "me-2", "mb-2", "dark:bg-gray-800", "dark:text-white", "dark:border-gray-600", "dark:hover:bg-gray-700", "dark:hover:border-gray-600", "dark:focus:ring-gray-700"]
           ),
           purple: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-white", "bg-purple-700", "hover:bg-purple-800", "focus:ring-4", "focus:ring-purple-300", "font-medium", "rounded-lg", "mb-2", "dark:bg-purple-600", "dark:hover:bg-purple-700", "dark:focus:ring-purple-900"]
+            default: ["focus:outline-none", "text-white", "bg-purple-700", "hover:bg-purple-800", "focus:ring-4", "focus:ring-purple-300", "font-medium", "rounded-lg", "me-2", "mb-2", "dark:bg-purple-600", "dark:hover:bg-purple-700", "dark:focus:ring-purple-900"]
           ),
           red: Flowbite::Style.new(
             default: ["focus:outline-none", "text-white", "bg-red-700", "hover:bg-red-800", "focus:ring-4", "focus:ring-red-300", "font-medium", "rounded-lg", "me-2", "mb-2", "dark:bg-red-600", "dark:hover:bg-red-700", "dark:focus:ring-red-900"]
