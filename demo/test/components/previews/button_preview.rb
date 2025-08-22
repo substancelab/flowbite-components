@@ -9,35 +9,35 @@ class ButtonPreview < Lookbook::Preview
   # @display classes flex flex-wrap space-x-2
 
   def default
-    render(Flowbite::Button.new(label: "Default"))
+    render(Flowbite::Button.new) { "Default" }
   end
 
   def alternative
-    render(Flowbite::Button.new(label: "Alternative", style: :alternative))
+    render(Flowbite::Button.new(style: :alternative)) { "Alternative" }
   end
 
   def dark
-    render(Flowbite::Button.new(label: "Dark", style: :dark))
+    render(Flowbite::Button.new(style: :dark)) { "Dark" }
   end
 
   def light
-    render(Flowbite::Button.new(label: "Light", style: :light))
+    render(Flowbite::Button.new(style: :light)) { "Light" }
   end
 
   def green
-    render(Flowbite::Button.new(label: "Green", style: :green))
+    render(Flowbite::Button.new(style: :green)) { "Green" }
   end
 
   def red
-    render(Flowbite::Button.new(label: "Red", style: :red))
+    render(Flowbite::Button.new(style: :red)) { "Red" }
   end
 
   def yellow
-    render(Flowbite::Button.new(label: "Yellow", style: :yellow))
+    render(Flowbite::Button.new(style: :yellow)) { "Yellow" }
   end
 
   def purple
-    render(Flowbite::Button.new(label: "Purple", style: :purple))
+    render(Flowbite::Button.new(style: :purple)) { "Purple" }
   end
 
   # @!endgroup
@@ -49,23 +49,23 @@ class ButtonPreview < Lookbook::Preview
   # @display classes flex flex-wrap
 
   def xs_button
-    render(Flowbite::Button.new(label: "Extra small", size: :xs))
+    render(Flowbite::Button.new(size: :xs)) { "Extra small" }
   end
 
   def sm_button
-    render(Flowbite::Button.new(label: "Small", size: :sm))
+    render(Flowbite::Button.new(size: :sm)) { "Small" }
   end
 
   def default_button
-    render(Flowbite::Button.new(label: "Default", size: :default))
+    render(Flowbite::Button.new(size: :default)) { "Default" }
   end
 
   def lg_button
-    render(Flowbite::Button.new(label: "Large", size: :lg))
+    render(Flowbite::Button.new(size: :lg)) { "Large" }
   end
 
   def xl_button
-    render(Flowbite::Button.new(label: "Extra large", size: :xl))
+    render(Flowbite::Button.new(size: :xl)) { "Extra large" }
   end
 
   # @!endgroup
@@ -76,35 +76,35 @@ class ButtonPreview < Lookbook::Preview
   #
   # @display classes flex flex-wrap space-x-2
   def pill_default
-    render(Flowbite::Button::Pill.new(label: "Default", style: :default))
+    render(Flowbite::Button::Pill.new(style: :default)) { "Default" }
   end
 
   def pill_alternative
-    render(Flowbite::Button::Pill.new(label: "Alternative", style: :alternative))
+    render(Flowbite::Button::Pill.new(style: :alternative)) { "Alternative" }
   end
 
   def pill_dark
-    render(Flowbite::Button::Pill.new(label: "Dark", style: :dark))
+    render(Flowbite::Button::Pill.new(style: :dark)) { "Dark" }
   end
 
   def pill_light
-    render(Flowbite::Button::Pill.new(label: "Light", style: :light))
+    render(Flowbite::Button::Pill.new(style: :light)) { "Light" }
   end
 
   def pill_green
-    render(Flowbite::Button::Pill.new(label: "Green", style: :green))
+    render(Flowbite::Button::Pill.new(style: :green)) { "Green" }
   end
 
   def pill_purple
-    render(Flowbite::Button::Pill.new(label: "Purple", style: :purple))
+    render(Flowbite::Button::Pill.new(style: :purple)) { "Purple" }
   end
 
   def pill_red
-    render(Flowbite::Button::Pill.new(label: "Red", style: :red))
+    render(Flowbite::Button::Pill.new(style: :red)) { "Red" }
   end
 
   def pill_yellow
-    render(Flowbite::Button::Pill.new(label: "Yellow", style: :yellow))
+    render(Flowbite::Button::Pill.new(style: :yellow)) { "Yellow" }
   end
 
   # @!endgroup

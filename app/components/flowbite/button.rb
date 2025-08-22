@@ -61,10 +61,9 @@ module Flowbite
       # rubocop:enable Layout/LineLength
     end
 
-    attr_reader :button_attributes, :label, :size, :style
+    attr_reader :button_attributes, :size, :style
 
-    def initialize(label:, size: :default, style: :default, **button_attributes)
-      @label = label
+    def initialize(size: :default, style: :default, **button_attributes)
       @size = size
       @style = style
       @button_attributes = button_attributes
@@ -73,7 +72,7 @@ module Flowbite
     def call
       content_tag(
         :button,
-        label,
+        content,
         **options
       )
     end
