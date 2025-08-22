@@ -21,9 +21,16 @@ module Flowbite
     end
 
     def call
-      content_tag(:div, class: self.class.classes) do
+      content_tag(:div, {class: self.class.classes}.merge(@options)) do
         concat(content_tag(:div, content, class: "font-normal text-gray-700 dark:text-gray-400"))
       end
+    end
+
+    # @param options [Hash] Additional HTML options for the card container
+    #   (e.g., custom classes, data attributes). These options are merged into
+    #   the card's root element.
+    def initialize(options: {})
+      @options = options || {}
     end
   end
 end
