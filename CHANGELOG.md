@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Button component (first component, wee!)
 * Input components
 * InputField components
+* Basic Card component
 
 ### Changes
 
