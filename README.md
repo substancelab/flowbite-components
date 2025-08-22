@@ -147,6 +147,33 @@ Add Flowbite to your Tailwind CSS configuration. In your `app/assets/tailwind/ap
 ) %>
 ```
 
+## How to customize components
+
+### Add specific CSS classes
+
+A common use case for customizing a component is to add more CSS classes when
+rendering it, fx to change the size or spacing. flowbite-components is optimized
+for this case and all you need to do is specify the extra classes:
+
+```erb
+<%= render(Flowbite::Card.new(class: "w-full my-8")) { "Content" } %>
+```
+renders
+```html
+<div class="... all the usual classes... w-full my-8">
+```
+
+If you want to fully replace the existing classes, you can pass an entirely new
+`class` attribute via options:
+
+```erb
+<%= render(Flowbite::Card.new(options: {class: "w-full my-8"})) { "Content" } %>
+```
+renders
+```html
+<div class="w-full my-8">
+```
+
 ## Available Components
 
 ### Form Components
