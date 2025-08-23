@@ -66,4 +66,20 @@ class Flowbite::InputField::FileTest < Minitest::Test
 
     assert_no_selector("input[disabled]")
   end
+
+  def test_renders_error_messages_when_in_error_state
+    @user.errors.add(:avatar, "file is too large")
+    @user.errors.add(:avatar, "must be an image")
+
+    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar))
+
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "File is too large")
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Must be an image")
+  end
+
+  def test_does_not_render_error_messages_when_no_errors
+    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar))
+
+    assert_no_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500")
+  end
 end

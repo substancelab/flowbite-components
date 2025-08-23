@@ -80,4 +80,20 @@ class Flowbite::InputField::RadioButtonTest < Minitest::Test
 
     assert_no_selector("input[disabled]")
   end
+
+  def test_renders_error_messages_when_in_error_state
+    @article.errors.add(:state, "is not a valid option")
+    @article.errors.add(:state, "must be selected")
+
+    render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, value: "visible"))
+
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Is not a valid option")
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Must be selected")
+  end
+
+  def test_does_not_render_error_messages_when_no_errors
+    render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, value: "visible"))
+
+    assert_no_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500")
+  end
 end

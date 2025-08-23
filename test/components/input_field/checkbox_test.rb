@@ -73,4 +73,20 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
 
     assert_no_selector("input[disabled]")
   end
+
+  def test_renders_error_messages_when_in_error_state
+    @user.errors.add(:subscribed, "must be accepted")
+    @user.errors.add(:subscribed, "is required for notifications")
+
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed))
+
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Must be accepted")
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Is required for notifications")
+  end
+
+  def test_does_not_render_error_messages_when_no_errors
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed))
+
+    assert_no_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500")
+  end
 end

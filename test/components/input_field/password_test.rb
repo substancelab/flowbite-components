@@ -72,4 +72,20 @@ class Flowbite::InputField::PasswordTest < Minitest::Test
 
     assert_no_selector("input[disabled]")
   end
+
+  def test_renders_error_messages_when_in_error_state
+    @user.errors.add(:password, "is too short")
+    @user.errors.add(:password, "must contain special characters")
+
+    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password))
+
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Is too short")
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Must contain special characters")
+  end
+
+  def test_does_not_render_error_messages_when_no_errors
+    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password))
+
+    assert_no_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500")
+  end
 end
