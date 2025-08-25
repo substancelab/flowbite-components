@@ -46,7 +46,7 @@ class ButtonPreview < Lookbook::Preview
   #
   # Use these examples if you want to use smaller or larger buttons.
   #
-  # @display classes flex flex-wrap
+  # @display classes flex flex-wrap space-x-2
 
   def xs_button
     render(Flowbite::Button.new(size: :xs)) { "Extra small" }
