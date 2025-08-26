@@ -66,4 +66,20 @@ class Flowbite::InputField::UrlTest < Minitest::Test
 
     assert_no_selector("input[disabled]")
   end
+
+  def test_renders_error_messages_when_in_error_state
+    @user.errors.add(:website_url, "is not a valid URL")
+    @user.errors.add(:website_url, "must start with http or https")
+
+    render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url))
+
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Is not a valid URL")
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: "Must start with http or https")
+  end
+
+  def test_does_not_render_error_messages_when_no_errors
+    render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url))
+
+    assert_no_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500")
+  end
 end

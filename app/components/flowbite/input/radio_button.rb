@@ -20,8 +20,8 @@ module Flowbite
           {
             default: Flowbite::Style.new(
               default: ["text-blue-600", "bg-gray-100", "border-gray-300", "focus:ring-blue-500", "dark:focus:ring-blue-600", "dark:ring-offset-gray-800", "focus:ring-2", "dark:bg-gray-700", "dark:border-gray-600"],
-              disabled: ["text-blue-600", "bg-gray-100", "border-gray-300", "focus:ring-blue-500", "dark:focus:ring-blue-600", "dark:ring-offset-gray-800", "focus:ring-2", "dark:bg-gray-700", "dark:border-gray-600"]
-              # TODO: error: ["bg-red-50", "border", "border-red-500", "text-red-900", "placeholder-red-700", "rounded-lg", "focus:ring-red-500", "dark:bg-gray-700", "focus:border-red-500", "block", "w-full", "dark:text-red-500", "dark:placeholder-red-500", "dark:border-red-500"]
+              disabled: ["text-blue-600", "bg-gray-100", "border-gray-300", "focus:ring-blue-500", "dark:focus:ring-blue-600", "dark:ring-offset-gray-800", "focus:ring-2", "dark:bg-gray-700", "dark:border-gray-600"],
+              error: ["text-red-600", "bg-red-50", "border-red-500", "focus:ring-red-500", "dark:focus:ring-red-600", "dark:ring-offset-gray-800", "focus:ring-2", "dark:bg-gray-700", "dark:border-red-500"]
             )
           }.freeze
         end
