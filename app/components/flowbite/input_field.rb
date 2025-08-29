@@ -112,12 +112,10 @@ module Flowbite
     # argument to the constructor.
     def default_hint_options
       return {} unless @hint
-      hint_options = @hint.dup
-      hint_options.delete(:content)
 
       {
         id: id_for_hint_element
-      }.merge(hint_options[:options] || {})
+      }.merge(@hint[:options] || {})
     end
 
     # Returns a Hash with the default attributes to apply to the input element.

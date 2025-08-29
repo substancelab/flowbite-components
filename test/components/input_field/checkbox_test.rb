@@ -38,16 +38,31 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
   end
 
   def test_renders_a_hint
-    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, hint: "Check to receive updates"))
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, hint: {content: "Check to receive updates"}))
 
     assert_selector("p.text-xs.font-normal.text-gray-500", text: "Check to receive updates")
   end
 
+  def test_passes_options_to_the_hint
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, hint: {content: "Check to receive updates", options: {title: "Hint"}}))
+
+    assert_selector("p[title='Hint'].text-xs.font-normal.text-gray-500", text: "Check to receive updates")
+  end
+
   def test_adds_aria_attributes_for_hint
-    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, hint: "Check to receive updates"))
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, hint: {content: "Check to receive updates"}))
 
     assert_selector("input[aria-describedby='user_subscribed_hint']")
     assert_selector("p#user_subscribed_hint", text: "Check to receive updates")
+  end
+
+  def test_replaces_the_hint_entirely
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed)) do |component|
+      component.with_hint { "This is the full hint" }
+    end
+
+    refute_selector("p.text-xs.font-normal.text-gray-500")
+    assert_text("This is the full hint")
   end
 
   def test_passes_input_options_to_input_element
