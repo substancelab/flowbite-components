@@ -14,12 +14,10 @@ module Flowbite
       def default_hint_options
         return {} unless @hint
 
-        hint_options = @hint.dup
-        hint_options.delete(:content)
         {
           class: hint_classes,
           id: id_for_hint_element
-        }.merge(hint_options[:options] || {})
+        }.merge(@hint[:options] || {})
       end
 
       # Returns the HTML to use for the label element
