@@ -11,19 +11,15 @@ module Flowbite
 
       protected
 
-      # Returns the HTML to use for the hint element if any
-      def hint
-        return unless hint?
+      def default_hint_options
+        return {} unless @hint
 
-        component = Flowbite::Input::Hint.new(
-          attribute: @attribute,
-          form: @form,
-          options: {
-            class: hint_classes,
-            id: id_for_hint_element
-          }
-        ).with_content(@hint)
-        render(component)
+        hint_options = @hint.dup
+        hint_options.delete(:content)
+        {
+          class: hint_classes,
+          id: id_for_hint_element
+        }.merge(hint_options[:options] || {})
       end
 
       # Returns the HTML to use for the label element
