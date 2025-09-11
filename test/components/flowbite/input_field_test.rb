@@ -127,4 +127,26 @@ class Flowbite::InputFieldTest < Minitest::Test
 
     assert_selector("select[disabled]")
   end
+
+  def test_renders_select_with_default_label
+    render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"]))
+
+    assert_selector("label[for='book_state']")
+  end
+
+  def test_renders_select_with_custom_label_content
+    render_inline(
+      Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], label: {content: "Book Status"})
+    )
+
+    assert_selector("label[for='book_state']", text: "Book Status")
+  end
+
+  def test_renders_select_with_custom_label_attributes
+    render_inline(
+      Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], label: {options: {class: "select-label"}})
+    )
+
+    assert_selector("label[for='book_state'].select-label")
+  end
 end
