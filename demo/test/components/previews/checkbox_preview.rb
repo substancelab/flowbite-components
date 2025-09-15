@@ -24,6 +24,10 @@ class CheckboxPreview < Lookbook::Preview
     render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form))
   end
 
+  def with_custom_label
+    render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form, label: {content: "I agree with the terms and conditions."}))
+  end
+
   # @!endgroup
 
   # @!group Disabled state
