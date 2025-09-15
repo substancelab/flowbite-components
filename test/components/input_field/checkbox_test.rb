@@ -35,6 +35,12 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
     assert_selector("label[title='label'].font-medium.text-gray-900", text: "Check to receive updates")
   end
 
+  def test_uses_specified_label_classes
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, label: {options: {class: "custom-class"}}))
+
+    assert_selector("label.custom-class")
+  end
+
   def test_replaces_the_label_entirely
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed)) do |component|
       component.with_label { "This is the full label" }
