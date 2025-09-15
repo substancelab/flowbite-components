@@ -20,17 +20,11 @@ module Flowbite
         }.merge(@hint[:options] || {})
       end
 
-      # Returns the HTML to use for the label element
-      def label
-        render(
-          Flowbite::Input::Label.new(
-            attribute: @attribute,
-            form: @form,
-            options: {
-              class: label_classes
-            }
-          )
-        )
+      def default_label_options
+        options = super
+        options[:options] ||= {}
+        options[:options][:class] = options.dig(:options, :class) || label_classes
+        options
       end
 
       private

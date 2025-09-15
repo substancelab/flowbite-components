@@ -23,6 +23,27 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
     assert_selector("label[for='user_subscribed'].font-medium.text-gray-900")
   end
 
+  def test_renders_a_label_with_specific_content
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, label: {content: "This is my label"}))
+
+    assert_selector("label[for='user_subscribed']", text: "This is my label")
+  end
+
+  def test_passes_options_to_the_label
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, label: {content: "Check to receive updates", options: {title: "label"}}))
+
+    assert_selector("label[title='label'].font-medium.text-gray-900", text: "Check to receive updates")
+  end
+
+  def test_replaces_the_label_entirely
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed)) do |component|
+      component.with_label { "This is the full label" }
+    end
+
+    refute_selector("p.text-xs.font-normal.text-gray-500")
+    assert_text("This is the full label")
+  end
+
   def test_renders_checked_when_true
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed))
 
