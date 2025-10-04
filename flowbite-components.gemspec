@@ -19,10 +19,10 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["changelog_uri"] = "https://github.com/substancelab/flowbite-components/blob/main/CHANGELOG.md"
 
-  spec.files = Dir["CHANGELOG.md", "LICENSE", "README.md", "lib/**/*"]
+  spec.files = Dir["CHANGELOG.md", "LICENSE", "README.md", "app/**/*", "lib/**/*"]
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = ["app", "lib"]
 
   spec.add_dependency "view_component", ">= 4.0.0"
 end
