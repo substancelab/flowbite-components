@@ -3,15 +3,9 @@
 module Flowbite
   class InputField
     class RadioButton < InputField
-      protected
-
       def initialize(attribute:, form:, value:, disabled: false, hint: nil, input: {}, label: {})
         super(attribute: attribute, form: form, disabled: disabled, hint: hint, input: input, label: label)
         @value = value
-      end
-
-      def input_component
-        ::Flowbite::Input::RadioButton
       end
 
       protected
@@ -52,6 +46,10 @@ module Flowbite
           }
         ).with_content(@hint)
         render(component)
+      end
+
+      def input_component
+        ::Flowbite::Input::RadioButton
       end
 
       private
