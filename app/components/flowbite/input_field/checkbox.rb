@@ -5,12 +5,6 @@ module Flowbite
     class Checkbox < InputField
       protected
 
-      def input_component
-        ::Flowbite::Input::Checkbox
-      end
-
-      protected
-
       def default_hint_options
         return {} unless @hint
 
@@ -25,6 +19,10 @@ module Flowbite
         options[:options] ||= {}
         options[:options][:class] = options.dig(:options, :class) || label_classes
         options
+      end
+
+      def input_component
+        ::Flowbite::Input::Checkbox
       end
 
       private
