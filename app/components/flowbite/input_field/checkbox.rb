@@ -35,6 +35,13 @@ module Flowbite
         end
       end
 
+      def input_arguments
+        args = super
+        args[:unchecked_value] = @input[:unchecked_value] if @input.key?(:unchecked_value)
+        args[:value] = @input[:value] if @input.key?(:value)
+        args
+      end
+
       def label_classes
         if disabled?
           "font-medium text-gray-400 dark:text-gray-500"
