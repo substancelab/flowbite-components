@@ -7,10 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* Button component (first component, wee!)
-* Input components
-* InputField components
-* Basic Card component
+* Options to Flowbite::InputField::Checkbox and Flowbite::Input::Checkbox that allow you to change the submitted value.
 
 ### Changes
 
@@ -19,3 +16,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 
 *
+
+## [0.1.2]
+
+### Added
+
+* Button component (first component, wee!)
+* Input components
+* InputField components
+* Basic Card component

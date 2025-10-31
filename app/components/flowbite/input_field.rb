@@ -181,7 +181,7 @@ module Flowbite
         disabled: @disabled,
         form: @form,
         options: input_options,
-        size: @size
+        size: @size,
       }
     end
 

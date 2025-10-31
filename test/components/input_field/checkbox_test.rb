@@ -17,6 +17,12 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
     assert_selector("input[type='checkbox'][name='user[subscribed]']")
   end
 
+  def test_renders_a_checkbox_input_element_with_custom_value
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, input: {value: "yes"}))
+
+    assert_selector("input[type='checkbox'][name='user[subscribed]'][value='yes']")
+  end
+
   def test_renders_a_label
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed))
 
