@@ -67,9 +67,7 @@ module Flowbite
         @value
       end
 
-      def unchecked_value
-        @unchecked_value
-      end
+      attr_reader :unchecked_value
     end
   end
 end
