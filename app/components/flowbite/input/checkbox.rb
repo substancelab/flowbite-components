@@ -9,6 +9,9 @@ module Flowbite
     #
     # https://flowbite.com/docs/forms/checkbox/
     class Checkbox < Field
+      DEFAULT_CHECKED_VALUE = "1"
+      DEFAULT_UNCHECKED_VALUE = "0"
+
       class << self
         # Checkboxes only have their default size.
         def sizes
@@ -29,9 +32,42 @@ module Flowbite
         end
       end
 
+      # Returns the HTML to use for the actual input field element.
+      def call
+        @form.send(
+          input_field_type,
+          @attribute,
+          input_options,
+          checked_value,
+          unchecked_value
+        )
+      end
+
+      def initialize(attribute:, form:, disabled: false, options: {}, size: :default, unchecked_value: DEFAULT_UNCHECKED_VALUE, value: DEFAULT_CHECKED_VALUE)
+        super(attribute: attribute, form: form, disabled: disabled, options: options, size: size)
+        @unchecked_value = unchecked_value
+        @value = value
+      end
+
       def input_field_type
         :check_box
       end
+
+      # Returns the options argument for the input field
+      def input_options
+        {
+          class: classes,
+          disabled: disabled?
+        }.merge(options)
+      end
+
+      private
+
+      def checked_value
+        @value
+      end
+
+      attr_reader :unchecked_value
     end
   end
 end

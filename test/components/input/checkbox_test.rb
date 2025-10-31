@@ -43,6 +43,12 @@ class Flowbite::Input::CheckboxTest < Minitest::Test
     assert_selector("input[name='user[subscribed]'][disabled].bg-gray-100.border-gray-300.text-blue-600")
   end
 
+  def test_sets_value
+    render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, value: "yes"))
+
+    assert_selector("input[name='user[subscribed]'][value='yes']")
+  end
+
   def test_adds_attributes_to_input
     render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, options: {"data-controller": "checkbox"}))
 
@@ -53,5 +59,11 @@ class Flowbite::Input::CheckboxTest < Minitest::Test
     render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, options: {"data-controller": "checkbox"}))
 
     assert_selector("input[type='hidden'][name='user[subscribed]'][value='0']", visible: false)
+  end
+
+  def test_renders_a_hidden_input_for_the_unchecked_case_with_unchecked_value
+    render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, unchecked_value: "off"))
+
+    assert_selector("input[type='hidden'][name='user[subscribed]'][value='off']", visible: false)
   end
 end

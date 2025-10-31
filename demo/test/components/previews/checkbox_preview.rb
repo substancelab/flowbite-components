@@ -28,6 +28,10 @@ class CheckboxPreview < Lookbook::Preview
     render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form, label: {content: "I agree with the terms and conditions."}))
   end
 
+  def with_custom_value
+    render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form, input: {value: "yes"}, label: {content: "This checkbox submits 'yes' when checked."}))
+  end
+
   # @!endgroup
 
   # @!group Disabled state
