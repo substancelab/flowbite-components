@@ -134,13 +134,7 @@ module Flowbite
 
     # Returns the HTML to use for the default input element.
     def default_input
-      render(input_component.new(
-        form: @form,
-        attribute: @attribute,
-        disabled: @disabled,
-        options: input_options,
-        size: @size
-      ))
+      render(input_component.new(**input_arguments))
     end
 
     def default_label
@@ -178,6 +172,17 @@ module Flowbite
 
     def id_for_hint_element
       "#{@form.object_name}_#{@attribute}_hint"
+    end
+
+    # @return [Hash] The keyword arguments for the input component.
+    def input_arguments
+      {
+        attribute: @attribute,
+        disabled: @disabled,
+        form: @form,
+        options: input_options,
+        size: @size
+      }
     end
 
     def input_options
