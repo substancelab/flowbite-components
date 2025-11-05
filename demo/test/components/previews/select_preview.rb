@@ -40,6 +40,22 @@ class SelectPreview < Lookbook::Preview
     render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], size: :lg))
   end
 
+  # @group Multiple
+  #
+  # @display classes w-full
+
+  def multiple_select
+    render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], multiple: true))
+  end
+
+  # @group Include blank
+  #
+  # @display classes w-full
+
+  def include_blank_select
+    render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], include_blank: true))
+  end
+
   # @!endgroup
 
   private
