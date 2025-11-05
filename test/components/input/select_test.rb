@@ -44,6 +44,18 @@ class Flowbite::Input::SelectTest < Minitest::Test
     assert_selector("select[name='article[category_id]'][disabled].bg-gray-100.border.border-gray-300.text-gray-900.cursor-not-allowed")
   end
 
+  def test_renders_with_include_blank
+    render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }, include_blank: true))
+
+    assert_selector("select[name='article[category_id]'] option[value='']", text: "")
+  end
+
+  def test_renders_with_multiple_select
+    render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }, multiple: true))
+
+    assert_selector("select[name='article[category_id][]'][multiple]")
+  end
+
   def test_renders_with_empty_collection
     render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: []))
 
