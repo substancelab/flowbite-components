@@ -20,7 +20,7 @@ class SelectPreview < Lookbook::Preview
   end
 
   # @display classes w-full
-  def disabled_select
+  def disabled_state
     render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], disabled: true))
   end
 
@@ -40,20 +40,16 @@ class SelectPreview < Lookbook::Preview
     render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], size: :lg))
   end
 
-  # @group Multiple
-  #
-  # @display classes w-full
-
-  def multiple_select
-    render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], multiple: true))
-  end
-
-  # @group Include blank
+  # @!group Customization options
   #
   # @display classes w-full
 
   def include_blank_select
-    render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], include_blank: true))
+    render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], include_blank: true, label: {content: "With <code>include_blank: true</code>".html_safe}))
+  end
+
+  def multiple_select
+    render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], multiple: true, label: {content: "With <code>multiple: true</code>".html_safe}))
   end
 
   # @!endgroup
