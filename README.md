@@ -31,9 +31,9 @@ Then execute:
 bundle install
 ```
 
-### Configuration
+### tailwindcss-rails
 
-Make sure you have Tailwind CSS installed in your Rails application. We recommend using the [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) gem:
+Tailwind needs to be able to look through your code in order to generate the final CSS file with the class names you actually use. To allow Tailwind to find CSS class names inside flowbite-components you need to use [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) gem:
 
 ```ruby
 gem "tailwindcss-rails", ">= 4.3.0"
