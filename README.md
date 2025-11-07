@@ -22,7 +22,7 @@ Flowbite Components provides a comprehensive library of UI components following 
 Add the gem to your application's Gemfile:
 
 ```ruby
-gem 'flowbite-components'
+gem "flowbite-components"
 ```
 
 Then execute:
