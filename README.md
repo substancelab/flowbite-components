@@ -44,7 +44,7 @@ gem "tailwindcss-rails", ">= 4.3.0"
 Install Flowbite as an npm dependency:
 
 ```bash
-npm install flowbite
+yarn add flowbite
 ```
 
 Add Flowbite to your Tailwind CSS configuration. In your `app/assets/tailwind/application.css`:
