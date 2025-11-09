@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-*
+* Title to Flowbite::Card, both as an argument and as a slot.
 
 ### Changed
 

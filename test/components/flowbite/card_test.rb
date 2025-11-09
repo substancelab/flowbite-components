@@ -33,4 +33,13 @@ class Flowbite::CardTest < Minitest::Test
 
     assert_selector("h5.mb-2.text-2xl.font-bold.tracking-tight.text-gray-900.dark\\:text-white", text: "Card Title")
   end
+
+  def test_with_title_slot_when_using_with_title
+    render_inline(Flowbite::Card.new) do |component|
+      component.with_title { "<h1>This is the full title</h1>".html_safe }
+    end
+
+    assert_no_selector("h5.mb-2.text-2xl.font-bold.tracking-tight.text-gray-900.dark\\:text-white")
+    assert_selector("h1", text: "This is the full title")
+  end
 end
