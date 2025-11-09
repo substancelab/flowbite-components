@@ -34,9 +34,18 @@ module Flowbite
     # @param options [Hash] Additional HTML options for the card container
     #   (e.g., custom classes, data attributes). These options are merged into
     #   the card's root element.
-    def initialize(class: [], options: {})
+    #
+    # @param title [String, nil] An optional title for the card. If provided,
+    #   it will be rendered at the top of the card in a h5 tag using the
+    #   Card::Title component.
+    def initialize(class: [], options: {}, title: nil)
       @class = Array(binding.local_variable_get(:class)) || []
       @options = options || {}
+      @title = title
+    end
+
+    def title
+      @title
     end
   end
 end
