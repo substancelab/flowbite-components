@@ -22,13 +22,10 @@ module Flowbite
       # rubocop:enable Layout/LineLength
     end
 
-    def call
+    def card_options
       card_options = {}
       card_options[:class] = self.class.classes + @class
-
-      content_tag(:div, card_options.merge(@options)) do
-        concat(content_tag(:div, content, class: "font-normal text-gray-700 dark:text-gray-400"))
-      end
+      card_options.merge(@options)
     end
 
     # @param class [Array<String>] Additional CSS classes for the card
