@@ -1,4 +1,7 @@
 <%= content_tag(:div, card_options) do %>
+  <% if title.present? %>
+    <%= render(Flowbite::Card::Title.new) { title } %>
+  <% end %>
   <% if content.present? %>
     <div class="font-normal text-gray-700 dark:text-gray-400"><%= content %></div>
   <% end %>
