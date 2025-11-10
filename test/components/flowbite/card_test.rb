@@ -29,7 +29,7 @@ class Flowbite::CardTest < Minitest::Test
   end
 
   def test_with_title_argument
-    render_inline(Flowbite::Card.new(title: "Card Title")) { "Card Content" }
+    render_inline(Flowbite::Card.new(title: {content: "Card Title"})) { "Card Content" }
 
     assert_selector("h5.mb-2.text-2xl.font-bold.tracking-tight.text-gray-900.dark\\:text-white", text: "Card Title")
   end
