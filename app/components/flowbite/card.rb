@@ -35,7 +35,7 @@ module Flowbite
     #   it will be rendered at the top of the card in a h5 tag using the
     #   Card::Title component. Alternatively, you can use the `title` slot to
     #   provide the entire title element yourself.
-    def initialize(class: [], options: {}, title: nil)
+    def initialize(class: [], options: {}, title: {})
       @class = Array(binding.local_variable_get(:class)) || []
       @options = options || {}
       @title = title
@@ -51,14 +51,29 @@ module Flowbite
 
     # Returns the HTML to use for the title element if any
     def default_title
-      return nil unless title?
+      component = Flowbite::Card::Title.new
 
-      component = Flowbite::Card::Title.new.with_content(default_title_content)
+      if default_title_content
+        component.with_content(default_title_content)
+      else
+        component
+      end
+
       render(component)
     end
 
     def default_title_content
-      @title
+      return nil unless @title
+
+      @title[:content]
+    end
+
+    def default_title_options
+      title_options = @title.dup
+      title_options.delete(:content)
+
+      {
+      }.merge(title_options)
     end
 
     def title?

@@ -9,7 +9,7 @@ class CardPreview < Lookbook::Preview
   end
 
   def with_title_argument
-    render(Flowbite::Card.new(title: "Card Title")) do
+    render(Flowbite::Card.new(title: {content: "Card Title"})) do
       "This card includes a title with the default styling."
     end
   end
