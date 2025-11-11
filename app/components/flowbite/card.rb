@@ -51,7 +51,7 @@ module Flowbite
 
     # Returns the HTML to use for the title element if any
     def default_title
-      component = Flowbite::Card::Title.new
+      component = Flowbite::Card::Title.new(**default_title_options)
 
       if default_title_content
         component.with_content(default_title_content)
@@ -70,10 +70,7 @@ module Flowbite
 
     def default_title_options
       title_options = @title.dup
-      title_options.delete(:content)
-
-      {
-      }.merge(title_options)
+      title_options[:options]
     end
 
     def title?

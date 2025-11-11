@@ -22,10 +22,15 @@ module Flowbite
       end
 
       def call
-        title_options = {}
-        title_options[:class] = self.class.classes
+        title_options = {
+          class: self.class.classes
+        }.merge(@options)
 
-        content_tag(:h5, content, title_options)
+        content_tag(:h5, content, **title_options)
+      end
+
+      def initialize(**options)
+        @options = options || {}
       end
     end
   end
