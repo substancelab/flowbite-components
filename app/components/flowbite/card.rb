@@ -68,9 +68,10 @@ module Flowbite
       @title[:content]
     end
 
+    # @return [Hash] The options to pass to the default title component
     def default_title_options
       title_options = @title.dup
-      title_options[:options]
+      title_options[:options] || {}
     end
 
     def title?
