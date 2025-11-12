@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-*
+* Flowbite::Link component to render links.
 
 ### Changed
 
