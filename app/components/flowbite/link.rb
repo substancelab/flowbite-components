@@ -21,14 +21,21 @@ module Flowbite
     # details.
     #
     # @param options [Hash] Additional HTML options for the link element
-    def initialize(href:, **options)
+    def initialize(href:, class: nil, **options)
       super()
+      @class = Array.wrap(binding.local_variable_get(:class))
       @href = href
       @options = options
     end
 
     def call
-      link_to(content, href, {class: self.class.classes}.merge(options))
+      link_to(content, href, {class: classes}.merge(options))
+    end
+
+    private
+
+    def classes
+      self.class.classes + @class
     end
   end
 end
