@@ -60,4 +60,10 @@ class Flowbite::Input::FieldTest < Minitest::Test
     assert_component_rendered
     assert_selector("input[name='book[title]'][placeholder='Enter title']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Field.new(class: "custom-class", form: @form, attribute: :title))
+
+    assert_selector("input[name='book[title]'].bg-gray-50.custom-class")
+  end
 end

@@ -53,4 +53,10 @@ class Flowbite::Input::TextareaTest < Minitest::Test
 
     assert_selector("textarea[name='article[content]'][placeholder='Enter article content'][rows='10']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Textarea.new(class: "custom-class", form: @form, attribute: :content))
+
+    assert_selector("textarea[name='article[content]'].bg-gray-50.custom-class")
+  end
 end

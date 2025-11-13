@@ -57,8 +57,9 @@ module Flowbite
         # rubocop:enable Layout/LineLength
       end
 
-      def initialize(attribute:, form:, disabled: false, options: {}, size: :default)
+      def initialize(attribute:, form:, class: nil, disabled: false, options: {}, size: :default)
         @attribute = attribute
+        @class = Array.wrap(binding.local_variable_get(:class))
         @disabled = disabled
         @form = form
         @options = options || {}
@@ -77,7 +78,7 @@ module Flowbite
 
       # Returns the CSS classes to apply to the input field
       def classes
-        self.class.classes(size: size, state: state)
+        self.class.classes(size: size, state: state) + @class
       end
 
       # Returns the name of the method used to generate HTML for the input field

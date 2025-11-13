@@ -53,4 +53,10 @@ class Flowbite::Input::UrlTest < Minitest::Test
 
     assert_selector("input[name='user[website_url]'][placeholder='Enter website URL']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Url.new(class: "custom-class", form: @form, attribute: :website_url))
+
+    assert_selector("input[name='user[website_url]'].bg-gray-50.custom-class")
+  end
 end

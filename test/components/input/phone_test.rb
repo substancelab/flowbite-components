@@ -53,4 +53,10 @@ class Flowbite::Input::PhoneTest < Minitest::Test
 
     assert_selector("input[name='user[phone]'][placeholder='Enter phone number']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Phone.new(class: "custom-class", form: @form, attribute: :phone))
+
+    assert_selector("input[name='user[phone]'].bg-gray-50.custom-class")
+  end
 end

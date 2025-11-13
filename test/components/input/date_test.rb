@@ -53,4 +53,10 @@ class Flowbite::Input::DateTest < Minitest::Test
 
     assert_selector("input[name='book[published_at]'][placeholder='Enter publish date']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Date.new(class: "custom-class", form: @form, attribute: :published_at))
+
+    assert_selector("input[name='book[published_at]'].bg-gray-50.custom-class")
+  end
 end

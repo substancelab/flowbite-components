@@ -34,4 +34,10 @@ class Flowbite::Input::RadioButtonTest < Minitest::Test
 
     assert_selector("input[type='radio'][name='article[state]'][data-target='item']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::RadioButton.new(class: "custom-class", form: @form, attribute: :state, value: "published"))
+
+    assert_selector("input[type='radio'][name='article[state]'].text-blue-600.bg-gray-100.border-gray-300.custom-class")
+  end
 end

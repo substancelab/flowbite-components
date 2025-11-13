@@ -30,7 +30,7 @@ module Flowbite
 
       # Returns the CSS classes to apply to the input field
       def classes
-        self.class.classes(size: size, state: state)
+        self.class.classes(size: size, state: state) + @class
       end
 
       # Returns the name of the method used to generate HTML for the input field

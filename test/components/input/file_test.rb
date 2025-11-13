@@ -53,4 +53,10 @@ class Flowbite::Input::FileTest < Minitest::Test
 
     assert_selector("input[name='user[avatar]'][accept='image/*']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::File.new(class: "custom-class", form: @form, attribute: :avatar))
+
+    assert_selector("input[name='user[avatar]'].bg-gray-50.custom-class")
+  end
 end
