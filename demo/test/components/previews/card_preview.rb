@@ -16,7 +16,7 @@ class CardPreview < Lookbook::Preview
 
   def with_title_slot
     render(Flowbite::Card.new) do |component|
-      component.with_title { "<h1 class=\"text-3xl\">This title replace the entire title element</h1>".html_safe }
+      component.with_title { "<h1 class=\"text-3xl\">This title replaces the entire title element</h1>".html_safe }
       "Use the title slot to control all aspects of the title element"
     end
   end
