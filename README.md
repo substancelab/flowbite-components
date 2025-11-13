@@ -217,6 +217,8 @@ renders
 - **Outline Button**: `Flowbite::Button::Outline`
 - **Pill Button**: `Flowbite::Button::Pill`
 
+#### Navigation
+- **Link**: `Flowbite::Link` (default link styling)
 
 ## Development
 
