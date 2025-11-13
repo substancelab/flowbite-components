@@ -10,7 +10,7 @@ module Flowbite
 
     class << self
       def classes
-        ["font-medium", "text-blue-600", "dark:text-blue-500", "hover:underline"].join(" ")
+        ["font-medium", "text-blue-600", "dark:text-blue-500", "hover:underline"]
       end
     end
 
