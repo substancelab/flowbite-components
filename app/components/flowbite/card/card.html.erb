@@ -1,0 +1,6 @@
+<%= content_tag(:div, card_options) do %>
+  <%= title %>
+  <% if content.present? %>
+    <div class="font-normal text-gray-700 dark:text-gray-400"><%= content %></div>
+  <% end %>
+<% end %>
