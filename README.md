@@ -224,6 +224,16 @@ renders
 - **Link**: `Flowbite::Link` (default link styling)
 
 
+## Principles
+
+### CSS classes are additive
+
+Passing classes to a component adds the classes to the default ones instead of
+replacing them. This makes for easier customization of components, where you
+don't have to recreate the entire classlist, ie in order to increase sizes or
+add margins or whatever.
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies.
