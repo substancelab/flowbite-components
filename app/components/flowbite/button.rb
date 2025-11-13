@@ -63,7 +63,8 @@ module Flowbite
 
     attr_reader :button_attributes, :size, :style
 
-    def initialize(size: :default, style: :default, **button_attributes)
+    def initialize(class: nil, size: :default, style: :default, **button_attributes)
+      @class = Array.wrap(binding.local_variable_get(:class))
       @size = size
       @style = style
       @button_attributes = button_attributes
@@ -80,7 +81,7 @@ module Flowbite
     private
 
     def classes
-      self.class.classes(size: size, state: :default, style: style)
+      self.class.classes(size: size, state: :default, style: style) + @class
     end
 
     def options
