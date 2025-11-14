@@ -88,4 +88,18 @@ class Flowbite::InputField::UrlTest < Minitest::Test
 
     assert_no_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500")
   end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url, options: {class: "custom-class"}))
+
+    assert_selector("div.custom-class")
+    assert_no_selector("div.custom-class.ignored")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::InputField::Url.new(class: "ignored", form: @form, attribute: :website_url, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

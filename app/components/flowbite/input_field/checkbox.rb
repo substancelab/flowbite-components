@@ -5,6 +5,10 @@ module Flowbite
     class Checkbox < InputField
       protected
 
+      def default_container_classes
+        ["flex"]
+      end
+
       def default_hint_options
         return {} unless @hint
 

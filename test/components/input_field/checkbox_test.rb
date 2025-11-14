@@ -143,4 +143,18 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
 
     assert_selector("div.flex.custom-class")
   end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, options: {class: "custom-class"}))
+
+    assert_no_selector("div.flex.custom-class")
+    assert_selector("div.custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::InputField::Checkbox.new(class: "ignored", form: @form, attribute: :subscribed, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end
