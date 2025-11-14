@@ -59,4 +59,18 @@ class Flowbite::Input::UrlTest < Minitest::Test
 
     assert_selector("input[name='user[website_url]'].bg-gray-50.custom-class")
   end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::Url.new(form: @form, attribute: :website_url, options: {class: "custom-class"}))
+
+    assert_no_selector("input[name='user[website_url]'].bg-gray-50.custom-class")
+    assert_selector("input[name='user[website_url]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::Url.new(class: "ignored", form: @form, attribute: :website_url, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

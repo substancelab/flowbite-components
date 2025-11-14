@@ -59,4 +59,18 @@ class Flowbite::Input::DateTest < Minitest::Test
 
     assert_selector("input[name='book[published_at]'].bg-gray-50.custom-class")
   end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at, options: {class: "custom-class"}))
+
+    assert_no_selector("input[name='book[published_at]'].bg-gray-50.custom-class")
+    assert_selector("input[name='book[published_at]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::Date.new(class: "ignored", form: @form, attribute: :published_at, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

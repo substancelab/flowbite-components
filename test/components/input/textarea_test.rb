@@ -59,4 +59,18 @@ class Flowbite::Input::TextareaTest < Minitest::Test
 
     assert_selector("textarea[name='article[content]'].bg-gray-50.custom-class")
   end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content, options: {class: "custom-class"}))
+
+    assert_no_selector("textarea[name='article[content]'].bg-gray-50.custom-class")
+    assert_selector("textarea[name='article[content]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::Textarea.new(class: "ignored", form: @form, attribute: :content, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

@@ -65,4 +65,18 @@ class Flowbite::Input::PasswordTest < Minitest::Test
 
     refute_selector("input[value='secret123']")
   end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::Password.new(form: @form, attribute: :password, options: {class: "custom-class"}))
+
+    assert_no_selector("input[name='user[password]'].bg-gray-50.custom-class")
+    assert_selector("input[name='user[password]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::Password.new(class: "ignored", form: @form, attribute: :password, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

@@ -65,4 +65,18 @@ class Flowbite::Input::NumberTest < Minitest::Test
 
     assert_selector("input[type='number'][name='product[quantity]'][value='5']")
   end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::Number.new(form: @form, attribute: :price, options: {class: "custom-class"}))
+
+    assert_no_selector("input[name='product[price]'].bg-gray-50.custom-class")
+    assert_selector("input[name='product[price]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::Number.new(class: "ignored", form: @form, attribute: :price, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end
