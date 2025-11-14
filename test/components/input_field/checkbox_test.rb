@@ -137,4 +137,10 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
 
     assert_no_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::InputField::Checkbox.new(class: "custom-class", form: @form, attribute: :subscribed))
+
+    assert_selector("div.flex.custom-class")
+  end
 end

@@ -3,8 +3,8 @@
 module Flowbite
   class InputField
     class RadioButton < InputField
-      def initialize(attribute:, form:, value:, disabled: false, hint: nil, input: {}, label: {})
-        super(attribute: attribute, form: form, disabled: disabled, hint: hint, input: input, label: label)
+      def initialize(attribute:, form:, value:, class: nil, disabled: false, hint: nil, input: {}, label: {})
+        super(attribute: attribute, class: binding.local_variable_get(:class), form: form, disabled: disabled, hint: hint, input: input, label: label)
         @value = value
       end
 

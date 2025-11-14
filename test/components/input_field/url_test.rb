@@ -43,6 +43,12 @@ class Flowbite::InputField::UrlTest < Minitest::Test
     assert_selector("input[type='url'][placeholder='Enter website URL']")
   end
 
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url, class: "custom-class"))
+
+    assert_selector("div.custom-class input[type='url']")
+  end
+
   def test_renders_with_sm_size
     render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url, size: :sm))
 

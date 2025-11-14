@@ -43,6 +43,12 @@ class Flowbite::InputField::FileTest < Minitest::Test
     assert_selector("input[type='file'][accept='image/*']")
   end
 
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, class: "custom-class"))
+
+    assert_selector("div.custom-class input[type='file']")
+  end
+
   def test_renders_with_sm_size
     render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, size: :sm))
 

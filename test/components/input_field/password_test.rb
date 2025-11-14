@@ -43,6 +43,12 @@ class Flowbite::InputField::PasswordTest < Minitest::Test
     assert_selector("input[type='password'][placeholder='Enter password']")
   end
 
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password, class: "custom-class"))
+
+    assert_selector("div.custom-class input[type='password']")
+  end
+
   def test_renders_with_sm_size
     render_inline(Flowbite::InputField::Password.new(form: @form, attribute: :password, size: :sm))
 
