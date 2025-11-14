@@ -71,14 +71,16 @@ module Flowbite
       @object.errors[@attribute] || []
     end
 
-    def initialize(attribute:, form:, disabled: false, hint: nil, input: {}, label: {}, size: :default)
+    def initialize(attribute:, form:, class: nil, disabled: false, hint: nil, input: {}, label: {}, options: {}, size: :default)
       @attribute = attribute
+      @class = Array.wrap(binding.local_variable_get(:class))
       @disabled = disabled
       @form = form
       @hint = hint
       @input = input
       @label = label
       @object = form.object
+      @options = options || {}
       @size = size
     end
 
@@ -87,6 +89,18 @@ module Flowbite
     end
 
     protected
+
+    def classes
+      if @options[:class]
+        Array.wrap(@options[:class])
+      else
+        [default_container_classes, @class].flatten.compact
+      end
+    end
+
+    def default_container_classes
+      []
+    end
 
     # Returns the HTML to use for the hint element if any
     def default_hint

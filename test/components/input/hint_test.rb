@@ -25,8 +25,14 @@ class Flowbite::Input::HintTest < Minitest::Test
   end
 
   def test_accepts_custom_attributes
-    render_inline(Flowbite::Input::Hint.new(form: @form, attribute: :title, options: {class: "custom-class"})) { "What's the title?" }
+    render_inline(Flowbite::Input::Hint.new(form: @form, attribute: :title, options: {"aria-describedby": "someid"})) { "What's the title?" }
 
-    assert_selector("p.custom-class", text: "What's the title?")
+    assert_selector("p[aria-describedby='someid']", text: "What's the title?")
+  end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Hint.new(class: "custom-class", form: @form, attribute: :title)) { "What's the title?" }
+
+    assert_selector("p.text-sm.text-gray-500.custom-class", text: "What's the title?")
   end
 end

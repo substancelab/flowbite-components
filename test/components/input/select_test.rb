@@ -80,4 +80,24 @@ class Flowbite::Input::SelectTest < Minitest::Test
 
     assert_selector("select[name='article[category_id]'][data-controller='interactive']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Select.new(class: "custom-class", form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }))
+
+    assert_selector("select[name='article[category_id]'].bg-gray-50.custom-class")
+  end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }, options: {class: "custom-class"}))
+
+    assert_no_selector("select[name='article[category_id]'].bg-gray-50.custom-class")
+    assert_selector("select[name='article[category_id]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::Select.new(class: "ignored", form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

@@ -53,4 +53,24 @@ class Flowbite::Input::PhoneTest < Minitest::Test
 
     assert_selector("input[name='user[phone]'][placeholder='Enter phone number']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Phone.new(class: "custom-class", form: @form, attribute: :phone))
+
+    assert_selector("input[name='user[phone]'].bg-gray-50.custom-class")
+  end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone, options: {class: "custom-class"}))
+
+    assert_no_selector("input[name='user[phone]'].bg-gray-50.custom-class")
+    assert_selector("input[name='user[phone]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::Phone.new(class: "ignored", form: @form, attribute: :phone, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

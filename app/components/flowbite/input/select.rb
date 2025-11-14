@@ -14,8 +14,8 @@ module Flowbite
         lg: ["px-4", "py-3", "text-base"]
       }.freeze
 
-      def initialize(form:, attribute:, collection: [], disabled: false, include_blank: false, multiple: false, options: {}, size: :default)
-        super(form: form, attribute: attribute, disabled: disabled, options: options, size: size)
+      def initialize(form:, attribute:, class: nil, collection: [], disabled: false, include_blank: false, multiple: false, options: {}, size: :default)
+        super(form: form, attribute: attribute, class: binding.local_variable_get(:class), disabled: disabled, options: options, size: size)
         @collection = collection
         @include_blank = include_blank
         @multiple = multiple

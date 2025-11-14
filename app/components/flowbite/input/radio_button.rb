@@ -37,8 +37,8 @@ module Flowbite
         )
       end
 
-      def initialize(attribute:, form:, value:, disabled: false, options: {})
-        super(attribute: attribute, disabled: disabled, form: form, options: options)
+      def initialize(attribute:, form:, value:, class: nil, disabled: false, options: {})
+        super(attribute: attribute, class: binding.local_variable_get(:class), disabled: disabled, form: form, options: options)
         @value = value
       end
 

@@ -28,4 +28,10 @@ class Flowbite::Input::ValidationErrorTest < Minitest::Test
 
     assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500", text: message)
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::ValidationError.new(class: "custom-class")) { "This field is required" }
+
+    assert_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500.custom-class", text: "This field is required")
+  end
 end

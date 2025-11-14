@@ -109,4 +109,10 @@ class Flowbite::ButtonTest < Minitest::Test
     render_inline(Flowbite::Button.new(type: "submit")) { "Click me" }
     assert_selector("button[type='submit']")
   end
+
+  def test_adds_classes_to_the_default_ones
+    render_inline(Flowbite::Button.new(class: "custom-class")) { "Click me" }
+
+    assert_selector("button.bg-blue-700.text-white.custom-class")
+  end
 end

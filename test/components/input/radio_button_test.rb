@@ -34,4 +34,24 @@ class Flowbite::Input::RadioButtonTest < Minitest::Test
 
     assert_selector("input[type='radio'][name='article[state]'][data-target='item']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::RadioButton.new(class: "custom-class", form: @form, attribute: :state, value: "published"))
+
+    assert_selector("input[type='radio'][name='article[state]'].text-blue-600.bg-gray-100.border-gray-300.custom-class")
+  end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::RadioButton.new(form: @form, attribute: :state, value: "published", options: {class: "custom-class"}))
+
+    assert_no_selector("input[type='radio'][name='article[state]'].text-blue-600.custom-class")
+    assert_selector("input[type='radio'][name='article[state]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::RadioButton.new(class: "ignored", form: @form, attribute: :state, value: "published", options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

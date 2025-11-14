@@ -43,8 +43,8 @@ module Flowbite
         )
       end
 
-      def initialize(attribute:, form:, disabled: false, options: {}, size: :default, unchecked_value: DEFAULT_UNCHECKED_VALUE, value: DEFAULT_CHECKED_VALUE)
-        super(attribute: attribute, form: form, disabled: disabled, options: options, size: size)
+      def initialize(attribute:, form:, class: nil, disabled: false, options: {}, size: :default, unchecked_value: DEFAULT_UNCHECKED_VALUE, value: DEFAULT_CHECKED_VALUE)
+        super(attribute: attribute, class: binding.local_variable_get(:class), form: form, disabled: disabled, options: options, size: size)
         @unchecked_value = unchecked_value
         @value = value
       end

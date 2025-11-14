@@ -39,8 +39,9 @@ module Flowbite
         @object.errors.include?(@attribute.intern)
       end
 
-      def initialize(attribute:, form:, disabled: false, options: {})
+      def initialize(attribute:, form:, class: nil, disabled: false, options: {})
         @attribute = attribute
+        @class = Array.wrap(binding.local_variable_get(:class))
         @disabled = disabled
         @form = form
         @object = form.object
@@ -49,7 +50,7 @@ module Flowbite
 
       # Returns an array with the CSS classes to apply to the label element
       def classes
-        self.class.classes(state: state)
+        self.class.classes(state: state) + @class
       end
 
       protected

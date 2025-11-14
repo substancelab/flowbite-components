@@ -39,10 +39,16 @@ class Flowbite::Input::LabelTest < Minitest::Test
     assert_selector("label[for='book_title'].text-red-700")
   end
 
-  def test_sets_class_attribute
-    render_inline(Flowbite::Input::Label.new(form: @form, attribute: :title, options: {class: "toggle"}))
+  def test_sets_id_attribute
+    render_inline(Flowbite::Input::Label.new(form: @form, attribute: :title, options: {id: "toggle"}))
 
-    assert_selector("label.toggle")
+    assert_selector("label#toggle")
+  end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::Label.new(class: "toggle", form: @form, attribute: :title))
+
+    assert_selector("label.text-gray-900.toggle")
   end
 
   def test_renders_specified_label_text

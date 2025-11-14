@@ -224,6 +224,27 @@ renders
 - **Link**: `Flowbite::Link` (default link styling)
 
 
+## Principles
+
+### CSS classes are additive
+
+Passing classes via the `class` argument to a component adds the classes to the
+default ones instead of replacing them.
+
+```ruby
+render(Component.new(class: "these are added"))
+```
+
+This makes for easier customization of components, where you don't have to
+recreate the entire classlist, ie in order to increase sizes or add margins or
+whatever.
+
+If you want to replace the entire class attribute for a component, pass it as part of the `options` hash, ie
+
+```ruby
+render(Component.new(options: {class: "these replace the classes"}))
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies.

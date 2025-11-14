@@ -53,4 +53,24 @@ class Flowbite::Input::FileTest < Minitest::Test
 
     assert_selector("input[name='user[avatar]'][accept='image/*']")
   end
+
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::Input::File.new(class: "custom-class", form: @form, attribute: :avatar))
+
+    assert_selector("input[name='user[avatar]'].bg-gray-50.custom-class")
+  end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::Input::File.new(form: @form, attribute: :avatar, options: {class: "custom-class"}))
+
+    assert_no_selector("input[name='user[avatar]'].bg-gray-50.custom-class")
+    assert_selector("input[name='user[avatar]'].custom-class")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::Input::File.new(class: "ignored", form: @form, attribute: :avatar, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
+  end
 end

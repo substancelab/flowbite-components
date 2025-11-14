@@ -149,4 +149,10 @@ class Flowbite::InputFieldTest < Minitest::Test
 
     assert_selector("label[for='book_state'].select-label")
   end
+
+  def test_adds_classes_to_the_root_element
+    render_inline(Flowbite::InputField.new(class: "custom_class another", form: @form, attribute: :title))
+
+    assert_selector("div.custom_class.another")
+  end
 end

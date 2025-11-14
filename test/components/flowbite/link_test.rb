@@ -21,4 +21,10 @@ class Flowbite::LinkTest < Minitest::Test
 
     assert_selector("a[data-turbo='true']", text: "Click me")
   end
+
+  def test_adds_classes_to_the_default_ones
+    render_inline(Flowbite::Link.new(class: "custom-class", href: "https://www.uchiadmin.com")) { "Rails Admin Panel" }
+
+    assert_selector("a.text-blue-600.custom-class")
+  end
 end

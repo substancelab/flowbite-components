@@ -43,6 +43,12 @@ class Flowbite::InputField::FileTest < Minitest::Test
     assert_selector("input[type='file'][accept='image/*']")
   end
 
+  def test_adds_class_attribute_to_existing_classes
+    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, class: "custom-class"))
+
+    assert_selector("div.custom-class input[type='file']")
+  end
+
   def test_renders_with_sm_size
     render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, size: :sm))
 
@@ -81,5 +87,19 @@ class Flowbite::InputField::FileTest < Minitest::Test
     render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar))
 
     assert_no_selector("p.mt-2.text-sm.text-red-600.dark\\:text-red-500")
+  end
+
+  def test_replaces_class_attribute_with_options_class
+    render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, options: {class: "custom-class"}))
+
+    assert_selector("div.custom-class")
+    assert_no_selector("div.custom-class.ignored")
+  end
+
+  def test_ignores_class_attribute_when_options_class_is_present
+    render_inline(Flowbite::InputField::File.new(class: "ignored", form: @form, attribute: :avatar, options: {class: "custom-class"}))
+
+    assert_no_selector(".ignored")
+    assert_selector(".custom-class")
   end
 end
