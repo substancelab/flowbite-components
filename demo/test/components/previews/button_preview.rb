@@ -12,32 +12,32 @@ class ButtonPreview < Lookbook::Preview
     render(Flowbite::Button.new) { "Default" }
   end
 
-  def alternative
-    render(Flowbite::Button.new(style: :alternative)) { "Alternative" }
+  def secondary
+    render(Flowbite::Button.new(style: :secondary)) { "Secondary" }
+  end
+
+  def tertiary
+    render(Flowbite::Button.new(style: :tertiary)) { "Tertiary" }
+  end
+
+  def success
+    render(Flowbite::Button.new(style: :success)) { "Success" }
+  end
+
+  def danger
+    render(Flowbite::Button.new(style: :danger)) { "Danger" }
+  end
+
+  def warning
+    render(Flowbite::Button.new(style: :warning)) { "Warning" }
   end
 
   def dark
     render(Flowbite::Button.new(style: :dark)) { "Dark" }
   end
 
-  def light
-    render(Flowbite::Button.new(style: :light)) { "Light" }
-  end
-
-  def green
-    render(Flowbite::Button.new(style: :green)) { "Green" }
-  end
-
-  def red
-    render(Flowbite::Button.new(style: :red)) { "Red" }
-  end
-
-  def yellow
-    render(Flowbite::Button.new(style: :yellow)) { "Yellow" }
-  end
-
-  def purple
-    render(Flowbite::Button.new(style: :purple)) { "Purple" }
+  def ghost
+    render(Flowbite::Button.new(style: :ghost)) { "Ghost" }
   end
 
   # @!endgroup
@@ -73,38 +73,75 @@ class ButtonPreview < Lookbook::Preview
   # @!group Pills
   #
   # The button pills can be used as an alternative style by using fully rounded edges.
+  # Styled with Flowbite 4.0 semantic design tokens.
   #
   # @display classes flex flex-wrap space-x-2
   def pill_default
     render(Flowbite::Button::Pill.new(style: :default)) { "Default" }
   end
 
-  def pill_alternative
-    render(Flowbite::Button::Pill.new(style: :alternative)) { "Alternative" }
+  def pill_secondary
+    render(Flowbite::Button::Pill.new(style: :secondary)) { "Secondary" }
+  end
+
+  def pill_tertiary
+    render(Flowbite::Button::Pill.new(style: :tertiary)) { "Tertiary" }
+  end
+
+  def pill_success
+    render(Flowbite::Button::Pill.new(style: :success)) { "Success" }
+  end
+
+  def pill_danger
+    render(Flowbite::Button::Pill.new(style: :danger)) { "Danger" }
+  end
+
+  def pill_warning
+    render(Flowbite::Button::Pill.new(style: :warning)) { "Warning" }
   end
 
   def pill_dark
     render(Flowbite::Button::Pill.new(style: :dark)) { "Dark" }
   end
 
-  def pill_light
-    render(Flowbite::Button::Pill.new(style: :light)) { "Light" }
+  def pill_ghost
+    render(Flowbite::Button::Pill.new(style: :ghost)) { "Ghost" }
   end
 
-  def pill_green
-    render(Flowbite::Button::Pill.new(style: :green)) { "Green" }
+  # @!endgroup
+
+  # @!group Outline
+  #
+  # Use the outline button styles to create bordered buttons with transparent backgrounds.
+  # Styled with Flowbite 4.0 semantic design tokens.
+  #
+  # @display classes flex flex-wrap space-x-2
+  def outline_default
+    render(Flowbite::Button::Outline.new(style: :default)) { "Default" }
   end
 
-  def pill_purple
-    render(Flowbite::Button::Pill.new(style: :purple)) { "Purple" }
+  def outline_secondary
+    render(Flowbite::Button::Outline.new(style: :secondary)) { "Secondary" }
   end
 
-  def pill_red
-    render(Flowbite::Button::Pill.new(style: :red)) { "Red" }
+  def outline_tertiary
+    render(Flowbite::Button::Outline.new(style: :tertiary)) { "Tertiary" }
   end
 
-  def pill_yellow
-    render(Flowbite::Button::Pill.new(style: :yellow)) { "Yellow" }
+  def outline_success
+    render(Flowbite::Button::Outline.new(style: :success)) { "Success" }
+  end
+
+  def outline_danger
+    render(Flowbite::Button::Outline.new(style: :danger)) { "Danger" }
+  end
+
+  def outline_warning
+    render(Flowbite::Button::Outline.new(style: :warning)) { "Warning" }
+  end
+
+  def outline_dark
+    render(Flowbite::Button::Outline.new(style: :dark)) { "Dark" }
   end
 
   # @!endgroup
