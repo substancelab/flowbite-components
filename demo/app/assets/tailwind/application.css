@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 /* Load Flowbite */
-@import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
+
+/* Load the default theme - or pick another, see https://flowbite.com/docs/customize/theming/ */
+@import "flowbite/src/themes/default";
 
 /* Include CSS classes used by the components in the final CSS */
 @import "../builds/tailwind/flowbite_components";
