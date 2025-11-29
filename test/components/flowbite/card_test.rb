@@ -6,7 +6,7 @@ class Flowbite::CardTest < Minitest::Test
   def test_renders_a_default_card
     render_inline(Flowbite::Card.new) { "Card Content" }
 
-    assert_selector("div.p-6.bg-white.border.border-gray-200.rounded-lg.shadow-sm")
+    assert_selector("div.p-6.bg-neutral-primary-soft.border.border-default.rounded-base.shadow-xs")
   end
 
   def test_passes_options_to_the_card_as_attributes
@@ -18,20 +18,20 @@ class Flowbite::CardTest < Minitest::Test
   def test_adds_the_classes_to_the_default_classes
     render_inline(Flowbite::Card.new(class: "custom-class another")) { "Card Content" }
 
-    assert_selector("div.p-6.bg-white.border.border-gray-200.rounded-lg.shadow-sm.custom-class.another")
+    assert_selector("div.p-6.bg-neutral-primary-soft.border.border-default.rounded-base.shadow-xs.custom-class.another")
   end
 
   def test_overrides_the_default_classes
     render_inline(Flowbite::Card.new(options: {class: "custom-class another"})) { "Card Content" }
 
-    assert_no_selector("div.p-6.bg-white.border.border-gray-200.rounded-lg.shadow-sm")
+    assert_no_selector("div.p-6.bg-neutral-primary-soft.border.border-default.rounded-base.shadow-xs")
     assert_selector("div.custom-class.another")
   end
 
   def test_with_title_argument
     render_inline(Flowbite::Card.new(title: {content: "Card Title"})) { "Card Content" }
 
-    assert_selector("h5.mb-2.text-2xl.font-bold.tracking-tight.text-gray-900.dark\\:text-white", text: "Card Title")
+    assert_selector("h5.mb-2.text-2xl.font-semibold.tracking-tight.text-heading", text: "Card Title")
   end
 
   def test_passes_title_options_to_the_title
@@ -45,7 +45,7 @@ class Flowbite::CardTest < Minitest::Test
       component.with_title { "<h1>This is the full title</h1>".html_safe }
     end
 
-    assert_no_selector("h5.mb-2.text-2xl.font-bold.tracking-tight.text-gray-900.dark\\:text-white")
+    assert_no_selector("h5.mb-2.text-2xl.font-semibold.tracking-tight.text-heading")
     assert_selector("h1", text: "This is the full title")
   end
 end
