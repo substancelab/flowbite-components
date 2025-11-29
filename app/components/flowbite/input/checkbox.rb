@@ -24,9 +24,9 @@ module Flowbite
         def styles
           {
             default: Flowbite::Style.new(
-              default: ["text-blue-600", "bg-gray-100", "border-gray-300", "rounded-sm", "focus:ring-blue-500", "dark:focus:ring-blue-600", "dark:ring-offset-gray-800", "focus:ring-2", "dark:bg-gray-700", "dark:border-gray-600"],
-              disabled: ["text-blue-600", "bg-gray-100", "border-gray-300", "rounded-sm", "focus:ring-blue-500", "dark:focus:ring-blue-600", "dark:ring-offset-gray-800", "focus:ring-2", "dark:bg-gray-700", "dark:border-gray-600"],
-              error: ["text-red-600", "bg-red-50", "border-red-500", "rounded-sm", "focus:ring-red-500", "dark:focus:ring-red-600", "dark:ring-offset-gray-800", "focus:ring-2", "dark:bg-gray-700", "dark:border-red-500"]
+              default: ["text-brand", "bg-neutral-secondary-medium", "border-default-medium", "rounded-sm", "focus:ring-brand", "focus:ring-2"],
+              disabled: ["text-brand", "bg-neutral-secondary-medium", "border-default-medium", "rounded-sm", "focus:ring-brand", "focus:ring-2", "cursor-not-allowed"],
+              error: ["text-danger", "bg-danger-soft", "border-danger-subtle", "rounded-sm", "focus:ring-danger", "focus:ring-2"]
             )
           }.freeze
         end

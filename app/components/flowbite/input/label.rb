@@ -19,9 +19,9 @@ module Flowbite
         def styles
           {
             default: Flowbite::Style.new(
-              default: ["block", "mb-2", "text-sm", "font-medium", "text-gray-900", "dark:text-white"],
-              disabled: ["block", "mb-2", "text-sm", "font-medium", "text-gray-400", "dark:text-gray-500"],
-              error: ["block", "mb-2", "text-sm", "font-medium", "text-red-700", "dark:text-red-500"]
+              default: ["block", "mb-2.5", "text-sm", "font-medium", "text-heading"],
+              disabled: ["block", "mb-2.5", "text-sm", "font-medium", "text-fg-disabled"],
+              error: ["block", "mb-2.5", "text-sm", "font-medium", "text-fg-danger-strong"]
             )
           }.freeze
         end

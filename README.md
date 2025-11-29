@@ -50,10 +50,12 @@ yarn add flowbite
 Add Flowbite to your Tailwind CSS configuration. In your `app/assets/tailwind/application.css`:
 
 ```css
-@import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
+@import "flowbite/src/themes/default";
 @import "../builds/tailwind/flowbite_components";
 ```
+
+If you want to use one of the other [Flowbite themes](https://flowbite.com/docs/customize/theming/), change `@import "flowbite/src/themes/default";` accordingly.
 
 ## Usage examples
 

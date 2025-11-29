@@ -52,13 +52,13 @@ class Flowbite::InputField::FileTest < Minitest::Test
   def test_renders_with_sm_size
     render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, size: :sm))
 
-    assert_selector("input.text-xs")
+    assert_selector("input.text-sm")
   end
 
   def test_renders_with_lg_size
     render_inline(Flowbite::InputField::File.new(form: @form, attribute: :avatar, size: :lg))
 
-    assert_selector("input.text-lg")
+    assert_selector("input.text-base")
   end
 
   def test_renders_disabled_file

@@ -20,32 +20,32 @@ class Flowbite::Input::PhoneTest < Minitest::Test
   def test_renders_with_default_state
     render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone))
 
-    assert_selector("input[name='user[phone]'].border-gray-300")
+    assert_selector("input[name='user[phone]'].border-default-medium")
   end
 
   def test_renders_in_error_state
     @user.errors.add(:phone, :invalid)
     render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone))
 
-    assert_selector("input[name='user[phone]'].border-red-500")
+    assert_selector("input[name='user[phone]'].border-danger-subtle")
   end
 
   def test_renders_in_disabled_state
     render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone, disabled: true))
 
-    assert_selector("input[name='user[phone]'][disabled].bg-gray-100.border.border-gray-300.text-gray-900.cursor-not-allowed")
+    assert_selector("input[name='user[phone]'][disabled].bg-neutral-secondary-medium.border.border-default-medium.text-fg-disabled.cursor-not-allowed")
   end
 
   def test_renders_with_sm_size
     render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone, size: :sm))
 
-    assert_selector("input[name='user[phone]'].p-2.text-xs")
+    assert_selector("input[name='user[phone]'].px-2\\.5.py-2.text-sm")
   end
 
   def test_renders_with_lg_size
     render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone, size: :lg))
 
-    assert_selector("input[name='user[phone]'].text-base")
+    assert_selector("input[name='user[phone]'].px-3\\.5.py-3.text-base")
   end
 
   def test_adds_attributes_to_input
@@ -57,13 +57,13 @@ class Flowbite::Input::PhoneTest < Minitest::Test
   def test_adds_class_attribute_to_existing_classes
     render_inline(Flowbite::Input::Phone.new(class: "custom-class", form: @form, attribute: :phone))
 
-    assert_selector("input[name='user[phone]'].bg-gray-50.custom-class")
+    assert_selector("input[name='user[phone]'].bg-neutral-secondary-medium.custom-class")
   end
 
   def test_replaces_class_attribute_with_options_class
     render_inline(Flowbite::Input::Phone.new(form: @form, attribute: :phone, options: {class: "custom-class"}))
 
-    assert_no_selector("input[name='user[phone]'].bg-gray-50.custom-class")
+    assert_no_selector("input[name='user[phone]'].bg-neutral-secondary-medium.custom-class")
     assert_selector("input[name='user[phone]'].custom-class")
   end
 

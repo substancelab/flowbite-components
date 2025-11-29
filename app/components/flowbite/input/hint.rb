@@ -16,7 +16,7 @@ module Flowbite
         def styles
           {
             default: Flowbite::Style.new(
-              default: ["mt-2", "text-sm", "text-gray-500", "dark:text-gray-400"]
+              default: ["mt-2.5", "text-sm", "text-body"]
             )
           }.freeze
         end

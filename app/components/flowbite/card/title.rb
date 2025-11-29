@@ -14,7 +14,7 @@ module Flowbite
         def styles
           {
             default: Flowbite::Style.new(
-              default: ["mb-2", "text-2xl", "font-bold", "tracking-tight", "text-gray-900", "dark:text-white"]
+              default: ["mb-2", "text-2xl", "font-semibold", "tracking-tight", "text-heading"]
             )
           }.freeze
         end

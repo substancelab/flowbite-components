@@ -30,64 +30,89 @@ class Flowbite::ButtonTest < Minitest::Test
     assert_selector("button.text-base.px-6")
   end
 
-  def test_renders_pill_button_in_alternative_style
-    render_inline(Flowbite::Button::Pill.new(style: :alternative)) { "Click me" }
-    assert_selector("button.text-gray-900.bg-white")
+  def test_renders_pill_button_in_secondary_style
+    render_inline(Flowbite::Button::Pill.new(style: :secondary)) { "Click me" }
+    assert_selector("button.text-body.bg-neutral-secondary-medium")
+  end
+
+  def test_renders_pill_button_in_tertiary_style
+    render_inline(Flowbite::Button::Pill.new(style: :tertiary)) { "Click me" }
+    assert_selector("button.text-body.bg-neutral-primary-soft")
+  end
+
+  def test_renders_pill_button_in_success_style
+    render_inline(Flowbite::Button::Pill.new(style: :success)) { "Click me" }
+    assert_selector("button.text-white.bg-success")
+  end
+
+  def test_renders_pill_button_in_danger_style
+    render_inline(Flowbite::Button::Pill.new(style: :danger)) { "Click me" }
+    assert_selector("button.text-white.bg-danger")
+  end
+
+  def test_renders_pill_button_in_warning_style
+    render_inline(Flowbite::Button::Pill.new(style: :warning)) { "Click me" }
+    assert_selector("button.text-white.bg-warning")
   end
 
   def test_renders_pill_button_in_dark_style
     render_inline(Flowbite::Button::Pill.new(style: :dark)) { "Click me" }
-    assert_selector("button.text-white.bg-gray-800")
+    assert_selector("button.text-white.bg-dark")
+  end
+
+  def test_renders_pill_button_in_ghost_style
+    render_inline(Flowbite::Button::Pill.new(style: :ghost)) { "Click me" }
+    assert_selector("button.text-heading.bg-transparent")
   end
 
   def test_renders_pill_button_in_default_style
     render_inline(Flowbite::Button::Pill.new) { "Click me" }
-    assert_selector("button.text-white.bg-blue-700")
-  end
-
-  def test_renders_pill_button_in_green_style
-    render_inline(Flowbite::Button::Pill.new(style: :green)) { "Click me" }
-    assert_selector("button.text-white.bg-green-700")
-  end
-
-  def test_renders_pill_button_in_light_style
-    render_inline(Flowbite::Button::Pill.new(style: :light)) { "Click me" }
-    assert_selector("button.text-gray-900.bg-white")
-  end
-
-  def test_renders_pill_button_in_red_style
-    render_inline(Flowbite::Button::Pill.new(style: :red)) { "Click me" }
-    assert_selector("button.text-white.bg-red-700")
-  end
-
-  def test_renders_pill_button_in_purple_style
-    render_inline(Flowbite::Button::Pill.new(style: :purple)) { "Click me" }
-    assert_selector("button.text-white.bg-purple-700")
-  end
-
-  def test_renders_pill_button_in_yellow_style
-    render_inline(Flowbite::Button::Pill.new(style: :yellow)) { "Click me" }
-    assert_selector("button.text-white.bg-yellow-400")
+    assert_selector("button.text-white.bg-brand")
   end
 
   def test_renders_pill_button_in_different_sizes
     render_inline(Flowbite::Button::Pill.new(size: :xs)) { "Click me" }
-    assert_selector("button.text-white.bg-blue-700.text-xs")
+    assert_selector("button.text-white.bg-brand.text-xs")
   end
 
   def test_renders_outline_button_in_default_style
     render_inline(Flowbite::Button::Outline.new) { "Click me" }
-    assert_selector("button.text-blue-700.border-blue-700")
+    assert_selector("button.text-brand.border-brand")
   end
 
-  def test_renders_outline_button_in_green_style
-    render_inline(Flowbite::Button::Outline.new(style: :green)) { "Click me" }
-    assert_selector("button.text-green-700.border-green-700")
+  def test_renders_outline_button_in_secondary_style
+    render_inline(Flowbite::Button::Outline.new(style: :secondary)) { "Click me" }
+    assert_selector("button.text-body.border-default-medium")
+  end
+
+  def test_renders_outline_button_in_tertiary_style
+    render_inline(Flowbite::Button::Outline.new(style: :tertiary)) { "Click me" }
+    assert_selector("button.text-body.border-default")
+  end
+
+  def test_renders_outline_button_in_success_style
+    render_inline(Flowbite::Button::Outline.new(style: :success)) { "Click me" }
+    assert_selector("button.text-success.border-success")
+  end
+
+  def test_renders_outline_button_in_danger_style
+    render_inline(Flowbite::Button::Outline.new(style: :danger)) { "Click me" }
+    assert_selector("button.text-danger.border-danger")
+  end
+
+  def test_renders_outline_button_in_warning_style
+    render_inline(Flowbite::Button::Outline.new(style: :warning)) { "Click me" }
+    assert_selector("button.text-warning.border-warning")
+  end
+
+  def test_renders_outline_button_in_dark_style
+    render_inline(Flowbite::Button::Outline.new(style: :dark)) { "Click me" }
+    assert_selector("button.text-dark.border-dark")
   end
 
   def test_renders_outline_button_in_different_sizes
-    render_inline(Flowbite::Button::Outline.new(size: :xs, style: :green)) { "Click me" }
-    assert_selector("button.text-green-700.border-green-700.text-xs")
+    render_inline(Flowbite::Button::Outline.new(size: :xs, style: :success)) { "Click me" }
+    assert_selector("button.text-success.border-success.text-xs")
   end
 
   def test_passes_attributes_to_button_tag
@@ -113,6 +138,6 @@ class Flowbite::ButtonTest < Minitest::Test
   def test_adds_classes_to_the_default_ones
     render_inline(Flowbite::Button.new(class: "custom-class")) { "Click me" }
 
-    assert_selector("button.bg-blue-700.text-white.custom-class")
+    assert_selector("button.bg-brand.text-white.custom-class")
   end
 end

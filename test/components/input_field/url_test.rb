@@ -52,7 +52,7 @@ class Flowbite::InputField::UrlTest < Minitest::Test
   def test_renders_with_sm_size
     render_inline(Flowbite::InputField::Url.new(form: @form, attribute: :website_url, size: :sm))
 
-    assert_selector("input.p-2.text-xs")
+    assert_selector("input.px-2\\.5.py-2.text-sm")
   end
 
   def test_renders_with_lg_size

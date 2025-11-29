@@ -20,32 +20,32 @@ class Flowbite::Input::DateTest < Minitest::Test
   def test_renders_with_default_state
     render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at))
 
-    assert_selector("input[name='book[published_at]'].border-gray-300")
+    assert_selector("input[name='book[published_at]'].border-default-medium")
   end
 
   def test_renders_in_error_state
     @book.errors.add(:published_at, :invalid)
     render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at))
 
-    assert_selector("input[name='book[published_at]'].border-red-500")
+    assert_selector("input[name='book[published_at]'].border-danger-subtle")
   end
 
   def test_renders_in_disabled_state
     render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at, disabled: true))
 
-    assert_selector("input[name='book[published_at]'][disabled].bg-gray-100.border.border-gray-300.text-gray-900.cursor-not-allowed")
+    assert_selector("input[name='book[published_at]'][disabled].bg-neutral-secondary-medium.border.border-default-medium.text-fg-disabled.cursor-not-allowed")
   end
 
   def test_renders_with_sm_size
     render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at, size: :sm))
 
-    assert_selector("input[name='book[published_at]'].p-2.text-xs")
+    assert_selector("input[name='book[published_at]'].px-2\\.5.py-2.text-sm")
   end
 
   def test_renders_with_lg_size
     render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at, size: :lg))
 
-    assert_selector("input[name='book[published_at]'].text-base")
+    assert_selector("input[name='book[published_at]'].px-3\\.5.py-3.text-base")
   end
 
   def test_adds_attributes_to_input
@@ -57,13 +57,13 @@ class Flowbite::Input::DateTest < Minitest::Test
   def test_adds_class_attribute_to_existing_classes
     render_inline(Flowbite::Input::Date.new(class: "custom-class", form: @form, attribute: :published_at))
 
-    assert_selector("input[name='book[published_at]'].bg-gray-50.custom-class")
+    assert_selector("input[name='book[published_at]'].bg-neutral-secondary-medium.custom-class")
   end
 
   def test_replaces_class_attribute_with_options_class
     render_inline(Flowbite::Input::Date.new(form: @form, attribute: :published_at, options: {class: "custom-class"}))
 
-    assert_no_selector("input[name='book[published_at]'].bg-gray-50.custom-class")
+    assert_no_selector("input[name='book[published_at]'].bg-neutral-secondary-medium.custom-class")
     assert_selector("input[name='book[published_at]'].custom-class")
   end
 

@@ -7,29 +7,29 @@ module Flowbite
         # rubocop:disable Layout/LineLength, Metrics/MethodLength
         def styles
           {
-            alternative: Flowbite::Style.new(
-              default: ["text-sm", "font-medium", "text-gray-900", "focus:outline-none", "bg-white", "rounded-full", "border", "border-gray-200", "hover:bg-gray-100", "hover:text-blue-700", "focus:z-10", "focus:ring-4", "focus:ring-gray-100", "dark:focus:ring-gray-700", "dark:bg-gray-800", "dark:text-gray-400", "dark:border-gray-600", "dark:hover:text-white", "dark:hover:bg-gray-700"]
+            danger: Flowbite::Style.new(
+              default: ["focus:outline-none", "text-white", "bg-danger", "box-border", "border", "border-transparent", "hover:bg-danger-strong", "focus:ring-4", "focus:ring-danger-medium", "shadow-xs", "font-medium", "leading-5", "rounded-full", "text-center"]
             ),
             dark: Flowbite::Style.new(
-              default: ["text-white", "bg-gray-800", "hover:bg-gray-900", "focus:outline-none", "focus:ring-4", "focus:ring-gray-300", "font-medium", "rounded-full", "dark:bg-gray-800", "dark:hover:bg-gray-700", "dark:focus:ring-gray-700", "dark:border-gray-700"]
+              default: ["focus:outline-none", "text-white", "bg-dark", "box-border", "border", "border-transparent", "hover:bg-dark-strong", "focus:ring-4", "focus:ring-neutral-tertiary", "shadow-xs", "font-medium", "leading-5", "rounded-full", "text-center"]
             ),
             default: Flowbite::Style.new(
-              default: ["text-white", "bg-blue-700", "hover:bg-blue-800", "focus:outline-none", "focus:ring-4", "focus:ring-blue-300", "font-medium", "rounded-full", "text-center", "dark:bg-blue-600", "dark:hover:bg-blue-700", "dark:focus:ring-blue-800"]
+              default: ["focus:outline-none", "text-white", "bg-brand", "box-border", "border", "border-transparent", "hover:bg-brand-strong", "focus:ring-4", "focus:ring-brand-medium", "shadow-xs", "font-medium", "leading-5", "rounded-full", "text-center"]
             ),
-            green: Flowbite::Style.new(
-              default: ["text-white", "bg-green-700", "hover:bg-green-800", "focus:outline-none", "focus:ring-4", "focus:ring-green-300", "font-medium", "rounded-full", "text-center", "dark:bg-green-600", "dark:hover:bg-green-700", "dark:focus:ring-green-800"]
+            ghost: Flowbite::Style.new(
+              default: ["focus:outline-none", "text-heading", "bg-transparent", "box-border", "border", "border-transparent", "hover:bg-neutral-secondary-medium", "focus:ring-4", "focus:ring-neutral-tertiary", "font-medium", "leading-5", "rounded-full", "text-center"]
             ),
-            light: Flowbite::Style.new(
-              default: ["text-gray-900", "bg-white", "border", "border-gray-300", "focus:outline-none", "hover:bg-gray-100", "focus:ring-4", "focus:ring-gray-100", "font-medium", "rounded-full", "dark:bg-gray-800", "dark:text-white", "dark:border-gray-600", "dark:hover:bg-gray-700", "dark:hover:border-gray-600", "dark:focus:ring-gray-700"]
+            secondary: Flowbite::Style.new(
+              default: ["focus:outline-none", "text-body", "bg-neutral-secondary-medium", "box-border", "border", "border-default-medium", "hover:bg-neutral-tertiary-medium", "focus:ring-4", "focus:ring-neutral-tertiary", "shadow-xs", "font-medium", "leading-5", "rounded-full", "text-center"]
             ),
-            purple: Flowbite::Style.new(
-              default: ["text-white", "bg-purple-700", "hover:bg-purple-800", "focus:outline-none", "focus:ring-4", "focus:ring-purple-300", "font-medium", "rounded-full", "text-center", "dark:bg-purple-600", "dark:hover:bg-purple-700", "dark:focus:ring-purple-900"]
+            success: Flowbite::Style.new(
+              default: ["focus:outline-none", "text-white", "bg-success", "box-border", "border", "border-transparent", "hover:bg-success-strong", "focus:ring-4", "focus:ring-success-medium", "shadow-xs", "font-medium", "leading-5", "rounded-full", "text-center"]
             ),
-            red: Flowbite::Style.new(
-              default: ["text-white", "bg-red-700", "hover:bg-red-800", "focus:outline-none", "focus:ring-4", "focus:ring-red-300", "font-medium", "rounded-full", "text-center", "dark:bg-red-600", "dark:hover:bg-red-700", "dark:focus:ring-red-900"]
+            tertiary: Flowbite::Style.new(
+              default: ["focus:outline-none", "text-body", "bg-neutral-primary-soft", "box-border", "border", "border-default", "hover:bg-neutral-secondary-medium", "focus:ring-4", "focus:ring-neutral-tertiary-soft", "shadow-xs", "font-medium", "leading-5", "rounded-full", "text-center"]
             ),
-            yellow: Flowbite::Style.new(
-              default: ["text-white", "bg-yellow-400", "hover:bg-yellow-500", "focus:outline-none", "focus:ring-4", "focus:ring-yellow-300", "font-medium", "rounded-full", "text-center", "dark:focus:ring-yellow-900"]
+            warning: Flowbite::Style.new(
+              default: ["focus:outline-none", "text-white", "bg-warning", "box-border", "border", "border-transparent", "hover:bg-warning-strong", "focus:ring-4", "focus:ring-warning-medium", "shadow-xs", "font-medium", "leading-5", "rounded-full", "text-center"]
             )
           }
         end
