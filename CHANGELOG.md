@@ -12,11 +12,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+* [BREAKING] All components now use Flowbite 4 style classes. This adds the option for easier styling, uses semantic variant names, and keeps us up to date with Flowbite proper.
 * Extra CSS classes passed to components in the `class` argument are now added to the default classes from the component. This optimizes for minor tweaks and additions, which is likely to be the most common use case. If you need to replace all classes on the root element of the component, pass them in `options[:class]` instead.
 
 ### Removed
 
-*
+* Color-specific styles from Flowbite::Button, ie `alternative`, `green`, `light`, `purple`, `red`, `yellow`.
 
 
 ## [0.1.3]
