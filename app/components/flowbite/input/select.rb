@@ -9,9 +9,9 @@ module Flowbite
     # Wraps `ActionView::Helpers::FormOptionsHelper#select`: https://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-select
     class Select < Field
       SIZES = {
-        sm: ["p-2", "text-xs"],
-        default: ["p-2.5", "text-sm"],
-        lg: ["px-4", "py-3", "text-base"]
+        sm: ["px-2.5", "py-2", "text-sm"],
+        default: ["px-3", "py-2.5", "text-sm"],
+        lg: ["px-3.5", "py-3", "text-base"]
       }.freeze
 
       def initialize(form:, attribute:, class: nil, collection: [], disabled: false, include_blank: false, multiple: false, options: {}, size: :default)

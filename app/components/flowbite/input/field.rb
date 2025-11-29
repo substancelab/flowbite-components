@@ -13,9 +13,9 @@ module Flowbite
     # `Flowbite::InputField` instead.
     class Field < ViewComponent::Base
       SIZES = {
-        sm: ["p-2", "text-xs"],
-        default: ["p-2.5", "text-sm"],
-        lg: ["p-4", "text-base"]
+        sm: ["px-2.5", "py-2", "text-sm"],
+        default: ["px-3", "py-2.5", "text-sm"],
+        lg: ["px-3.5", "py-3", "text-base"]
       }.freeze
 
       STATES = [
@@ -48,9 +48,9 @@ module Flowbite
         def styles
           {
             default: Flowbite::Style.new(
-              default: ["bg-gray-50", "border", "border-gray-300", "text-gray-900", "rounded-lg", "focus:ring-blue-500", "focus:border-blue-500", "block", "w-full", "dark:bg-gray-700", "dark:border-gray-600", "dark:placeholder-gray-400", "dark:text-white", "dark:focus:ring-blue-500", "dark:focus:border-blue-500"],
-              disabled: ["bg-gray-100", "border", "border-gray-300", "text-gray-900", "text-sm", "rounded-lg", "focus:ring-blue-500", "focus:border-blue-500", "block", "w-full", "p-2.5", "cursor-not-allowed", "dark:bg-gray-700", "dark:border-gray-600", "dark:placeholder-gray-400", "dark:text-gray-400", "dark:focus:ring-blue-500", "dark:focus:border-blue-500"],
-              error: ["bg-red-50", "border", "border-red-500", "text-red-900", "placeholder-red-700", "rounded-lg", "focus:ring-red-500", "dark:bg-gray-700", "focus:border-red-500", "block", "w-full", "dark:text-red-500", "dark:placeholder-red-500", "dark:border-red-500"]
+              default: ["bg-neutral-secondary-medium", "border", "border-default-medium", "text-heading", "rounded-base", "focus:ring-brand", "focus:border-brand", "block", "w-full", "shadow-xs", "placeholder:text-body"],
+              disabled: ["bg-neutral-secondary-medium", "border", "border-default-medium", "text-fg-disabled", "rounded-base", "focus:ring-brand", "focus:border-brand", "block", "w-full", "shadow-xs", "cursor-not-allowed", "placeholder:text-fg-disabled"],
+              error: ["bg-danger-soft", "border", "border-danger-subtle", "text-fg-danger-strong", "rounded-base", "focus:ring-danger", "focus:border-danger", "block", "w-full", "shadow-xs", "placeholder:text-fg-danger-strong"]
             )
           }.freeze
         end

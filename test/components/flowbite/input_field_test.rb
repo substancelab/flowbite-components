@@ -101,7 +101,7 @@ class Flowbite::InputFieldTest < Minitest::Test
   def test_renders_a_large_select_element
     render_inline(Flowbite::InputField::Select.new(form: @form, attribute: :state, collection: ["read", "unread"], size: :lg))
 
-    assert_selector("select.text-base.px-4.py-3")
+    assert_selector("select.text-base.px-3\\.5.py-3")
   end
 
   def test_passes_input_options_to_select_element

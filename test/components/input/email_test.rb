@@ -20,32 +20,32 @@ class Flowbite::Input::EmailTest < Minitest::Test
   def test_renders_with_default_state
     render_inline(Flowbite::Input::Email.new(form: @form, attribute: :email))
 
-    assert_selector("input[name='user[email]'].border-gray-300")
+    assert_selector("input[name='user[email]'].border-default-medium")
   end
 
   def test_renders_in_error_state
     @user.errors.add(:email, :invalid)
     render_inline(Flowbite::Input::Email.new(form: @form, attribute: :email))
 
-    assert_selector("input[name='user[email]'].border-red-500")
+    assert_selector("input[name='user[email]'].border-danger-subtle")
   end
 
   def test_renders_in_disabled_state
     render_inline(Flowbite::Input::Email.new(form: @form, attribute: :email, disabled: true))
 
-    assert_selector("input[name='user[email]'][disabled].bg-gray-100.border.border-gray-300.text-gray-900.cursor-not-allowed")
+    assert_selector("input[name='user[email]'][disabled].bg-neutral-secondary-medium.border.border-default-medium.text-fg-disabled.cursor-not-allowed")
   end
 
   def test_renders_with_sm_size
     render_inline(Flowbite::Input::Email.new(form: @form, attribute: :email, size: :sm))
 
-    assert_selector("input[name='user[email]'].p-2.text-xs")
+    assert_selector("input[name='user[email]'].px-2\\.5.py-2.text-sm")
   end
 
   def test_renders_with_lg_size
     render_inline(Flowbite::Input::Email.new(form: @form, attribute: :email, size: :lg))
 
-    assert_selector("input[name='user[email]'].text-base")
+    assert_selector("input[name='user[email]'].px-3\\.5.py-3.text-base")
   end
 
   def test_adds_attributes_to_input
@@ -57,13 +57,13 @@ class Flowbite::Input::EmailTest < Minitest::Test
   def test_adds_class_attribute_to_existing_classes
     render_inline(Flowbite::Input::Email.new(class: "custom-class", form: @form, attribute: :email))
 
-    assert_selector("input[name='user[email]'].bg-gray-50.custom-class")
+    assert_selector("input[name='user[email]'].bg-neutral-secondary-medium.custom-class")
   end
 
   def test_replaces_class_attribute_with_options_class
     render_inline(Flowbite::Input::Email.new(form: @form, attribute: :email, options: {class: "custom-class"}))
 
-    assert_no_selector("input[name='user[email]'].bg-gray-50.custom-class")
+    assert_no_selector("input[name='user[email]'].bg-neutral-secondary-medium.custom-class")
     assert_selector("input[name='user[email]'].custom-class")
   end
 

@@ -4,9 +4,9 @@ module Flowbite
   module Input
     class File < Field
       SIZES = {
-        sm: ["text-xs"],
+        sm: ["text-sm"],
         default: ["text-sm"],
-        lg: ["text-lg"]
+        lg: ["text-base"]
       }.freeze
 
       # Returns the name of the method used to generate HTML for the input field
@@ -18,9 +18,9 @@ module Flowbite
       def self.styles
         {
           default: Flowbite::Style.new(
-            default: ["block", "w-full", "text-gray-900", "border", "border-gray-300", "rounded-lg", "cursor-pointer", "bg-gray-50", "focus:outline-none", "dark:text-gray-400", "dark:bg-gray-700", "dark:border-gray-600"],
-            disabled: ["block", "w-full", "text-gray-400", "border", "border-gray-300", "rounded-lg", "cursor-not-allowed", "bg-gray-100", "dark:text-gray-500", "dark:bg-gray-600", "dark:border-gray-500"],
-            error: ["block", "w-full", "text-red-900", "border", "border-red-500", "rounded-lg", "cursor-pointer", "bg-red-50", "focus:outline-none", "dark:text-red-400", "dark:bg-gray-700", "dark:border-red-500"]
+            default: ["block", "w-full", "text-heading", "border", "border-default-medium", "rounded-base", "cursor-pointer", "bg-neutral-secondary-medium", "focus:outline-none"],
+            disabled: ["block", "w-full", "text-fg-disabled", "border", "border-default-medium", "rounded-base", "cursor-not-allowed", "bg-neutral-secondary-medium"],
+            error: ["block", "w-full", "text-fg-danger-strong", "border", "border-danger-subtle", "rounded-base", "cursor-pointer", "bg-danger-soft", "focus:outline-none"]
           )
         }.freeze
       end

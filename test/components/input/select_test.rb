@@ -28,20 +28,20 @@ class Flowbite::Input::SelectTest < Minitest::Test
   def test_renders_with_default_classes
     render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }))
 
-    assert_selector("select[name='article[category_id]'].bg-gray-50.border-gray-300.text-gray-900.rounded-lg")
+    assert_selector("select[name='article[category_id]'].bg-neutral-secondary-medium.border-default-medium.text-heading.rounded-base")
   end
 
   def test_renders_in_error_state
     @article.errors.add(:category_id, :invalid)
     render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }))
 
-    assert_selector("select[name='article[category_id]'].border-red-500")
+    assert_selector("select[name='article[category_id]'].border-danger-subtle")
   end
 
   def test_renders_in_disabled_state
     render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }, disabled: true))
 
-    assert_selector("select[name='article[category_id]'][disabled].bg-gray-100.border.border-gray-300.text-gray-900.cursor-not-allowed")
+    assert_selector("select[name='article[category_id]'][disabled].bg-neutral-secondary-medium.border.border-default-medium.text-fg-disabled.cursor-not-allowed")
   end
 
   def test_renders_with_include_blank
@@ -66,13 +66,13 @@ class Flowbite::Input::SelectTest < Minitest::Test
   def test_renders_with_sm_size
     render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }, size: :sm))
 
-    assert_selector("select.p-2.text-xs")
+    assert_selector("select.px-2\\.5.py-2.text-sm")
   end
 
   def test_renders_with_lg_size
     render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }, size: :lg))
 
-    assert_selector("select.px-4.py-3.text-base")
+    assert_selector("select.px-3\\.5.py-3.text-base")
   end
 
   def test_adds_attributes_to_input
@@ -84,13 +84,13 @@ class Flowbite::Input::SelectTest < Minitest::Test
   def test_adds_class_attribute_to_existing_classes
     render_inline(Flowbite::Input::Select.new(class: "custom-class", form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }))
 
-    assert_selector("select[name='article[category_id]'].bg-gray-50.custom-class")
+    assert_selector("select[name='article[category_id]'].bg-neutral-secondary-medium.custom-class")
   end
 
   def test_replaces_class_attribute_with_options_class
     render_inline(Flowbite::Input::Select.new(form: @form, attribute: :category_id, collection: @categories.map { |c| [c.name, c.id] }, options: {class: "custom-class"}))
 
-    assert_no_selector("select[name='article[category_id]'].bg-gray-50.custom-class")
+    assert_no_selector("select[name='article[category_id]'].bg-neutral-secondary-medium.custom-class")
     assert_selector("select[name='article[category_id]'].custom-class")
   end
 

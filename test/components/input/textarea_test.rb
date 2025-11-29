@@ -20,32 +20,32 @@ class Flowbite::Input::TextareaTest < Minitest::Test
   def test_renders_with_default_classes
     render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content))
 
-    assert_selector("textarea[name='article[content]'].block.p-2\\.5.w-full.text-sm.bg-gray-50.border-gray-300.rounded-lg")
+    assert_selector("textarea[name='article[content]'].block.px-3.py-2\\.5.w-full.text-sm.bg-neutral-secondary-medium.border-default-medium.rounded-base")
   end
 
   def test_renders_in_error_state
     @article.errors.add(:content, :invalid)
     render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content))
 
-    assert_selector("textarea[name='article[content]'].border-red-500")
+    assert_selector("textarea[name='article[content]'].border-danger-subtle")
   end
 
   def test_renders_in_disabled_state
     render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content, disabled: true))
 
-    assert_selector("textarea[name='article[content]'][disabled].bg-gray-100.border.border-gray-300.text-gray-900.cursor-not-allowed")
+    assert_selector("textarea[name='article[content]'][disabled].bg-neutral-secondary-medium.border.border-default-medium.text-fg-disabled.cursor-not-allowed")
   end
 
   def test_renders_with_sm_size
     render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content, size: :sm))
 
-    assert_selector("textarea[name='article[content]'].p-2.text-xs")
+    assert_selector("textarea[name='article[content]'].px-2\\.5.py-2.text-sm")
   end
 
   def test_renders_with_lg_size
     render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content, size: :lg))
 
-    assert_selector("textarea[name='article[content]'].text-base")
+    assert_selector("textarea[name='article[content]'].px-3\\.5.py-3.text-base")
   end
 
   def test_adds_attributes_to_textarea
@@ -57,13 +57,13 @@ class Flowbite::Input::TextareaTest < Minitest::Test
   def test_adds_class_attribute_to_existing_classes
     render_inline(Flowbite::Input::Textarea.new(class: "custom-class", form: @form, attribute: :content))
 
-    assert_selector("textarea[name='article[content]'].bg-gray-50.custom-class")
+    assert_selector("textarea[name='article[content]'].bg-neutral-secondary-medium.custom-class")
   end
 
   def test_replaces_class_attribute_with_options_class
     render_inline(Flowbite::Input::Textarea.new(form: @form, attribute: :content, options: {class: "custom-class"}))
 
-    assert_no_selector("textarea[name='article[content]'].bg-gray-50.custom-class")
+    assert_no_selector("textarea[name='article[content]'].bg-neutral-secondary-medium.custom-class")
     assert_selector("textarea[name='article[content]'].custom-class")
   end
 
