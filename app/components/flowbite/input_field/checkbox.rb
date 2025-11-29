@@ -33,9 +33,9 @@ module Flowbite
 
       def hint_classes
         if disabled?
-          "text-xs font-normal text-gray-400 dark:text-gray-500"
+          "text-xs font-normal text-fg-disabled"
         else
-          "text-xs font-normal text-gray-500 dark:text-gray-300"
+          "text-xs font-normal text-body"
         end
       end
 
@@ -48,9 +48,9 @@ module Flowbite
 
       def label_classes
         if disabled?
-          "font-medium text-gray-400 dark:text-gray-500"
+          "font-medium text-fg-disabled"
         else
-          "font-medium text-gray-900 dark:text-gray-300"
+          "font-medium text-heading"
         end
       end
     end

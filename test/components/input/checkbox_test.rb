@@ -34,13 +34,13 @@ class Flowbite::Input::CheckboxTest < Minitest::Test
   def test_renders_with_default_state
     render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed))
 
-    assert_selector("input[name='user[subscribed]'].border-gray-300")
+    assert_selector("input[name='user[subscribed]'].border-default-medium")
   end
 
   def test_renders_in_disabled_state
     render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, disabled: true))
 
-    assert_selector("input[name='user[subscribed]'][disabled].bg-gray-100.border-gray-300.text-blue-600")
+    assert_selector("input[name='user[subscribed]'][disabled].bg-neutral-secondary-medium.border-default-medium.text-brand")
   end
 
   def test_sets_value
@@ -58,7 +58,7 @@ class Flowbite::Input::CheckboxTest < Minitest::Test
   def test_adds_class_attribute_to_existing_classes
     render_inline(Flowbite::Input::Checkbox.new(class: "custom-class", form: @form, attribute: :subscribed))
 
-    assert_selector("input[name='user[subscribed]'].bg-gray-100.custom-class")
+    assert_selector("input[name='user[subscribed]'].bg-neutral-secondary-medium.custom-class")
   end
 
   def test_renders_a_hidden_input_for_the_unchecked_case
@@ -76,7 +76,7 @@ class Flowbite::Input::CheckboxTest < Minitest::Test
   def test_replaces_class_attribute_with_options_class
     render_inline(Flowbite::Input::Checkbox.new(form: @form, attribute: :subscribed, options: {class: "custom-class"}))
 
-    assert_no_selector("input[name='user[subscribed]'].bg-gray-100.custom-class")
+    assert_no_selector("input[name='user[subscribed]'].bg-neutral-secondary-medium.custom-class")
     assert_selector("input[name='user[subscribed]'].custom-class")
   end
 

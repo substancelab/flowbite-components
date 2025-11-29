@@ -26,7 +26,7 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
   def test_renders_a_label
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed))
 
-    assert_selector("label[for='user_subscribed'].font-medium.text-gray-900")
+    assert_selector("label[for='user_subscribed'].font-medium.text-heading")
   end
 
   def test_renders_a_label_with_specific_content
@@ -38,7 +38,7 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
   def test_passes_options_to_the_label
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, label: {content: "Check to receive updates", options: {title: "label"}}))
 
-    assert_selector("label[title='label'].font-medium.text-gray-900", text: "Check to receive updates")
+    assert_selector("label[title='label'].font-medium.text-heading", text: "Check to receive updates")
   end
 
   def test_uses_specified_label_classes
@@ -52,7 +52,7 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
       component.with_label { "This is the full label" }
     end
 
-    refute_selector("p.text-xs.font-normal.text-gray-500")
+    refute_selector("p.text-xs.font-normal.text-body")
     assert_text("This is the full label")
   end
 
@@ -73,13 +73,13 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
   def test_renders_a_hint
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, hint: {content: "Check to receive updates"}))
 
-    assert_selector("p.text-xs.font-normal.text-gray-500", text: "Check to receive updates")
+    assert_selector("p.text-xs.font-normal.text-body", text: "Check to receive updates")
   end
 
   def test_passes_options_to_the_hint
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, hint: {content: "Check to receive updates", options: {title: "Hint"}}))
 
-    assert_selector("p[title='Hint'].text-xs.font-normal.text-gray-500", text: "Check to receive updates")
+    assert_selector("p[title='Hint'].text-xs.font-normal.text-body", text: "Check to receive updates")
   end
 
   def test_adds_aria_attributes_for_hint
@@ -94,7 +94,7 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
       component.with_hint { "This is the full hint" }
     end
 
-    refute_selector("p.text-xs.font-normal.text-gray-500")
+    refute_selector("p.text-xs.font-normal.text-body")
     assert_text("This is the full hint")
   end
 
@@ -113,7 +113,7 @@ class Flowbite::InputField::CheckboxTest < Minitest::Test
   def test_renders_disabled_label
     render_inline(Flowbite::InputField::Checkbox.new(form: @form, attribute: :subscribed, disabled: true))
 
-    assert_selector("label[for='user_subscribed'].text-gray-400")
+    assert_selector("label[for='user_subscribed'].text-fg-disabled")
   end
 
   def test_renders_enabled_checkbox_by_default
