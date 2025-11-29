@@ -22,13 +22,13 @@ class Flowbite::Input::LabelTest < Minitest::Test
     render_inline(Flowbite::Input::Label.new(form: @form, attribute: :title))
 
     assert_component_rendered
-    assert_selector("label[for='book_title'].text-gray-900")
+    assert_selector("label[for='book_title'].text-heading")
   end
 
   def test_renders_in_disabled_state
     render_inline(Flowbite::Input::Label.new(form: @form, attribute: :title, disabled: true))
 
-    assert_selector("label[for='book_title'].text-gray-400")
+    assert_selector("label[for='book_title'].text-fg-disabled")
   end
 
   def test_renders_in_error_state
@@ -36,7 +36,7 @@ class Flowbite::Input::LabelTest < Minitest::Test
     render_inline(Flowbite::Input::Label.new(form: @form, attribute: :title))
 
     assert_component_rendered
-    assert_selector("label[for='book_title'].text-red-700")
+    assert_selector("label[for='book_title'].text-fg-danger-strong")
   end
 
   def test_sets_id_attribute
@@ -48,7 +48,7 @@ class Flowbite::Input::LabelTest < Minitest::Test
   def test_adds_class_attribute_to_existing_classes
     render_inline(Flowbite::Input::Label.new(class: "toggle", form: @form, attribute: :title))
 
-    assert_selector("label.text-gray-900.toggle")
+    assert_selector("label.text-heading.toggle")
   end
 
   def test_renders_specified_label_text
