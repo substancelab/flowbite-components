@@ -20,13 +20,13 @@ class Flowbite::InputField::RadioButtonTest < Minitest::Test
   def test_renders_a_label
     render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, value: "visible"))
 
-    assert_selector("label[for='article_state_visible'].font-medium.text-gray-900")
+    assert_selector("label[for='article_state_visible'].font-medium.text-heading")
   end
 
   def test_renders_a_label_with_specified_text
     render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, value: "visible", label: {content: "Visible"}))
 
-    assert_selector("label[for='article_state_visible'].font-medium.text-gray-900", text: "Visible")
+    assert_selector("label[for='article_state_visible'].font-medium.text-heading", text: "Visible")
   end
 
   def test_renders_checked_when_true
@@ -47,7 +47,7 @@ class Flowbite::InputField::RadioButtonTest < Minitest::Test
   def test_renders_a_hint
     render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, value: "visible", hint: "Profile can be accessed publicly"))
 
-    assert_selector("p.text-xs.font-normal.text-gray-500", text: "Profile can be accessed publicly")
+    assert_selector("p.text-xs.font-normal.text-body", text: "Profile can be accessed publicly")
   end
 
   def test_adds_aria_attributes_for_hint
@@ -78,7 +78,7 @@ class Flowbite::InputField::RadioButtonTest < Minitest::Test
   def test_renders_disabled_label
     render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, disabled: true, value: "visible"))
 
-    assert_selector("label[for='article_state_visible'].text-gray-400")
+    assert_selector("label[for='article_state_visible'].text-fg-disabled")
   end
 
   def test_renders_enabled_radio_by_default

@@ -20,13 +20,13 @@ class Flowbite::Input::RadioButtonTest < Minitest::Test
   def test_renders_with_default_classes
     render_inline(Flowbite::Input::RadioButton.new(form: @form, attribute: :state, value: "published"))
 
-    assert_selector("input[type='radio'][name='article[state]'].text-blue-600.bg-gray-100.border-gray-300")
+    assert_selector("input[type='radio'][name='article[state]'].text-brand.bg-neutral-secondary-medium.border-default-medium")
   end
 
   def test_renders_in_disabled_state
     render_inline(Flowbite::Input::RadioButton.new(form: @form, attribute: :state, value: "published", disabled: true))
 
-    assert_selector("input[type='radio'][name='article[state]'][disabled].text-blue-600.bg-gray-100.border-gray-300")
+    assert_selector("input[type='radio'][name='article[state]'][disabled].text-brand.bg-neutral-secondary-medium.border-default-medium")
   end
 
   def test_adds_attributes_to_radio_button
@@ -38,13 +38,13 @@ class Flowbite::Input::RadioButtonTest < Minitest::Test
   def test_adds_class_attribute_to_existing_classes
     render_inline(Flowbite::Input::RadioButton.new(class: "custom-class", form: @form, attribute: :state, value: "published"))
 
-    assert_selector("input[type='radio'][name='article[state]'].text-blue-600.bg-gray-100.border-gray-300.custom-class")
+    assert_selector("input[type='radio'][name='article[state]'].text-brand.bg-neutral-secondary-medium.border-default-medium.custom-class")
   end
 
   def test_replaces_class_attribute_with_options_class
     render_inline(Flowbite::Input::RadioButton.new(form: @form, attribute: :state, value: "published", options: {class: "custom-class"}))
 
-    assert_no_selector("input[type='radio'][name='article[state]'].text-blue-600.custom-class")
+    assert_no_selector("input[type='radio'][name='article[state]'].text-brand.custom-class")
     assert_selector("input[type='radio'][name='article[state]'].custom-class")
   end
 
