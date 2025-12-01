@@ -22,13 +22,15 @@ module Flowbite
 
         # rubocop:disable Layout/LineLength
         def styles
-          {
-            default: Flowbite::Style.new(
-              default: ["text-brand", "bg-neutral-secondary-medium", "border-default-medium", "rounded-sm", "focus:ring-brand", "focus:ring-2"],
-              disabled: ["text-brand", "bg-neutral-secondary-medium", "border-default-medium", "rounded-sm", "focus:ring-brand", "focus:ring-2", "cursor-not-allowed"],
-              error: ["text-danger", "bg-danger-soft", "border-danger-subtle", "rounded-sm", "focus:ring-danger", "focus:ring-2"]
-            )
-          }.freeze
+          Flowbite::Styles.from_hash(
+            {
+              default: {
+                default: ["text-brand", "bg-neutral-secondary-medium", "border-default-medium", "rounded-sm", "focus:ring-brand", "focus:ring-2"],
+                disabled: ["text-brand", "bg-neutral-secondary-medium", "border-default-medium", "rounded-sm", "focus:ring-brand", "focus:ring-2", "cursor-not-allowed"],
+                error: ["text-danger", "bg-danger-soft", "border-danger-subtle", "rounded-sm", "focus:ring-danger", "focus:ring-2"]
+              }
+            }.freeze
+          )
         end
       end
 

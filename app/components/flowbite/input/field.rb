@@ -46,13 +46,15 @@ module Flowbite
 
         # rubocop:disable Layout/LineLength
         def styles
-          {
-            default: Flowbite::Style.new(
-              default: ["bg-neutral-secondary-medium", "border", "border-default-medium", "text-heading", "rounded-base", "focus:ring-brand", "focus:border-brand", "block", "w-full", "shadow-xs", "placeholder:text-body"],
-              disabled: ["bg-neutral-secondary-medium", "border", "border-default-medium", "text-fg-disabled", "rounded-base", "focus:ring-brand", "focus:border-brand", "block", "w-full", "shadow-xs", "cursor-not-allowed", "placeholder:text-fg-disabled"],
-              error: ["bg-danger-soft", "border", "border-danger-subtle", "text-fg-danger-strong", "rounded-base", "focus:ring-danger", "focus:border-danger", "block", "w-full", "shadow-xs", "placeholder:text-fg-danger-strong"]
-            )
-          }.freeze
+          Flowbite::Styles.from_hash(
+            {
+              default: {
+                default: ["bg-neutral-secondary-medium", "border", "border-default-medium", "text-heading", "rounded-base", "focus:ring-brand", "focus:border-brand", "block", "w-full", "shadow-xs", "placeholder:text-body"],
+                disabled: ["bg-neutral-secondary-medium", "border", "border-default-medium", "text-fg-disabled", "rounded-base", "focus:ring-brand", "focus:border-brand", "block", "w-full", "shadow-xs", "cursor-not-allowed", "placeholder:text-fg-disabled"],
+                error: ["bg-danger-soft", "border", "border-danger-subtle", "text-fg-danger-strong", "rounded-base", "focus:ring-danger", "focus:border-danger", "block", "w-full", "shadow-xs", "placeholder:text-fg-danger-strong"]
+              }
+            }.freeze
+          )
         end
         # rubocop:enable Layout/LineLength
       end

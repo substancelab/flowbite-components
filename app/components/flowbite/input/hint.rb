@@ -14,11 +14,13 @@ module Flowbite
         end
 
         def styles
-          {
-            default: Flowbite::Style.new(
-              default: ["mt-2.5", "text-sm", "text-body"]
-            )
-          }.freeze
+          Flowbite::Styles.from_hash(
+            {
+              default: {
+                default: ["mt-2.5", "text-sm", "text-body"]
+              }
+            }.freeze
+          )
         end
       end
 

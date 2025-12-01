@@ -17,13 +17,15 @@ module Flowbite
         end
 
         def styles
-          {
-            default: Flowbite::Style.new(
-              default: ["block", "mb-2.5", "text-sm", "font-medium", "text-heading"],
-              disabled: ["block", "mb-2.5", "text-sm", "font-medium", "text-fg-disabled"],
-              error: ["block", "mb-2.5", "text-sm", "font-medium", "text-fg-danger-strong"]
-            )
-          }.freeze
+          Flowbite::Styles.from_hash(
+            {
+              default: {
+                default: ["block", "mb-2.5", "text-sm", "font-medium", "text-heading"],
+                disabled: ["block", "mb-2.5", "text-sm", "font-medium", "text-fg-disabled"],
+                error: ["block", "mb-2.5", "text-sm", "font-medium", "text-fg-danger-strong"]
+              }
+            }.freeze
+          )
         end
       end
 
