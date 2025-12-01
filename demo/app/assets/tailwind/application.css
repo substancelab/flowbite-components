@@ -13,5 +13,5 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 footer a {
-  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+  @apply font-medium text-brand hover:underline;
 }
