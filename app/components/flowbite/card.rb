@@ -15,11 +15,13 @@ module Flowbite
 
       # rubocop:disable Layout/LineLength
       def styles
-        {
-          default: Flowbite::Style.new(
-            default: ["p-6", "bg-neutral-primary-soft", "border", "border-default", "rounded-base", "shadow-xs"]
-          )
-        }.freeze
+        Flowbite::Styles.from_hash(
+          {
+            default: {
+              default: ["p-6", "bg-neutral-primary-soft", "border", "border-default", "rounded-base", "shadow-xs"]
+            }
+          }.freeze
+        )
       end
       # rubocop:enable Layout/LineLength
     end

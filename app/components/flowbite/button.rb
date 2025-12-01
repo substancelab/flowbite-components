@@ -31,32 +31,34 @@ module Flowbite
 
       # rubocop:disable Layout/LineLength
       def styles
-        {
-          danger: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-white", "bg-danger", "box-border", "border", "border-transparent", "hover:bg-danger-strong", "focus:ring-4", "focus:ring-danger-medium", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
-          ),
-          dark: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-white", "bg-dark", "box-border", "border", "border-transparent", "hover:bg-dark-strong", "focus:ring-4", "focus:ring-neutral-tertiary", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
-          ),
-          default: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-white", "bg-brand", "box-border", "border", "border-transparent", "hover:bg-brand-strong", "focus:ring-4", "focus:ring-brand-medium", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
-          ),
-          ghost: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-heading", "bg-transparent", "box-border", "border", "border-transparent", "hover:bg-neutral-secondary-medium", "focus:ring-4", "focus:ring-neutral-tertiary", "font-medium", "leading-5", "rounded-base"]
-          ),
-          secondary: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-body", "bg-neutral-secondary-medium", "box-border", "border", "border-default-medium", "hover:bg-neutral-tertiary-medium", "focus:ring-4", "focus:ring-neutral-tertiary", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
-          ),
-          success: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-white", "bg-success", "box-border", "border", "border-transparent", "hover:bg-success-strong", "focus:ring-4", "focus:ring-success-medium", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
-          ),
-          tertiary: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-body", "bg-neutral-primary-soft", "box-border", "border", "border-default", "hover:bg-neutral-secondary-medium", "focus:ring-4", "focus:ring-neutral-tertiary-soft", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
-          ),
-          warning: Flowbite::Style.new(
-            default: ["focus:outline-none", "text-white", "bg-warning", "box-border", "border", "border-transparent", "hover:bg-warning-strong", "focus:ring-4", "focus:ring-warning-medium", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
-          )
-        }.freeze
+        Flowbite::Styles.from_hash(
+          {
+            danger: {
+              default: ["focus:outline-none", "text-white", "bg-danger", "box-border", "border", "border-transparent", "hover:bg-danger-strong", "focus:ring-4", "focus:ring-danger-medium", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
+            },
+            dark: {
+              default: ["focus:outline-none", "text-white", "bg-dark", "box-border", "border", "border-transparent", "hover:bg-dark-strong", "focus:ring-4", "focus:ring-neutral-tertiary", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
+            },
+            default: {
+              default: ["focus:outline-none", "text-white", "bg-brand", "box-border", "border", "border-transparent", "hover:bg-brand-strong", "focus:ring-4", "focus:ring-brand-medium", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
+            },
+            ghost: {
+              default: ["focus:outline-none", "text-heading", "bg-transparent", "box-border", "border", "border-transparent", "hover:bg-neutral-secondary-medium", "focus:ring-4", "focus:ring-neutral-tertiary", "font-medium", "leading-5", "rounded-base"]
+            },
+            secondary: {
+              default: ["focus:outline-none", "text-body", "bg-neutral-secondary-medium", "box-border", "border", "border-default-medium", "hover:bg-neutral-tertiary-medium", "focus:ring-4", "focus:ring-neutral-tertiary", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
+            },
+            success: {
+              default: ["focus:outline-none", "text-white", "bg-success", "box-border", "border", "border-transparent", "hover:bg-success-strong", "focus:ring-4", "focus:ring-success-medium", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
+            },
+            tertiary: {
+              default: ["focus:outline-none", "text-body", "bg-neutral-primary-soft", "box-border", "border", "border-default", "hover:bg-neutral-secondary-medium", "focus:ring-4", "focus:ring-neutral-tertiary-soft", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
+            },
+            warning: {
+              default: ["focus:outline-none", "text-white", "bg-warning", "box-border", "border", "border-transparent", "hover:bg-warning-strong", "focus:ring-4", "focus:ring-warning-medium", "shadow-xs", "font-medium", "leading-5", "rounded-base"]
+            }
+          }.freeze
+        )
       end
       # rubocop:enable Layout/LineLength
     end

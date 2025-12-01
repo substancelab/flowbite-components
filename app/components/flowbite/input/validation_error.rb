@@ -11,11 +11,13 @@ module Flowbite
 
         # rubocop:disable Layout/LineLength
         def styles
-          {
-            default: Flowbite::Style.new(
-              default: ["mt-2", "text-sm", "text-red-600", "dark:text-red-500"]
-            )
-          }.freeze
+          Flowbite::Styles.from_hash(
+            {
+              default: {
+                default: ["mt-2", "text-sm", "text-red-600", "dark:text-red-500"]
+              }
+            }.freeze
+          )
         end
         # rubocop:enable Layout/LineLength
       end

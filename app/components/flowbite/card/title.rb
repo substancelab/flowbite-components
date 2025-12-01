@@ -12,11 +12,13 @@ module Flowbite
 
         # rubocop:disable Layout/LineLength
         def styles
-          {
-            default: Flowbite::Style.new(
-              default: ["mb-2", "text-2xl", "font-semibold", "tracking-tight", "text-heading"]
-            )
-          }.freeze
+          Flowbite::Styles.from_hash(
+            {
+              default: {
+                default: ["mb-2", "text-2xl", "font-semibold", "tracking-tight", "text-heading"]
+              }
+            }.freeze
+          )
         end
         # rubocop:enable Layout/LineLength
       end
