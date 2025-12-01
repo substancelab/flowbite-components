@@ -1,17 +1,20 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title><%= content_for(:title) || "Flowbite Components for Rails" %></title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <%# = tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -21,38 +24,105 @@
     <%= stylesheet_link_tag :app %>
   </head>
 
-  <body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-400">
+  <body class="bg-neutral-primary text-body">
     <header>
-      <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <nav class="bg-neutral-primary border-gray-200">
+        <div
+          class="
+            max-w-screen-xl flex flex-wrap items-center justify-between
+            mx-auto p-4
+          "
+        >
           <%= link_to(root_path, class: "flex items-center space-x-3 rtl:space-x-reverse") do %>
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">flowbite-components</span>
+            <span
+              class="
+                self-center text-2xl font-semibold whitespace-nowrap
+                text-heading
+              "
+            >
+              flowbite-components
+            </span>
           <% end %>
+
           <% if @menu_toggle_implemented %>
-            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                </svg>
+            <button
+              data-collapse-toggle="navbar-default"
+              type="button"
+              class="
+                inline-flex items-center p-2 w-10 h-10 justify-center
+                text-sm text-body rounded-lg md:hidden hover:bg-neutral-primary/10
+                focus:outline-none focus:ring-2 focus:ring-primary/50
+              "
+              aria-controls="navbar-default"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Open main menu</span>
+
+              <svg
+                class="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
             </button>
           <% end %>
+
           <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul
+              class="
+                font-medium flex flex-col p-4 md:p-0 mt-4 border
+                border-light rounded-lg bg-neutral-secondary md:flex-row
+                md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0
+                md:bg-neutral-primary
+              "
+            >
               <li>
-                <%= link_to("Home", root_url, class: "block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent") %>
+                <%= link_to("Home", root_url, class: "block py-2 px-3 text-heading rounded-sm hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-brand md:p-0 md:dark:hover:text-fg-brand dark:hover:text-white md:dark:hover:bg-transparent") %>
               </li>
+
               <li>
-                <%= link_to("GitHub", "https://github.com/substancelab/flowbite-components", class: "block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent") %>
+                <%= link_to("GitHub", "https://github.com/substancelab/flowbite-components", class: "block py-2 px-3 text-heading rounded-sm hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-brand md:p-0 md:dark:hover:text-fg-brand dark:hover:text-white md:dark:hover:bg-transparent") %>
               </li>
+
               <li>
                 <button data-theme-toggle="dark" class="dark:hidden">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                    <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z" clip-rule="evenodd" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+                      clip-rule="evenodd"
+                    />
                   </svg>
                 </button>
+
                 <button data-theme-toggle="light" class="hidden dark:block">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+                    />
                   </svg>
                 </button>
               </li>
@@ -63,12 +133,10 @@
     </header>
 
     <main class="container mx-auto mt-28 px-5 flex">
-      <article>
-        <%= yield %>
-      </article>
+      <article><%= yield %></article>
     </main>
 
-    <footer class="mt-28 px-5 py-5 flex border-t-2 border-gray-200 dark:border-gray-700">
+    <footer class="mt-28 px-5 py-5 flex border-t-2 border-default">
       <div class="space-y-5">
         <div class="flex space-x-5">
           <%= link_to("GitHub", "https://github.com/substancelab/flowbite-components") %>
@@ -77,19 +145,29 @@
         </div>
 
         <div>
-          Licensed under the <%= link_to("MIT License", "https://github.com/substancelab/flowbite-components/blob/main/LICENSE") %>, except where otherwise stated
+          Licensed under the
+          <%= link_to("MIT License", "https://github.com/substancelab/flowbite-components/blob/main/LICENSE") %>,
+          except where otherwise stated
         </div>
 
         <div>
-          The Flowbite name and logos are trademarks of <%= link_to("Bergside Inc", "https://flowbite.com/brand/") %>.
-          The Tailwind name and logos are trademarks of <%= link_to("Tailwind Labs Inc", "https://tailwindcss.com/brand") %>.
+          The Flowbite name and logos are trademarks of
+          <%= link_to("Bergside Inc", "https://flowbite.com/brand/") %>. The
+          Tailwind name and logos are trademarks of
+          <%= link_to("Tailwind Labs Inc", "https://tailwindcss.com/brand") %>.
         </div>
       </div>
     </footer>
 
     <script>
       function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
+        if (theme == "dark") {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        } else {
+          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
+        }
         localStorage.setItem("theme", theme);
       }
       setTheme(localStorage.getItem('theme') || 'light');

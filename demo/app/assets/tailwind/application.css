@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
+/* Load the default theme - or pick another, see https://flowbite.com/docs/customize/theming/ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "flowbite/src/themes/default";
+
 /* Load Flowbite */
 @plugin "flowbite/plugin";
-
-/* Load the default theme - or pick another, see https://flowbite.com/docs/customize/theming/ */
-@import "flowbite/src/themes/default";
 
 /* Include CSS classes used by the components in the final CSS */
 @import "../builds/tailwind/flowbite_components";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 footer a {
-  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+  @apply font-medium text-brand hover:underline;
 }
