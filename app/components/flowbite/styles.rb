@@ -19,7 +19,7 @@ module Flowbite
     end
 
     def fetch(style_name)
-      return @styles.fetch(style_name) if @styles.key?(style_name)
+      return @styles[style_name] if @styles.key?(style_name)
 
       raise \
         StyleNotFoundError,
