@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 * Flowbite::Link component to render links.
 * Flowbite::Card now displays a title via the title argument/slot.
+* Improved error message when an unknown style is requested.
 
 ### Changed
 
