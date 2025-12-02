@@ -161,16 +161,16 @@
 
     <script>
       function setTheme(theme) {
-        if (theme == "dark") {
-          document.documentElement.classList.add('dark');
-          document.documentElement.classList.remove('light');
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+          document.documentElement.classList.remove("light");
         } else {
-          document.documentElement.classList.add('light');
-          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add("light");
+          document.documentElement.classList.remove("dark");
         }
         localStorage.setItem("theme", theme);
       }
-      setTheme(localStorage.getItem('theme') || 'light');
+      setTheme(localStorage.getItem("theme") || "light");
 
       document.querySelectorAll("[data-theme-toggle]").forEach((element) => {
         element.addEventListener("click", () => {
