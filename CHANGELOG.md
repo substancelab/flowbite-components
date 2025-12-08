@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Flowbite::Link component to render links.
 * Flowbite::Card now displays a title via the title argument/slot.
 * Improved error message when an unknown style is requested.
+* Input-elements now support forms without an object; ie forms built with `form_tag` - not `form_for` or `form_with`.
 
 ### Changed
 

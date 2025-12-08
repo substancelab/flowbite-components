@@ -67,7 +67,11 @@ module Flowbite
     renders_one :label
 
     # Returns the errors for attribute
+    #
+    # @return [Array<String>] An array of error messages for the attribute.
     def errors
+      return [] unless @object
+
       @object.errors[@attribute] || []
     end
 

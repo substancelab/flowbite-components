@@ -95,7 +95,13 @@ module Flowbite
         !!@disabled
       end
 
+      # Returns true if the object has errors. Returns false if there is no
+      # object.
+      #
+      # @return [Boolean] true if there are errors, false otherwise.
       def errors?
+        return false unless @object
+
         @object.errors.include?(@attribute.intern)
       end
 
