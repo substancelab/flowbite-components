@@ -19,7 +19,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
-* Color-specific styles from Flowbite::Button, ie `alternative`, `green`, `light`, `purple`, `red`, `yellow`.
+* [BREAKING] Color-specific styles from Flowbite::Button, ie `alternative`, `green`, `light`, `purple`, `red`, `yellow`.
 
 
 ## [0.1.3]
