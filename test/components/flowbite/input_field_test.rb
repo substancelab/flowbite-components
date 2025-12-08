@@ -175,14 +175,14 @@ class Flowbite::InputFieldWithoutObjectTest < Minitest::Test
   def test_adds_aria_attributes_for_hint
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title, hint: {content: "What's the title?"}))
 
-    assert_selector("input[aria-describedby='_title_hint']")
-    assert_selector("p#_title_hint", text: "What's the title?")
+    assert_selector("input[aria-describedby='title_hint']")
+    assert_selector("p#title_hint", text: "What's the title?")
   end
 
   def test_adds_extra_attributes_to_hint
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title, hint: {content: "What's the title?", options: {class: "custom-hint-class"}}))
 
-    assert_selector("p#_title_hint.custom-hint-class", text: "What's the title?")
+    assert_selector("p#title_hint.custom-hint-class", text: "What's the title?")
   end
 
   def test_renders_an_input_element
