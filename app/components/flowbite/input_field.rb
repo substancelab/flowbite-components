@@ -67,7 +67,11 @@ module Flowbite
     renders_one :label
 
     # Returns the errors for attribute
+    #
+    # @return [Array<String>] An array of error messages for the attribute.
     def errors
+      return [] unless @object
+
       @object.errors[@attribute] || []
     end
 
@@ -185,7 +189,13 @@ module Flowbite
     end
 
     def id_for_hint_element
-      "#{@form.object_name}_#{@attribute}_hint"
+      [
+        @form.object_name,
+        @attribute,
+        "hint"
+      ]
+        .compact_blank
+        .join("_")
     end
 
     # @return [Hash] The keyword arguments for the input component.
