@@ -91,12 +91,12 @@ If you want to use one of the other [Flowbite themes](https://flowbite.com/docs/
 <% end %>
 
 <!-- Outline button with color -->
-<%= render Flowbite::Button::Outline.new(style: :blue) do %>
+<%= render Flowbite::Button::Outline.new(style: :success) do %>
   Outline Button
 <% end %>
 
 <!-- Pill button -->
-<%= render Flowbite::Button::Pill.new(style: :green) do %>
+<%= render Flowbite::Button::Pill.new(style: :danger) do %>
   Pill Button
 <% end %>
 ```
