@@ -7,6 +7,8 @@ Unofficial, open source implementation of [Flowbite](https://flowbite.com/) comp
 
 Flowbite Components provides a comprehensive library of UI components following the Flowbite design system, implemented as Rails ViewComponents with full Tailwind CSS integration and dark mode support.
 
+Preview the components at https://flowbite-components.substancelab.com/lookbook/
+
 ## Features
 
 - **Full Flowbite Design System**: Faithful implementation of Flowbite components
@@ -82,6 +84,8 @@ If you want to use one of the other [Flowbite themes](https://flowbite.com/docs/
 <% end %>
 ```
 
+See more examples at https://flowbite-components.substancelab.com/lookbook/inspect/input_field/inputfield.
+
 ### Button Examples
 
 ```erb
@@ -101,6 +105,8 @@ If you want to use one of the other [Flowbite themes](https://flowbite.com/docs/
 <% end %>
 ```
 
+See more examples at https://flowbite-components.substancelab.com/lookbook/inspect/button/default.
+
 ### Custom Input Options
 
 ```erb
@@ -118,6 +124,8 @@ If you want to use one of the other [Flowbite themes](https://flowbite.com/docs/
 ) %>
 ```
 
+See more examples at https://flowbite-components.substancelab.com/lookbook/inspect/input_field/inputfield.
+
 ### Custom Labels
 
 ```erb
@@ -130,6 +138,8 @@ If you want to use one of the other [Flowbite themes](https://flowbite.com/docs/
   }
 ) %>
 ```
+
+See more examples at https://flowbite-components.substancelab.com/lookbook/inspect/input_label/inputlabel.
 
 ### Disabled and Error States
 
@@ -148,6 +158,8 @@ If you want to use one of the other [Flowbite themes](https://flowbite.com/docs/
   hint: "Must be at least 8 characters long"
 ) %>
 ```
+
+See more examples at https://flowbite-components.substancelab.com/lookbook/inspect/input_field/disabled_state.
 
 ## How to customize components
 
