@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 * DateTime input field components.
+* Toast component.
 
 ### Changed
 
