@@ -52,6 +52,10 @@ class SelectPreview < Lookbook::Preview
     render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], multiple: true, label: {content: "With <code>multiple: true</code>".html_safe}))
   end
 
+  def with_hint
+    render(Flowbite::InputField::Select.new(attribute: :company, form: form, collection: ["Option 1", "Option 2", "Option 3"], hint: {content: "Pick one of the above options"}))
+  end
+
   # @!endgroup
 
   private
