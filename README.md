@@ -288,7 +288,7 @@ This library includes a demo application with previews for all components. To vi
 1. cd demo
 2. Run `bundle && npm install`
 3. Run `rails server`
-4. Visit `http://localhost:3000/rails/lookbook`
+4. Visit `http://localhost:3000/lookbook`
 
 ## Contributing
 
