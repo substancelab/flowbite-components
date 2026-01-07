@@ -150,6 +150,18 @@ class Flowbite::InputFieldTest < Minitest::Test
     assert_selector("label[for='book_state'].select-label")
   end
 
+  def test_renders_datetime_input_field
+    render_inline(Flowbite::InputField::DateTime.new(form: @form, attribute: :published_at))
+
+    assert_selector("input[type='datetime-local']")
+  end
+
+  def test_renders_datetime_with_label
+    render_inline(Flowbite::InputField::DateTime.new(form: @form, attribute: :published_at))
+
+    assert_selector("label[for='book_published_at']")
+  end
+
   def test_adds_classes_to_the_root_element
     render_inline(Flowbite::InputField.new(class: "custom_class another", form: @form, attribute: :title))
 
@@ -302,6 +314,18 @@ class Flowbite::InputFieldWithoutObjectTest < Minitest::Test
     )
 
     assert_selector("label[for='state'].select-label")
+  end
+
+  def test_renders_datetime_input_field
+    render_inline(Flowbite::InputField::DateTime.new(form: @form, attribute: :title))
+
+    assert_selector("input[type='datetime-local']")
+  end
+
+  def test_renders_datetime_with_label
+    render_inline(Flowbite::InputField::DateTime.new(form: @form, attribute: :title))
+
+    assert_selector("label[for='title']")
   end
 
   def test_adds_classes_to_the_root_element

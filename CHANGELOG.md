@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+* Breadcrumb component, including Flowbite::BreadcrumbItem with Flowbite::BreadcrumbItem::First and Flowbite::BreadcrumbItem::Current variants.
+* DateTime input field components.
+* Toast component.
+
 ### Changed
 
 ### Removed
