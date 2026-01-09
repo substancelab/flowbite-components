@@ -45,13 +45,13 @@ class Flowbite::InputField::RadioButtonTest < Minitest::Test
   end
 
   def test_renders_a_hint
-    render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, value: "visible", hint: "Profile can be accessed publicly"))
+    render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, value: "visible", hint: {content: "Profile can be accessed publicly"}))
 
     assert_selector("p.text-xs.font-normal.text-body", text: "Profile can be accessed publicly")
   end
 
   def test_adds_aria_attributes_for_hint
-    render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, hint: "Profile can be accessed publicly", value: "visible"))
+    render_inline(Flowbite::InputField::RadioButton.new(form: @form, attribute: :state, hint: {content: "Profile can be accessed publicly"}, value: "visible"))
 
     assert_selector("input[aria-describedby='article_state_visible_hint']")
     assert_selector("p#article_state_visible_hint", text: "Profile can be accessed publicly")
