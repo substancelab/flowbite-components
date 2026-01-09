@@ -55,7 +55,7 @@ class CheckboxPreview < Lookbook::Preview
   # the checkbox component.
 
   def checkbox_with_helper_text
-    render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form, hint: "I agree with the terms and conditions."))
+    render(Flowbite::InputField::Checkbox.new(attribute: :confirmation, form: form, hint: {content: "I agree with the terms and conditions."}))
   end
 
   # @!endgroup
