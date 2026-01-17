@@ -11,12 +11,6 @@ class Flowbite::InputFieldTest < Minitest::Test
     @form = ActionView::Helpers::FormBuilder.new(:book, @book, @view_context, {})
   end
 
-  def test_adds_options_to_container_element
-    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, options: {data: {controller: "input-field"}}))
-
-    assert_selector("div[data-controller='input-field']")
-  end
-
   def test_renders_a_hint
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title, hint: {content: "What's the title?"}))
 
@@ -334,9 +328,28 @@ class Flowbite::InputFieldWithoutObjectTest < Minitest::Test
     assert_selector("label[for='title']")
   end
 
-  def test_adds_classes_to_the_root_element
+  def test_adds_classes_to_root_element_via_class_argument
     render_inline(Flowbite::InputField.new(class: "custom_class another", form: @form, attribute: :title))
 
     assert_selector("div.custom_class.another")
+  end
+
+  def test_adds_classes_to_root_element_via_options
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, options: {class: "custom_class another"}))
+
+    assert_selector("div.custom_class.another")
+  end
+
+  def test_classes_in_options_replace_classes_in_class_argument
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, class: "not-this", options: {class: "this"}))
+
+    assert_no_selector("div.not-this")
+    assert_selector("div.this")
+  end
+
+  def test_adds_options_to_container_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, options: {data: {controller: "input-field"}}))
+
+    assert_selector("div[data-controller='input-field']")
   end
 end
