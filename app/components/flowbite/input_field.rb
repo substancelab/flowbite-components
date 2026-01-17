@@ -102,6 +102,10 @@ module Flowbite
       end
     end
 
+    def container_options
+      @options.merge({class: classes.join(" ")})
+    end
+
     def default_container_classes
       []
     end

@@ -11,6 +11,12 @@ class Flowbite::InputFieldTest < Minitest::Test
     @form = ActionView::Helpers::FormBuilder.new(:book, @book, @view_context, {})
   end
 
+  def test_adds_options_to_container_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, options: {data: {controller: "input-field"}}))
+
+    assert_selector("div[data-controller='input-field']")
+  end
+
   def test_renders_a_hint
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title, hint: {content: "What's the title?"}))
 
