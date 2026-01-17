@@ -101,7 +101,7 @@ module Flowbite
     #   constructor.
     # @option label [String] content The content of the label element.
     # @option label [Hash] options Additional options to pass to the label
-    #     component. This can be used to set the class, for example.
+    #   component. This can be used to set the class, for example.
     #
     # @param options [Hash] Additional HTML attributes to pass to the input
     #   field container element.
