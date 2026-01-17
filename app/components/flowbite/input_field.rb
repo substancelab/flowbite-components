@@ -16,19 +16,45 @@ module Flowbite
   # different input types, like {Flowbite::InputField::Text},
   # {Flowbite::InputField::Email}, etc.
   #
-  # @example Basic usage
-  #
-  #     <% form_for @person do |form| %>
-  #       <%= render(
-  #         Flowbite::InputField::Number.new(
-  #           :attribute => :name,
-  #           :form => form
-  #         )
-  #       ) %>
-  #     <% end %>
-  #
   # To render an input without labels or error messages etc, see
   # {Flowbite::Input::Field} instead and one of its subclasses.
+  #
+  # @example Basic usage
+  #
+  #   <% form_for @person do |form| %>
+  #     <%= render(
+  #       Flowbite::InputField::Number.new(
+  #         attribute: :name,
+  #         form: form
+  #       )
+  #     ) %>
+  #   <% end %>
+  #
+  # @example Kitchen sink
+  #
+  #   <% form_for @person do |form| %>
+  #     <%= render(
+  #       Flowbite::InputField::Number.new(
+  #         attribute: :name,
+  #         class: ["mb-4", "w-full"],
+  #         disabled: true,
+  #         form: form,
+  #         hint: {
+  #           content: "Please enter your full name.",
+  #           options: {id: "name-helper-text"}
+  #         },
+  #         input: {
+  #           options: {placeholder: "All of your names here"}
+  #         },
+  #         label: {
+  #           content: "Full name",
+  #           options: {class: ["mb-2", "font-medium"]}
+  #         },
+  #         options: {data: {controller: "form-field"}},
+  #         size: :lg
+  #       )
+  #     ) %>
+  #   <% end %>
   class InputField < ViewComponent::Base
     renders_one :hint
     renders_one :input
