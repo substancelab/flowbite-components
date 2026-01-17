@@ -250,7 +250,7 @@ render(Component.new(class: "these are added"))
 ```
 
 This makes for easier customization of components, where you don't have to
-recreate the entire classlist, ie in order to increase sizes or add margins or
+recreate the entire classlist, i.e. in order to increase sizes or add margins or
 whatever.
 
 If you want to replace the entire class attribute for a component, pass it as part of the `options` hash, ie

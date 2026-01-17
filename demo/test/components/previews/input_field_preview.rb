@@ -181,6 +181,42 @@ class InputFieldPreview < Lookbook::Preview
     end
   end
 
+  def input_with_placeholder
+    person.first_name = nil
+    render(
+      Flowbite::InputField::Text.new(
+        attribute: :first_name,
+        form: form,
+        input: {options: {placeholder: "Enter your first name"}}
+      )
+    )
+  end
+
+  def kitchen_sink
+    person.first_name = nil
+    render(
+      Flowbite::InputField::Text.new(
+        attribute: :first_name,
+        class: ["mb-4", "w-full"],
+        disabled: true,
+        form: form,
+        hint: {
+          content: "What should we call you?",
+          options: {id: "name-helper-text"}
+        },
+        input: {
+          options: {placeholder: "Enter your first name"}
+        },
+        label: {
+          content: "First name",
+          options: {class: ["mb-2", "font-medium"]}
+        },
+        options: {data: {controller: "form-field"}},
+        size: :lg
+      )
+    )
+  end
+
   # @!endgroup
 
   private

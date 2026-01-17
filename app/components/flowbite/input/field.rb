@@ -2,15 +2,19 @@
 
 module Flowbite
   module Input
-    # The indivdual input component for use in forms without labels or error
-    # messages.
+    # The individual input form element used in forms - without labels, error
+    # messages, hints, etc.
     #
     # Use this when you want to render an input field on its own without any
-    # surrounding elements, ie as a building block in more complex input
+    # surrounding elements, i.e. as a building block in more complex input
     # components.
     #
     # To render a complete input field with labels and error messages, use
-    # `Flowbite::InputField` instead.
+    # {Flowbite::InputField} instead.
+    #
+    # By default this renders a text input field. To render other types of input
+    # fields, use one of the subclasses, such as {Flowbite::Input::Checkbox} or
+    # {Flowbite::Input::Textarea}.
     class Field < ViewComponent::Base
       SIZES = {
         sm: ["px-2.5", "py-2", "text-sm"],
@@ -27,6 +31,8 @@ module Flowbite
       attr_reader :options, :size, :style
 
       class << self
+        # @return [Array<String>] The CSS classes to apply to the input field
+        #   given the specified +size+, +state+, and +style+.
         def classes(size: :default, state: :default, style: :default)
           style = styles.fetch(style)
           state_classes = style.fetch(state)
@@ -35,17 +41,18 @@ module Flowbite
 
         # Returns the sizes this Field supports.
         #
-        # This is effectively the SIZES constant, but provided as a method to
+        # This is effectively the {SIZES} constant, but provided as a method to
         # return the constant from the current class, not the superclass.
         #
         # @return [Hash] A hash mapping size names to their corresponding CSS
-        # classes.
+        #   classes.
         def sizes
           const_get(:SIZES)
         end
 
-        # rubocop:disable Layout/LineLength
+        # @return [Flowbite::Styles] The available styles for this input field.
         def styles
+          # rubocop:disable Layout/LineLength
           Flowbite::Styles.from_hash(
             {
               default: {
@@ -55,10 +62,27 @@ module Flowbite
               }
             }.freeze
           )
+          # rubocop:enable Layout/LineLength
         end
-        # rubocop:enable Layout/LineLength
       end
 
+      # @param attribute [Symbol] The attribute on the form's object this input
+      #   field is for.
+      #
+      # @param form [ActionView::Helpers::FormBuilder] The form builder this
+      #   input field is part of.
+      #
+      # @param class [String, Array<String>] Additional CSS classes to apply to
+      #   the input field.
+      #
+      # @param disabled [Boolean] Whether the input field should be disabled.
+      #
+      # @param options [Hash] Additional HTML attributes to pass to the input
+      #   field. For example, you can use this to set placeholder text by
+      #   passing +options: {placeholder: "Enter your name"}+
+      #
+      # @param size [Symbol] The size of the input field. Can be one of +:sm+,
+      #   +:default+, or +:lg+.
       def initialize(attribute:, form:, class: nil, disabled: false, options: {}, size: :default)
         @attribute = attribute
         @class = Array.wrap(binding.local_variable_get(:class))
@@ -79,18 +103,22 @@ module Flowbite
       end
 
       # Returns the CSS classes to apply to the input field
+      #
+      # @return [Array<String>] An array of CSS classes.
       def classes
         self.class.classes(size: size, state: state) + @class
       end
 
       # Returns the name of the method used to generate HTML for the input field
+      #
+      # @return [Symbol] The form helper method name to call on +form+.
       def input_field_type
         :text_field
       end
 
       protected
 
-      # Returns true if the field is disabled
+      # @return [Boolean] Returns true if the field is disabled
       def disabled?
         !!@disabled
       end

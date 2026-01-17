@@ -2,6 +2,11 @@
 
 module Flowbite
   module Input
+    # A hint element for input fields.
+    #
+    # Provides additional context or instructions for the user.
+    #
+    # See https://flowbite.com/docs/forms/input-field/#helper-text
     class Hint < ViewComponent::Base
       STATES = [
         DEFAULT = :default
