@@ -1,8 +1,8 @@
-<div class="<%= classes.join(" ") %>">
+<%= content_tag(:div, class: classes.join(" ")) do %>
   <%= label %>
   <%= input %>
   <%= hint %>
   <% errors.each do |error| %>
     <%= render(Flowbite::Input::ValidationError.new) { error.upcase_first } %>
   <% end %>
-</div>
+<% end %>
