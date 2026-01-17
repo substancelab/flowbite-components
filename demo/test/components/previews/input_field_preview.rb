@@ -181,6 +181,17 @@ class InputFieldPreview < Lookbook::Preview
     end
   end
 
+  def input_with_placeholder
+    person.first_name = nil
+    render(
+      Flowbite::InputField::Text.new(
+        attribute: :first_name,
+        form: form,
+        input: {options: {placeholder: "Enter your first name"}}
+      )
+    )
+  end
+
   # @!endgroup
 
   private
