@@ -2,7 +2,7 @@
 
 module Flowbite
   # A fully fledged form element for an attribute containing label, input field,
-  # error messages, helper text and whatever else is needed for a user friendly
+  # error messages, helper text and whatever else is needed for a user-friendly
   # input experience.
   #
   # @see https://flowbite.com/docs/forms/input-field/
@@ -76,7 +76,7 @@ module Flowbite
     #   will be used to generate the input field.
     #
     # @param class [String, Array<String>] Additional CSS classes to apply to
-    #   the input field container, ie the outermost element. To add classes to
+    #   the input field container, i.e. the outermost element. To add classes to
     #   individual components of the InputField, use the +input+, +label+ and
     #   +hint+ arguments.
     #
@@ -86,11 +86,11 @@ module Flowbite
     #   additional context or instructions for the user. If provided, this Hash
     #   is passed to the {Flowbite::Input::Hint} constructor.
     # @option hint [String] content The content of the hint element.
-    # @option hint [Hash] options additional options to pass to the hint
+    # @option hint [Hash] options Additional options to pass to the hint
     #   component. This can be used to set the class, for example.
     #
     # @param input [Hash] A hash with options for the input component.
-    #   These are passed to the input components constructor, see the
+    #   These are passed to the input component's constructor, see the
     #   documentation for whatever input component is being used.
     #   See {Flowbite::Input::Field}.
     # @option input [Hash] options Additional HTML attributes to pass to

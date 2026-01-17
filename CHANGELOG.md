@@ -13,7 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-* [BREAKING] The API of Flowbite::InputField::RadioButton now follows the same structure as the other components for hints. Instead of passing a String (`hint: "This is the hint"`) you now have to pass a Hash that's passed along to the Hint component (ie `hint: {content: "This is the hint"}`), allowing you to customize other options (eg HTML attributes like class) as well.
+* [BREAKING] The API of Flowbite::InputField::RadioButton now follows the same structure as the other components for hints. Instead of passing a String (`hint: "This is the hint"`) you now have to pass a Hash that's passed along to the Hint component (i.e. `hint: {content: "This is the hint"}`), allowing you to customize other options (eg HTML attributes like class) as well.
 
 ### Removed
 
@@ -25,7 +25,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Flowbite::Link component to render links.
 * Flowbite::Card now displays a title via the title argument/slot.
 * Improved error message when an unknown style is requested.
-* Input-elements now support forms without an object; ie forms built with `form_tag` - not `form_for` or `form_with`.
+* Input-elements now support forms without an object; i.e. forms built with `form_tag` - not `form_for` or `form_with`.
 
 ### Changed
 
@@ -34,7 +34,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
-* [BREAKING] Color-specific styles from Flowbite::Button, ie `alternative`, `green`, `light`, `purple`, `red`, `yellow`.
+* [BREAKING] Color-specific styles from Flowbite::Button, i.e. `alternative`, `green`, `light`, `purple`, `red`, `yellow`.
 
 
 ## [0.1.3]
