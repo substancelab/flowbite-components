@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["app", "lib"]
 
   spec.add_dependency "view_component", ">= 4.0.0"
+  spec.add_development_dependency "yard"
 end
