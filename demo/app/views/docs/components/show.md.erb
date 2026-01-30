@@ -1,0 +1,49 @@
+
+# <%= @code_object.name %>
+
+<%= simple_format(@code_object.docstring) %>
+
+<% @code_object.tags(:example).each do |example| %>
+## <%= example.name %>
+```ruby
+<%= example.text %>
+```
+<% end %>
+
+<!-- Embedded preview iframe omitted in markdown. Add a note or link if needed. -->
+
+## Constructor
+
+<% @code_object.meths.select(&:constructor?).each do |meth| %>
+`<%= meth.signature %>`
+
+<%= meth.docstring %>
+
+<% meth.parameters.each do |name, default| %>
+- <%= name %>
+<% end %>
+
+<%= meth.inspect %>
+<% end %>
+
+## Instance attributes
+
+<% @code_object.attributes[:instance].each do |name, attr| %>
+- `<%= name %>`: <%= attr[:read].docstring %>
+<% end %>
+
+## Methods
+
+<% @code_object.meths.each do |meth| %>
+- `<%= meth.signature %>`
+
+  <%= meth.docstring %>
+<% end %>
+
+## Tags
+
+<% @code_object.tags(:param).each do |tag| %>
+- **<%= tag.name %>**: <%= tag.text %>
+
+  <%= tag.inspect %>
+<% end %>

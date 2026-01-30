@@ -5,3 +5,5 @@ Rails.application.configure do
     Lookbook::PageController.helper(Lookbook::DocHelper)
   end
 end
+
+Mime::Type.register_alias "text/markdown", :md

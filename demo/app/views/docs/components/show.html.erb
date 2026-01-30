@@ -1,0 +1,54 @@
+<div class="format max-w-full">
+<h1><%= @code_object.name %></h1>
+
+<%= simple_format(@code_object.docstring) %>
+
+<%- @code_object.tags(:example).each do |example| %>
+  <h2><%= example.name %></h2>
+  <pre><code><%= example.text %></code></pre>
+<% end %>
+
+<iframe title="Button (Default)" src="/lookbook/embed?props=%7B%22preview%22%3A%22ButtonPreview%22%2C%22scenario%22%3A%22default%22%7D" style="width: 100%; height: 500px; border: none;"></iframe>
+
+<h2>Constructor</h2>
+
+<% @code_object.meths.select(&:constructor?).each do |meth| %>
+  <code><%= meth.signature %></code>
+  <%= meth.docstring %>
+
+  <% meth.parameters.each do |name, default| %>
+    <div><%= name %></div>
+  <% end %>
+
+  <%= meth.inspect %>
+<% end %>
+
+
+<h2>Instance attributes</h2>
+
+<% @code_object.attributes[:instance].each do |name, attr| %>
+  <div>
+    <code><%= name %></code>
+    <%= attr[:read].docstring %>
+  </div>
+<% end %>
+
+
+<h2>Methods</h2>
+
+<% @code_object.meths.each do |meth| %>
+  <div>
+    <code><%= meth.signature %></code>
+    <%= meth.docstring %>
+  </div>
+<% end %>
+
+
+<h2>Tags</h2>
+
+<% @code_object.tags(:param).each do |tag| %>
+  <%= tag.name %>:
+  <%= tag.text %>
+  <%= tag.inspect %>
+<% end %>
+</div>
