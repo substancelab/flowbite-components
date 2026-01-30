@@ -15,3 +15,9 @@ gem "minitest"
 
 gem "herb"
 gem "standard"
+
+# Documentation site
+gem "decant"
+gem "kramdown"
+gem "kramdown-parser-gfm"
+gem "lookbook", ">= 2.3.11"
