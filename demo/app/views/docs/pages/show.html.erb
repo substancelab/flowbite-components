@@ -1,5 +1,23 @@
+<% all_pages.each do |page| %>
+  <%= link_to page.title, docs_page_path(page.slug), class: "block mb-2 text-blue-600 hover:underline" %>
+<% end %>
+
 <div class="format max-w-full dark:format-invert">
   <h1><%= @page.title %></h1>
 
   <%= render_markdown(@page.content) %>
+</div>
+
+<div>
+  <% if @previous_page %>
+    <div class="mt-8">
+      <%= link_to "← #{@previous_page.title}", docs_page_path(@previous_page.slug), class: "text-blue-600 hover:underline" %>
+    </div>
+  <% end %>
+
+  <% if @next_page %>
+    <div class="mt-8">
+      <%= link_to "#{@next_page.title} →", docs_page_path(@next_page.slug), class: "text-blue-600 hover:underline" %>
+    </div>
+  <% end %>
 </div>

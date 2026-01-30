@@ -1,6 +1,8 @@
 ---
+order: 1
 title: Flowbite Components
 ---
+
 Unofficial, open source implementation of [Flowbite](https://flowbite.com/) components for Rails applications, built using [ViewComponent](https://viewcomponent.org/).
 
 Flowbite Components provides a comprehensive library of UI components following the Flowbite design system, implemented as Rails ViewComponents with full Tailwind CSS integration and dark mode support.

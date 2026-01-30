@@ -1,3 +1,8 @@
+---
+order: 4
+title: Customization options
+---
+
 ## How to customize components
 
 ### CSS classes are additive

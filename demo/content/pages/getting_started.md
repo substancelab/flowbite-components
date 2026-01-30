@@ -1,3 +1,8 @@
+---
+order: 2
+title: Getting started
+---
+
 ## Installation
 
 Add the gem to your application's Gemfile:
