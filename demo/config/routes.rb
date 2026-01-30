@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "pages#index"
+  root "homepage#show"
 
   namespace :docs do
     resources :components, only: [:show]
