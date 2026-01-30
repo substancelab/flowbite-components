@@ -1,0 +1,48 @@
+<% docs = render_doc("Flowbite::Button") %>
+
+<div><%= docs.code_object.class %></div>
+
+# <%= docs.code_object.name %>
+
+## Constructor
+
+<% docs.code_object.meths.select(&:constructor?).each do |meth| %>
+```
+    <%= meth.signature %>
+```
+<%= meth.docstring %>
+
+<% meth.parameters.each do |name, default| %>
+  <div><%= name %></div>
+<% end %>
+
+  <%= meth.inspect %>
+<% end %>
+
+## Instance attributes
+
+<% docs.code_object.attributes[:instance].each do |name, attr| %>
+  <div>
+    <strong><%= name %></strong>
+    <%= attr %>
+  </div>
+<% end %>
+
+## Methods
+
+<% docs.code_object.meths.each do |meth| %>
+```
+<%= meth.signature %>
+```
+
+- <%= meth.docstring %>
+
+<% end %>
+
+<h2>Tags</h2>
+
+<% docs.code_object.tags(:param).each do |tag| %>
+  <%= tag.name %>:
+  <%= tag.text %>
+  <%= tag.inspect %>
+<% end %>

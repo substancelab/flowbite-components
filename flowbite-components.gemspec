@@ -26,4 +26,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "view_component", ">= 4.0.0"
   spec.add_development_dependency "yard"
+  spec.add_development_dependency "yard-markdown"
+
 end
