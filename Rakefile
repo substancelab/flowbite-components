@@ -9,3 +9,10 @@ require "standard/rake"
 Minitest::TestTask.create
 
 task default: :test
+
+namespace :docs do
+  desc "Refresh YARD documentation registry"
+  task :refresh_registry do
+    sh "yard doc --no-output --tag lookbook_embed:name app/components"
+  end
+end
