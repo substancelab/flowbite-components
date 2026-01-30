@@ -1,5 +1,5 @@
 ---
-label: Flowbite Components
+title: Flowbite Components
 ---
 Unofficial, open source implementation of [Flowbite](https://flowbite.com/) components for Rails applications, built using [ViewComponent](https://viewcomponent.org/).
 
