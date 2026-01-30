@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 module Flowbite
-  # Renders a HTML button element.
-  #
-  # See https://flowbite.com/docs/components/buttons/
-  #
-  # @param label [String] The text to display on the button.
+  # Renders a HTML button element. See https://flowbite.com/docs/components/buttons/
   #
   # All other parameters are optional and are passed directly to the button tag
   # as HTML attributes.
+  #
+  # @example Basic usage
+  #  <%= render Flowbite::Button.new { "Click me" } %>
+  #
+  # @lookbook ButtonPreview
   class Button < ViewComponent::Base
     SIZES = {
       xs: ["text-xs", "px-3", "py-1.5"],

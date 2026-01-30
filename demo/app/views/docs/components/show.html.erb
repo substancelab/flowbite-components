@@ -8,7 +8,13 @@
   <pre><code><%= example.text %></code></pre>
 <% end %>
 
-<lookbook-embed panels="source" preview="ButtonPreview" scenario="*"></lookbook-embed>
+<% if @code_object.tags(:lookbook).any? %>
+  <h2>Examples</h2>
+
+  <% @code_object.tags(:lookbook).each do |lookbook_tag| %>
+    <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
+  <% end %>
+<% end %>
 
 <h2>Constructor</h2>
 
