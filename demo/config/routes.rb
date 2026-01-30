@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :docs do
     resources :components, only: [:show]
+    get "/*slug", to: "pages#show", as: :page
   end
 
   if defined?(Lookbook)

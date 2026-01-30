@@ -15,6 +15,9 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "flowbite-components", path: "../.." # Load the gem files from the parent directory
 gem "tailwindcss-rails", "~> 4.3"
 
+gem "decant"
+gem "kramdown"
+gem "kramdown-parser-gfm"
 gem "lookbook", ">= 2.3.11"
 
 group :development, :test do
