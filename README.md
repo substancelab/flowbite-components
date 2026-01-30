@@ -308,6 +308,13 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/subst
 - [ViewComponent Documentation](https://viewcomponent.org/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
+## Other ViewComponent-based libraries
+
+If Flowbite isn't your preference, perhaps one of these other component libraries suits you better?
+
+* [GOV.UK Components](https://govuk-components.netlify.app/introduction/get-started/)
+* [Primer Product UI for Rails](https://primer.style/product/getting-started/rails/)
+
 ## Other Flowbite component libraries
 
 * https://flowbite-react.com/
