@@ -4,5 +4,8 @@
   "author": "",
   "dependencies": {
     "flowbite": "^4.0.1"
+  },
+  "devDependencies": {
+    "flowbite-typography": "^1.0.5"
   }
 }

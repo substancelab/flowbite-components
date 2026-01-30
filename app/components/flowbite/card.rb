@@ -4,6 +4,19 @@ module Flowbite
   # Renders a card element.
   #
   # See https://flowbite.com/docs/components/cards/
+  #
+  # To render a title in the card, use the title argument or the title slot.
+  #
+  # If you want to customize the title element completely, use the title slot.
+  # You can even use +Flowbite::Card::Title+ to still preseve the default
+  # rendering:
+  #
+  #     <%= render(Flowbite::Card.new) do |card| %>
+  #       <% card.with_title do %>
+  #         <div><%= parent_category.name %></div>
+  #         <%= render(Flowbite::Card::Title.new) { category.name } %>
+  #       <% end %>
+  #     <% end %>
   class Card < ViewComponent::Base
     renders_one :title
 

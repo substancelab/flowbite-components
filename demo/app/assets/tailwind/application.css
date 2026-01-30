@@ -6,6 +6,7 @@
 
 /* Load Flowbite */
 @plugin "flowbite/plugin";
+@plugin "flowbite-typography";
 
 /* Include CSS classes used by the components in the final CSS */
 @import "../builds/tailwind/flowbite_components";

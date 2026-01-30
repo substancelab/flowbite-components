@@ -93,6 +93,7 @@ GEM
     debug (1.10.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    decant (0.4.0)
     drb (2.2.3)
     erb (5.0.2)
     erubi (1.13.1)
@@ -115,6 +116,10 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    kramdown (2.5.2)
+      rexml (>= 3.4.4)
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -230,6 +235,7 @@ GEM
     redcarpet (3.6.1)
     reline (0.6.2)
       io-console (~> 0.5)
+    rexml (3.4.4)
     rouge (4.5.2)
     securerandom (0.4.1)
     sqlite3 (2.6.0-aarch64-linux-gnu)
@@ -281,7 +287,10 @@ PLATFORMS
 
 DEPENDENCIES
   debug
+  decant
   flowbite-components!
+  kramdown
+  kramdown-parser-gfm
   listen
   lookbook (>= 2.3.11)
   propshaft

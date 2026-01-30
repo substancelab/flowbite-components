@@ -1,0 +1,122 @@
+---
+order: 1
+title: Flowbite Components
+---
+
+Unofficial, open source implementation of [Flowbite](https://flowbite.com/) components for Rails applications, built using [ViewComponent](https://viewcomponent.org/).
+
+Flowbite Components provides a comprehensive library of UI components following the Flowbite design system, implemented as Rails ViewComponents with full Tailwind CSS integration and dark mode support.
+
+## Usage examples
+
+### Basic Form Field
+
+```erb
+<%% form_with model: @user do |form| %>
+  <%%= render Flowbite::InputField::Text.new(
+    attribute: :name,
+    form: form,
+    label: {content: "Full Name"},
+    hint: {content: "Enter your full name"}
+  ) %>
+
+  <%%= render Flowbite::InputField::Email.new(
+    attribute: :email,
+    form: form
+  ) %>
+
+  <%%= render Flowbite::Button.new(
+    type: :submit,
+    content: "Save User"
+  ) %>
+<%% end %>
+```
+
+See more examples in [the documentation](/lookbook/inspect/input_field/inputfield).
+
+### Button Examples
+
+```erb
+<!-- Default button -->
+<%%= render Flowbite::Button.new do %>
+  Click me
+<%% end %>
+
+<!-- Outline button with color -->
+<%%= render Flowbite::Button::Outline.new(style: :success) do %>
+  Outline Button
+<%% end %>
+
+<!-- Pill button -->
+<%%= render Flowbite::Button::Pill.new(style: :danger) do %>
+  Pill Button
+<%% end %>
+```
+
+See more examples in [the documentation](/lookbook/inspect/button/default).
+
+### Custom Input Options
+
+```erb
+<%%= render Flowbite::InputField::Text.new(
+  attribute: :username,
+  form: form,
+  size: :lg,
+  input: {
+    options: {
+      placeholder: "Enter username",
+      maxlength: 50,
+      class: "custom-class"
+    }
+  }
+) %>
+```
+
+See more examples in [the documentation](/lookbook/inspect/input_field/inputfield).
+
+### Custom Labels
+
+```erb
+<%%= render Flowbite::InputField::Email.new(
+  attribute: :email,
+  form: form,
+  label: {
+    content: "Email Address",
+    options: {class: "font-bold"}
+  }
+) %>
+```
+
+See more examples in [the documentation](/lookbook/inspect/input_label/inputlabel).
+
+### Disabled and Error States
+
+```erb
+<!-- Disabled field -->
+<%%= render Flowbite::InputField::Text.new(
+  attribute: :name,
+  form: form,
+  disabled: true
+) %>
+
+<!-- Field with hint -->
+<%%= render Flowbite::InputField::Password.new(
+  attribute: :password,
+  form: form,
+  hint: "Must be at least 8 characters long"
+) %>
+```
+
+See more examples in [the documentation](/lookbook/inspect/input_field/disabled_state).
+
+## Support
+
+- [Flowbite Documentation](https://flowbite.com/docs/)
+- [ViewComponent Documentation](https://viewcomponent.org/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+## Other Flowbite component libraries
+
+* [flowbite-react](https://flowbite-react.com/)
+* [flowbite-svelte](https://flowbite-svelte.com/)
+* [flowbite-vue](https://flowbite-vue.com/)
