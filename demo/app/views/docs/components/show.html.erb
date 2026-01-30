@@ -8,10 +8,10 @@
   <pre><code><%= example.text %></code></pre>
 <% end %>
 
-<% if @code_object.tags(:lookbook).any? %>
+<% if @code_object.tags(:lookbook_embed).any? %>
   <h2>Examples</h2>
 
-  <% @code_object.tags(:lookbook).each do |lookbook_tag| %>
+  <% @code_object.tags(:lookbook_embed).each do |lookbook_tag| %>
     <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
   <% end %>
 <% end %>

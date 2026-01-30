@@ -9,7 +9,7 @@ module Flowbite
   # @example Basic usage
   #  <%= render Flowbite::Button.new { "Click me" } %>
   #
-  # @lookbook ButtonPreview
+  # @lookbook_embed ButtonPreview
   class Button < ViewComponent::Base
     SIZES = {
       xs: ["text-xs", "px-3", "py-1.5"],

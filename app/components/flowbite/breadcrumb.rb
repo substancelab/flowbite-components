@@ -17,7 +17,7 @@ module Flowbite
   #
   # - +items+ ({Flowbite::BreadcrumbItem}): The items of the breadcrumb trail. {Flowbite::Breadcrumb} does not do any special handling for these items, so if you want to render the first item with a home icon, you need to use {Flowbite::BreadcrumbItem::First} for that item. And if you want to render the last item without a link, you need to use {Flowbite::BreadcrumbItem::Current} for that item.
   #
-  # @lookbook BreadcrumbPreview
+  # @lookbook_embed BreadcrumbPreview
   class Breadcrumb < ViewComponent::Base
     renders_many :items
 
