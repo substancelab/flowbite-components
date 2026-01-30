@@ -7,7 +7,7 @@ module Docs
       end
 
       def yardoc_path
-        Rails.root.join("..", ".yardoc")
+        Rails.root.join(".yardoc")
       end
     end
 
