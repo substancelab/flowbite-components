@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="<%= params.dig(:lookbook, :display, :theme) %>">
   <head>
     <title><%= content_for(:title) || "Demo" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,7 +13,7 @@
     <%= stylesheet_link_tag :app %>
   </head>
 
-  <body>
+  <body class="bg-neutral-primary text-body">
     <% if params[:lookbook_embed] %>
       <main class="flex p-5">
         <%= yield %>
