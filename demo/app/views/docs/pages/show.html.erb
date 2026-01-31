@@ -1,23 +1,49 @@
-<% all_pages.each do |page| %>
-  <%= link_to page.title, docs_page_path(page.slug), class: "block mb-2 text-blue-600 hover:underline" %>
-<% end %>
-
-<div class="format max-w-full dark:format-invert">
-  <h1><%= @page.title %></h1>
-
-  <%= render_markdown(@page.content) %>
-</div>
-
-<div>
-  <% if @previous_page %>
-    <div class="mt-8">
-      <%= link_to "← #{@previous_page.title}", docs_page_path(@previous_page.slug), class: "text-blue-600 hover:underline" %>
+<article
+  class="
+    flex gap-8 w-full max-w-screen-xl flex flex-wrap items-center
+    justify-between mx-auto
+  "
+>
+  <nav
+    id="default-sidebar"
+    class="w-76 h-full transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidebar"
+  >
+    <div
+      class="
+        h-full px-3 py-4 overflow-y-auto border-e
+        border-default
+      "
+    >
+      <ul class="space-y-2 font-medium">
+        <% all_pages.each do |page| %>
+          <li>
+            <%= link_to page.title, docs_page_path(page.slug), class: "flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
-  <% end %>
+  </nav>
 
-  <% if @next_page %>
-    <div class="mt-8">
-      <%= link_to "#{@next_page.title} →", docs_page_path(@next_page.slug), class: "text-blue-600 hover:underline" %>
+  <main class="py-4 flex-1">
+    <div class="format dark:format-invert">
+      <h1><%= @page.title %></h1>
+
+      <%= render_markdown(@page.content) %>
     </div>
-  <% end %>
-</div>
+
+    <div class="flex justify-between">
+      <% if @previous_page %>
+        <div class="mt-8">
+          <%= link_to "← #{@previous_page.title}", docs_page_path(@previous_page.slug), class: "text-blue-600 hover:underline" %>
+        </div>
+      <% end %>
+
+      <% if @next_page %>
+        <div class="mt-8">
+          <%= link_to "#{@next_page.title} →", docs_page_path(@next_page.slug), class: "text-blue-600 hover:underline" %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</article>
