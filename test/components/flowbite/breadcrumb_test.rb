@@ -145,31 +145,31 @@ class Flowbite::BreadcrumbItem::FirstTest < Minitest::Test
   end
 end
 
-class Flowbite::BreadcrumbHomeTest < Minitest::Test
+class Flowbite::Breadcrumb::HomeIconTest < Minitest::Test
   include ViewComponent::TestHelpers
 
   def test_render_component
-    render_inline(Flowbite::BreadcrumbHome.new)
+    render_inline(Flowbite::Breadcrumb::HomeIcon.new)
 
     assert_component_rendered
     assert_selector("svg")
   end
 
   def test_renders_svg_with_proper_classes
-    render_inline(Flowbite::BreadcrumbHome.new)
+    render_inline(Flowbite::Breadcrumb::HomeIcon.new)
 
     assert_selector("svg.w-3.h-3.me-2\\.5")
   end
 
   def test_renders_svg_with_proper_attributes
-    render_inline(Flowbite::BreadcrumbHome.new)
+    render_inline(Flowbite::Breadcrumb::HomeIcon.new)
 
     assert_selector("svg[aria-hidden='true']")
     assert_selector("svg[fill='currentColor']")
   end
 
   def test_renders_path_element
-    render_inline(Flowbite::BreadcrumbHome.new)
+    render_inline(Flowbite::Breadcrumb::HomeIcon.new)
 
     assert_selector("path")
   end
