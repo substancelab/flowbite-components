@@ -17,6 +17,9 @@ module Flowbite
   #         <%= render(Flowbite::Card::Title.new) { category.name } %>
   #       <% end %>
   #     <% end %>
+  #
+  # @viewcomponent_slot [Flowbite::Card::Title] title The title of the card,
+  #   rendered at the top. Use +with_title+ to set custom content.
   class Card < ViewComponent::Base
     renders_one :title
 

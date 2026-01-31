@@ -55,6 +55,13 @@ module Flowbite
   #       )
   #     ) %>
   #   <% end %>
+  #
+  # @viewcomponent_slot [Flowbite::Input::Hint] hint Helper text displayed
+  #   below the input field to provide additional context or instructions.
+  # @viewcomponent_slot [Flowbite::Input::Field] input The input element itself.
+  #   Usually auto-generated based on the input type subclass.
+  # @viewcomponent_slot [Flowbite::Input::Label] label The label for the input
+  #   field, rendered above the input element.
   class InputField < ViewComponent::Base
     renders_one :hint
     renders_one :input

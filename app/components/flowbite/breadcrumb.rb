@@ -14,9 +14,10 @@ module Flowbite
   # - {Flowbite::BreadcrumbItem::Current}: An invidual breadcrumb item without a link, usually used for the current page in the breadcrumb trail.
   # - {Flowbite::BreadcrumbItem::First}: An individual breadcrumb item with a home icon on it.
   #
-  # == Slots
-  #
-  # - +items+ ({Flowbite::BreadcrumbItem}): The items of the breadcrumb trail. {Flowbite::Breadcrumb} does not do any special handling for these items, so if you want to render the first item with a home icon, you need to use {Flowbite::BreadcrumbItem::First} for that item. And if you want to render the last item without a link, you need to use {Flowbite::BreadcrumbItem::Current} for that item.
+  # @viewcomponent_slot [Flowbite::BreadcrumbItem] items The items of the
+  #   breadcrumb trail. Use {Flowbite::BreadcrumbItem::First} for the first
+  #   item to get a home icon, and {Flowbite::BreadcrumbItem::Current} for the
+  #   last item to render it without a link.
   #
   # @lookbook_embed BreadcrumbPreview
   class Breadcrumb < ViewComponent::Base
