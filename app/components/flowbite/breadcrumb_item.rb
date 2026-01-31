@@ -33,7 +33,7 @@ module Flowbite
     end
 
     def prefix_icon
-      Flowbite::BreadcrumbSeparator.new
+      Flowbite::Breadcrumb::SeparatorIcon.new
     end
 
     def render_link

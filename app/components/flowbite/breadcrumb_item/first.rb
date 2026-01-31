@@ -26,7 +26,7 @@ module Flowbite
       end
 
       def render_link
-        icon = render(Flowbite::BreadcrumbHome.new)
+        icon = render(Flowbite::Breadcrumb::HomeIcon.new)
         link_options = {class: link_classes}.merge(options)
         content_tag(:a, safe_join([icon, content]), href: href, **link_options)
       end
