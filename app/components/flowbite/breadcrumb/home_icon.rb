@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Flowbite
-  class Breadcrumb < ViewComponent::Base
+  class Breadcrumb
     # Renders a breadcrumb home icon.
     #
     # This is typically used as a prefix icon in the first breadcrumb item,

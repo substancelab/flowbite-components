@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Flowbite
-  class Breadcrumb < ViewComponent::Base
+  class Breadcrumb
     # Renders a breadcrumb separator icon.
     #
     # This is automatically used by BreadcrumbItem components, but can be
