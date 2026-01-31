@@ -1,0 +1,14 @@
+set -e
+
+# Make sure the YARD registry is up to date with the code
+bundle exec rake docs:refresh_registry
+
+cd demo
+bundle install
+npm install
+
+# Pick up the flowbite-components engine
+bundle exec rails tailwindcss:engines
+
+# Launch the server and related processes
+bundle exec rails server
