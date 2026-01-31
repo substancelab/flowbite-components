@@ -20,5 +20,15 @@ module Docs
         format.md
       end
     end
+
+    private
+
+    helper_method def all_components
+      [
+        "Breadcrumb",
+        "Button",
+        "Card",
+      ]
+    end
   end
 end
