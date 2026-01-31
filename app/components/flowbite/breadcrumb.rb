@@ -8,10 +8,11 @@ module Flowbite
   # Breadcrumbs consist of the following components:
   #
   # - {Flowbite::Breadcrumb}: Container for breadcrumb items.
+  # - {Flowbite::Breadcrumb::HomeIcon}: Home icon for the first breadcrumb item.
+  # - {Flowbite::Breadcrumb::SeparatorIcon}: Separator between breadcrumb items.
   # - {Flowbite::BreadcrumbItem}: An individual breadcrumb item.
-  # - {Flowbite::BreadcrumbItem::First}: An individual breadcrumb item with a home icon on it.
-  # - {Flowbite::BreadcrumbSeparator}: Separator between breadcrumb items.
   # - {Flowbite::BreadcrumbItem::Current}: An invidual breadcrumb item without a link, usually used for the current page in the breadcrumb trail.
+  # - {Flowbite::BreadcrumbItem::First}: An individual breadcrumb item with a home icon on it.
   #
   # == Slots
   #
