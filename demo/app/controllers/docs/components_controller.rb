@@ -30,5 +30,11 @@ module Docs
         "Card",
       ]
     end
+
+    helper_method def rubydoc_url(code_object)
+      name = code_object.path
+      slug = name.gsub("::", "/")
+      "https://www.rubydoc.info/gems/flowbite-components/#{slug}.html"
+    end
   end
 end
