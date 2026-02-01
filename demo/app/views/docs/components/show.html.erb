@@ -26,9 +26,9 @@
   </nav>
 
   <main class="py-4 flex-1">
-    <div class="format dark:format-invert">
-      <h1><%= @code_object.name %></h1>
+    <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.name %></h1>
 
+    <div class="format dark:format-invert">
       <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
         <code><%= @code_object.path %></code>
       <% end %>
