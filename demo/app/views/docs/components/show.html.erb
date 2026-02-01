@@ -28,6 +28,7 @@
   <main class="py-4 flex-1">
     <div class="format dark:format-invert">
       <h1><%= @code_object.name %></h1>
+      <code><%= @code_object.path %></code>
 
       <%= simple_format(@code_object.docstring) %>
 
