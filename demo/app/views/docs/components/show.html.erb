@@ -25,47 +25,61 @@
     </div>
   </nav>
 
-  <main class="py-4 flex-1">
+  <main class="py-4 flex-1 space-y-8">
     <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.name %></h1>
 
-    <div class="format dark:format-invert">
+    <section class="format dark:format-invert">
       <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
         <code><%= @code_object.path %></code>
       <% end %>
 
       <%= simple_format(@code_object.docstring) %>
+    </section>
 
-      <% if @code_object.tags(:viewcomponent_slot).any? %>
-        <div class="tags">
-          <p class="tag_title">Slots:</p>
-          <ul class="viewcomponent_slot">
-            <% @code_object.tags(:viewcomponent_slot).each do |slot_tag| %>
-              <li>
-                <span class="name"><%= slot_tag.name %></span>
-                <% if slot_tag.types&.any? %>
-                  <span class="type">(<%= slot_tag.types.map { |t| link_to(t, "#") }.join(", ").html_safe %>)</span>
-                <% end %>
-                <% if slot_tag.text.present? %>
-                  &mdash; <%= simple_format(slot_tag.text, {}, wrapper_tag: "span") %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+    <% if @code_object.tags(:viewcomponent_slot).any? %>
+      <section class="tags">
+        <p class="tag_title">Slots:</p>
+        <ul class="viewcomponent_slot">
+          <% @code_object.tags(:viewcomponent_slot).each do |slot_tag| %>
+            <li>
+              <span class="name"><%= slot_tag.name %></span>
+              <% if slot_tag.types&.any? %>
+                <span class="type">(<%= slot_tag.types.map { |t| link_to(t, "#") }.join(", ").html_safe %>)</span>
+              <% end %>
+              <% if slot_tag.text.present? %>
+                &mdash; <%= simple_format(slot_tag.text, {}, wrapper_tag: "span") %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
 
+    <section>
       <%- @code_object.tags(:example).each do |example| %>
-        <h2><%= example.name %></h2>
-        <pre><code><%= example.text %></code></pre>
+        <h2 class="text-2xl font-bold"><%= example.name %></h2>
+        <code><%= example.text %></code>
       <% end %>
+    </section>
 
-      <% if @code_object.tags(:lookbook_embed).any? %>
-        <h2>Examples</h2>
+    <% if @code_object.tags(:lookbook_embed).any? %>
+      <section>
+        <h2 class="text-2xl font-bold">Examples</h2>
 
         <% @code_object.tags(:lookbook_embed).each do |lookbook_tag| %>
           <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
         <% end %>
-      <% end %>
-    </div>
+      </section>
+    <% end %>
+
+    <% constructor = @code_object.meths.find { |meth| meth.name == :initialize } %>
+    <% if constructor %>
+      <section>
+        <h2 class="text-2xl font-bold">Constructor</h2>
+
+        <code><%= constructor.signature %></code>
+        <%= simple_format(constructor.docstring) %>
+      </section>
+    <% end %>
   </main>
 </article>
