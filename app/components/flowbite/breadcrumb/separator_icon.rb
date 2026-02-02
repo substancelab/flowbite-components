@@ -4,7 +4,7 @@ module Flowbite
   class Breadcrumb
     # Renders a breadcrumb separator icon.
     #
-    # This is automatically used by BreadcrumbItem components, but can be
+    # This is automatically used by Breadcrumb::Item components, but can be
     # used standalone if needed.
     #
     # @example Standalone usage
