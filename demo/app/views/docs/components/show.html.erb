@@ -18,7 +18,7 @@
       <ul class="space-y-2 font-medium">
         <% all_components.each do |component| %>
           <li>
-            <%= link_to component, docs_component_path(:id => "Flowbite::#{component}"), class: "flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group" %>
+            <%= link_to component.name, docs_component_path(:id => component.path), class: "flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group" %>
           </li>
         <% end %>
       </ul>
