@@ -15,6 +15,17 @@ module Docs
       @code_object = Yard.new.code_object(params[:id])
       raise ActiveRecord::RecordNotFound if @code_object.nil?
 
+      @child_classes = @code_object.children.select { |c| c.is_a?(YARD::CodeObjects::ClassObject) }.sort_by(&:name)
+      @constructor = @code_object.meths.find { |meth| meth.name == :initialize }
+      @constructor_arguments = if @constructor
+        @constructor.tags(:param)
+      else
+        []
+      end
+      @examples = @code_object.tags(:example)
+      @lookbook_embeds = @code_object.tags(:lookbook_embed)
+      @viewcomponent_slots = @code_object.tags(:viewcomponent_slot)
+
       respond_to do |format|
         format.html
         format.md

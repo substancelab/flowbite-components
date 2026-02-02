@@ -37,12 +37,11 @@
       </section>
     <% end %>
 
-    <% children = @code_object.children.select { |c| c.is_a?(YARD::CodeObjects::ClassObject) }.sort_by(&:name) %>
-    <% if children.any? %>
+    <% if @child_classes.any? %>
       <section>
         <h2 class="mb-4 mt-8 text-2xl font-bold">In namespace</h2>
         <ul class="list-disc list-inside space-y-2">
-          <% children.each do |subclass| %>
+          <% @child_classes.each do |subclass| %>
             <li>
               <%= link_to subclass.name, docs_component_path(:id => subclass.path), class: "text-blue-600 hover:underline" %>
             </li>
@@ -55,15 +54,15 @@
       <%= simple_format(@code_object.docstring) %>
     </section>
 
-    <% if @code_object.tags(:viewcomponent_slot).any? %>
-      <section class="tags">
+    <% if @viewcomponent_slots.any? %>
+      <section>
         <p class="tag_title">Slots:</p>
-        <ul class="viewcomponent_slot">
-          <% @code_object.tags(:viewcomponent_slot).each do |slot_tag| %>
+        <ul>
+          <% @viewcomponent_slots.each do |slot_tag| %>
             <li>
-              <span class="name"><%= slot_tag.name %></span>
+              <span><%= slot_tag.name %></span>
               <% if slot_tag.types&.any? %>
-                <span class="type">(<%= slot_tag.types.map { |t| link_to(t, "#") }.join(", ").html_safe %>)</span>
+                <span>(<%= slot_tag.types.map { |t| link_to(t, "#") }.join(", ").html_safe %>)</span>
               <% end %>
               <% if slot_tag.text.present? %>
                 &mdash; <%= simple_format(slot_tag.text, {}, wrapper_tag: "span") %>
@@ -74,39 +73,38 @@
       </section>
     <% end %>
 
-    <section>
-      <%- @code_object.tags(:example).each do |example| %>
-        <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
-        <pre><code><%= example.text %></code></pre>
-      <% end %>
-    </section>
+    <% if @examples.any? %>
+      <section>
+        <%- @examples.each do |example| %>
+          <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
+          <pre><code><%= example.text %></code></pre>
+        <% end %>
+      </section>
+    <% end %>
 
-    <% if @code_object.tags(:lookbook_embed).any? %>
+    <% if @lookbook_embeds.any? %>
       <section>
         <h2 class="mt-8 text-2xl font-bold">Examples</h2>
 
-        <% @code_object.tags(:lookbook_embed).each do |lookbook_tag| %>
+        <% @lookbook_embeds.each do |lookbook_tag| %>
           <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
         <% end %>
       </section>
     <% end %>
 
-    <% constructor = @code_object.meths.find { |meth| meth.name == :initialize } %>
-    <% if constructor %>
+    <% if @constructor %>
       <section>
         <h2 class="mt-8 text-2xl font-bold">Constructor</h2>
 
-        <code><%= constructor.signature %></code>
-        <%= simple_format(constructor.docstring) %>
+        <code><%= @constructor.signature %></code>
 
-        <% arguments = constructor.tags(:param) %>
-        <% if arguments.any? %>
+        <% if @constructor_arguments.any? %>
           <h3 class="mt-4 text-xl font-bold">Parameters</h3>
           <table>
-            <% arguments.each do |param| %>
+            <% @constructor_arguments.each do |param| %>
               <tr>
                 <th class="pt-4 text-left align-top" scope="col"><strong><code><%= param.name %></code></strong></th>
-                <td class="pt-4 align-top ps-4"><%= param.types.join(", ") %></td>
+                <td class="pt-4 align-top ps-4"><%= (param.types || []).join(", ") %></td>
                 <td class="pt-4 align-top ps-4"><%= param.text %></td>
               </tr>
             <% end %>
