@@ -56,20 +56,17 @@
 
     <% if @viewcomponent_slots.any? %>
       <section>
-        <p class="tag_title">Slots:</p>
-        <ul>
+        <h2 class="mt-8 text-2xl font-bold">Slots</h2>
+
+        <table>
           <% @viewcomponent_slots.each do |slot_tag| %>
-            <li>
-              <span><%= slot_tag.name %></span>
-              <% if slot_tag.types&.any? %>
-                <span>(<%= slot_tag.types.map { |t| link_to(t, "#") }.join(", ").html_safe %>)</span>
-              <% end %>
-              <% if slot_tag.text.present? %>
-                &mdash; <%= simple_format(slot_tag.text, {}, wrapper_tag: "span") %>
-              <% end %>
-            </li>
+            <tr>
+              <th class="pt-4 text-left align-top" scope="col"><strong><code><%= slot_tag.name %></code></strong></th>
+              <td class="pt-4 align-top ps-4"><%= (slot_tag.types || []).join(", ") %></td>
+              <td class="pt-4 align-top ps-4"><%= slot_tag.text %></td>
+            </tr>
           <% end %>
-        </ul>
+        </table>
       </section>
     <% end %>
 
