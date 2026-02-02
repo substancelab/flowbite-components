@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* Breadcrumb component, including Flowbite::BreadcrumbItem with Flowbite::BreadcrumbItem::First and Flowbite::BreadcrumbItem::Current variants.
+* Breadcrumb component, including Flowbite::Breadcrumb::Item with Flowbite::Breadcrumb::Item::First and Flowbite::Breadcrumb::Item::Current variants.
 * DateTime input field components.
 * Toast component.
 * Ruby 4.0 support (no changes).

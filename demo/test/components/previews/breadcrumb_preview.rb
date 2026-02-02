@@ -6,13 +6,13 @@ class BreadcrumbPreview < Lookbook::Preview
   def default
     render(Flowbite::Breadcrumb.new) do |breadcrumb|
       breadcrumb.with_item do
-        render_to_string(Flowbite::BreadcrumbItem::First.new(href: "/").with_content("Home"))
+        render_to_string(Flowbite::Breadcrumb::Item::First.new(href: "/").with_content("Home"))
       end
       breadcrumb.with_item do
-        render_to_string(Flowbite::BreadcrumbItem.new(href: "/projects").with_content("Projects"))
+        render_to_string(Flowbite::Breadcrumb::Item.new(href: "/projects").with_content("Projects"))
       end
       breadcrumb.with_item do
-        render_to_string(Flowbite::BreadcrumbItem::Current.new.with_content("Current Page"))
+        render_to_string(Flowbite::Breadcrumb::Item::Current.new.with_content("Current Page"))
       end
     end
   end

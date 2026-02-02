@@ -5,20 +5,20 @@ module Flowbite
   #
   # See https://flowbite.com/docs/components/breadcrumb/
   #
-  # Use {Flowbite::Breadcrumb} and the child {Flowbite::BreadcrumbItem} components to create and indicate a series of page structure and URLs to help the user navigate through the website.
+  # Use {Flowbite::Breadcrumb} and the child {Flowbite::Breadcrumb::Item} components to create and indicate a series of page structure and URLs to help the user navigate through the website.
   #
   # Breadcrumbs consist of the following components:
   #
   # - {Flowbite::Breadcrumb}: Container for breadcrumb items.
   # - {Flowbite::Breadcrumb::HomeIcon}: Home icon for the first breadcrumb item.
   # - {Flowbite::Breadcrumb::SeparatorIcon}: Separator between breadcrumb items.
-  # - {Flowbite::BreadcrumbItem}: An individual breadcrumb item.
-  # - {Flowbite::BreadcrumbItem::Current}: An invidual breadcrumb item without a link, usually used for the current page in the breadcrumb trail.
-  # - {Flowbite::BreadcrumbItem::First}: An individual breadcrumb item with a home icon on it.
+  # - {Flowbite::Breadcrumb::Item}: An individual breadcrumb item.
+  # - {Flowbite::Breadcrumb::Item::Current}: An invidual breadcrumb item without a link, usually used for the current page in the breadcrumb trail.
+  # - {Flowbite::Breadcrumb::Item::First}: An individual breadcrumb item with a home icon on it.
   #
-  # @viewcomponent_slot [Flowbite::BreadcrumbItem] items The items of the
-  #   breadcrumb trail. Use {Flowbite::BreadcrumbItem::First} for the first
-  #   item to get a home icon, and {Flowbite::BreadcrumbItem::Current} for the
+  # @viewcomponent_slot [Flowbite::Breadcrumb::Item] items The items of the
+  #   breadcrumb trail. Use {Flowbite::Breadcrumb::Item::First} for the first
+  #   item to get a home icon, and {Flowbite::Breadcrumb::Item::Current} for the
   #   last item to render it without a link.
   #
   # @lookbook_embed BreadcrumbPreview
