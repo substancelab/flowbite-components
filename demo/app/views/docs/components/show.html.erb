@@ -26,13 +26,36 @@
   </nav>
 
   <main class="py-4 flex-1 space-y-8">
-    <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.name %></h1>
+    <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.path %></h1>
+    <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
+      <code><%= @code_object.type %></code>
+      <code><%= @code_object.path %></code>
+    <% end %>
+
+    <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
+      <section>
+        Inherits from
+          <%= render(Flowbite::Link.new(href: docs_component_path(@code_object.parent))) do %>
+          <code><%= @code_object.parent %></code>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% children = @code_object.children.select { |c| c.is_a?(YARD::CodeObjects::ClassObject) }.sort_by(&:name) %>
+    <% if children.any? %>
+      <section>
+        <h2 class="mb-4 mt-8 text-2xl font-bold">In namespace</h2>
+        <ul class="list-disc list-inside space-y-2">
+          <% children.each do |subclass| %>
+            <li>
+              <%= link_to subclass.name, docs_component_path(:id => subclass.path), class: "text-blue-600 hover:underline" %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
 
     <section class="format dark:format-invert">
-      <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
-        <code><%= @code_object.path %></code>
-      <% end %>
-
       <%= simple_format(@code_object.docstring) %>
     </section>
 
