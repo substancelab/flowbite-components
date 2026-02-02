@@ -5,7 +5,7 @@ app/components/flowbite/toast.rb 20c14599e8a9f33cf36450edbad59b3dbeaf6bbd
 app/components/flowbite/button.rb 6ae7681d3b842d73aa99cddfa5a9b107ede7fea4
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
 app/components/flowbite/input/url.rb 2ad9461aaa799e0ce457279df1bd63641b845e95
-app/components/flowbite/breadcrumb.rb bc7e606726c6b1ffa211db7440b743153aa93575
+app/components/flowbite/breadcrumb.rb e04fc0fb7b5e845a95a80052cb2996ba5eb7a144
 app/components/flowbite/card/title.rb 8067aa1e027c725896b063b67364aecfbf2f7d4e
 app/components/flowbite/input/date.rb 5b93e5b98eef5e6e54ef18e74c72fb8746bac48b
 app/components/flowbite/input/file.rb fde42ca92377f212397f350cca288a9c80de7b8a

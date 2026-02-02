@@ -1,36 +1,121 @@
-<div class="format max-w-full dark:format-invert">
-<h1><%= @code_object.name %></h1>
+<article
+  class="
+    flex flex-wrap md:flex-nowrap gap-8 w-full items-center
+    justify-between mx-auto
+  "
+>
+  <nav
+    id="default-sidebar"
+    class="flex-none h-full transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidebar"
+  >
+    <div
+      class="
+        h-full -ml-2 pr-6 py-4 overflow-y-auto border-e
+        border-default
+      "
+    >
+      <ul class="space-y-2 font-medium">
+        <% all_components.each do |component| %>
+          <li>
+            <%= link_to component.name, docs_component_path(:id => component.path), class: "flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 
-<%= simple_format(@code_object.docstring) %>
+  <main class="py-4 flex-1 space-y-8">
+    <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.path %></h1>
 
-<% if @code_object.tags(:viewcomponent_slot).any? %>
-  <div class="tags">
-    <p class="tag_title">Slots:</p>
-    <ul class="viewcomponent_slot">
-      <% @code_object.tags(:viewcomponent_slot).each do |slot_tag| %>
-        <li>
-          <span class="name"><%= slot_tag.name %></span>
-          <% if slot_tag.types&.any? %>
-            <span class="type">(<%= slot_tag.types.map { |t| link_to(t, "#") }.join(", ").html_safe %>)</span>
+    <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
+      <section>
+        Inherits from
+          <%= render(Flowbite::Link.new(href: docs_component_path(@code_object.parent))) do %>
+          <code><%= @code_object.parent %></code>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if @child_classes.any? %>
+      <section>
+        <h2 class="mb-4 mt-8 text-2xl font-bold">In namespace</h2>
+        <ul class="list-disc list-inside space-y-2">
+          <% @child_classes.each do |subclass| %>
+            <li>
+              <%= link_to subclass.name, docs_component_path(:id => subclass.path), class: "text-blue-600 hover:underline" %>
+            </li>
           <% end %>
-          <% if slot_tag.text.present? %>
-            &mdash; <%= simple_format(slot_tag.text, {}, wrapper_tag: "span") %>
+        </ul>
+      </section>
+    <% end %>
+
+    <section class="format dark:format-invert">
+      <%= simple_format(@code_object.docstring) %>
+    </section>
+
+    <% if @viewcomponent_slots.any? %>
+      <section>
+        <h2 class="mt-8 text-2xl font-bold">Slots</h2>
+
+        <table>
+          <% @viewcomponent_slots.each do |slot_tag| %>
+            <tr>
+              <th class="pt-4 text-left align-top" scope="col"><strong><code><%= slot_tag.name %></code></strong></th>
+              <td class="pt-4 align-top ps-4"><%= (slot_tag.types || []).join(", ") %></td>
+              <td class="pt-4 align-top ps-4"><%= slot_tag.text %></td>
+            </tr>
           <% end %>
-        </li>
+        </table>
+      </section>
+    <% end %>
+
+    <% if @examples.any? %>
+      <section>
+        <%- @examples.each do |example| %>
+          <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
+          <pre><code><%= example.text %></code></pre>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if @lookbook_embeds.any? %>
+      <section>
+        <h2 class="mt-8 text-2xl font-bold">Examples</h2>
+
+        <% @lookbook_embeds.each do |lookbook_tag| %>
+          <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if @constructor %>
+      <section>
+        <h2 class="mt-8 text-2xl font-bold">Constructor</h2>
+
+        <code><%= @constructor.signature %></code>
+
+        <% if @constructor_arguments.any? %>
+          <h3 class="mt-4 text-xl font-bold">Parameters</h3>
+          <table>
+            <% @constructor_arguments.each do |param| %>
+              <tr>
+                <th class="pt-4 text-left align-top" scope="col"><strong><code><%= param.name %></code></strong></th>
+                <td class="pt-4 align-top ps-4"><%= (param.types || []).join(", ") %></td>
+                <td class="pt-4 align-top ps-4"><%= param.text %></td>
+              </tr>
+            <% end %>
+          </table>
+        <% end %>
+      </section>
+    <% end %>
+
+    <section>
+      <h2 class="mt-8 text-2xl font-bold">See also</h2>
+      <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
+        Ruby API documentation for
+        <code><%= @code_object.type %> <%= @code_object.path %></code>
       <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%- @code_object.tags(:example).each do |example| %>
-  <h2><%= example.name %></h2>
-  <pre><code><%= example.text %></code></pre>
-<% end %>
-
-<% if @code_object.tags(:lookbook_embed).any? %>
-  <h2>Examples</h2>
-
-  <% @code_object.tags(:lookbook_embed).each do |lookbook_tag| %>
-    <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
-  <% end %>
-<% end %>
+    </section>
+  </main>
+</article>

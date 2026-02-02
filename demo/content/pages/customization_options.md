@@ -26,7 +26,7 @@ render(Component.new(options: {class: "these replace the classes"}))
 A common use case for customizing a component is to add more CSS classes when rendering it, fx to change the size or spacing. flowbite-components is optimized for this case and all you need to do is specify the extra classes:
 
 ```erb
-<%%= render(Flowbite::Card.new(class: "w-full my-8")) { "Content" } %>
+<%= render(Flowbite::Card.new(class: "w-full my-8")) { "Content" } %>
 ```
 renders
 ```html
@@ -37,7 +37,7 @@ If you want to fully replace the existing classes, you can pass an entirely new
 `class` attribute via options:
 
 ```erb
-<%%= render(Flowbite::Card.new(options: {class: "w-full my-8"})) { "Content" } %>
+<%= render(Flowbite::Card.new(options: {class: "w-full my-8"})) { "Content" } %>
 ```
 renders
 ```html

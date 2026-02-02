@@ -13,19 +13,19 @@ Flowbite Components provides a comprehensive library of UI components following 
 
 ```erb
 <%% form_with model: @user do |form| %>
-  <%%= render Flowbite::InputField::Text.new(
+  <%= render Flowbite::InputField::Text.new(
     attribute: :name,
     form: form,
     label: {content: "Full Name"},
     hint: {content: "Enter your full name"}
   ) %>
 
-  <%%= render Flowbite::InputField::Email.new(
+  <%= render Flowbite::InputField::Email.new(
     attribute: :email,
     form: form
   ) %>
 
-  <%%= render Flowbite::Button.new(
+  <%= render Flowbite::Button.new(
     type: :submit,
     content: "Save User"
   ) %>
@@ -38,17 +38,17 @@ See more examples in [the documentation](/lookbook/inspect/input_field/inputfiel
 
 ```erb
 <!-- Default button -->
-<%%= render Flowbite::Button.new do %>
+<%= render Flowbite::Button.new do %>
   Click me
 <%% end %>
 
 <!-- Outline button with color -->
-<%%= render Flowbite::Button::Outline.new(style: :success) do %>
+<%= render Flowbite::Button::Outline.new(style: :success) do %>
   Outline Button
 <%% end %>
 
 <!-- Pill button -->
-<%%= render Flowbite::Button::Pill.new(style: :danger) do %>
+<%= render Flowbite::Button::Pill.new(style: :danger) do %>
   Pill Button
 <%% end %>
 ```
@@ -58,7 +58,7 @@ See more examples in [the documentation](/lookbook/inspect/button/default).
 ### Custom Input Options
 
 ```erb
-<%%= render Flowbite::InputField::Text.new(
+<%= render Flowbite::InputField::Text.new(
   attribute: :username,
   form: form,
   size: :lg,
@@ -77,7 +77,7 @@ See more examples in [the documentation](/lookbook/inspect/input_field/inputfiel
 ### Custom Labels
 
 ```erb
-<%%= render Flowbite::InputField::Email.new(
+<%= render Flowbite::InputField::Email.new(
   attribute: :email,
   form: form,
   label: {
@@ -93,14 +93,14 @@ See more examples in [the documentation](/lookbook/inspect/input_label/inputlabe
 
 ```erb
 <!-- Disabled field -->
-<%%= render Flowbite::InputField::Text.new(
+<%= render Flowbite::InputField::Text.new(
   attribute: :name,
   form: form,
   disabled: true
 ) %>
 
 <!-- Field with hint -->
-<%%= render Flowbite::InputField::Password.new(
+<%= render Flowbite::InputField::Password.new(
   attribute: :password,
   form: form,
   hint: "Must be at least 8 characters long"

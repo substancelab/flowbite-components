@@ -5,6 +5,8 @@ module Flowbite
   #
   # See https://flowbite.com/docs/components/breadcrumb/
   #
+  # Use {Flowbite::Breadcrumb} and the child {Flowbite::BreadcrumbItem} components to create and indicate a series of page structure and URLs to help the user navigate through the website.
+  #
   # Breadcrumbs consist of the following components:
   #
   # - {Flowbite::Breadcrumb}: Container for breadcrumb items.
