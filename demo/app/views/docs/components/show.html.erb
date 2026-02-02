@@ -79,6 +79,20 @@
 
         <code><%= constructor.signature %></code>
         <%= simple_format(constructor.docstring) %>
+
+        <% arguments = constructor.tags(:param) %>
+        <% if arguments.any? %>
+          <h3 class="mt-4 text-xl font-bold">Parameters</h3>
+          <table>
+            <% arguments.each do |param| %>
+              <tr>
+                <th class="pt-4 text-left align-top" scope="col"><strong><code><%= param.name %></code></strong></th>
+                <td class="pt-4 align-top ps-4"><%= param.types.join(", ") %></td>
+                <td class="pt-4 align-top ps-4"><%= param.text %></td>
+              </tr>
+            <% end %>
+          </table>
+        <% end %>
       </section>
     <% end %>
   </main>
