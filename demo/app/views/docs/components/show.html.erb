@@ -57,14 +57,14 @@
 
     <section>
       <%- @code_object.tags(:example).each do |example| %>
-        <h2 class="text-2xl font-bold"><%= example.name %></h2>
-        <code><%= example.text %></code>
+        <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
+        <pre><code><%= example.text %></code></pre>
       <% end %>
     </section>
 
     <% if @code_object.tags(:lookbook_embed).any? %>
       <section>
-        <h2 class="text-2xl font-bold">Examples</h2>
+        <h2 class="mt-8 text-2xl font-bold">Examples</h2>
 
         <% @code_object.tags(:lookbook_embed).each do |lookbook_tag| %>
           <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
@@ -75,7 +75,7 @@
     <% constructor = @code_object.meths.find { |meth| meth.name == :initialize } %>
     <% if constructor %>
       <section>
-        <h2 class="text-2xl font-bold">Constructor</h2>
+        <h2 class="mt-8 text-2xl font-bold">Constructor</h2>
 
         <code><%= constructor.signature %></code>
         <%= simple_format(constructor.docstring) %>
