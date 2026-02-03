@@ -1,5 +1,7 @@
 module Docs
   class PagesController < ApplicationController
+    rescue_from(Decant::FileNotFound) { |exception| raise ActiveRecord::RecordNotFound, exception.message }
+
     def index
       first_page = all_pages.first
       redirect_to(docs_page_path(first_page.slug))
