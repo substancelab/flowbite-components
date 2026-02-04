@@ -62,6 +62,8 @@ module Flowbite
   #   Usually auto-generated based on the input type subclass.
   # @viewcomponent_slot [Flowbite::Input::Label] label The label for the input
   #   field, rendered above the input element.
+  #
+  # @lookbook_embed InputFieldPreview
   class InputField < ViewComponent::Base
     renders_one :hint
     renders_one :input
