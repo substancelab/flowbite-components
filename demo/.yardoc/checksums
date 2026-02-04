@@ -1,4 +1,4 @@
-app/components/flowbite/card.rb 91b769b52e8a69c0b66075b549b56bb122632462
+app/components/flowbite/card.rb 6f248428402ae1a72982cd0cde3acd77a6f43308
 app/components/flowbite/link.rb 1516522405f7cf2021913a4ebbb792f4ae386c16
 app/components/flowbite/input.rb 6fbe49459aa61f71e7fb72688372223189167ac7
 app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
