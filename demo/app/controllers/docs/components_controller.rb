@@ -1,9 +1,23 @@
 module Docs
   class ComponentsController < ApplicationController
     class Yard
+      class CodeObject < SimpleDelegator
+        def docstring_introduction
+          docstring.split("\n\n").first
+        end
+
+        def docstring_without_introduction
+          remainders = docstring.split("\n\n")[1..]
+          return nil unless remainders
+
+          remainders.join("\n\n")
+        end
+      end
+
       def code_object(class_name)
         ::YARD::Registry.load!(yardoc_path) if ::YARD::Registry.all.empty?
-        ::YARD::Registry.at(class_name)
+        yard_object = ::YARD::Registry.at(class_name)
+        CodeObject.new(yard_object) if yard_object
       end
 
       def yardoc_path

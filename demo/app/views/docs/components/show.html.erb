@@ -28,6 +28,10 @@
   <main class="py-4 flex-1 space-y-8">
     <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.path %></h1>
 
+    <section class="format dark:format-invert">
+      <%= simple_format(@code_object.docstring_introduction) %>
+    </section>
+
     <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
       <section>
         Inherits from
@@ -51,7 +55,7 @@
     <% end %>
 
     <section class="format dark:format-invert">
-      <%= simple_format(@code_object.docstring) %>
+      <%= simple_format(@code_object.docstring_without_introduction) %>
     </section>
 
     <% if @lookbook_embeds.any? %>
