@@ -10,14 +10,14 @@ Gem::Specification.new do |spec|
 
   spec.summary = "ViewComponents using the Flowbite design system"
   spec.description = "A library of View Components based on the Flowbite design system to be used in Rails applications."
-  spec.homepage = "https://github.com/substancelab/flowbite-components"
+  spec.homepage = "https://flowbite-components.substancelab.com"
   spec.required_ruby_version = ">= 3.1.0"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org/"
 
   spec.metadata["documentation_uri"] = "https://flowbite-components.substancelab.com/docs"
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = "https://github.com/substancelab/flowbite-components"
   spec.metadata["changelog_uri"] = "https://github.com/substancelab/flowbite-components/blob/main/CHANGELOG.md"
 
   spec.files = Dir["CHANGELOG.md", "LICENSE", "README.md", "app/**/*", "lib/**/*"]
