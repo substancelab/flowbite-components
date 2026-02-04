@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
-    class Password < Field
+  class Input
+    class Password < Input
       def input_field_type
         :password_field
       end

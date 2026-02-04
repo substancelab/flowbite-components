@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
-    class File < Field
+  class Input
+    class File < Input
       SIZES = {
         sm: ["text-sm"],
         default: ["text-sm"],

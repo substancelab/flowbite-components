@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
+  class Input
     class ValidationError < ViewComponent::Base
       class << self
         def classes(state: :default, style: :default)

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
-    class Date < Field
+  class Input
+    class Date < Input
       def input_field_type
         :date_field
       end

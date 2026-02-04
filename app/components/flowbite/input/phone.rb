@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
-    class Phone < Field
+  class Input
+    class Phone < Input
       def input_field_type
         :phone_field
       end
