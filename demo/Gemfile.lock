@@ -1,7 +1,7 @@
 PATH
   remote: ../..
   specs:
-    flowbite-components (0.1.4)
+    flowbite-components (0.2.0)
       view_component (>= 4.0.0)
 
 GEM

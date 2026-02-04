@@ -15,6 +15,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org/"
 
+  spec.metadata["documentation_uri"] = "https://flowbite-components.substancelab.com/docs"
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
   spec.metadata["changelog_uri"] = "https://github.com/substancelab/flowbite-components/blob/main/CHANGELOG.md"

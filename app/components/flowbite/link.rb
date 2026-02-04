@@ -5,6 +5,8 @@ module Flowbite
   # to an external website when clicking on an inline text item, button, or card
   #
   # Use this component to add default styles to an inline link element.
+  #
+  # @lookbook_embed LinkPreview
   class Link < ViewComponent::Base
     attr_reader :href, :options
 

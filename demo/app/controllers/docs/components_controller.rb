@@ -35,11 +35,14 @@ module Docs
     private
 
     helper_method def all_components
+      return @all_components if @all_components
+
       flowbite = Yard.new.code_object("Flowbite")
       child_classes = flowbite.children.select { |child|
         child.type == :class && child.inheritance_tree.map(&:path).include?("ViewComponent::Base")
       }
-      child_classes.sort_by(&:name)
+
+      @all_components = child_classes.sort_by(&:name)
     end
 
     helper_method def rubydoc_url(code_object)

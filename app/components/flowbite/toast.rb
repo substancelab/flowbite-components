@@ -10,6 +10,8 @@ module Flowbite
   # @param message [String] The message to display in the toast.
   # @param options [Hash] Additional HTML options for the toast container.
   # @param style [Symbol] The color style of the toast (:default, :success, :danger, :warning).
+  #
+  # @lookbook_embed ToastPreview
   class Toast < ViewComponent::Base
     class << self
       def classes
