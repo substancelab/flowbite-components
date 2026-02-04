@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
+  class Input
     # The checkbox component can be used to receive one or more selected options
     # from the user in the form of a square box available in multiple styles,
     # sizes, colors, and variants coded with the utility classes from Tailwind
     # CSS and with support for dark mode.
     #
     # https://flowbite.com/docs/forms/checkbox/
-    class Checkbox < Field
+    class Checkbox < Input
       DEFAULT_CHECKED_VALUE = "1"
       DEFAULT_UNCHECKED_VALUE = "0"
 

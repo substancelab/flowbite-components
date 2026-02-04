@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
+  class Input
     # The radio button component can be used to allow the user to choose a
     # single option from one or more available options.
     #
     # https://flowbite.com/docs/forms/radio/
-    class RadioButton < Field
+    class RadioButton < Input
       class << self
         # Radio buttons only have their default size.
         def sizes

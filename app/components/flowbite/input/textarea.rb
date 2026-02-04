@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
-    class Textarea < Field
+  class Input
+    class Textarea < Input
       class << self
         # rubocop:disable Layout/LineLength
         def styles

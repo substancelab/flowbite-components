@@ -15,6 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 * [BREAKING] The API of Flowbite::InputField::RadioButton now follows the same structure as the other components for hints. Instead of passing a String (`hint: "This is the hint"`) you now have to pass a Hash that's passed along to the Hint component (i.e. `hint: {content: "This is the hint"}`), allowing you to customize other options (eg HTML attributes like class) as well.
+* [BREAKING] Flowbite::Input::Field has been renamed to Flowbite::Input. All individual input components now use that as their superclass. This matches the class hierarchy of Flowbite::InputField::* classes better and allows Flowbite::Input to automagically appear in the documentation.
 
 ### Fixed
 

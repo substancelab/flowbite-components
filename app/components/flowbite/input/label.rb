@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
+  class Input
     # https://api.rubyonrails.org/classes/ActionView/Helpers/FormBuilder.html#method-i-label
     class Label < ViewComponent::Base
       STATES = [

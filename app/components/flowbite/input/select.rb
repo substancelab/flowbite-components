@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
+  class Input
     # The `Select` component renders a select input field for use in forms.
     #
     # https://flowbite.com/docs/forms/select/
     #
     # Wraps `ActionView::Helpers::FormOptionsHelper#select`: https://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-select
-    class Select < Field
+    class Select < Input
       SIZES = {
         sm: ["px-2.5", "py-2", "text-sm"],
         default: ["px-3", "py-2.5", "text-sm"],

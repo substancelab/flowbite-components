@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Flowbite
-  module Input
+  class Input
     # A hint element for input fields.
     #
     # Provides additional context or instructions for the user.

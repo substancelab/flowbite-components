@@ -17,7 +17,7 @@ module Flowbite
   # {Flowbite::InputField::Email}, etc.
   #
   # To render an input without labels or error messages etc, see
-  # {Flowbite::Input::Field} instead and one of its subclasses.
+  # {Flowbite::Input} instead and one of its subclasses.
   #
   # @example Basic usage
   #
@@ -58,7 +58,7 @@ module Flowbite
   #
   # @viewcomponent_slot [Flowbite::Input::Hint] hint Helper text displayed
   #   below the input field to provide additional context or instructions.
-  # @viewcomponent_slot [Flowbite::Input::Field] input The input element itself.
+  # @viewcomponent_slot [Flowbite::Input] input The input element itself.
   #   Usually auto-generated based on the input type subclass.
   # @viewcomponent_slot [Flowbite::Input::Label] label The label for the input
   #   field, rendered above the input element.
@@ -99,7 +99,7 @@ module Flowbite
     # @param input [Hash] A hash with options for the input component.
     #   These are passed to the input component's constructor, see the
     #   documentation for whatever input component is being used.
-    #   See {Flowbite::Input::Field}.
+    #   See {Flowbite::Input}.
     # @option input [Hash] options Additional HTML attributes to pass to
     #   the input element.
     #
@@ -129,7 +129,7 @@ module Flowbite
     end
 
     def input_component
-      ::Flowbite::Input::Field
+      ::Flowbite::Input
     end
 
     protected
