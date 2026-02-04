@@ -54,6 +54,16 @@
       <%= simple_format(@code_object.docstring) %>
     </section>
 
+    <% if @lookbook_embeds.any? %>
+      <section>
+        <h2 class="mt-8 text-2xl font-bold">Examples</h2>
+
+        <% @lookbook_embeds.each do |lookbook_tag| %>
+          <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
+        <% end %>
+      </section>
+    <% end %>
+
     <% if @viewcomponent_slots.any? %>
       <section>
         <h2 class="mt-8 text-2xl font-bold">Slots</h2>
@@ -75,16 +85,6 @@
         <%- @examples.each do |example| %>
           <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
           <pre><code><%= example.text %></code></pre>
-        <% end %>
-      </section>
-    <% end %>
-
-    <% if @lookbook_embeds.any? %>
-      <section>
-        <h2 class="mt-8 text-2xl font-bold">Examples</h2>
-
-        <% @lookbook_embeds.each do |lookbook_tag| %>
-          <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
         <% end %>
       </section>
     <% end %>
