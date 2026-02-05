@@ -29,7 +29,7 @@
     <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.path %></h1>
 
     <section class="format dark:format-invert">
-      <%= simple_format(@code_object.docstring_introduction) %>
+      <%= render_docstring(@code_object.docstring_introduction) %>
     </section>
 
     <% if @introduction_preview %>
@@ -39,7 +39,7 @@
     <% end %>
 
     <section class="format dark:format-invert">
-      <%= simple_format(@code_object.docstring_without_introduction) %>
+      <%= render_docstring(@code_object.docstring_without_introduction) %>
     </section>
 
     <% if @examples.any? %>
@@ -60,7 +60,7 @@
             <h3 class="mt-4 text-xl font-bold"><%= scenario_group.label %></h3>
 
             <div class="my-4">
-              <%= simple_format(scenario_group.scenarios.map { |s| s.notes.presence }.compact.join("\n\n")) %>
+              <%= render_docstring(scenario_group.scenarios.map { |s| s.notes.presence }.compact.join("\n\n")) %>
             </div>
             <lookbook-embed panels="source" preview="<%= scenario_group.preview.preview_class_name %>" scenario="<%= scenario_group.name %>"></lookbook-embed>
           </div>
