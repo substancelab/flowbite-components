@@ -68,9 +68,15 @@
       <section>
         <h2 class="mt-8 text-2xl font-bold">Examples</h2>
 
-        <% @previews.each do |scenario| %>
-          <h3 class="mt-4 text-xl font-bold"><%= scenario.label %></h3>
-          <lookbook-embed panels="source,notes" preview="<%= scenario.preview.preview_class_name %>" scenario="<%= scenario.name %>"></lookbook-embed>
+        <% @previews.each do |scenario_group| %>
+          <div class="mt-8">
+            <h3 class="mt-4 text-xl font-bold"><%= scenario_group.label %></h3>
+
+            <div class="my-4">
+              <%= simple_format(scenario_group.scenarios.map { |s| s.notes.presence }.compact.join("\n\n")) %>
+            </div>
+            <lookbook-embed panels="source" preview="<%= scenario_group.preview.preview_class_name %>" scenario="<%= scenario_group.name %>"></lookbook-embed>
+          </div>
         <% end %>
       </section>
     <% end %>
