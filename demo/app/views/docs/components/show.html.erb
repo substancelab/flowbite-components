@@ -64,12 +64,13 @@
       <%= simple_format(@code_object.docstring_without_introduction) %>
     </section>
 
-    <% if @lookbook_embeds.any? %>
+    <% if @previews.any? %>
       <section>
         <h2 class="mt-8 text-2xl font-bold">Examples</h2>
 
-        <% @lookbook_embeds.each do |lookbook_tag| %>
-          <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
+        <% @previews.each do |scenario| %>
+          <h3 class="mt-4 text-xl font-bold"><%= scenario.label %></h3>
+          <lookbook-embed panels="source,notes" preview="<%= scenario.preview.preview_class_name %>" scenario="<%= scenario.name %>"></lookbook-embed>
         <% end %>
       </section>
     <% end %>

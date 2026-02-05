@@ -37,9 +37,11 @@ module Docs
         []
       end
       @examples = @code_object.tags(:example)
-      @lookbook_embeds = @code_object.tags(:lookbook_embed)
-      @introduction_preview = find_example_preview(@lookbook_embeds)
       @viewcomponent_slots = @code_object.tags(:viewcomponent_slot)
+
+      lookbook_embeds = @code_object.tags(:lookbook_embed)
+      @introduction_preview = find_example_preview(lookbook_embeds)
+      @previews = find_non_example_previews(lookbook_embeds)
 
       respond_to do |format|
         format.html
@@ -73,6 +75,20 @@ module Docs
       return nil unless preview
 
       preview if preview.scenarios.any? { |s| s.name == "example" }
+    end
+
+    # @return [Array<Lookbook::Entity>]
+    def find_non_example_previews(lookbook_embeds)
+      return [] if lookbook_embeds.empty?
+
+      preview_class = lookbook_embeds.first.text.strip
+      return [] if preview_class.blank?
+
+      preview_entity = Lookbook::Engine.previews.find_by_preview_class(preview_class)
+      return [] unless preview_entity
+
+      scenarios = preview_entity.scenarios
+      scenarios.reject { |s| s.name == "example" }
     end
 
     helper_method def rubydoc_url(code_object)
