@@ -38,31 +38,18 @@
       </section>
     <% end %>
 
-    <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
-      <section>
-        Inherits from
-          <%= render(Flowbite::Link.new(href: docs_component_path(@code_object.parent))) do %>
-          <code><%= @code_object.parent %></code>
-        <% end %>
-      </section>
-    <% end %>
-
-    <% if @child_classes.any? %>
-      <section>
-        <h2 class="mb-4 mt-8 text-2xl font-bold">In namespace</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <% @child_classes.each do |subclass| %>
-            <li>
-              <%= link_to subclass.name, docs_component_path(:id => subclass.path), class: "text-blue-600 hover:underline" %>
-            </li>
-          <% end %>
-        </ul>
-      </section>
-    <% end %>
-
     <section class="format dark:format-invert">
       <%= simple_format(@code_object.docstring_without_introduction) %>
     </section>
+
+    <% if @examples.any? %>
+      <section>
+        <%- @examples.each do |example| %>
+          <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
+          <%= render(Docs::CodeExample.new) do %><%= example.text %><% end %>
+        <% end %>
+      </section>
+    <% end %>
 
     <% if @previews.any? %>
       <section>
@@ -81,9 +68,33 @@
       </section>
     <% end %>
 
+    <h2 class="mt-8 text-2xl font-bold">API reference</h2>
+
+    <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
+      <section>
+        Inherits from
+          <%= render(Flowbite::Link.new(href: docs_component_path(@code_object.parent))) do %>
+          <code><%= @code_object.parent %></code>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if @child_classes.any? %>
+      <section>
+        <h3 class="mb-4 mt-8 text-xl font-bold">In namespace</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <% @child_classes.each do |subclass| %>
+            <li>
+              <%= link_to subclass.name, docs_component_path(:id => subclass.path), class: "text-blue-600 hover:underline" %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
+
     <% if @viewcomponent_slots.any? %>
       <section>
-        <h2 class="mt-8 text-2xl font-bold">Slots</h2>
+        <h3 class="mt-8 text-xl font-bold">Slots</h3>
 
         <table>
           <% @viewcomponent_slots.each do |slot_tag| %>
@@ -97,23 +108,14 @@
       </section>
     <% end %>
 
-    <% if @examples.any? %>
-      <section>
-        <%- @examples.each do |example| %>
-          <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
-          <%= render(Docs::CodeExample.new) do %><%= example.text %><% end %>
-        <% end %>
-      </section>
-    <% end %>
-
     <% if @constructor %>
       <section>
-        <h2 class="mt-8 text-2xl font-bold">Constructor</h2>
+        <h3 class="mb-4 mt-8 text-xl font-bold">Constructor</h3>
 
         <code><%= @constructor.signature %></code>
 
         <% if @constructor_arguments.any? %>
-          <h3 class="mt-4 text-xl font-bold">Parameters</h3>
+          <h4 class="mt-4 text-md font-bold">Parameters</h4>
           <table>
             <% @constructor_arguments.each do |param| %>
               <tr>
@@ -128,7 +130,7 @@
     <% end %>
 
     <section>
-      <h2 class="mt-8 text-2xl font-bold">See also</h2>
+      <h3 class="mb-4 mt-8 text-xl font-bold">See also</h3>
       <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
         Ruby API documentation for
         <code><%= @code_object.type %> <%= @code_object.path %></code>
