@@ -3,6 +3,10 @@
 class InputFieldPreview < Lookbook::Preview
   include ActionView::Helpers::FormHelper
 
+  def example
+    render(Flowbite::InputField::Text.new(attribute: :first_name, form: form, hint: {content: "What should we call you?"}, label: {content: "First name"}))
+  end
+
   # @!group InputField
   #
   # Use this example as a generic form element which includes multiple input

@@ -32,6 +32,12 @@
       <%= simple_format(@code_object.docstring_introduction) %>
     </section>
 
+    <% if @introduction_preview %>
+      <section>
+        <lookbook-embed preview="<%= @introduction_preview.preview_class %>" scenario="example"></lookbook-embed>
+      </section>
+    <% end %>
+
     <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
       <section>
         Inherits from

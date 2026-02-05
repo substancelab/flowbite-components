@@ -38,6 +38,7 @@ module Docs
       end
       @examples = @code_object.tags(:example)
       @lookbook_embeds = @code_object.tags(:lookbook_embed)
+      @introduction_preview = find_example_preview(@lookbook_embeds)
       @viewcomponent_slots = @code_object.tags(:viewcomponent_slot)
 
       respond_to do |format|
@@ -57,6 +58,21 @@ module Docs
       }
 
       @all_components = child_classes.sort_by(&:name)
+    end
+
+    # Returns the Lookbook preview with a scenario named "example"
+    #
+    # @return [Lookbook::Preview, nil]
+    def find_example_preview(lookbook_embeds)
+      return nil if lookbook_embeds.empty?
+
+      preview_class = lookbook_embeds.first.text.strip
+      return nil if preview_class.blank?
+
+      preview = Lookbook::Engine.previews.find_by_preview_class(preview_class)
+      return nil unless preview
+
+      preview if preview.scenarios.any? { |s| s.name == "example" }
     end
 
     helper_method def rubydoc_url(code_object)

@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class ButtonPreview < Lookbook::Preview
-  # @!group Default
+  def example
+    render(Flowbite::Button.new) { "Button" }
+  end
+
+  # @!group Styles
   #
   # Use these default button styles with multiple colors to indicate an action
   # or link within your website.
