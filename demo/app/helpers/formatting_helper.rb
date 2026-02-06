@@ -15,7 +15,10 @@ module FormattingHelper
     # as is, but you can override this method to provide custom rendering logic
     # based on the specified markup format.
     def html_markup_markdown(content)
-      Kramdown::Document.new(content, input: "GFM").to_html
+      return "" unless content.strip.present?
+
+      output = Kramdown::Document.new(content, input: "GFM").to_html
+      remove_line_breaks(output)
     end
 
     def render
@@ -35,8 +38,8 @@ module FormattingHelper
       )
     end
 
-    def remove_forced_line_breaks(text)
-      text.gsub(/(\S)\n(\S)/, '\1 \2')
+    def remove_line_breaks(text)
+      text.gsub("<br />", " ")
     end
   end
 
