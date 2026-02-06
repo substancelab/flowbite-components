@@ -26,7 +26,7 @@
   </nav>
 
   <main class="py-4 flex-1 space-y-8">
-    <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.path %></h1>
+    <%= render(Docs::Headline::H1.new) { @code_object.path } %>
 
     <section class="format dark:format-invert">
       <%= render_docstring(@code_object.docstring_introduction, code_object: @code_object) %>
@@ -45,7 +45,7 @@
     <% if @examples.any? %>
       <section>
         <%- @examples.each do |example| %>
-          <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
+          <%= render(Docs::Headline::H2.new) { example.name } %>
           <%= render(Docs::CodeExample.new) do %><%= example.text %><% end %>
         <% end %>
       </section>
@@ -53,12 +53,11 @@
 
     <% if @previews.any? %>
       <section>
-        <h2 class="mt-8 text-2xl font-bold">Examples</h2>
+        <%= render(Docs::Headline::H2.new) { "Examples" } %>
 
         <% @previews.each do |scenario_group| %>
           <div class="mt-8">
-            <h3 class="mt-4 text-xl font-bold"><%= scenario_group.label %></h3>
-
+            <%= render(Docs::Headline::H3.new) { scenario_group.label } %>
             <div class="my-4">
               <%= render_docstring(scenario_group.scenarios.map { |s| s.notes.presence }.compact.join("\n\n"), code_object: @code_object) %>
             </div>
@@ -68,7 +67,7 @@
       </section>
     <% end %>
 
-    <h2 class="mt-8 text-2xl font-bold">API reference</h2>
+    <%= render(Docs::Headline::H2.new) { "API reference" } %>
 
     <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
       <section>
@@ -81,7 +80,7 @@
 
     <% if @child_classes.any? %>
       <section>
-        <h3 class="mb-4 mt-8 text-xl font-bold">In namespace</h3>
+        <%= render(Docs::Headline::H3.new) { "In namespace" } %>
         <ul class="list-disc list-inside space-y-2">
           <% @child_classes.each do |subclass| %>
             <li>
@@ -94,8 +93,7 @@
 
     <% if @viewcomponent_slots.any? %>
       <section>
-        <h3 class="mt-8 text-xl font-bold">Slots</h3>
-
+        <%= render(Docs::Headline::H3.new) { "Slots" } %>
         <table>
           <% @viewcomponent_slots.each do |slot_tag| %>
             <tr>
@@ -110,12 +108,12 @@
 
     <% if @constructor %>
       <section>
-        <h3 class="mb-4 mt-8 text-xl font-bold">Constructor</h3>
+        <%= render(Docs::Headline::H3.new) { "Constructor" } %>
 
         <code><%= @constructor.signature %></code>
 
         <% if @constructor_arguments.any? %>
-          <h4 class="mt-4 text-md font-bold">Parameters</h4>
+          <%= render(Docs::Headline::H4.new) { "Parameters" } %>
           <table>
             <% @constructor_arguments.each do |param| %>
               <tr>
@@ -130,7 +128,7 @@
     <% end %>
 
     <section>
-      <h3 class="mb-4 mt-8 text-xl font-bold">See also</h3>
+      <%= render(Docs::Headline::H3.new) { "See also" } %>
       <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
         Ruby API documentation for
         <code><%= @code_object.type %> <%= @code_object.path %></code>
