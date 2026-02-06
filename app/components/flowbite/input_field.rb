@@ -20,7 +20,6 @@ module Flowbite
   # {Flowbite::Input} instead and one of its subclasses.
   #
   # @example Basic usage
-  #
   #   <% form_for @person do |form| %>
   #     <%= render(
   #       Flowbite::InputField::Number.new(
@@ -31,7 +30,6 @@ module Flowbite
   #   <% end %>
   #
   # @example Kitchen sink
-  #
   #   <% form_for @person do |form| %>
   #     <%= render(
   #       Flowbite::InputField::Number.new(
