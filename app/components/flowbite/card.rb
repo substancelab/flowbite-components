@@ -3,8 +3,6 @@
 module Flowbite
   # Renders a card element.
   #
-  # See https://flowbite.com/docs/components/cards/
-  #
   # To render a title in the card, use the title argument or the title slot.
   #
   # @example Using the title slot
@@ -18,6 +16,7 @@ module Flowbite
   # @viewcomponent_slot [Flowbite::Card::Title] title The title of the card,
   #   rendered at the top. Use +with_title+ to set custom content.
   #
+  # @see https://flowbite.com/docs/components/cards/
   # @lookbook_embed CardPreview
   class Card < ViewComponent::Base
     renders_one :title

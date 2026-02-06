@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 class CardPreview < Lookbook::Preview
+  def example
+    render(Flowbite::Card.new(title: {content: "Card Title"})) do
+      "This card includes a title with the default styling."
+    end
+  end
+
   # @!group Default card
 
   # Use the following simple card component with a title and description.
-  def default
+  def basic
     render(Flowbite::Card.new) { "Use the following simple card component with a title and description." }
   end
 
