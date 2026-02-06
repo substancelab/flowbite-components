@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class ToastPreview < Lookbook::Preview
+  def example
+    render(Flowbite::Toast.new(message: "Something has happened!"))
+  end
+
   # @!group Styles
   #
   # Use these toast notification styles to show feedback messages to your users.

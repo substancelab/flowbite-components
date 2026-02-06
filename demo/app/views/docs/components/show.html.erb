@@ -26,7 +26,48 @@
   </nav>
 
   <main class="py-4 flex-1 space-y-8">
-    <h1 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white"><%= @code_object.path %></h1>
+    <%= render(Docs::Headline::H1.new) { @code_object.path } %>
+
+    <section class="format dark:format-invert">
+      <%= render_docstring(@code_object.docstring_introduction, code_object: @code_object) %>
+    </section>
+
+    <% if @introduction_preview %>
+      <section>
+        <lookbook-embed preview="<%= @introduction_preview.preview_class_name %>" scenario="example"></lookbook-embed>
+      </section>
+    <% end %>
+
+    <section class="format dark:format-invert">
+      <%= render_docstring(@code_object.docstring_without_introduction, code_object: @code_object) %>
+    </section>
+
+    <% if @examples.any? %>
+      <section>
+        <%- @examples.each do |example| %>
+          <%= render(Docs::Headline::H2.new) { example.name } %>
+          <%= render(Docs::CodeExample.new) do %><%= example.text %><% end %>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if @previews.any? %>
+      <section>
+        <%= render(Docs::Headline::H2.new) { "Examples" } %>
+
+        <% @previews.each do |scenario_group| %>
+          <div class="mt-8">
+            <%= render(Docs::Headline::H3.new) { scenario_group.label } %>
+            <div class="my-4">
+              <%= render_docstring(scenario_group.scenarios.map { |s| s.notes.presence }.compact.join("\n\n"), code_object: @code_object) %>
+            </div>
+            <lookbook-embed panels="source" preview="<%= scenario_group.preview.preview_class_name %>" scenario="<%= scenario_group.name %>"></lookbook-embed>
+          </div>
+        <% end %>
+      </section>
+    <% end %>
+
+    <%= render(Docs::Headline::H2.new) { "API reference" } %>
 
     <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
       <section>
@@ -39,7 +80,7 @@
 
     <% if @child_classes.any? %>
       <section>
-        <h2 class="mb-4 mt-8 text-2xl font-bold">In namespace</h2>
+        <%= render(Docs::Headline::H3.new) { "In namespace" } %>
         <ul class="list-disc list-inside space-y-2">
           <% @child_classes.each do |subclass| %>
             <li>
@@ -50,24 +91,9 @@
       </section>
     <% end %>
 
-    <section class="format dark:format-invert">
-      <%= simple_format(@code_object.docstring) %>
-    </section>
-
-    <% if @lookbook_embeds.any? %>
-      <section>
-        <h2 class="mt-8 text-2xl font-bold">Examples</h2>
-
-        <% @lookbook_embeds.each do |lookbook_tag| %>
-          <lookbook-embed panels="source" preview="<%= lookbook_tag.text.strip %>" scenario="*"></lookbook-embed>
-        <% end %>
-      </section>
-    <% end %>
-
     <% if @viewcomponent_slots.any? %>
       <section>
-        <h2 class="mt-8 text-2xl font-bold">Slots</h2>
-
+        <%= render(Docs::Headline::H3.new) { "Slots" } %>
         <table>
           <% @viewcomponent_slots.each do |slot_tag| %>
             <tr>
@@ -80,23 +106,14 @@
       </section>
     <% end %>
 
-    <% if @examples.any? %>
-      <section>
-        <%- @examples.each do |example| %>
-          <h2 class="mt-8 text-2xl font-bold"><%= example.name %></h2>
-          <pre><code><%= example.text %></code></pre>
-        <% end %>
-      </section>
-    <% end %>
-
     <% if @constructor %>
       <section>
-        <h2 class="mt-8 text-2xl font-bold">Constructor</h2>
+        <%= render(Docs::Headline::H3.new) { "Constructor" } %>
 
         <code><%= @constructor.signature %></code>
 
         <% if @constructor_arguments.any? %>
-          <h3 class="mt-4 text-xl font-bold">Parameters</h3>
+          <%= render(Docs::Headline::H4.new) { "Parameters" } %>
           <table>
             <% @constructor_arguments.each do |param| %>
               <tr>
@@ -111,7 +128,7 @@
     <% end %>
 
     <section>
-      <h2 class="mt-8 text-2xl font-bold">See also</h2>
+      <%= render(Docs::Headline::H3.new) { "See also" } %>
       <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
         Ruby API documentation for
         <code><%= @code_object.type %> <%= @code_object.path %></code>

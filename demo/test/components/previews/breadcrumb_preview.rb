@@ -3,7 +3,7 @@
 class BreadcrumbPreview < Lookbook::Preview
   # Use breadcrumb navigation to show the current page location and allow users
   # to navigate back through the hierarchy.
-  def default
+  def example
     render(Flowbite::Breadcrumb.new) do |breadcrumb|
       breadcrumb.with_item do
         render_to_string(Flowbite::Breadcrumb::Item::First.new(href: "/").with_content("Home"))

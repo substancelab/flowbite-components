@@ -1,18 +1,7 @@
 module Docs
   class ComponentsController < ApplicationController
-    class Yard
-      def code_object(class_name)
-        ::YARD::Registry.load!(yardoc_path) if ::YARD::Registry.all.empty?
-        ::YARD::Registry.at(class_name)
-      end
-
-      def yardoc_path
-        Rails.root.join(".yardoc")
-      end
-    end
-
     def show
-      @code_object = Yard.new.code_object(params[:id])
+      @code_object = Yard.code_object(params[:id])
       raise ActiveRecord::RecordNotFound if @code_object.nil?
 
       @child_classes = @code_object.children.select { |c| c.is_a?(YARD::CodeObjects::ClassObject) }.sort_by(&:name)
@@ -23,8 +12,11 @@ module Docs
         []
       end
       @examples = @code_object.tags(:example)
-      @lookbook_embeds = @code_object.tags(:lookbook_embed)
       @viewcomponent_slots = @code_object.tags(:viewcomponent_slot)
+
+      lookbook_embeds = @code_object.tags(:lookbook_embed)
+      @introduction_preview = find_example_preview(lookbook_embeds)
+      @previews = find_non_example_previews(lookbook_embeds)
 
       respond_to do |format|
         format.html
@@ -37,12 +29,41 @@ module Docs
     helper_method def all_components
       return @all_components if @all_components
 
-      flowbite = Yard.new.code_object("Flowbite")
+      flowbite = Yard.code_object("Flowbite")
       child_classes = flowbite.children.select { |child|
         child.type == :class && child.inheritance_tree.map(&:path).include?("ViewComponent::Base")
       }
 
       @all_components = child_classes.sort_by(&:name)
+    end
+
+    # Returns the Lookbook preview with a scenario named "example"
+    #
+    # @return [Lookbook::Preview, nil]
+    def find_example_preview(lookbook_embeds)
+      return nil if lookbook_embeds.empty?
+
+      preview_class = lookbook_embeds.first.text.strip
+      return nil if preview_class.blank?
+
+      preview = Lookbook::Engine.previews.find_by_preview_class(preview_class)
+      return nil unless preview
+
+      preview if preview.scenarios.any? { |s| s.name == "example" }
+    end
+
+    # @return [Array<Lookbook::Entity>]
+    def find_non_example_previews(lookbook_embeds)
+      return [] if lookbook_embeds.empty?
+
+      preview_class = lookbook_embeds.first.text.strip
+      return [] if preview_class.blank?
+
+      preview_entity = Lookbook::Engine.previews.find_by_preview_class(preview_class)
+      return [] unless preview_entity
+
+      scenarios = preview_entity.scenarios
+      scenarios.reject { |s| s.name == "example" }
     end
 
     helper_method def rubydoc_url(code_object)

@@ -6,14 +6,17 @@ module Flowbite
   #
   # Use this when you want to render an input field on its own without any
   # surrounding elements, i.e. as a building block in more complex input
-  # components.
-  #
-  # To render a complete input field with labels and error messages, use
-  # {Flowbite::InputField} instead.
+  # components. To render a complete input field with labels and error messages,
+  # use {Flowbite::InputField} instead.
   #
   # By default this renders a text input field. To render other types of input
   # fields, use one of the subclasses, such as {Flowbite::Input::Checkbox} or
   # {Flowbite::Input::Textarea}.
+  #
+  # @example Usage
+  #   <%= render(Flowbite::Input::Email.new(attribute: :email, form: form)) %>
+  #
+  # @lookbook_embed InputPreview
   class Input < ViewComponent::Base
     SIZES = {
       sm: ["px-2.5", "py-2", "text-sm"],
