@@ -20,6 +20,7 @@ module FormattingHelper
     # as is, but you can override this method to provide custom rendering logic
     # based on the specified markup format.
     def html_markup_markdown(content)
+      return "" unless content
       return "" unless content.strip.present?
 
       output = Kramdown::Document.new(content, input: "GFM").to_html
