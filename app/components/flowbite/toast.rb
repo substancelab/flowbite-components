@@ -3,14 +3,10 @@
 module Flowbite
   # Renders a toast notification element.
   #
-  # See https://flowbite.com/docs/components/toast/
+  # @example Usage
+  #  <%= render(Flowbite::Toast.new(message: "Something has happened!")) %>
   #
-  # @param class [Array<String>] Additional CSS classes for the toast container.
-  # @param dismissible [Boolean] Whether the toast can be dismissed (default: true).
-  # @param message [String] The message to display in the toast.
-  # @param options [Hash] Additional HTML options for the toast container.
-  # @param style [Symbol] The color style of the toast (:default, :success, :danger, :warning).
-  #
+  # @see https://flowbite.com/docs/components/toast/
   # @lookbook_embed ToastPreview
   class Toast < ViewComponent::Base
     class << self
@@ -21,6 +17,11 @@ module Flowbite
 
     attr_reader :dismissible, :message, :options, :style
 
+    # @param class [Array<String>] Additional CSS classes for the toast container.
+    # @param dismissible [Boolean] Whether the toast can be dismissed (default: true).
+    # @param message [String] The message to display in the toast.
+    # @param options [Hash] Additional HTML options for the toast container.
+    # @param style [Symbol] The color style of the toast (:default, :success, :danger, :warning).
     def initialize(message:, dismissible: true, style: :default, class: nil, **options)
       @message = message
       @style = style
