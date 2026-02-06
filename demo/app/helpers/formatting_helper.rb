@@ -1,3 +1,5 @@
+require "rails_autolink"
+
 module FormattingHelper
   class DocstringRenderer
     include YARD::Templates::Helpers::BaseHelper
@@ -44,7 +46,8 @@ module FormattingHelper
   end
 
   def render_docstring(content, code_object: nil)
-    DocstringRenderer.new(content, code_object: code_object).render.html_safe
+    html = DocstringRenderer.new(content, code_object: code_object).render.html_safe
+    auto_link(html)
   end
 
   def render_markdown(content)
