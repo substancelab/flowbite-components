@@ -7,9 +7,12 @@ module FormattingHelper
 
     Options = Data.define(:markup)
 
-    def initialize(content, code_object: nil)
+    attr_reader :view_context
+
+    def initialize(content, view_context:, code_object: nil)
       @content = content
       @code_object = code_object
+      @view_context = view_context
     end
 
     # Called by YARD::Templates::Helpers::HtmlHelper#htmlify to render the
@@ -43,10 +46,23 @@ module FormattingHelper
     def remove_line_breaks(text)
       text.gsub("<br />", " ")
     end
+
+    def linkify(name, title)
+      code_object = Yard.code_object(name)
+      if code_object
+        view_context.link_to(title || name, view_context.docs_component_path(code_object.path))
+      else
+        title || name
+      end
+    end
   end
 
   def render_docstring(content, code_object: nil)
-    html = DocstringRenderer.new(content, code_object: code_object).render.html_safe
+    html = DocstringRenderer.new(
+      content,
+      code_object: code_object,
+      view_context: self
+    ).render.html_safe
     auto_link(html)
   end
 
