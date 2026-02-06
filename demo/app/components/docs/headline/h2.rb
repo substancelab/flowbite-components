@@ -1,6 +1,6 @@
 class Docs::Headline::H2 < Docs::Headline
   def classes
-    "mt-8 text-2xl font-bold"
+    "mb-4 mt-8 text-2xl font-bold"
   end
 
   def tag
