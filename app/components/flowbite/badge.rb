@@ -27,15 +27,6 @@ module Flowbite
       warning: ["border", "border-warning-subtle"]
     }.freeze
 
-    DOT_CLASSES = {
-      alternative: ["h-1.5", "w-1.5", "bg-heading", "me-1", "rounded-full"],
-      brand: ["h-1.5", "w-1.5", "bg-fg-brand-strong", "me-1", "rounded-full"],
-      danger: ["h-1.5", "w-1.5", "bg-fg-danger-strong", "me-1", "rounded-full"],
-      gray: ["h-1.5", "w-1.5", "bg-heading", "me-1", "rounded-full"],
-      success: ["h-1.5", "w-1.5", "bg-fg-success-strong", "me-1", "rounded-full"],
-      warning: ["h-1.5", "w-1.5", "bg-fg-warning", "me-1", "rounded-full"]
-    }.freeze
-
     class << self
       # rubocop:disable Layout/LineLength
       def styles
@@ -102,10 +93,6 @@ module Flowbite
       result += BORDER_CLASSES.fetch(@style) if bordered?
       result += ["inline-flex", "items-center"] if dot?
       result + @class
-    end
-
-    def dot_classes
-      DOT_CLASSES.fetch(@style)
     end
 
     def size_classes

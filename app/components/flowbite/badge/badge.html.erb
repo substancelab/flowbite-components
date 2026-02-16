@@ -1,4 +1,4 @@
 <%= content_tag(tag_name, **tag_options) do %>
-  <% if dot? %><span class="<%= dot_classes.join(" ") %>"></span><% end %>
+  <% if dot? %><%= render(Flowbite::Badge::Dot.new(style: @style)) %><% end %>
   <%= content %>
 <% end %>
