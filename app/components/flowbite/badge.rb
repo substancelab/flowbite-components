@@ -28,6 +28,14 @@ module Flowbite
     }.freeze
 
     class << self
+      def classes(size: :default, state: :default, style: :brand)
+        styles.fetch(style).fetch(state) + sizes.fetch(size)
+      end
+
+      def sizes
+        SIZES
+      end
+
       # rubocop:disable Layout/LineLength
       def styles
         Flowbite::Styles.from_hash({
@@ -89,14 +97,10 @@ module Flowbite
     private
 
     def classes
-      result = self.class.styles.fetch(@style).fetch(:default) + size_classes
+      result = self.class.classes(size: @size, state: :default, style: @style)
       result += BORDER_CLASSES.fetch(@style) if bordered?
       result += ["inline-flex", "items-center"] if dot?
       result + @class
-    end
-
-    def size_classes
-      SIZES.fetch(@size)
     end
 
     def tag_name

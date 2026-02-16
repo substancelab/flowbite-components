@@ -16,6 +16,12 @@ module Flowbite
         warning: ["bg-fg-warning", "h-1.5", "me-1", "rounded-full", "w-1.5"]
       }.freeze
 
+      class << self
+        def classes(style: :brand)
+          CLASSES.fetch(style)
+        end
+      end
+
       attr_reader :style
 
       def initialize(style: :brand)
@@ -23,7 +29,7 @@ module Flowbite
       end
 
       def call
-        content_tag(:span, nil, class: CLASSES.fetch(style))
+        content_tag(:span, nil, class: self.class.classes(style: style))
       end
     end
   end
