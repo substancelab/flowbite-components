@@ -8,28 +8,37 @@ module Flowbite
     #   :danger, :gray, :success, :warning).
     class Dot < ViewComponent::Base
       CLASSES = {
-        alternative: ["bg-heading", "h-1.5", "me-1", "rounded-full", "w-1.5"],
-        brand: ["bg-fg-brand-strong", "h-1.5", "me-1", "rounded-full", "w-1.5"],
-        danger: ["bg-fg-danger-strong", "h-1.5", "me-1", "rounded-full", "w-1.5"],
-        gray: ["bg-heading", "h-1.5", "me-1", "rounded-full", "w-1.5"],
-        success: ["bg-fg-success-strong", "h-1.5", "me-1", "rounded-full", "w-1.5"],
-        warning: ["bg-fg-warning", "h-1.5", "me-1", "rounded-full", "w-1.5"]
+        alternative: ["bg-heading", "me-1", "rounded-full"],
+        brand: ["bg-fg-brand-strong", "me-1", "rounded-full"],
+        danger: ["bg-fg-danger-strong", "me-1", "rounded-full"],
+        gray: ["bg-heading", "me-1", "rounded-full"],
+        success: ["bg-fg-success-strong", "me-1", "rounded-full"],
+        warning: ["bg-fg-warning", "me-1", "rounded-full"]
+      }.freeze
+
+      SIZES = {
+        default: ["h-1.5", "w-1.5"]
       }.freeze
 
       class << self
-        def classes(style: :brand)
-          CLASSES.fetch(style)
+        def classes(size: :default, style: :brand)
+          CLASSES.fetch(style) + sizes.fetch(size)
+        end
+
+        def sizes
+          SIZES
         end
       end
 
-      attr_reader :style
+      attr_reader :size, :style
 
-      def initialize(style: :brand)
+      def initialize(size: :default, style: :brand)
+        @size = size
         @style = style
       end
 
       def call
-        content_tag(:span, nil, class: self.class.classes(style: style))
+        content_tag(:span, nil, class: self.class.classes(size: size, style: style))
       end
     end
   end
