@@ -21,8 +21,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 * Flowbite::InputField classes now correctly add their options to the container element, so you can add id attributes or connect Stimulus controllers again.
 
-### Removed
-
 
 ## [0.1.4]
 
