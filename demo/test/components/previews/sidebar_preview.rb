@@ -3,26 +3,22 @@
 class SidebarPreview < Lookbook::Preview
   # Use the sidebar component to show a list of navigation items.
   def example
-    render(Flowbite::Sidebar.new) do |sidebar|
-      sidebar.with_item do
-        render_to_string(dashboard_item)
-      end
-      sidebar.with_item do
-        render_to_string(kanban_item)
-      end
-      sidebar.with_item do
-        render_to_string(inbox_item)
-      end
-      sidebar.with_item do
-        render_to_string(users_item)
-      end
-      sidebar.with_item do
-        render_to_string(products_item)
-      end
+    render(Flowbite::Sidebar.new) do
+      render_to_string(navigation)
     end
   end
 
   private
+
+  def navigation
+    Flowbite::Sidebar::Navigation.new.tap do |nav|
+      nav.with_item { render_item(dashboard_item) }
+      nav.with_item { render_item(kanban_item) }
+      nav.with_item { render_item(inbox_item) }
+      nav.with_item { render_item(users_item) }
+      nav.with_item { render_item(products_item) }
+    end
+  end
 
   def dashboard_item
     Flowbite::Sidebar::Item.new(href: "#").tap do |item|
@@ -58,6 +54,10 @@ class SidebarPreview < Lookbook::Preview
       end
       item.with_content("Products")
     end
+  end
+
+  def render_item(component)
+    ApplicationController.render(component, layout: false)
   end
 
   def render_to_string(component)

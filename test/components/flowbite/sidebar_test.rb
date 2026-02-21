@@ -4,49 +4,84 @@ class Flowbite::SidebarTest < Minitest::Test
   include ViewComponent::TestHelpers
 
   def test_render_component
-    render_inline(Flowbite::Sidebar.new)
+    render_inline(Flowbite::Sidebar.new) { "content" }
 
     assert_component_rendered
     assert_selector("aside[aria-label='Sidebar']")
   end
 
   def test_renders_aside_with_proper_classes
-    render_inline(Flowbite::Sidebar.new)
+    render_inline(Flowbite::Sidebar.new) { "content" }
 
     assert_selector("aside.fixed.top-0.left-0.z-40.w-64.h-screen")
   end
 
+  def test_renders_responsive_transform_classes
+    render_inline(Flowbite::Sidebar.new) { "content" }
+
+    assert_selector("aside.transition-transform.-translate-x-full.sm\\:translate-x-0")
+  end
+
   def test_renders_wrapper_div_with_proper_classes
-    render_inline(Flowbite::Sidebar.new)
+    render_inline(Flowbite::Sidebar.new) { "content" }
 
     assert_selector("aside div.h-full.px-3.py-4.overflow-y-auto.bg-neutral-primary-soft")
   end
 
-  def test_renders_unordered_list
-    render_inline(Flowbite::Sidebar.new)
+  def test_renders_content
+    render_inline(Flowbite::Sidebar.new) { "sidebar content" }
+
+    assert_text("sidebar content")
+  end
+
+  def test_adds_classes_to_the_default_classes
+    render_inline(Flowbite::Sidebar.new(class: "custom-class")) { "content" }
+
+    assert_selector("aside.fixed.top-0.left-0.custom-class")
+  end
+
+  def test_passes_options_as_attributes
+    render_inline(Flowbite::Sidebar.new(id: "my-sidebar")) { "content" }
+
+    assert_selector("aside#my-sidebar")
+  end
+end
+
+class Flowbite::Sidebar::NavigationTest < Minitest::Test
+  include ViewComponent::TestHelpers
+
+  def test_render_component
+    render_inline(Flowbite::Sidebar::Navigation.new)
+
+    assert_component_rendered
+    assert_selector("ul")
+  end
+
+  def test_renders_list_with_proper_classes
+    render_inline(Flowbite::Sidebar::Navigation.new)
 
     assert_selector("ul.space-y-2.font-medium")
   end
 
   def test_renders_with_items
-    render_inline(Flowbite::Sidebar.new) do |sidebar|
-      sidebar.with_item { "<li>Dashboard</li>".html_safe }
-      sidebar.with_item { "<li>Settings</li>".html_safe }
+    render_inline(Flowbite::Sidebar::Navigation.new) do |nav|
+      nav.with_item { "<li>Dashboard</li>".html_safe }
+      nav.with_item { "<li>Settings</li>".html_safe }
     end
 
     assert_selector("li", count: 2)
   end
 
   def test_adds_classes_to_the_default_classes
-    render_inline(Flowbite::Sidebar.new(class: "custom-class"))
+    render_inline(Flowbite::Sidebar::Navigation.new(class: "custom-class"))
 
-    assert_selector("aside.fixed.top-0.left-0.custom-class")
+    assert_selector("ul.space-y-2.font-medium.custom-class")
   end
 
   def test_passes_options_as_attributes
-    render_inline(Flowbite::Sidebar.new(id: "my-sidebar"))
+    render_inline(Flowbite::Sidebar::Navigation.new(id: "my-nav"))
 
-    assert_selector("aside#my-sidebar")
+    assert_selector("ul#my-nav")
   end
 end
 

@@ -5,7 +5,7 @@ app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
 app/components/flowbite/toast.rb 6b822405dd55d87d56979e6cfba55e8f73965047
 app/components/flowbite/button.rb 6ae7681d3b842d73aa99cddfa5a9b107ede7fea4
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
-app/components/flowbite/sidebar.rb 0c0838341eb3c40225c03389f854b4573715ad25
+app/components/flowbite/sidebar.rb eeac5c328d63c05728c994a80e485d9b91ad83a3
 app/components/flowbite/input/url.rb f1046824f9b06c8df8e0f567979321b82baac6fa
 app/components/flowbite/breadcrumb.rb c69ffb465b6e7f2489d4ac9a928e08bdf252fe99
 app/components/flowbite/card/title.rb 8067aa1e027c725896b063b67364aecfbf2f7d4e
@@ -20,7 +20,7 @@ app/components/flowbite/input/phone.rb 0dfe3e9a83c4fb9f558405a20601649c7b08922a
 app/components/flowbite/input_field.rb 8ef98ace7d4ccb4f474d3063cf48cc5c83cd8068
 app/components/flowbite/input/number.rb a33580788ad91308b85955fdb44d37883329dd4e
 app/components/flowbite/input/select.rb 9f1a6406efdda2e29d479117a35c2a924bd888c2
-app/components/flowbite/sidebar/item.rb 11361327fa3ce132ebb8da08dd09405f00aa2f30
+app/components/flowbite/sidebar/item.rb 8dc762357988fdf6e9308de129bd7c89b6700472
 app/components/flowbite/button/outline.rb 2829cf352a03c00dd99a56a05181c4e1a6794d18
 app/components/flowbite/input/checkbox.rb 500f109206a47997bf2bc0732399297a92005dc0
 app/components/flowbite/input/password.rb 39a4c2bb2684a0a310175307bd1bdfd9c99c6cd1
@@ -36,6 +36,7 @@ app/components/flowbite/input_field/phone.rb 6a3da98a2dded98b1c4d14c2419077fc9de
 app/components/flowbite/input/radio_button.rb 60ccac6862b459b89f9f3335246a51d83ae4af63
 app/components/flowbite/input_field/number.rb 32dce4e2bb586f64229dc78b541700df829068c7
 app/components/flowbite/input_field/select.rb 1f9788b5fff4be2b65184e73e739da8fa9de0264
+app/components/flowbite/sidebar/navigation.rb 0f79a28928a40c222210352eaad86eb111e3a401
 app/components/flowbite/breadcrumb/home_icon.rb bd2e47a31a793a79f20bd792a2a7e2dd8094fc5d
 app/components/flowbite/input_field/checkbox.rb 4cbc6f541842838234189b383f813b164a06379b
 app/components/flowbite/input_field/password.rb 37e592f55f258cc4b81859d48763b9c0eff12f61

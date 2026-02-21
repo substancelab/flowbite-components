@@ -1,32 +1,24 @@
 # frozen_string_literal: true
 
 module Flowbite
-  # Renders a sidebar navigation component.
+  # Renders a fixed-position sidebar container.
   #
-  # Use {Flowbite::Sidebar} and the child {Flowbite::Sidebar::Item} components
-  # to create a vertical navigation sidebar.
+  # Use {Flowbite::Sidebar} as the outer shell and
+  # {Flowbite::Sidebar::Navigation} inside it to render the list of
+  # navigation items.
   #
   # @example Usage
-  #   <%= render(Flowbite::Sidebar.new) do |sidebar| %>
-  #     <% sidebar.with_item do %>
-  #       <%= render(Flowbite::Sidebar::Item.new(href: "/dashboard")) do |item| %>
-  #         <% item.with_icon do %>
-  #           <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-  #             <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
-  #           </svg>
-  #         <% end %>
-  #         Dashboard
+  #   <%= render(Flowbite::Sidebar.new) do %>
+  #     <%= render(Flowbite::Sidebar::Navigation.new) do |nav| %>
+  #       <% nav.with_item do %>
+  #         <%= render(Flowbite::Sidebar::Item.new(href: "/dashboard")) { "Dashboard" } %>
   #       <% end %>
   #     <% end %>
   #   <% end %>
   #
-  # @viewcomponent_slot items The navigation items rendered in the sidebar.
-  #
   # @see https://flowbite.com/docs/components/sidebar/
   # @lookbook_embed SidebarPreview
   class Sidebar < ViewComponent::Base
-    renders_many :items
-
     class << self
       def classes
         [
@@ -48,11 +40,7 @@ module Flowbite
     def call
       content_tag(:aside, aside_options) do
         content_tag(:div, class: wrapper_classes) do
-          content_tag(:ul, class: list_classes) do
-            items.each do |item|
-              concat(item)
-            end
-          end
+          content
         end
       end
     end
@@ -65,10 +53,6 @@ module Flowbite
 
     def aside_options
       {class: aside_classes, "aria-label": "Sidebar"}.merge(@options)
-    end
-
-    def list_classes
-      ["space-y-2", "font-medium"]
     end
 
     def wrapper_classes
