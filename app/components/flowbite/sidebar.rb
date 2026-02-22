@@ -5,7 +5,7 @@ module Flowbite
   #
   # Use {Flowbite::Sidebar} as the outer shell and
   # {Flowbite::Sidebar::Navigation} inside it to render the list of
-  # navigation items.
+  # {Flowbite::Sidebar::Item}s.
   #
   # @example Usage
   #   <%= render(Flowbite::Sidebar.new) do %>
