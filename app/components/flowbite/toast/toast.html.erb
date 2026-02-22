@@ -1,8 +1,8 @@
-<div
-  class="<%= container_classes.join(" ") %>"
-  role="alert"
-  <%= options.map { |k, v| "#{k}=\"#{v}\"" }.join(" ").html_safe %>
->
+<%= tag.div(
+  class: container_classes.join(" "),
+  role: "alert",
+  **options,
+) do %>
   <%= render Flowbite::Toast::Icon.new(style: style) %>
 
   <div class="ms-3 text-sm font-normal"><%= message %></div>
@@ -37,4 +37,4 @@
       </svg>
     </button>
   <% end %>
-</div>
+<% end %>
