@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+* Badge component.
 * Sidebar component.
 
 ### Changed
