@@ -17,5 +17,15 @@ jobs:
         ruby-version: ['3.4']
     steps:
     - uses: actions/checkout@v4
-    - name: herb
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+    - name: herb linter
       run: npx @herb-tools/linter app/components --no-color
+
+    - name: herb analyzer
+      run: bundle exec herb analyze app/components
