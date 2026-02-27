@@ -1,0 +1,6 @@
+<%= content_tag(:li, **tag_options) do %>
+  <div class="<%= DOT_CLASSES.join(" ") %>"></div>
+  <time class="<%= DATETIME_CLASSES.join(" ") %>"><%= @datetime %></time>
+  <h3 class="<%= TITLE_CLASSES.join(" ") %>"><%= @title %></h3>
+  <p class="<%= BODY_CLASSES.join(" ") %>"><%= content %></p>
+<% end %>
