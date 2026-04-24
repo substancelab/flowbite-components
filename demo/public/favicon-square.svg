@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- F in a 156x156 bounding box, centered in 256x256 canvas -->
+  <!-- offset = (256 - 156) / 2 = 50 -->
+  <g transform="translate(50, 50)">
+    <!-- Row 1: full top bar -->
+    <rect x="0" y="0" width="48" height="48" rx="5" fill="#1C64F2"/>
+    <rect x="54" y="0" width="48" height="48" rx="5" fill="#1C64F2"/>
+    <rect x="108" y="0" width="48" height="48" rx="5" fill="#1C64F2"/>
+    <!-- Row 2: stem + crossbar -->
+    <rect x="0" y="54" width="48" height="48" rx="5" fill="#1C64F2"/>
+    <rect x="54" y="54" width="48" height="48" rx="5" fill="#1C64F2"/>
+    <!-- Row 3: stem only -->
+    <rect x="0" y="108" width="48" height="48" rx="5" fill="#1C64F2"/>
+  </g>
+</svg>
