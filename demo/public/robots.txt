@@ -37,3 +37,5 @@ Content-Signal: ai-train=yes, search=yes, ai-input=yes
 User-agent: OAI-SearchBot
 Allow: /
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+Sitemap: https://flowbite-components.substancelab.com/sitemap.xml

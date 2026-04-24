@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   if defined?(Lookbook)
     mount Lookbook::Engine, at: "/lookbook"
   end
+
+  get "sitemap.xml", to: "sitemap#index", as: :sitemap, defaults: {format: :xml}
 end
