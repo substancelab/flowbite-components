@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156" width="156" height="156">
+  <!-- 3x3 grid: cell=48px, gap=6px, total=156x156 -->
+  <!-- Row 1: full top bar -->
+  <rect x="0" y="0" width="48" height="48" rx="5" fill="#1C64F2"/>
+  <rect x="54" y="0" width="48" height="48" rx="5" fill="#1C64F2"/>
+  <rect x="108" y="0" width="48" height="48" rx="5" fill="#1C64F2"/>
+  <!-- Row 2: stem + crossbar -->
+  <rect x="0" y="54" width="48" height="48" rx="5" fill="#1C64F2"/>
+  <rect x="54" y="54" width="48" height="48" rx="5" fill="#1C64F2"/>
+  <!-- Row 3: stem only -->
+  <rect x="0" y="108" width="48" height="48" rx="5" fill="#1C64F2"/>
+</svg>
