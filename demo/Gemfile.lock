@@ -155,6 +155,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     minitest (5.27.0)
     net-imap (0.5.7)
       date
@@ -255,6 +256,8 @@ GEM
     rexml (3.4.4)
     rouge (4.5.2)
     securerandom (0.4.1)
+    sqlite3 (2.6.0)
+      mini_portile2 (~> 2.8.0)
     sqlite3 (2.6.0-aarch64-linux-gnu)
     sqlite3 (2.6.0-aarch64-linux-musl)
     sqlite3 (2.6.0-arm-linux-gnu)
