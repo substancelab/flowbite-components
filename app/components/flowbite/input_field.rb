@@ -258,6 +258,7 @@ module Flowbite
     def input_arguments
       {
         attribute: @attribute,
+        class: @input[:class],
         disabled: @disabled,
         form: @form,
         options: input_options,

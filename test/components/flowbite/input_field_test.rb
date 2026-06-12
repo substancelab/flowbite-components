@@ -380,14 +380,12 @@ class Flowbite::InputFieldWithoutObjectTest < Minitest::Test
   def test_adds_classes_to_input_element
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input: {class: "custom-input"}))
 
-    assert_selector("input[name=title].border.rounded-base")
+    assert_selector("input[name=title].border.rounded-base.custom-input")
   end
 
   def test_overwrites_classes_on_input_element
     render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input: {options: {class: "custom-input"}}))
 
-    assert_selector("input[name=title]") do |input|
-      assert_equal("custom-input", input[:class])
-    end
+    assert_selector("input[name=title][class='custom-input']")
   end
 end
