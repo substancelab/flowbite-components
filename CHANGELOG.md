@@ -14,6 +14,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+* `:class` arguments are now forwarded correctly to hint elements in Flowbite::InputField. If passed as `:class` it adds to the existing class names, if passed in `options[:class]` the existing class attribute is replaced.
+
 
 ## [0.2.0]
 

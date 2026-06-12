@@ -155,9 +155,7 @@ module Flowbite
       return unless hint?
 
       component = Flowbite::Input::Hint.new(
-        attribute: @attribute,
-        form: @form,
-        options: default_hint_options
+        **hint_arguments
       ).with_content(default_hint_content)
       render(component)
     end
@@ -225,6 +223,20 @@ module Flowbite
     # Returns true if the input field is disabled, false otherwise.
     def disabled?
       !!@disabled
+    end
+
+    # @return [Hash] The keyword arguments for the hint component.
+    def hint_arguments
+      {
+        attribute: @attribute,
+        class: @hint[:class],
+        form: @form,
+        options: hint_options
+      }
+    end
+
+    def hint_options
+      default_hint_options.merge(@hint[:options] || {})
     end
 
     # Returns true if the input field has a hint, false otherwise.

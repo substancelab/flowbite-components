@@ -352,4 +352,42 @@ class Flowbite::InputFieldWithoutObjectTest < Minitest::Test
 
     assert_selector("div[data-controller='input-field']")
   end
+
+  def test_adds_classes_to_label_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, label: {class: "custom-label"}))
+
+    assert_selector("label[for='title'].text-sm.custom-label")
+  end
+
+  def test_overwrites_classes_on_label_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, label: {options: {class: "custom-label"}}))
+
+    assert_selector("label[class='custom-label'][for='title']")
+  end
+
+  def test_adds_classes_to_hint_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, hint: {class: "custom-hint", content: "Helpful hint"}))
+
+    assert_selector("p.text-sm.text-body.custom-hint")
+  end
+
+  def test_overwrites_classes_on_hint_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, hint: {content: "Helpful hint", options: {class: "custom-hint"}}))
+
+    assert_selector("p[class='custom-hint']")
+  end
+
+  def test_adds_classes_to_input_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input: {class: "custom-input"}))
+
+    assert_selector("input[name=title].border.rounded-base")
+  end
+
+  def test_overwrites_classes_on_input_element
+    render_inline(Flowbite::InputField.new(form: @form, attribute: :title, input: {options: {class: "custom-input"}}))
+
+    assert_selector("input[name=title]") do |input|
+      assert_equal("custom-input", input[:class])
+    end
+  end
 end
