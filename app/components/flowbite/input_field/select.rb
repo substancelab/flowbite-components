@@ -19,7 +19,7 @@ module Flowbite
             form: @form,
             include_blank: @include_blank,
             multiple: @multiple,
-            options: input_options,
+            options: default_input_options,
             size: @size
           )
         )

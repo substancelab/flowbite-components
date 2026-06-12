@@ -31,19 +31,19 @@ module Flowbite
 
       private
 
+      def default_input_arguments
+        args = super
+        args[:unchecked_value] = @input[:unchecked_value] if @input.key?(:unchecked_value)
+        args[:value] = @input[:value] if @input.key?(:value)
+        args
+      end
+
       def hint_classes
         if disabled?
           "text-xs font-normal text-fg-disabled"
         else
           "text-xs font-normal text-body"
         end
-      end
-
-      def input_arguments
-        args = super
-        args[:unchecked_value] = @input[:unchecked_value] if @input.key?(:unchecked_value)
-        args[:value] = @input[:value] if @input.key?(:value)
-        args
       end
 
       def label_classes
