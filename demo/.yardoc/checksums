@@ -20,7 +20,7 @@ app/components/flowbite/button/pill.rb 5200da68b3fdd353db3780550b932f4037a7c999
 app/components/flowbite/input/email.rb c89f74f38cdefce5c05bac458b39d56a9ba4aa35
 app/components/flowbite/input/label.rb d71e843b267f35f10c3627e950408493a9afa97c
 app/components/flowbite/input/phone.rb 0dfe3e9a83c4fb9f558405a20601649c7b08922a
-app/components/flowbite/input_field.rb 8ef98ace7d4ccb4f474d3063cf48cc5c83cd8068
+app/components/flowbite/input_field.rb 5f82de53dbd8e331f7118c1e762441eb37f76783
 app/components/flowbite/input/number.rb a33580788ad91308b85955fdb44d37883329dd4e
 app/components/flowbite/input/select.rb 9f1a6406efdda2e29d479117a35c2a924bd888c2
 app/components/flowbite/sidebar/item.rb 8dc762357988fdf6e9308de129bd7c89b6700472
@@ -38,10 +38,10 @@ app/components/flowbite/input_field/email.rb 1f027480bcf14c93880c525d4a8bc00154b
 app/components/flowbite/input_field/phone.rb 6a3da98a2dded98b1c4d14c2419077fc9dec7dfd
 app/components/flowbite/input/radio_button.rb 60ccac6862b459b89f9f3335246a51d83ae4af63
 app/components/flowbite/input_field/number.rb 32dce4e2bb586f64229dc78b541700df829068c7
-app/components/flowbite/input_field/select.rb 1f9788b5fff4be2b65184e73e739da8fa9de0264
+app/components/flowbite/input_field/select.rb 23b4e8ebf0a5750a799e6764666f956db455b1d1
 app/components/flowbite/sidebar/navigation.rb 0f79a28928a40c222210352eaad86eb111e3a401
 app/components/flowbite/breadcrumb/home_icon.rb bd2e47a31a793a79f20bd792a2a7e2dd8094fc5d
-app/components/flowbite/input_field/checkbox.rb 4cbc6f541842838234189b383f813b164a06379b
+app/components/flowbite/input_field/checkbox.rb 6fff8f304ccb52fca3520719ac6487c636f1db66
 app/components/flowbite/input_field/password.rb 37e592f55f258cc4b81859d48763b9c0eff12f61
 app/components/flowbite/input_field/textarea.rb 52626e199b25b723b4d5355028d6bc3d7a167cd1
 app/components/flowbite/breadcrumb/item/first.rb 0d755f7f7fbf6980b4667b8b723d4dce94ca2224
