@@ -188,6 +188,11 @@ module Flowbite
       }.merge(@hint[:options] || {})
     end
 
+    # Returns the HTML to use for the default input element.
+    def default_input
+      render(input_component.new(**default_input_arguments))
+    end
+
     # @return [Hash] The keyword arguments for the default input component.
     def default_input_arguments
       {
@@ -214,11 +219,6 @@ module Flowbite
       end
 
       options.merge(@input[:options] || {})
-    end
-
-    # Returns the HTML to use for the default input element.
-    def default_input
-      render(input_component.new(**default_input_arguments))
     end
 
     def default_label
