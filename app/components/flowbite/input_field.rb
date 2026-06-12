@@ -155,9 +155,19 @@ module Flowbite
       return unless hint?
 
       component = Flowbite::Input::Hint.new(
-        **hint_arguments
+        **default_hint_arguments
       ).with_content(default_hint_content)
       render(component)
+    end
+
+    # @return [Hash] The keyword arguments for the hint component.
+    def default_hint_arguments
+      {
+        attribute: @attribute,
+        class: @hint[:class],
+        form: @form,
+        options: default_hint_options
+      }
     end
 
     def default_hint_content
@@ -178,23 +188,37 @@ module Flowbite
       }.merge(@hint[:options] || {})
     end
 
+    # @return [Hash] The keyword arguments for the default input component.
+    def default_input_arguments
+      {
+        attribute: @attribute,
+        class: @input[:class],
+        disabled: @disabled,
+        form: @form,
+        options: default_input_options,
+        size: @size
+      }
+    end
+
     # Returns a Hash with the default attributes to apply to the input element.
     #
     # The default attributes can be overriden by passing the `input[options]`
     # argument to the constructor.
     def default_input_options
-      if hint?
+      options = if hint?
         {
           "aria-describedby": id_for_hint_element
         }
       else
         {}
       end
+
+      options.merge(@input[:options] || {})
     end
 
     # Returns the HTML to use for the default input element.
     def default_input
-      render(input_component.new(**input_arguments))
+      render(input_component.new(**default_input_arguments))
     end
 
     def default_label
@@ -225,20 +249,6 @@ module Flowbite
       !!@disabled
     end
 
-    # @return [Hash] The keyword arguments for the hint component.
-    def hint_arguments
-      {
-        attribute: @attribute,
-        class: @hint[:class],
-        form: @form,
-        options: hint_options
-      }
-    end
-
-    def hint_options
-      default_hint_options.merge(@hint[:options] || {})
-    end
-
     # Returns true if the input field has a hint, false otherwise.
     def hint?
       @hint.present?
@@ -252,22 +262,6 @@ module Flowbite
       ]
         .compact_blank
         .join("_")
-    end
-
-    # @return [Hash] The keyword arguments for the input component.
-    def input_arguments
-      {
-        attribute: @attribute,
-        class: @input[:class],
-        disabled: @disabled,
-        form: @form,
-        options: input_options,
-        size: @size
-      }
-    end
-
-    def input_options
-      default_input_options.merge(@input[:options] || {})
     end
   end
 end
