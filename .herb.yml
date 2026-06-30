@@ -14,6 +14,7 @@ files:
   exclude:
     - 'doc/**/*'
     - 'demo/build/**/*'
+    - 'demo/node_modules/**/*'
 
 linter:
   enabled: true
