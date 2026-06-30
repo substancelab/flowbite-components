@@ -10,10 +10,7 @@
 
 version: 0.10.1
 
-# template_engine: erubi
-
 files:
-  # Patterns to exclude (can exclude defaults too)
   exclude:
     - 'doc/**/*'
     - 'demo/build/**/*'
