@@ -8,7 +8,7 @@ require "standard/rake"
 # Create a :test task
 Minitest::TestTask.create
 
-task default: :test
+task default: [:test, "herb:lint"]
 
 namespace :docs do
   desc "Refresh YARD documentation registry for the documentation site"
