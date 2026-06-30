@@ -168,7 +168,7 @@
       </div>
     </footer>
 
-    <script>
+    <script nonce="<%= request.content_security_policy_nonce %>">
       function setTheme(theme) {
         if (theme === "dark") {
           document.documentElement.classList.add("dark");
@@ -191,6 +191,6 @@
       });
     </script>
 
-    <%= javascript_include_tag "/lookbook-assets/js/lookbook.js" %>
+    <%= javascript_include_tag "/lookbook-assets/js/lookbook.js", nonce: request.content_security_policy_nonce %>
   </body>
 </html>
