@@ -1,0 +1,26 @@
+# Herb is a suite of tools for HTML+ERB templates including:
+# - Linter: Validates templates and enforces best practices
+# - Formatter: Auto-formats templates with intelligent indentation
+# - Language Server: Provides IDE support (VS Code, Zed, Neovim, etc.)
+#
+# Website: https://herb-tools.dev
+# Configuration: https://herb-tools.dev/configuration
+# GitHub Repo: https://github.com/marcoroth/herb
+#
+
+version: 0.10.1
+
+# template_engine: erubi
+
+files:
+  # Patterns to exclude (can exclude defaults too)
+  exclude:
+    - 'doc/**/*'
+
+linter:
+  enabled: true
+
+formatter:
+  enabled: false
+  indentWidth: 2
+  maxLineLength: 80
