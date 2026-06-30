@@ -16,6 +16,7 @@ files:
   # Patterns to exclude (can exclude defaults too)
   exclude:
     - 'doc/**/*'
+    - 'demo/build/**/*'
 
 linter:
   enabled: true
