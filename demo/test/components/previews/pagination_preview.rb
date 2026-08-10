@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PaginationPreview < Lookbook::Preview
+  include RenderToString
+
   def example
     render(Flowbite::Pagination.new(previous_url: "?page=2", next_url: "?page=4")) do |pagination|
       pagination.with_page { render_to_string(Flowbite::Pagination::Link.new(page: 1, url: "?page=1")) }
@@ -71,10 +73,4 @@ class PaginationPreview < Lookbook::Preview
   end
 
   # @!endgroup
-
-  private
-
-  def render_to_string(component)
-    ApplicationController.render(component, layout: false)
-  end
 end

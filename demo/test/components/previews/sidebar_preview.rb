@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SidebarPreview < Lookbook::Preview
+  include RenderToString
+
   # Use the sidebar component to show a list of navigation items.
   def example
     render(Flowbite::Sidebar.new) do
@@ -12,11 +14,11 @@ class SidebarPreview < Lookbook::Preview
 
   def navigation
     Flowbite::Sidebar::Navigation.new.tap do |nav|
-      nav.with_item { render_item(dashboard_item) }
-      nav.with_item { render_item(kanban_item) }
-      nav.with_item { render_item(inbox_item) }
-      nav.with_item { render_item(users_item) }
-      nav.with_item { render_item(products_item) }
+      nav.with_item { render_to_string(dashboard_item) }
+      nav.with_item { render_to_string(kanban_item) }
+      nav.with_item { render_to_string(inbox_item) }
+      nav.with_item { render_to_string(users_item) }
+      nav.with_item { render_to_string(products_item) }
     end
   end
 
@@ -54,14 +56,6 @@ class SidebarPreview < Lookbook::Preview
       end
       item.with_content("Products")
     end
-  end
-
-  def render_item(component)
-    ApplicationController.render(component, layout: false)
-  end
-
-  def render_to_string(component)
-    ApplicationController.render(component, layout: false)
   end
 
   def users_item
