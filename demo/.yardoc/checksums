@@ -8,6 +8,7 @@ app/components/flowbite/button.rb 6ae7681d3b842d73aa99cddfa5a9b107ede7fea4
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
 app/components/flowbite/sidebar.rb 85033b602a098f3334b9b3e180239ef20a1b6f90
 app/components/flowbite/spinner.rb acb87459a5697d8fb3b9a9b0f7dc6b8e893991c0
+app/components/flowbite/dropdown.rb 2be72c864440c7213e9ec9a8e620bf4fb2b1af30
 app/components/flowbite/badge/dot.rb 0e899c005a5e95a6b15b5a60ce9c25706c8521a1
 app/components/flowbite/input/url.rb f1046824f9b06c8df8e0f567979321b82baac6fa
 app/components/flowbite/badge/pill.rb cf713c5935e9300648f5501c90dced0aca488472
@@ -25,6 +26,7 @@ app/components/flowbite/input_field.rb 5f82de53dbd8e331f7118c1e762441eb37f76783
 app/components/flowbite/input/number.rb a33580788ad91308b85955fdb44d37883329dd4e
 app/components/flowbite/input/select.rb 9f1a6406efdda2e29d479117a35c2a924bd888c2
 app/components/flowbite/sidebar/item.rb 8dc762357988fdf6e9308de129bd7c89b6700472
+app/components/flowbite/dropdown/item.rb f4e5949970c085bf76ae35fa542ad3fad8a38abf
 app/components/flowbite/button/outline.rb 2829cf352a03c00dd99a56a05181c4e1a6794d18
 app/components/flowbite/input/checkbox.rb 500f109206a47997bf2bc0732399297a92005dc0
 app/components/flowbite/input/password.rb 39a4c2bb2684a0a310175307bd1bdfd9c99c6cd1
@@ -46,6 +48,7 @@ app/components/flowbite/input_field/checkbox.rb 6fff8f304ccb52fca3520719ac6487c6
 app/components/flowbite/input_field/password.rb 37e592f55f258cc4b81859d48763b9c0eff12f61
 app/components/flowbite/input_field/textarea.rb 52626e199b25b723b4d5355028d6bc3d7a167cd1
 app/components/flowbite/breadcrumb/item/first.rb 0d755f7f7fbf6980b4667b8b723d4dce94ca2224
+app/components/flowbite/dropdown/chevron_icon.rb 536e3604387b30a375571722fef3b03b1b13f5c5
 app/components/flowbite/input_field/date_time.rb 0a17d49d70f3ba820fee0f8930115540f12d72e2
 app/components/flowbite/input/validation_error.rb b6221a7a542136dc05d0053bda61061c7d4829d8
 app/components/flowbite/breadcrumb/item/current.rb 73551aac4b45f3045e14ccdc74187e419d099176
