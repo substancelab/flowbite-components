@@ -20,16 +20,10 @@ module Flowbite
       xl: ["w-12", "h-12"]
     }.freeze
 
-    STYLES = {
-      brand: ["fill-brand"],
-      danger: ["fill-danger"],
-      success: ["fill-success"],
-      warning: ["fill-warning"]
-    }.freeze
-
     class << self
       def classes(size: :default, style: :brand)
-        ["text-neutral-tertiary", "animate-spin"] + styles.fetch(style) + sizes.fetch(size)
+        style = styles.fetch(style)
+        ["text-neutral-tertiary", "animate-spin"] + style.fetch(:default) + sizes.fetch(size)
       end
 
       def sizes
@@ -37,7 +31,14 @@ module Flowbite
       end
 
       def styles
-        STYLES
+        Flowbite::Styles.from_hash(
+          {
+            brand: {default: ["fill-brand"]},
+            danger: {default: ["fill-danger"]},
+            success: {default: ["fill-success"]},
+            warning: {default: ["fill-warning"]}
+          }.freeze
+        )
       end
     end
 
