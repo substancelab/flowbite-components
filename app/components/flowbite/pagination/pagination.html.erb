@@ -1,0 +1,15 @@
+<%= tag.nav("aria-label": "Pagination", **options) do %>
+  <ul class="<%= list_classes.join(" ") %>">
+    <%= render(Flowbite::Pagination::PreviousLink.new(url: previous_page && url_for(previous_page), disabled: previous_page.nil?)) %>
+
+    <% visible_pages.each do |page| %>
+      <% if page == :gap %>
+        <%= render(Flowbite::Pagination::Gap.new) %>
+      <% else %>
+        <%= render(Flowbite::Pagination::Link.new(page: page, url: url_for(page), current: page == current_page)) %>
+      <% end %>
+    <% end %>
+
+    <%= render(Flowbite::Pagination::NextLink.new(url: next_page && url_for(next_page), disabled: next_page.nil?)) %>
+  </ul>
+<% end %>
