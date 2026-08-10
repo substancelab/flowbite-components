@@ -1,0 +1,17 @@
+<div class="relative inline-block">
+  <%= render(Flowbite::Button.new(id: button_id, "data-dropdown-toggle": id, **button_options)) do %>
+    <span class="inline-flex items-center">
+      <%= label %>
+
+      <%= render(Flowbite::Dropdown::ChevronIcon.new) %>
+    </span>
+  <% end %>
+
+  <div id="<%= id %>" class="<%= menu_classes.join(" ") %>">
+    <ul class="py-2 text-sm text-body" aria-labelledby="<%= button_id %>">
+      <% items.each do |item| %>
+        <%= item %>
+      <% end %>
+    </ul>
+  </div>
+</div>
