@@ -1,0 +1,11 @@
+<%= tag.nav("aria-label": "Pagination", **options) do %>
+  <ul class="<%= list_classes.join(" ") %>">
+    <%= render(Flowbite::Pagination::PreviousLink.new(url: previous_url, disabled: previous_url.nil?)) %>
+
+    <% pages.each do |page| %>
+      <%= page %>
+    <% end %>
+
+    <%= render(Flowbite::Pagination::NextLink.new(url: next_url, disabled: next_url.nil?)) %>
+  </ul>
+<% end %>

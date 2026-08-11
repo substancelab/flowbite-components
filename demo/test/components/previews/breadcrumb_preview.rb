@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class BreadcrumbPreview < Lookbook::Preview
+  include RenderToString
+
   # Use breadcrumb navigation to show the current page location and allow users
   # to navigate back through the hierarchy.
   def example
@@ -15,11 +17,5 @@ class BreadcrumbPreview < Lookbook::Preview
         render_to_string(Flowbite::Breadcrumb::Item::Current.new.with_content("Current Page"))
       end
     end
-  end
-
-  private
-
-  def render_to_string(component)
-    ApplicationController.render(component, layout: false)
   end
 end
