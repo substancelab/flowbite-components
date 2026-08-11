@@ -41,13 +41,15 @@ class Flowbite::PaginationTest < Minitest::Test
   def test_disables_previous_link_when_no_previous_url_given
     render_inline(Flowbite::Pagination.new)
 
-    assert_selector("li a[aria-disabled='true'] span.sr-only", text: "Previous")
+    assert_selector("li span[aria-disabled='true'] span.sr-only", text: "Previous")
+    assert_no_selector("li a", text: "Previous")
   end
 
   def test_disables_next_link_when_no_next_url_given
     render_inline(Flowbite::Pagination.new)
 
-    assert_selector("li a[aria-disabled='true'] span.sr-only", text: "Next")
+    assert_selector("li span[aria-disabled='true'] span.sr-only", text: "Next")
+    assert_no_selector("li a", text: "Next")
   end
 
   def test_links_to_given_previous_and_next_urls
@@ -105,7 +107,8 @@ class Flowbite::Pagination::PreviousLinkTest < Minitest::Test
   def test_renders_disabled_state
     render_inline(Flowbite::Pagination::PreviousLink.new(url: "/posts?page=1", disabled: true))
 
-    assert_selector("a[href='#'][aria-disabled='true'].opacity-50.cursor-not-allowed")
+    assert_selector("span[aria-disabled='true'].opacity-50.cursor-not-allowed")
+    assert_no_selector("a")
   end
 end
 
@@ -122,7 +125,8 @@ class Flowbite::Pagination::NextLinkTest < Minitest::Test
   def test_renders_disabled_state
     render_inline(Flowbite::Pagination::NextLink.new(url: "/posts?page=2", disabled: true))
 
-    assert_selector("a[href='#'][aria-disabled='true'].opacity-50.cursor-not-allowed")
+    assert_selector("span[aria-disabled='true'].opacity-50.cursor-not-allowed")
+    assert_no_selector("a")
   end
 end
 

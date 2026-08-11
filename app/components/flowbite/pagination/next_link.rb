@@ -7,8 +7,9 @@ module Flowbite
     # This is automatically used by {Flowbite::Pagination}, but can be used
     # standalone if needed.
     #
-    # @param disabled [Boolean] Whether the link is disabled, i.e. there is no
-    #   next page.
+    # @param disabled [Boolean] Whether to disable the link. When disabled, a
+    #   non-interactive +<span>+ is rendered instead of a link, so the control
+    #   can't be focused or activated.
     # @param url [String] The URL for the next page. Ignored if +disabled+.
     #
     # @example Standalone usage
@@ -40,13 +41,26 @@ module Flowbite
       private
 
       def render_link
-        link_options = {class: self.class.classes(disabled: disabled?)}
-        link_options[:"aria-disabled"] = "true" if disabled?
-
-        content_tag(:a, href: disabled? ? "#" : url, **link_options) do
+        content_tag(tag_name, tag_options) do
           concat(content_tag(:span, "Next", class: "sr-only"))
           concat(render(Flowbite::Pagination::ChevronRightIcon.new))
         end
+      end
+
+      def tag_name
+        disabled? ? :span : :a
+      end
+
+      def tag_options
+        options = {class: self.class.classes(disabled: disabled?)}
+
+        if disabled?
+          options[:"aria-disabled"] = "true"
+        else
+          options[:href] = url
+        end
+
+        options
       end
     end
   end
