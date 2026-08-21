@@ -2,6 +2,7 @@
   <%= label %>
   <%= input %>
   <%= hint %>
+
   <% errors.each do |error| %>
     <%= render(Flowbite::Input::ValidationError.new) { error.upcase_first } %>
   <% end %>

@@ -4,9 +4,9 @@
   <head>
     <title><%= content_for(:title) || "Flowbite Components for Rails" %></title>
 
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="mobile-web-app-capable">
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,11 +16,24 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%# = tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16">
-    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link href="/favicon.ico" rel="icon" sizes="any">
+    <link href="/favicon.svg" rel="icon" type="image/svg+xml">
+
+    <link
+      href="/favicon-16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    >
+
+    <link
+      href="/favicon-32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    >
+
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app %>
@@ -50,31 +63,31 @@
 
           <% if @menu_toggle_implemented %>
             <button
-              data-collapse-toggle="navbar-default"
-              type="button"
+              aria-controls="navbar-default"
+              aria-expanded="false"
               class="
                 inline-flex items-center p-2 w-10 h-10 justify-center
                 text-sm text-body rounded-lg md:hidden hover:bg-neutral-primary/10
                 focus:outline-none focus:ring-2 focus:ring-primary/50
               "
-              aria-controls="navbar-default"
-              aria-expanded="false"
+              data-collapse-toggle="navbar-default"
+              type="button"
             >
               <span class="sr-only">Open main menu</span>
 
               <svg
-                class="w-5 h-5"
                 aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
                 fill="none"
                 viewBox="0 0 17 14"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
+                  d="M1 1h15M1 7h15M1 13h15"
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M1 1h15M1 7h15M1 13h15"
                 />
               </svg>
             </button>
@@ -92,45 +105,48 @@
               <li>
                 <%= link_to("Home", root_url, class: "block py-2 px-3 text-heading rounded-sm hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-brand md:p-0 md:dark:hover:text-fg-brand dark:hover:text-white md:dark:hover:bg-transparent") %>
               </li>
+
               <li>
                 <%= link_to("Docs", docs_index_path, class: "block py-2 px-3 text-heading rounded-sm hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-brand md:p-0 md:dark:hover:text-fg-brand dark:hover:text-white md:dark:hover:bg-transparent") %>
               </li>
+
               <li>
                 <%= link_to("Components", docs_component_path("Flowbite"), class: "block py-2 px-3 text-heading rounded-sm hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-brand md:p-0 md:dark:hover:text-fg-brand dark:hover:text-white md:dark:hover:bg-transparent") %>
               </li>
+
               <li>
                 <%= link_to("GitHub", "https://github.com/substancelab/flowbite-components", class: "block py-2 px-3 text-heading rounded-sm hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-brand md:p-0 md:dark:hover:text-fg-brand dark:hover:text-white md:dark:hover:bg-transparent") %>
               </li>
 
               <li>
-                <button data-theme-toggle="dark" class="dark:hidden">
+                <button class="dark:hidden" data-theme-toggle="dark">
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
                     class="size-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
-                      d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
                       clip-rule="evenodd"
+                      d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+                      fill-rule="evenodd"
                     />
                   </svg>
                 </button>
 
-                <button data-theme-toggle="light" class="hidden dark:block">
+                <button class="hidden dark:block" data-theme-toggle="light">
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
                     class="size-6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
+                      d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
                     />
                   </svg>
                 </button>

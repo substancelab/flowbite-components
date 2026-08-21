@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+
 <html class="<%= params.dig(:lookbook, :display, :theme) %>">
   <head>
     <title><%= content_for(:title) || "Demo" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="mobile-web-app-capable">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

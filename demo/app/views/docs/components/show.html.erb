@@ -1,15 +1,8 @@
-<article
-  class="
-    flex flex-wrap md:flex-nowrap gap-8 w-full
-    justify-between mx-auto
-  "
->
+<article class="flex flex-wrap md:flex-nowrap gap-8 w-full justify-between mx-auto">
   <nav
-    class="
-      -ml-2 pr-6 py-4 overflow-y-auto border-e border-default
-    "
-    id="default-sidebar"
     aria-label="Sidebar"
+    class="-ml-2 pr-6 py-4 overflow-y-auto border-e border-default"
+    id="default-sidebar"
   >
     <%= render(Flowbite::Sidebar::Navigation.new) do |nav| %>
       <% all_components.each do |component| %>
@@ -19,6 +12,7 @@
       <% end %>
     <% end %>
   </nav>
+
   <main class="py-4 flex-1 space-y-8">
     <%= render(Docs::Headline::H1.new) { @code_object.path } %>
 
@@ -28,7 +22,10 @@
 
     <% if @introduction_preview %>
       <section>
-        <lookbook-embed preview="<%= @introduction_preview.preview_class_name %>" scenario="example"></lookbook-embed>
+        <lookbook-embed
+          preview="<%= @introduction_preview.preview_class_name %>"
+          scenario="example"
+        ></lookbook-embed>
       </section>
     <% end %>
 
@@ -40,7 +37,10 @@
       <section>
         <%- @examples.each do |example| %>
           <%= render(Docs::Headline::H2.new) { example.name } %>
-          <%= render(Docs::CodeExample.new) do %><%= example.text %><% end %>
+
+          <%= render(Docs::CodeExample.new) do %>
+            <%= example.text %>
+          <% end %>
         <% end %>
       </section>
     <% end %>
@@ -52,10 +52,16 @@
         <% @previews.each do |scenario_group| %>
           <div class="mt-8">
             <%= render(Docs::Headline::H3.new) { scenario_group.label } %>
+
             <div class="my-4">
               <%= render_docstring(scenario_group.scenarios.map { |s| s.notes.presence }.compact.join("\n\n"), code_object: @code_object) %>
             </div>
-            <lookbook-embed panels="source" preview="<%= scenario_group.preview.preview_class_name %>" scenario="<%= scenario_group.name %>"></lookbook-embed>
+
+            <lookbook-embed
+              panels="source"
+              preview="<%= scenario_group.preview.preview_class_name %>"
+              scenario="<%= scenario_group.name %>"
+            ></lookbook-embed>
           </div>
         <% end %>
       </section>
@@ -66,7 +72,7 @@
     <% if @code_object.type == :class && @code_object.parent && !@code_object.parent.root? %>
       <section>
         Inherits from
-          <%= render(Flowbite::Link.new(href: docs_component_path(@code_object.parent))) do %>
+        <%= render(Flowbite::Link.new(href: docs_component_path(@code_object.parent))) do %>
           <code><%= @code_object.parent %></code>
         <% end %>
       </section>
@@ -75,6 +81,7 @@
     <% if @child_classes.any? %>
       <section>
         <%= render(Docs::Headline::H3.new) { "In namespace" } %>
+
         <ul class="list-disc list-inside space-y-2">
           <% @child_classes.each do |subclass| %>
             <li>
@@ -88,11 +95,18 @@
     <% if @viewcomponent_slots.any? %>
       <section>
         <%= render(Docs::Headline::H3.new) { "Slots" } %>
+
         <table>
           <% @viewcomponent_slots.each do |slot_tag| %>
             <tr>
-              <th class="pt-4 text-left align-top" scope="col"><strong><code><%= slot_tag.name %></code></strong></th>
-              <td class="pt-4 align-top ps-4"><%= (slot_tag.types || []).join(", ") %></td>
+              <th class="pt-4 text-left align-top" scope="col">
+                <strong><code><%= slot_tag.name %></code></strong>
+              </th>
+
+              <td class="pt-4 align-top ps-4">
+                <%= (slot_tag.types || []).join(", ") %>
+              </td>
+
               <td class="pt-4 align-top ps-4"><%= slot_tag.text %></td>
             </tr>
           <% end %>
@@ -111,8 +125,14 @@
           <table>
             <% @constructor_arguments.each do |param| %>
               <tr>
-                <th class="pt-4 text-left align-top" scope="col"><strong><code><%= param.name %></code></strong></th>
-                <td class="pt-4 align-top ps-4"><%= (param.types || []).join(", ") %></td>
+                <th class="pt-4 text-left align-top" scope="col">
+                  <strong><code><%= param.name %></code></strong>
+                </th>
+
+                <td class="pt-4 align-top ps-4">
+                  <%= (param.types || []).join(", ") %>
+                </td>
+
                 <td class="pt-4 align-top ps-4"><%= param.text %></td>
               </tr>
             <% end %>
@@ -123,6 +143,7 @@
 
     <section>
       <%= render(Docs::Headline::H3.new) { "See also" } %>
+
       <%= render(Flowbite::Link.new(href: rubydoc_url(@code_object), data: {turbo: false})) do %>
         Ruby API documentation for
         <code><%= @code_object.type %> <%= @code_object.path %></code>
