@@ -1,8 +1,8 @@
 <article class="flex flex-wrap md:flex-nowrap gap-8 w-full justify-between mx-auto">
   <nav
+    aria-label="Sidebar"
     class="-ml-2 pr-6 py-4 overflow-y-auto border-e border-default"
     id="default-sidebar"
-    aria-label="Sidebar"
   >
     <%= render(Flowbite::Sidebar::Navigation.new) do |nav| %>
       <% all_components.each do |component| %>
