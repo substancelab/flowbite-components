@@ -189,4 +189,44 @@
       <% end %>
     <% end %>
   </div>
+
+  <section class="py-8 mx-auto max-w-screen-xl lg:py-16">
+    <div class="mx-auto mb-8 max-w-screen-md text-center lg:mb-12">
+      <h2 class="mb-4 text-3xl font-bold tracking-tight text-heading md:text-4xl">
+        Explore the components
+      </h2>
+
+      <p class="text-base font-normal text-body md:text-lg">
+        A growing collection of interactive Flowbite elements, ready to render
+        from your Rails views.
+      </p>
+    </div>
+
+    <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
+      <% featured_components.each do |component| %>
+        <li>
+          <%= link_to(docs_component_path(component[:class_name]), class: "group block") do %>
+            <div
+              class="
+                flex justify-center items-center p-6 h-40 rounded-lg border
+                border-default bg-neutral-secondary-soft transition-colors
+                group-hover:border-brand-subtle
+              "
+            >
+              <%= render("homepage/illustrations/#{component[:illustration]}") %>
+            </div>
+
+            <p
+              class="
+                mt-3 text-base font-medium text-center text-heading
+                group-hover:text-fg-brand
+              "
+            >
+              <%= component[:name] %>
+            </p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
 </article>
