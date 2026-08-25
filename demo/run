@@ -9,6 +9,9 @@ cd demo
 bundle install
 npm install
 
+# Bring the database up to date
+bundle exec rails db:migrate
+
 # Pick up the flowbite-components engine
 bundle exec rails tailwindcss:engines
 
