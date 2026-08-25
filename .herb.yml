@@ -18,6 +18,10 @@ files:
 
 linter:
   enabled: true
+  rules:
+    erb-no-unsafe-raw:
+      exclude:
+        - 'demo/app/components/docs/code_example.html.erb'
 
 formatter:
   enabled: true
