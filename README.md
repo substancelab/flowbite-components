@@ -285,6 +285,11 @@ bundle exec rake install
 
 This library includes a demo application with previews for all components. To view them:
 
+1. Run `./demo/run` from the project root.
+2. Visit `http://localhost:3000/lookbook`
+
+or run the individual steps manually:
+
 1. cd demo
 2. Run `bundle install && npm install`
 3. Run `bin/rails tailwindcss:engines` to generate the Tailwind CSS entry point for the gem
