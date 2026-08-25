@@ -289,7 +289,7 @@ This library includes a demo application with previews for all components. To vi
 2. Run `bundle && npm install`
 3. Run `bin/rails tailwindcss:engines` to generate the Tailwind CSS entry point for the gem
 4. Run `bin/rails db:migrate` to bring the SQLite database up to date
-5. Run `rails server`
+5. Run `bin/rails server`
 6. Visit `http://localhost:3000/lookbook`
 
 ## Contributing
