@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -e
 
 # Make sure the YARD registry is up to date with the code
