@@ -11,6 +11,7 @@ gem "rails"
 gem "sqlite3"
 
 gem "capybara"
+gem "cgi"
 gem "minitest"
 
 gem "herb"
