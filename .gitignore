@@ -13,3 +13,5 @@
 /demo/node_modules
 /demo/storage/*.sqlite3
 /demo/tmp/
+
+Gemfile.lock
