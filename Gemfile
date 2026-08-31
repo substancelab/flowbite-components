@@ -9,9 +9,9 @@ gem "irb"
 gem "rake", "~> 13.0"
 gem "rails"
 gem "sqlite3"
-gem "cgi"
 
 gem "capybara"
+gem "cgi"
 gem "minitest"
 
 gem "herb"
