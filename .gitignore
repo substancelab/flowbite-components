@@ -10,6 +10,7 @@
 
 /demo/app/assets/builds
 /demo/build
+/demo/log/
 /demo/node_modules
 /demo/storage/*.sqlite3
 /demo/tmp/
