@@ -12,7 +12,7 @@ Minitest::TestTask.create
 # Create :rubocop tasks
 RuboCop::RakeTask.new
 
-task default: [:test, "herb:lint", "herb:format:check"]
+task default: [:test, "rubocop", "herb:lint", "herb:format:check"]
 
 namespace :docs do
   desc "Refresh YARD documentation registry for the documentation site"
