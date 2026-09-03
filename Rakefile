@@ -3,10 +3,14 @@
 require "bundler/setup"
 require "bundler/gem_tasks"
 require "minitest/test_task"
+require "rubocop/rake_task"
 require "standard/rake"
 
 # Create a :test task
 Minitest::TestTask.create
+
+# Create :rubocop tasks
+RuboCop::RakeTask.new
 
 task default: [:test, "herb:lint", "herb:format:check"]
 
