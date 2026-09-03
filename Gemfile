@@ -14,8 +14,10 @@ gem "capybara"
 gem "cgi"
 gem "minitest"
 
+# Linting
 gem "herb"
-gem "standard"
+gem "rubocop-view_component", require: false
+gem "standard", require: false
 
 # Documentation site
 gem "decant"
