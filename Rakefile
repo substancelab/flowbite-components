@@ -3,12 +3,18 @@
 require "bundler/setup"
 require "bundler/gem_tasks"
 require "minitest/test_task"
-require "standard/rake"
+require "rubocop/rake_task"
 
 # Create a :test task
 Minitest::TestTask.create
 
-task default: [:test, "herb:lint", "herb:format:check"]
+# Create :rubocop tasks
+RuboCop::RakeTask.new
+
+task default: [:test, :lint, "herb:format:check"]
+
+desc "Verify code style and formatting of Ruby and ERB files"
+task lint: ["rubocop", "herb:lint"]
 
 namespace :docs do
   desc "Refresh YARD documentation registry for the documentation site"
