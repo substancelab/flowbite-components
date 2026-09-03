@@ -1,5 +1,6 @@
 app/components/flowbite/card.rb 788f0c5ab72e93a0370a8eeb875bba63c9ac910c
 app/components/flowbite/link.rb 1516522405f7cf2021913a4ebbb792f4ae386c16
+app/components/flowbite/alert.rb 9238c0200c10e213886f77c5294961412be0230c
 app/components/flowbite/badge.rb ec345c36f41b9dbcd6a61d76256e661fc3888cb2
 app/components/flowbite/input.rb df2ae5f59a7d33a635599632386053f999f65919
 app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
@@ -11,6 +12,7 @@ app/components/flowbite/sidebar.rb 85033b602a098f3334b9b3e180239ef20a1b6f90
 app/components/flowbite/spinner.rb 5fa35e4203ce005cfcb56a269376f723a47dde43
 app/components/flowbite/badge/dot.rb 0e899c005a5e95a6b15b5a60ce9c25706c8521a1
 app/components/flowbite/input/url.rb f1046824f9b06c8df8e0f567979321b82baac6fa
+app/components/flowbite/alert/icon.rb f04cf70c4478d640b8f58e59e8980c3b60058411
 app/components/flowbite/badge/pill.rb cf713c5935e9300648f5501c90dced0aca488472
 app/components/flowbite/breadcrumb.rb c69ffb465b6e7f2489d4ac9a928e08bdf252fe99
 app/components/flowbite/card/title.rb 8067aa1e027c725896b063b67364aecfbf2f7d4e
