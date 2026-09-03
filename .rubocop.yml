@@ -5,8 +5,18 @@ plugins:
   - standard-custom
   - standard-performance
   - rubocop-performance
+  - rubocop-view_component
 
 inherit_gem:
   standard: config/base.yml
   standard-custom: config/base.yml
   standard-performance: config/base.yml
+
+# Do not end our component class names with a superfluous "Component" suffix
+ViewComponent/ComponentSuffix:
+  Enabled: false
+
+# We use public methods as part of the public API of components for integration
+# and composability.
+ViewComponent/PreferPrivateMethods:
+  Enabled: false
