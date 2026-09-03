@@ -272,7 +272,7 @@ bundle exec rake test
 To check code style:
 
 ```bash
-bundle exec rake standard
+bundle exec rake lint
 ```
 
 To install this gem onto your local machine:
