@@ -17,6 +17,7 @@ gem "minitest"
 # Linting
 gem "herb"
 gem "rubocop-view_component", require: false
+gem "rubocop", require: false
 gem "standard", require: false
 
 # Documentation site
