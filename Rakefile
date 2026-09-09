@@ -21,6 +21,10 @@ namespace :docs do
   task :refresh_registry do
     sh "yard doc --db demo/.yardoc --no-output -e lib/yard/flowbite_viewcomponent.rb --tag lookbook_embed:name app/components"
   end
+
+  task serve: :refresh_registry do
+    sh "bundle install --gemfile=demo/Gemfile; cd demo && bundle exec rails server"
+  end
 end
 
 namespace :herb do
