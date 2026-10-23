@@ -9,6 +9,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Spinner component
 - Pagination component
+- `Flowbite::Toast::CloseButton` component for the close button of toasts
+- `Flowbite::Toast` accepts `close_button: {options: {...}}` for passing HTML options, e.g. data attributes, to the close button, or a `close_button` slot for rendering your own
 
 ### Changed
 
