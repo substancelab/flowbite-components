@@ -40,24 +40,24 @@ class Flowbite::ToastTest < Minitest::Test
     assert_no_selector("button[type='button'][aria-label='Close']")
   end
 
-  def test_passes_close_button_options_to_default_close_button
-    render_inline(Flowbite::Toast.new(message: "Test", close_button: {options: {data: {action: "toast#dismiss"}}}))
+  def test_passes_button_options_to_default_button
+    render_inline(Flowbite::Toast.new(message: "Test", button: {options: {data: {action: "toast#dismiss"}}}))
 
     assert_selector("button.ms-auto[type='button'][aria-label='Close'][data-action='toast#dismiss']")
   end
 
-  def test_renders_close_button_slot
+  def test_renders_button_slot
     render_inline(Flowbite::Toast.new(message: "Test")) do |toast|
-      toast.with_close_button { "<button id='custom-close'>Dismiss</button>".html_safe }
+      toast.with_button { "<button id='custom-close'>Dismiss</button>".html_safe }
     end
 
     assert_selector("button#custom-close", text: "Dismiss")
     assert_no_selector("button[aria-label='Close']")
   end
 
-  def test_renders_no_close_button_slot_when_not_dismissible
+  def test_renders_no_button_slot_when_not_dismissible
     render_inline(Flowbite::Toast.new(message: "Test", dismissible: false)) do |toast|
-      toast.with_close_button { "<button id='custom-close'>Dismiss</button>".html_safe }
+      toast.with_button { "<button id='custom-close'>Dismiss</button>".html_safe }
     end
 
     assert_no_selector("button#custom-close")

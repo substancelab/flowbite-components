@@ -6,27 +6,27 @@ module Flowbite
   # @example Usage
   #  <%= render(Flowbite::Toast.new(message: "Something has happened!")) %>
   #
-  # @example Passing options to the close button
+  # @example Passing options to the default button
   #  <%= render(Flowbite::Toast.new(
-  #    close_button: {options: {data: {action: "toast#dismiss"}}},
+  #    button: {options: {data: {action: "toast#dismiss"}}},
   #    message: "Something has happened!"
   #  )) %>
   #
-  # @example Using the close_button slot
+  # @example Using the button slot
   #  <%= render(Flowbite::Toast.new(message: "Something has happened!")) do |toast| %>
-  #    <% toast.with_close_button do %>
+  #    <% toast.with_button do %>
   #      <%= render(Flowbite::Toast::CloseButton.new(data: {action: "toast#dismiss"})) %>
   #    <% end %>
   #  <% end %>
   #
-  # @viewcomponent_slot [Flowbite::Toast::CloseButton] close_button The
-  #   button that dismisses the toast. Use +with_close_button+ to set custom
-  #   content.
+  # @viewcomponent_slot [Flowbite::Toast::CloseButton] button The button
+  #   rendered at the end of the toast. Defaults to a close button. Use
+  #   +with_button+ to set custom content.
   #
   # @see https://flowbite.com/docs/components/toast/
   # @lookbook_embed ToastPreview
   class Toast < ViewComponent::Base
-    renders_one :close_button
+    renders_one :button
 
     class << self
       def classes
@@ -36,19 +36,19 @@ module Flowbite
 
     attr_reader :dismissible, :message, :options, :style
 
-    # @param class [Array<String>] Additional CSS classes for the toast container.
-    # @param close_button [Hash] Configuration for the default close button,
-    #   rendered using the Toast::CloseButton component. The hash can contain:
+    # @param button [Hash] Configuration for the default button, rendered
+    #   using the Toast::CloseButton component. The hash can contain:
     #   - `options`: Additional HTML options to pass to the button element,
     #     e.g. `{data: {action: "toast#dismiss"}}`
-    #   Alternatively, you can use the `close_button` slot to provide the
-    #   entire button element yourself.
+    #   Alternatively, you can use the `button` slot to provide the entire
+    #   button element yourself.
+    # @param class [Array<String>] Additional CSS classes for the toast container.
     # @param dismissible [Boolean] Whether the toast can be dismissed (default: true).
     # @param message [String] The message to display in the toast.
     # @param options [Hash] Additional HTML options for the toast container.
     # @param style [Symbol] The color style of the toast (:default, :success, :danger, :warning).
-    def initialize(message:, close_button: {}, dismissible: true, style: :default, class: nil, **options)
-      @close_button = close_button
+    def initialize(message:, button: {}, dismissible: true, style: :default, class: nil, **options)
+      @button = button
       @message = message
       @style = style
       @dismissible = dismissible
@@ -62,15 +62,14 @@ module Flowbite
 
     protected
 
-    # Returns the HTML to use for the close button, unless the close_button
-    # slot is used
-    def default_close_button
-      render(Flowbite::Toast::CloseButton.new(**default_close_button_options))
+    # Returns the HTML to use for the button, unless the button slot is used
+    def default_button
+      render(Flowbite::Toast::CloseButton.new(**default_button_options))
     end
 
-    # @return [Hash] The options to pass to the default close button component
-    def default_close_button_options
-      @close_button[:options] || {}
+    # @return [Hash] The options to pass to the default button component
+    def default_button_options
+      @button[:options] || {}
     end
   end
 end
