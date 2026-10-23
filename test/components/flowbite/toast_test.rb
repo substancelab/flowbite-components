@@ -40,6 +40,29 @@ class Flowbite::ToastTest < Minitest::Test
     assert_no_selector("button[type='button'][aria-label='Close']")
   end
 
+  def test_passes_button_options_to_default_button
+    render_inline(Flowbite::Toast.new(message: "Test", button: {options: {data: {action: "toast#dismiss"}}}))
+
+    assert_selector("button.ms-auto[type='button'][aria-label='Close'][data-action='toast#dismiss']")
+  end
+
+  def test_renders_button_slot
+    render_inline(Flowbite::Toast.new(message: "Test")) do |toast|
+      toast.with_button { "<button id='custom-close'>Dismiss</button>".html_safe }
+    end
+
+    assert_selector("button#custom-close", text: "Dismiss")
+    assert_no_selector("button[aria-label='Close']")
+  end
+
+  def test_renders_no_button_slot_when_not_dismissible
+    render_inline(Flowbite::Toast.new(message: "Test", dismissible: false)) do |toast|
+      toast.with_button { "<button id='custom-close'>Dismiss</button>".html_safe }
+    end
+
+    assert_no_selector("button#custom-close")
+  end
+
   def test_renders_with_custom_html_options
     render_inline(Flowbite::Toast.new(message: "Test", id: "my-toast", "data-controller": "toast"))
 
@@ -68,6 +91,36 @@ class Flowbite::ToastTest < Minitest::Test
     render_inline(Flowbite::Toast.new(message: "Test", style: :warning))
 
     assert_selector("div.text-orange-500.bg-orange-100")
+  end
+end
+
+class Flowbite::Toast::CloseButtonTest < Minitest::Test
+  include ViewComponent::TestHelpers
+
+  def test_render_component
+    render_inline(Flowbite::Toast::CloseButton.new)
+
+    assert_component_rendered
+    assert_selector("button[type='button'][aria-label='Close'] svg[aria-hidden='true']")
+  end
+
+  def test_renders_with_default_classes
+    render_inline(Flowbite::Toast::CloseButton.new)
+
+    assert_selector("button.ms-auto.flex.items-center.justify-center.h-8.w-8")
+  end
+
+  def test_renders_with_custom_html_options
+    render_inline(Flowbite::Toast::CloseButton.new(aria: {label: "Luk"}, data: {action: "toast#dismiss"}))
+
+    assert_selector("button[aria-label='Luk'][data-action='toast#dismiss']")
+  end
+
+  def test_replaces_default_classes_with_custom_classes
+    render_inline(Flowbite::Toast::CloseButton.new(class: ["custom-class"]))
+
+    assert_selector("button.custom-class")
+    assert_no_selector("button.ms-auto")
   end
 end
 
