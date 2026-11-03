@@ -59,7 +59,8 @@ module Flowbite
 
     attr_reader :alt, :dot, :dot_position, :initials, :options, :size, :src
 
-    # @param alt [String] Alternative text for the image.
+    # @param alt [String] Alternative text for the image. Defaults to an
+    #   empty string, marking the image as decorative.
     # @param bordered [Boolean] Whether to add a ring around the avatar.
     # @param class [String, Array<String>] Additional CSS classes for the
     #   avatar element.
@@ -75,7 +76,7 @@ module Flowbite
     # @param src [String] The URL of the avatar image. When blank, the avatar
     #   falls back to initials or a placeholder icon.
     def initialize(alt: nil, bordered: false, class: nil, dot: nil, dot_position: :top, initials: nil, shape: :circle, size: :default, src: nil, **options)
-      @alt = alt
+      @alt = alt.to_s
       @bordered = bordered
       @class = Array.wrap(binding.local_variable_get(:class))
       @dot = dot

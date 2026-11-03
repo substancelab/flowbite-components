@@ -12,6 +12,12 @@ class Flowbite::AvatarTest < Minitest::Test
     assert_selector("img[alt='Jese Leos'][src='#{IMAGE_URL}']")
   end
 
+  def test_renders_empty_alt_when_no_alt_is_given
+    render_inline(Flowbite::Avatar.new(src: IMAGE_URL))
+
+    assert_selector("img[alt='']")
+  end
+
   def test_renders_image_with_default_classes
     render_inline(Flowbite::Avatar.new(src: IMAGE_URL))
 
