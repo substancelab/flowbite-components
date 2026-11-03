@@ -70,14 +70,10 @@ module Flowbite
 
     # Returns the HTML to use for the title element if any
     def default_title
+      return unless title?
+
       component = Flowbite::Card::Title.new(**default_title_options)
-
-      if default_title_content
-        component.with_content(default_title_content)
-      else
-        component
-      end
-
+      component.with_content(default_title_content)
       render(component)
     end
 
@@ -94,7 +90,7 @@ module Flowbite
     end
 
     def title?
-      @title.present?
+      default_title_content.present?
     end
   end
 end

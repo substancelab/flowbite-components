@@ -16,6 +16,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+- `Flowbite::Card` no longer renders an empty `h5` element when card title is blank.
+
 ## [0.3.0]
 
 ### Added
