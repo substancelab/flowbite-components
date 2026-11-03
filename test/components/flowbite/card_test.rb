@@ -34,6 +34,18 @@ class Flowbite::CardTest < Minitest::Test
     assert_selector("h5.mb-2.text-2xl.font-semibold.tracking-tight.text-heading", text: "Card Title")
   end
 
+  def test_does_not_render_a_title_without_a_title_argument
+    render_inline(Flowbite::Card.new) { "Card Content" }
+
+    assert_no_selector("h5")
+  end
+
+  def test_does_not_render_a_title_with_blank_title_content
+    render_inline(Flowbite::Card.new(title: {content: ""})) { "Card Content" }
+
+    assert_no_selector("h5")
+  end
+
   def test_passes_title_options_to_the_title
     render_inline(Flowbite::Card.new(title: {content: "Card Title", options: {class: "custom-title-class"}})) { "Card Content" }
 
