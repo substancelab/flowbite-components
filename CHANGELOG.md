@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Spinner component
 - Pagination component
+- Rating component, including `Flowbite::Rating::Star` for the individual stars
 - `Flowbite::Toast::CloseButton` component for the close button of toasts
 - `Flowbite::Toast` accepts `button: {options: {...}}` for passing HTML options, e.g. data attributes, to the default close button, or a `button` slot for rendering your own
 

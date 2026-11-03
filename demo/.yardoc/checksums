@@ -5,6 +5,7 @@ app/components/flowbite/input.rb df2ae5f59a7d33a635599632386053f999f65919
 app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
 app/components/flowbite/toast.rb 55b5cc31f1ef81c5672c6b2a7f1c87cb780313e9
 app/components/flowbite/button.rb 6ae7681d3b842d73aa99cddfa5a9b107ede7fea4
+app/components/flowbite/rating.rb 3ace06786901bd8091e49000e3a7622d2e1a96e2
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
 app/components/flowbite/sidebar.rb 85033b602a098f3334b9b3e180239ef20a1b6f90
 app/components/flowbite/spinner.rb 5fa35e4203ce005cfcb56a269376f723a47dde43
@@ -23,6 +24,7 @@ app/components/flowbite/input/email.rb c89f74f38cdefce5c05bac458b39d56a9ba4aa35
 app/components/flowbite/input/label.rb d71e843b267f35f10c3627e950408493a9afa97c
 app/components/flowbite/input/phone.rb 0dfe3e9a83c4fb9f558405a20601649c7b08922a
 app/components/flowbite/input_field.rb 5f82de53dbd8e331f7118c1e762441eb37f76783
+app/components/flowbite/rating/star.rb 2a2cdd8a490a42c956d3a5ebeed9a47ae84ae263
 app/components/flowbite/input/number.rb a33580788ad91308b85955fdb44d37883329dd4e
 app/components/flowbite/input/select.rb 9f1a6406efdda2e29d479117a35c2a924bd888c2
 app/components/flowbite/sidebar/item.rb 8dc762357988fdf6e9308de129bd7c89b6700472
