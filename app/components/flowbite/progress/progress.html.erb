@@ -5,7 +5,7 @@
   </div>
 <% end %>
 
-<%= tag.div(class: classes.join(" "), **options) do %>
+<%= tag.div(class: classes.join(" "), **track_options) do %>
   <div class="<%= bar_classes.join(" ") %>" style="<%= width_style %>">
     <% if label_inside? %>
       <%= percentage %>

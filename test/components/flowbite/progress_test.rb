@@ -185,6 +185,38 @@ class Flowbite::ProgressTest < Minitest::Test
     assert_selector("div.bg-neutral-quaternary.custom-class.another-class")
   end
 
+  # Accessibility
+
+  def test_renders_progressbar_role_and_values
+    render_inline(Flowbite::Progress.new(progress: 45))
+
+    assert_selector("div[role='progressbar'][aria-valuemin='0'][aria-valuemax='100'][aria-valuenow='45']")
+  end
+
+  def test_renders_clamped_rounded_value_for_screen_readers
+    render_inline(Flowbite::Progress.new(progress: 100.0 / 3))
+
+    assert_selector("div[role='progressbar'][aria-valuenow='33.3']")
+  end
+
+  def test_uses_label_as_accessible_name
+    render_inline(Flowbite::Progress.new(label: "Flowbite", label_position: :outside, progress: 45))
+
+    assert_selector("div[role='progressbar'][aria-label='Flowbite']")
+  end
+
+  def test_does_not_render_accessible_name_without_label
+    render_inline(Flowbite::Progress.new(progress: 45))
+
+    assert_no_selector("div[aria-label]")
+  end
+
+  def test_renders_custom_accessible_name
+    render_inline(Flowbite::Progress.new(aria: {label: "Upload progress"}, progress: 45))
+
+    assert_selector("div[role='progressbar'][aria-label='Upload progress'][aria-valuenow='45']")
+  end
+
   # Custom options
 
   def test_renders_with_custom_html_options

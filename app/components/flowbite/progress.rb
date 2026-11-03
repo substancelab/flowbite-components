@@ -6,6 +6,11 @@ module Flowbite
   # The progress value is clamped to the range 0 to 100 and used as the
   # width of the bar.
   #
+  # The track is rendered with role="progressbar" and the matching ARIA
+  # value attributes. The +label+, if given, is used as its accessible name.
+  # Pass +aria: {label: "..."}+ to name a progress bar without a visible
+  # label.
+  #
   # @example Basic usage
   #  <%= render(Flowbite::Progress.new(progress: 45)) %>
   #
@@ -17,6 +22,9 @@ module Flowbite
   #
   # @example With a label outside the bar
   #  <%= render(Flowbite::Progress.new(label: "Flowbite", label_position: :outside, progress: 45)) %>
+  #
+  # @example With an accessible name and no visible label
+  #  <%= render(Flowbite::Progress.new(aria: {label: "Upload progress"}, progress: 45)) %>
   #
   # @see https://flowbite.com/docs/components/progress/
   # @lookbook_embed ProgressPreview
@@ -77,7 +85,8 @@ module Flowbite
     # @param class [String, Array<String>] Additional CSS classes for the
     #   track element.
     # @param label [String] Text to show next to the percentage when
-    #   label_position is :outside.
+    #   label_position is :outside. Also used as the accessible name of the
+    #   progress bar.
     # @param label_position [Symbol] Where to show the percentage (:inside,
     #   :none, :outside).
     # @param options [Hash] Additional HTML options for the track element.
@@ -122,16 +131,27 @@ module Flowbite
     end
 
     # @return [String] The progress formatted as a percentage, ie "45%".
-    #   Decimal values are rounded to one decimal place.
     def percentage
-      value = progress.to_f.round(1)
-      value = value.to_i if value == value.to_i
-      "#{value}%"
+      "#{rounded_progress}%"
     end
 
     # @return [Numeric] The progress clamped to the range 0 to 100.
     def progress
       @progress.clamp(0, 100)
+    end
+
+    # @return [Numeric] The clamped progress rounded to one decimal place.
+    #   Whole numbers are returned as Integers, ie 45 rather than 45.0.
+    def rounded_progress
+      value = progress.to_f.round(1)
+      (value == value.to_i) ? value.to_i : value
+    end
+
+    # @return [Hash] The HTML attributes for the track element, including
+    #   the progressbar role and ARIA values. Merged with the given options.
+    def track_options
+      aria = {label: label.presence, valuemax: 100, valuemin: 0, valuenow: rounded_progress}.compact
+      {aria: aria, role: "progressbar"}.deep_merge(options)
     end
 
     # @return [String] The inline style setting the width of the bar.
