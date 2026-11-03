@@ -1,9 +1,9 @@
-app/components/flowbite/card.rb 9fe54b52bc9d177c2ec1d9e68e0a397b8a327744
+app/components/flowbite/card.rb 788f0c5ab72e93a0370a8eeb875bba63c9ac910c
 app/components/flowbite/link.rb 1516522405f7cf2021913a4ebbb792f4ae386c16
 app/components/flowbite/badge.rb ec345c36f41b9dbcd6a61d76256e661fc3888cb2
 app/components/flowbite/input.rb df2ae5f59a7d33a635599632386053f999f65919
 app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
-app/components/flowbite/toast.rb 6b822405dd55d87d56979e6cfba55e8f73965047
+app/components/flowbite/toast.rb 55b5cc31f1ef81c5672c6b2a7f1c87cb780313e9
 app/components/flowbite/button.rb 6ae7681d3b842d73aa99cddfa5a9b107ede7fea4
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
 app/components/flowbite/sidebar.rb 85033b602a098f3334b9b3e180239ef20a1b6f90
@@ -44,6 +44,7 @@ app/components/flowbite/input/radio_button.rb 60ccac6862b459b89f9f3335246a51d83a
 app/components/flowbite/input_field/number.rb 32dce4e2bb586f64229dc78b541700df829068c7
 app/components/flowbite/input_field/select.rb 23b4e8ebf0a5750a799e6764666f956db455b1d1
 app/components/flowbite/sidebar/navigation.rb 0f79a28928a40c222210352eaad86eb111e3a401
+app/components/flowbite/toast/close_button.rb 9151cb9aecb116c07ed5a4ee233b2ad6ddd01ab6
 app/components/flowbite/breadcrumb/home_icon.rb bd2e47a31a793a79f20bd792a2a7e2dd8094fc5d
 app/components/flowbite/input_field/checkbox.rb 6fff8f304ccb52fca3520719ac6487c636f1db66
 app/components/flowbite/input_field/password.rb 37e592f55f258cc4b81859d48763b9c0eff12f61
