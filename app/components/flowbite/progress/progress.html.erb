@@ -1,0 +1,14 @@
+<% if label_outside? %>
+  <div class="flex justify-between mb-1">
+    <span class="text-sm font-medium text-body"><%= label %></span>
+    <span class="text-sm font-medium text-body"><%= percentage %></span>
+  </div>
+<% end %>
+
+<%= tag.div(class: classes.join(" "), **options) do %>
+  <div class="<%= bar_classes.join(" ") %>" style="<%= width_style %>">
+    <% if label_inside? %>
+      <%= percentage %>
+    <% end %>
+  </div>
+<% end %>

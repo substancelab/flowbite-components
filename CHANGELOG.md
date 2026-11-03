@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - Spinner component
+- Progress component
 - Pagination component
 - Rating component, including `Flowbite::Rating::Star` for the individual stars
 - `Flowbite::Toast::CloseButton` component for the close button of toasts

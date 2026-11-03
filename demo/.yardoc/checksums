@@ -10,6 +10,7 @@ app/components/flowbite/rating.rb 3ace06786901bd8091e49000e3a7622d2e1a96e2
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
 app/components/flowbite/sidebar.rb 85033b602a098f3334b9b3e180239ef20a1b6f90
 app/components/flowbite/spinner.rb 5fa35e4203ce005cfcb56a269376f723a47dde43
+app/components/flowbite/progress.rb 6531ad60f474d9b73a3dedfcc30db106838992f8
 app/components/flowbite/badge/dot.rb 0e899c005a5e95a6b15b5a60ce9c25706c8521a1
 app/components/flowbite/input/url.rb f1046824f9b06c8df8e0f567979321b82baac6fa
 app/components/flowbite/alert/icon.rb f04cf70c4478d640b8f58e59e8980c3b60058411
