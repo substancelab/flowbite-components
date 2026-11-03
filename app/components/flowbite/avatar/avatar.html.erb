@@ -15,7 +15,8 @@
 <% if dot? %>
   <div class="relative">
     <%= avatar %>
-    <%= render(Flowbite::Avatar::Dot.new(position: dot_position, size: size, style: dot)) %>
+    <%= top_dot %>
+    <%= bottom_dot %>
   </div>
 <% else %>
   <%= avatar %>

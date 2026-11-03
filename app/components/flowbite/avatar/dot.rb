@@ -4,13 +4,20 @@ module Flowbite
   class Avatar
     # Renders a status dot indicator positioned on top of an avatar.
     #
-    # The dot must be rendered inside a relatively positioned container
+    # Usually added through the +top_dot+ or +bottom_dot+ slots of
+    # Flowbite::Avatar, which set the position and size. When rendered on its
+    # own, the dot must be placed inside a relatively positioned container
     # together with the avatar.
     #
-    # @example Usage
+    # @example Through an Avatar slot
+    #  <%= render(Flowbite::Avatar.new(src: user.avatar_url)) do |avatar| %>
+    #    <% avatar.with_top_dot(label: "Online", style: :success) %>
+    #  <% end %>
+    #
+    # @example Standalone
     #  <div class="relative">
     #    <%= render(Flowbite::Avatar.new(src: user.avatar_url)) %>
-    #    <%= render(Flowbite::Avatar::Dot.new(position: :bottom, style: :success)) %>
+    #    <%= render(Flowbite::Avatar::Dot.new(label: "Online", position: :bottom, style: :success)) %>
     #  </div>
     #
     # @see https://flowbite.com/docs/components/avatar/
@@ -54,19 +61,24 @@ module Flowbite
         end
       end
 
-      attr_reader :position, :size, :style
+      attr_reader :label, :position, :size, :style
 
+      # @param label [String] Text describing the status for screen readers,
+      #   since the dot otherwise only conveys it through color.
       # @param position [Symbol] Where to place the dot (:bottom, :top).
       # @param size [Symbol] The size of the avatar the dot is placed on.
       # @param style [Symbol] The color of the dot (:danger, :success).
-      def initialize(position: :top, size: :default, style: :success)
+      def initialize(label: nil, position: :top, size: :default, style: :success)
+        @label = label
         @position = position
         @size = size
         @style = style
       end
 
       def call
-        content_tag(:span, nil, class: self.class.classes(position: position, size: size, style: style))
+        content_tag(:span, class: self.class.classes(position: position, size: size, style: style)) do
+          content_tag(:span, label, class: "sr-only") if label.present?
+        end
       end
     end
   end

@@ -74,24 +74,34 @@ class AvatarPreview < Lookbook::Preview
 
   # @!group Dot indicator
   #
-  # Show a colored dot to indicate the status of the user.
+  # Show a colored dot to indicate the status of the user using the
+  # `top_dot` or `bottom_dot` slots. Pass a `label` to describe the status
+  # for screen readers.
   #
   # @display classes flex flex-wrap items-center gap-4
 
   def dot_top_success
-    render(Flowbite::Avatar.new(dot: :success, src: IMAGE_URL))
+    render(Flowbite::Avatar.new(src: IMAGE_URL)) do |avatar|
+      avatar.with_top_dot(label: "Online", style: :success)
+    end
   end
 
   def dot_top_danger
-    render(Flowbite::Avatar.new(dot: :danger, shape: :rounded, src: IMAGE_URL))
+    render(Flowbite::Avatar.new(shape: :rounded, src: IMAGE_URL)) do |avatar|
+      avatar.with_top_dot(label: "Busy", style: :danger)
+    end
   end
 
   def dot_bottom_success
-    render(Flowbite::Avatar.new(dot: :success, dot_position: :bottom, src: IMAGE_URL))
+    render(Flowbite::Avatar.new(src: IMAGE_URL)) do |avatar|
+      avatar.with_bottom_dot(label: "Online", style: :success)
+    end
   end
 
   def dot_bottom_danger
-    render(Flowbite::Avatar.new(dot: :danger, dot_position: :bottom, shape: :rounded, src: IMAGE_URL))
+    render(Flowbite::Avatar.new(shape: :rounded, src: IMAGE_URL)) do |avatar|
+      avatar.with_bottom_dot(label: "Busy", style: :danger)
+    end
   end
 
   # @!endgroup

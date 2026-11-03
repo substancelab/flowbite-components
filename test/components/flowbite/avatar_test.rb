@@ -154,41 +154,61 @@ class Flowbite::AvatarTest < Minitest::Test
     assert_no_selector("span")
   end
 
-  def test_renders_dot_at_the_top
-    render_inline(Flowbite::Avatar.new(dot: :success, src: IMAGE_URL))
+  def test_renders_top_dot
+    render_inline(Flowbite::Avatar.new(src: IMAGE_URL)) do |avatar|
+      avatar.with_top_dot(style: :success)
+    end
 
     assert_selector("div.relative > img.w-10.h-10")
     assert_selector("div.relative > span.top-0.left-7.absolute.w-3\\.5.h-3\\.5.bg-success.border-2.border-buffer.rounded-full")
   end
 
-  def test_renders_dot_at_the_bottom
-    render_inline(Flowbite::Avatar.new(dot: :success, dot_position: :bottom, src: IMAGE_URL))
+  def test_renders_bottom_dot
+    render_inline(Flowbite::Avatar.new(src: IMAGE_URL)) do |avatar|
+      avatar.with_bottom_dot(style: :success)
+    end
 
     assert_selector("div.relative > span.bottom-0.left-7")
   end
 
   def test_renders_danger_dot
-    render_inline(Flowbite::Avatar.new(dot: :danger, src: IMAGE_URL))
+    render_inline(Flowbite::Avatar.new(src: IMAGE_URL)) do |avatar|
+      avatar.with_top_dot(style: :danger)
+    end
 
     assert_selector("div.relative > span.bg-danger")
   end
 
   def test_positions_dot_according_to_size
-    render_inline(Flowbite::Avatar.new(dot: :success, size: :"2xl", src: IMAGE_URL))
+    render_inline(Flowbite::Avatar.new(size: :"2xl", src: IMAGE_URL)) do |avatar|
+      avatar.with_top_dot
+    end
 
     assert_selector("div.relative > span.left-13")
   end
 
   def test_renders_dot_on_placeholder
-    render_inline(Flowbite::Avatar.new(dot: :success, initials: "JL"))
+    render_inline(Flowbite::Avatar.new(initials: "JL")) do |avatar|
+      avatar.with_top_dot(style: :success)
+    end
 
     assert_selector("div.relative > div.bg-neutral-tertiary", text: "JL")
     assert_selector("div.relative > span.bg-success")
   end
 
+  def test_renders_dot_label_for_screen_readers
+    render_inline(Flowbite::Avatar.new(src: IMAGE_URL)) do |avatar|
+      avatar.with_top_dot(label: "Online", style: :success)
+    end
+
+    assert_selector("div.relative > span.bg-success > span.sr-only", text: "Online")
+  end
+
   def test_raises_on_unknown_dot_style
     assert_raises(Flowbite::Styles::StyleNotFoundError) do
-      render_inline(Flowbite::Avatar.new(dot: :warning, src: IMAGE_URL))
+      render_inline(Flowbite::Avatar.new(src: IMAGE_URL)) do |avatar|
+        avatar.with_top_dot(style: :warning)
+      end
     end
   end
 
@@ -240,6 +260,18 @@ class Flowbite::Avatar::DotTest < Minitest::Test
     render_inline(Flowbite::Avatar::Dot.new(position: :bottom, style: :danger))
 
     assert_selector("span.bottom-0.bg-danger")
+  end
+
+  def test_does_not_render_label_by_default
+    render_inline(Flowbite::Avatar::Dot.new)
+
+    assert_no_selector("span.sr-only")
+  end
+
+  def test_renders_label_for_screen_readers
+    render_inline(Flowbite::Avatar::Dot.new(label: "Busy", style: :danger))
+
+    assert_selector("span.bg-danger > span.sr-only", text: "Busy")
   end
 end
 

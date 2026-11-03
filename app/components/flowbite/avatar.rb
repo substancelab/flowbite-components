@@ -14,11 +14,21 @@ module Flowbite
   #  <%= render(Flowbite::Avatar.new(initials: "JL", shape: :rounded)) %>
   #
   # @example Placeholder icon with a status dot
-  #  <%= render(Flowbite::Avatar.new(dot: :success, dot_position: :bottom)) %>
+  #  <%= render(Flowbite::Avatar.new) do |avatar| %>
+  #    <% avatar.with_bottom_dot(label: "Online", style: :success) %>
+  #  <% end %>
+  #
+  # @viewcomponent_slot [Flowbite::Avatar::Dot] bottom_dot A status dot placed
+  #   at the bottom of the avatar. Use +with_bottom_dot+ to add one.
+  # @viewcomponent_slot [Flowbite::Avatar::Dot] top_dot A status dot placed at
+  #   the top of the avatar. Use +with_top_dot+ to add one.
   #
   # @see https://flowbite.com/docs/components/avatar/
   # @lookbook_embed AvatarPreview
   class Avatar < ViewComponent::Base
+    renders_one :bottom_dot, ->(**options) { Flowbite::Avatar::Dot.new(position: :bottom, size: size, **options) }
+    renders_one :top_dot, ->(**options) { Flowbite::Avatar::Dot.new(position: :top, size: size, **options) }
+
     BORDERED_CLASSES = ["p-1", "ring-2", "ring-default"].freeze
 
     INITIALS_CLASSES = ["relative", "inline-flex", "items-center", "justify-center", "overflow-hidden", "bg-neutral-tertiary"].freeze
@@ -57,17 +67,13 @@ module Flowbite
       end
     end
 
-    attr_reader :alt, :dot, :dot_position, :initials, :options, :size, :src
+    attr_reader :alt, :initials, :options, :size, :src
 
     # @param alt [String] Alternative text for the image. Defaults to an
     #   empty string, marking the image as decorative.
     # @param bordered [Boolean] Whether to add a ring around the avatar.
     # @param class [String, Array<String>] Additional CSS classes for the
     #   avatar element.
-    # @param dot [Symbol] The color of an optional status dot (:danger,
-    #   :success). No dot is rendered when nil.
-    # @param dot_position [Symbol] Where to place the status dot (:bottom,
-    #   :top).
     # @param initials [String] Initials to show when there is no image.
     # @param options [Hash] Additional HTML options for the avatar element.
     # @param shape [Symbol] The shape of the avatar (:circle, :rounded).
@@ -75,12 +81,10 @@ module Flowbite
     #   :lg, :xl, :"2xl").
     # @param src [String] The URL of the avatar image. When blank, the avatar
     #   falls back to initials or a placeholder icon.
-    def initialize(alt: nil, bordered: false, class: nil, dot: nil, dot_position: :top, initials: nil, shape: :circle, size: :default, src: nil, **options)
+    def initialize(alt: nil, bordered: false, class: nil, initials: nil, shape: :circle, size: :default, src: nil, **options)
       @alt = alt.to_s
       @bordered = bordered
       @class = Array.wrap(binding.local_variable_get(:class))
-      @dot = dot
-      @dot_position = dot_position
       @initials = initials
       @shape = shape
       @size = size
@@ -93,7 +97,7 @@ module Flowbite
     end
 
     def dot?
-      @dot.present?
+      top_dot? || bottom_dot?
     end
 
     def image?
