@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- Avatar component, with image, initials and placeholder icon fallbacks, sizes, shapes, border and status dot
 - Spinner component
 - Progress component
 - Pagination component

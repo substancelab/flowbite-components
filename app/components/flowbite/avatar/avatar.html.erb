@@ -1,0 +1,22 @@
+<% avatar = capture do %>
+  <% if image? %>
+    <%= tag.img(alt: alt, class: image_classes, src: src, **options) %>
+  <% elsif initials? %>
+    <%= tag.div(class: initials_classes, **options) do %>
+      <span class="font-medium text-body"><%= initials %></span>
+    <% end %>
+  <% else %>
+    <%= tag.div(class: placeholder_classes, **options) do %>
+      <%= render(Flowbite::Avatar::PlaceholderIcon.new(size: size)) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if dot? %>
+  <div class="relative">
+    <%= avatar %>
+    <%= render(Flowbite::Avatar::Dot.new(position: dot_position, size: size, style: dot)) %>
+  </div>
+<% else %>
+  <%= avatar %>
+<% end %>
