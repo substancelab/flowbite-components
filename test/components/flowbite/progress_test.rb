@@ -36,6 +36,24 @@ class Flowbite::ProgressTest < Minitest::Test
     assert_selector("div.bg-brand[style='width: 45.5%']", text: "45.5%")
   end
 
+  def test_renders_rational_progress_as_decimal
+    render_inline(Flowbite::Progress.new(label_position: :inside, progress: Rational(91, 2)))
+
+    assert_selector("div.bg-brand[style='width: 45.5%']", text: "45.5%")
+  end
+
+  def test_renders_big_decimal_progress_as_decimal
+    render_inline(Flowbite::Progress.new(label_position: :inside, progress: BigDecimal("45.5")))
+
+    assert_selector("div.bg-brand[style='width: 45.5%']", text: "45.5%")
+  end
+
+  def test_rounds_progress_to_one_decimal
+    render_inline(Flowbite::Progress.new(label_position: :inside, progress: 100.0 / 3))
+
+    assert_selector("div.bg-brand[style='width: 33.3%']", text: "33.3%")
+  end
+
   def test_renders_clamped_progress_in_label
     render_inline(Flowbite::Progress.new(label_position: :inside, progress: 150))
 

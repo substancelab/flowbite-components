@@ -122,8 +122,11 @@ module Flowbite
     end
 
     # @return [String] The progress formatted as a percentage, ie "45%".
+    #   Decimal values are rounded to one decimal place.
     def percentage
-      "#{progress}%"
+      value = progress.to_f.round(1)
+      value = value.to_i if value == value.to_i
+      "#{value}%"
     end
 
     # @return [Numeric] The progress clamped to the range 0 to 100.
