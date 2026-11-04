@@ -16,34 +16,21 @@
         <% end %>
       </div>
     <% end %>
-    <% if message.present? %>
-      <div class="mt-2 mb-4"><%= message %></div>
+    <% if content.present? %>
+      <div class="mt-2 mb-4"><%= content %></div>
     <% end %>
     <%= additional_content %>
-  <% elsif list? %>
-    <% if icon? %>
-      <%= render Flowbite::Alert::Icon.new(class: icon_classes) %>
-      <span class="sr-only"><%= style_label %></span>
-    <% end %>
-    <div>
-      <% if title? %>
-        <span class="font-medium"><%= title %></span>
-      <% end %>
-
-      <%= message %>
-      <%= content %>
-    </div>
   <% elsif icon? %>
     <%= render Flowbite::Alert::Icon.new(class: icon_classes) %>
     <span class="sr-only"><%= style_label %></span>
-    <p>
+    <div>
       <% if title? %>
         <span class="font-medium me-1"><%= title %></span>
-      <% end %><%= message %>
-    </p>
+      <% end %><%= content %>
+    </div>
   <% else %>
     <% if title? %>
       <span class="font-medium"><%= title %></span>
-    <% end %><%= message %>
+    <% end %><%= content %>
   <% end %>
 <% end %>

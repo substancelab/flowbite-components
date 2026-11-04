@@ -3,15 +3,15 @@
 module Flowbite
   # Renders an alert element for showing feedback messages to the user.
   #
+  # The block given to the alert is used as its message.
+  #
   # @example Usage
-  #  <%= render(Flowbite::Alert.new(message: "Something has happened!")) %>
+  #  <%= render(Flowbite::Alert.new) { "Something has happened!" } %>
   #
   # @example With title and style
-  #  <%= render(Flowbite::Alert.new(
-  #    message: "Change a few things up and try submitting again.",
-  #    style: :danger,
-  #    title: "Danger alert!"
-  #  )) %>
+  #  <%= render(Flowbite::Alert.new(style: :danger, title: "Danger alert!")) do %>
+  #    Change a few things up and try submitting again.
+  #  <% end %>
   #
   # @example With a list
   #  <%= render(Flowbite::Alert.new(title: "Ensure that these requirements are met:")) do %>
@@ -21,15 +21,16 @@ module Flowbite
   #  <% end %>
   #
   # @example With additional content
-  #  <%= render(Flowbite::Alert.new(bordered: true, message: "More info about this alert.", title: "This is an info alert")) do |alert| %>
+  #  <%= render(Flowbite::Alert.new(bordered: true, title: "This is an info alert")) do |alert| %>
   #    <% alert.with_additional_content do %>
   #      <%= render(Flowbite::Button.new(size: :xs)) { "View more" } %>
   #    <% end %>
+  #    More info about this alert.
   #  <% end %>
   #
-  # @viewcomponent_slot additional_content Content rendered below the title
-  #   and message, for example action buttons. When given, the title is
-  #   rendered as a heading next to the icon.
+  # @viewcomponent_slot additional_content Content rendered below the
+  #   message, for example action buttons. When given, the title is rendered
+  #   as a heading next to the icon and the message below it.
   #
   # @see https://flowbite.com/docs/components/alerts/
   # @lookbook_embed AlertPreview
@@ -70,7 +71,7 @@ module Flowbite
       # rubocop:enable Layout/LineLength
     end
 
-    attr_reader :message, :options, :style, :title
+    attr_reader :options, :style, :title
 
     # @param border_accent [Boolean] Whether to show a thick top border
     #   accent instead of rounded corners (default: false).
@@ -79,19 +80,16 @@ module Flowbite
     # @param class [String, Array<String>] Additional CSS classes for the
     #   alert container.
     # @param icon [Boolean] Whether to show an info icon (default: true).
-    # @param message [String] The message to display in the alert. Block
-    #   content, if given, is rendered after the message.
     # @param options [Hash] Additional HTML options for the alert container.
     # @param style [Symbol] The color style of the alert (:danger, :dark,
     #   :info, :success, :warning).
     # @param title [String] An optional bold title shown before the message.
     def initialize(border_accent: false, bordered: false, class: nil,
-      icon: true, message: nil, style: :info, title: nil, **options)
+      icon: true, style: :info, title: nil, **options)
       @border_accent = border_accent
       @bordered = bordered
       @class = Array.wrap(binding.local_variable_get(:class))
       @icon = icon
-      @message = message
       @options = options
       @style = style
       @title = title
@@ -117,21 +115,15 @@ module Flowbite
     # @return [Array<String>] The CSS classes for the icon in the current
     #   layout.
     def icon_classes
-      if additional_content? || list?
+      if additional_content?
         ["me-2"]
       else
-        ["me-2", "mt-0.5", "sm:mt-0"]
+        ["me-2", "mt-0.5"]
       end
     end
 
     def icon?
       !!@icon
-    end
-
-    # Returns true when block content is given, in which case the title and
-    # content are rendered stacked next to the icon, suitable for lists.
-    def list?
-      content.present? && !additional_content?
     end
 
     # @return [String] The screen reader label describing the alert style.
@@ -157,9 +149,8 @@ module Flowbite
 
     def layout_classes
       return [] if additional_content? || !icon?
-      return ["flex"] if list?
 
-      ["flex", "items-start", "sm:items-center"]
+      ["flex", "items-start"]
     end
   end
 end

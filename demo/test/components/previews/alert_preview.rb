@@ -3,8 +3,11 @@
 class AlertPreview < Lookbook::Preview
   include RenderToString
 
+  # The block given to the alert is used as its message.
   def example
-    render(Flowbite::Alert.new(message: "Change a few things up and try submitting again.", title: "Info alert!"))
+    render(Flowbite::Alert.new(title: "Info alert!")) do
+      "Change a few things up and try submitting again."
+    end
   end
 
   # @!group Styles
@@ -14,23 +17,23 @@ class AlertPreview < Lookbook::Preview
   # @display classes flex flex-col space-y-4
 
   def danger
-    render(Flowbite::Alert.new(message: "Change a few things up and try submitting again.", style: :danger, title: "Danger alert!"))
+    render(Flowbite::Alert.new(style: :danger, title: "Danger alert!")) { "Change a few things up and try submitting again." }
   end
 
   def dark
-    render(Flowbite::Alert.new(message: "Change a few things up and try submitting again.", style: :dark, title: "Dark alert!"))
+    render(Flowbite::Alert.new(style: :dark, title: "Dark alert!")) { "Change a few things up and try submitting again." }
   end
 
   def info
-    render(Flowbite::Alert.new(message: "Change a few things up and try submitting again.", style: :info, title: "Info alert!"))
+    render(Flowbite::Alert.new(style: :info, title: "Info alert!")) { "Change a few things up and try submitting again." }
   end
 
   def success
-    render(Flowbite::Alert.new(message: "Change a few things up and try submitting again.", style: :success, title: "Success alert!"))
+    render(Flowbite::Alert.new(style: :success, title: "Success alert!")) { "Change a few things up and try submitting again." }
   end
 
   def warning
-    render(Flowbite::Alert.new(message: "Change a few things up and try submitting again.", style: :warning, title: "Warning alert!"))
+    render(Flowbite::Alert.new(style: :warning, title: "Warning alert!")) { "Change a few things up and try submitting again." }
   end
 
   # @!endgroup
@@ -42,11 +45,11 @@ class AlertPreview < Lookbook::Preview
   # @display classes flex flex-col space-y-4
 
   def without_icon
-    render(Flowbite::Alert.new(icon: false, message: "Change a few things up and try submitting again.", title: "Info alert!"))
+    render(Flowbite::Alert.new(icon: false, title: "Info alert!")) { "Change a few things up and try submitting again." }
   end
 
   def without_icon_danger
-    render(Flowbite::Alert.new(icon: false, message: "Change a few things up and try submitting again.", style: :danger, title: "Danger alert!"))
+    render(Flowbite::Alert.new(icon: false, style: :danger, title: "Danger alert!")) { "Change a few things up and try submitting again." }
   end
 
   # @!endgroup
@@ -58,23 +61,23 @@ class AlertPreview < Lookbook::Preview
   # @display classes flex flex-col space-y-4
 
   def bordered_danger
-    render(Flowbite::Alert.new(bordered: true, message: "Change a few things up and try submitting again.", style: :danger, title: "Danger alert!"))
+    render(Flowbite::Alert.new(bordered: true, style: :danger, title: "Danger alert!")) { "Change a few things up and try submitting again." }
   end
 
   def bordered_dark
-    render(Flowbite::Alert.new(bordered: true, message: "Change a few things up and try submitting again.", style: :dark, title: "Dark alert!"))
+    render(Flowbite::Alert.new(bordered: true, style: :dark, title: "Dark alert!")) { "Change a few things up and try submitting again." }
   end
 
   def bordered_info
-    render(Flowbite::Alert.new(bordered: true, message: "Change a few things up and try submitting again.", title: "Info alert!"))
+    render(Flowbite::Alert.new(bordered: true, title: "Info alert!")) { "Change a few things up and try submitting again." }
   end
 
   def bordered_success
-    render(Flowbite::Alert.new(bordered: true, message: "Change a few things up and try submitting again.", style: :success, title: "Success alert!"))
+    render(Flowbite::Alert.new(bordered: true, style: :success, title: "Success alert!")) { "Change a few things up and try submitting again." }
   end
 
   def bordered_warning
-    render(Flowbite::Alert.new(bordered: true, message: "Change a few things up and try submitting again.", style: :warning, title: "Warning alert!"))
+    render(Flowbite::Alert.new(bordered: true, style: :warning, title: "Warning alert!")) { "Change a few things up and try submitting again." }
   end
 
   # @!endgroup
@@ -86,22 +89,22 @@ class AlertPreview < Lookbook::Preview
   # @display classes flex flex-col space-y-4
 
   def border_accent_danger
-    render(Flowbite::Alert.new(border_accent: true, message: "A simple danger alert. Give it a click if you like.", style: :danger))
+    render(Flowbite::Alert.new(border_accent: true, style: :danger)) { "A simple danger alert. Give it a click if you like." }
   end
 
   def border_accent_info
-    render(Flowbite::Alert.new(border_accent: true, message: "A simple info alert. Give it a click if you like."))
+    render(Flowbite::Alert.new(border_accent: true)) { "A simple info alert. Give it a click if you like." }
   end
 
   def border_accent_success
-    render(Flowbite::Alert.new(border_accent: true, message: "A simple success alert. Give it a click if you like.", style: :success))
+    render(Flowbite::Alert.new(border_accent: true, style: :success)) { "A simple success alert. Give it a click if you like." }
   end
 
   # @!endgroup
 
   # @!group With list
   #
-  # Pass a block to render richer content, such as a list, below the title.
+  # The message block can contain richer content, such as a list.
   #
   # @display classes flex flex-col space-y-4
 
@@ -122,15 +125,16 @@ class AlertPreview < Lookbook::Preview
   # @!group Additional content
   #
   # Use the additional_content slot to add extra content, such as buttons,
-  # below the title and message.
+  # below the message. The title is then rendered as a heading.
   #
   # @display classes flex flex-col space-y-4
 
   def with_additional_content
-    render(Flowbite::Alert.new(bordered: true, message: "More info about this info alert goes here. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.", title: "This is an info alert")) do |alert|
+    render(Flowbite::Alert.new(bordered: true, title: "This is an info alert")) do |alert|
       alert.with_additional_content do
         render_to_string(Flowbite::Button.new(size: :xs).with_content("View more"))
       end
+      "More info about this info alert goes here. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content."
     end
   end
 
@@ -143,7 +147,7 @@ class AlertPreview < Lookbook::Preview
   # @display classes flex flex-col space-y-4
 
   def with_custom_classes
-    render(Flowbite::Alert.new(class: ["mb-4", "shadow-md"], message: "Custom styled alert."))
+    render(Flowbite::Alert.new(class: ["mb-4", "shadow-md"])) { "Custom styled alert." }
   end
 
   # @!endgroup
