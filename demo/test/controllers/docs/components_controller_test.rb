@@ -17,6 +17,8 @@ class Docs::ComponentsControllerTest < ActionDispatch::IntegrationTest
     image_url = "https://ogkit.dev/img/test-api-key.jpeg?url=#{ERB::Util.url_encode(page_url)}"
     assert_select "meta[property='og:image'][content=?]", image_url
     assert_select "meta[name='twitter:image'][content=?]", image_url
+    assert_select "meta[property='og:image:height'][content='630']"
+    assert_select "meta[property='og:image:width'][content='1200']"
   end
 
   test "omits Open Graph image when OGKIT_API_KEY is not set" do
@@ -25,6 +27,7 @@ class Docs::ComponentsControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "meta[property='og:image']", count: 0
     assert_select "meta[name='twitter:image']", count: 0
+    assert_select "meta[property='og:image:width']", count: 0
   end
 
   test "includes Open Graph title and description" do
