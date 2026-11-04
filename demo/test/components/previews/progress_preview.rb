@@ -3,7 +3,7 @@
 class ProgressPreview < Lookbook::Preview
   # @display classes w-full
   def example
-    render(Flowbite::Progress.new(progress: 45))
+    render(Flowbite::Progress.new(progress: 64))
   end
 
   # @!group Sizes

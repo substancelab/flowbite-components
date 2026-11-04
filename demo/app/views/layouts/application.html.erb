@@ -39,6 +39,11 @@
     <%= stylesheet_link_tag :app %>
 
     <%= render(:partial => "layouts/analytics") %>
+
+    <% if Rails.env.development? %>
+      <%# Enables previewing Open Graph images locally by adding ?ogkit-render to the URL %>
+      <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/ogkit@1", defer: true, nonce: request.content_security_policy_nonce %>
+    <% end %>
   </head>
 
   <body class="bg-neutral-primary text-body">

@@ -17,6 +17,7 @@ module Docs
       lookbook_embeds = @code_object.tags(:lookbook_embed)
       @introduction_preview = find_example_preview(lookbook_embeds)
       @previews = find_non_example_previews(lookbook_embeds)
+      @og_preview_render_args = find_og_preview_render_args(@introduction_preview)
 
       respond_to do |format|
         format.html
@@ -50,6 +51,17 @@ module Docs
       return nil unless preview
 
       preview if preview.scenarios.any? { |s| s.name == "example" }
+    end
+
+    # Returns the arguments needed to render the example scenario of preview
+    # directly in a view, for use in the Open Graph image.
+    #
+    # @return [Hash, nil]
+    def find_og_preview_render_args(preview)
+      return nil unless preview
+
+      render_args = preview.preview_class.render_args("example", params: {})
+      render_args if render_args[:type] == :component
     end
 
     # @return [Array<Lookbook::Entity>]
