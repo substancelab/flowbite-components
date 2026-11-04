@@ -33,16 +33,20 @@
       </div>
 
       <% if @og_preview_render_args %>
-        <div
-          class="
-            flex items-center justify-center w-[540px] h-[360px] shrink-0 p-8
-            overflow-hidden bg-neutral-secondary-soft border border-default rounded-2xl
-            transform-gpu
-          "
-        >
-          <div class="[zoom:1.5] max-w-full">
-            <%= render(@og_preview_render_args[:component], @og_preview_render_args[:args], &@og_preview_render_args[:block]) %>
-          </div>
+        <%# The preview is rendered twice, with the dark mode version clipped diagonally on top of the light mode version %>
+        <div class="relative w-[540px] h-[360px] shrink-0 overflow-hidden border border-default rounded-2xl">
+          <% ["light", "dark [clip-path:polygon(65.5%_0,100%_0,100%_100%,34.5%_100%)]"].each do |theme_classes| %>
+            <div
+              class="
+                <%= theme_classes %> absolute inset-0 flex items-center justify-center
+                p-8 bg-neutral-secondary-soft text-body transform-gpu
+              "
+            >
+              <div class="[zoom:1.5] max-w-full">
+                <%= render(@og_preview_render_args[:component], @og_preview_render_args[:args], &@og_preview_render_args[:block]) %>
+              </div>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
