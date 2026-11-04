@@ -2,7 +2,9 @@
 
 module Flowbite
   class Input
-    # https://api.rubyonrails.org/classes/ActionView/Helpers/FormBuilder.html#method-i-label
+    # Renders a label element for a form input.
+    #
+    # @see https://api.rubyonrails.org/classes/ActionView/Helpers/FormBuilder.html#method-i-label
     class Label < ViewComponent::Base
       STATES = [
         DEFAULT = :default,

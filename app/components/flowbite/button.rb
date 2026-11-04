@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Flowbite
-  # Renders a HTML button element. See https://flowbite.com/docs/components/buttons/
+  # Renders a HTML button element.
   #
   # All other parameters are optional and are passed directly to the button tag
   # as HTML attributes.
@@ -9,6 +9,7 @@ module Flowbite
   # @example Basic usage
   #  <%= render Flowbite::Button.new { "Click me" } %>
   #
+  # @see https://flowbite.com/docs/components/buttons/
   # @lookbook_embed ButtonPreview
   class Button < ViewComponent::Base
     SIZES = {
