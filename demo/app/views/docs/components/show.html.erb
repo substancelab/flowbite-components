@@ -5,8 +5,11 @@
 <% content_for(:title) { "#{@code_object.path} - Flowbite Components for Rails" } %>
 
 <% content_for(:head) do %>
-  <meta content="<%= description %>" name="description">
-  <meta content="<%= description %>" property="og:description">
+  <% if description.present? %>
+    <meta content="<%= description %>" name="description">
+    <meta content="<%= description %>" property="og:description">
+    <meta content="<%= description %>" name="twitter:description">
+  <% end %>
   <% if og_image_url %>
     <meta content="<%= og_image_url %>" property="og:image">
   <% end %>
@@ -14,7 +17,6 @@
   <meta content="website" property="og:type">
   <meta content="<%= page_url %>" property="og:url">
   <meta content="summary_large_image" name="twitter:card">
-  <meta content="<%= description %>" name="twitter:description">
   <% if og_image_url %>
     <meta content="<%= og_image_url %>" name="twitter:image">
   <% end %>
