@@ -8,6 +8,7 @@ class HomepageController < ApplicationController
     {class_name: "Flowbite::InputField", illustration: "input_field", name: "Input field"},
     {class_name: "Flowbite::Link", illustration: "link", name: "Link"},
     {class_name: "Flowbite::Pagination", illustration: "pagination", name: "Pagination"},
+    {class_name: "Flowbite::Rating", illustration: "rating", name: "Rating"},
     {class_name: "Flowbite::Sidebar", illustration: "sidebar", name: "Sidebar"},
     {class_name: "Flowbite::Spinner", illustration: "spinner", name: "Spinner"},
     {class_name: "Flowbite::Toast", illustration: "toast", name: "Toast"}
