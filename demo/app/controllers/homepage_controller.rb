@@ -1,6 +1,7 @@
 class HomepageController < ApplicationController
   FEATURED_COMPONENTS = [
     {class_name: "Flowbite::Alert", illustration: "alert", name: "Alert"},
+    {class_name: "Flowbite::Avatar", illustration: "avatar", name: "Avatar"},
     {class_name: "Flowbite::Badge", illustration: "badge", name: "Badge"},
     {class_name: "Flowbite::Breadcrumb", illustration: "breadcrumb", name: "Breadcrumb"},
     {class_name: "Flowbite::Button", illustration: "button", name: "Button"},

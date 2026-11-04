@@ -5,15 +5,17 @@ app/components/flowbite/badge.rb ec345c36f41b9dbcd6a61d76256e661fc3888cb2
 app/components/flowbite/input.rb df2ae5f59a7d33a635599632386053f999f65919
 app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
 app/components/flowbite/toast.rb 55b5cc31f1ef81c5672c6b2a7f1c87cb780313e9
+app/components/flowbite/avatar.rb d7f1038203ee065b0bce12f3709b0206bfbcfcba
 app/components/flowbite/button.rb 6ae7681d3b842d73aa99cddfa5a9b107ede7fea4
 app/components/flowbite/rating.rb 3ace06786901bd8091e49000e3a7622d2e1a96e2
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
 app/components/flowbite/sidebar.rb 85033b602a098f3334b9b3e180239ef20a1b6f90
 app/components/flowbite/spinner.rb 5fa35e4203ce005cfcb56a269376f723a47dde43
-app/components/flowbite/progress.rb 6531ad60f474d9b73a3dedfcc30db106838992f8
+app/components/flowbite/progress.rb cee1ab1be3c58a14b6b4b13f9ae799582fe8818c
 app/components/flowbite/badge/dot.rb 0e899c005a5e95a6b15b5a60ce9c25706c8521a1
 app/components/flowbite/input/url.rb f1046824f9b06c8df8e0f567979321b82baac6fa
 app/components/flowbite/alert/icon.rb f04cf70c4478d640b8f58e59e8980c3b60058411
+app/components/flowbite/avatar/dot.rb 058df39fcc5595c6608c23ccc0fd101a6e45c7a6
 app/components/flowbite/badge/pill.rb cf713c5935e9300648f5501c90dced0aca488472
 app/components/flowbite/breadcrumb.rb c69ffb465b6e7f2489d4ac9a928e08bdf252fe99
 app/components/flowbite/card/title.rb 8067aa1e027c725896b063b67364aecfbf2f7d4e
@@ -58,6 +60,7 @@ app/components/flowbite/pagination/next_link.rb b2be30ff0f67032e8185e475c7ae4351
 app/components/flowbite/breadcrumb/item/first.rb 0d755f7f7fbf6980b4667b8b723d4dce94ca2224
 app/components/flowbite/input_field/date_time.rb 0a17d49d70f3ba820fee0f8930115540f12d72e2
 app/components/flowbite/input/validation_error.rb b6221a7a542136dc05d0053bda61061c7d4829d8
+app/components/flowbite/avatar/placeholder_icon.rb d6fe49440004aee637120234c0165d189f4ab6b1
 app/components/flowbite/breadcrumb/item/current.rb 73551aac4b45f3045e14ccdc74187e419d099176
 app/components/flowbite/input_field/radio_button.rb adc482ad312c4c16b206bb10e566e96d709a7a2f
 app/components/flowbite/pagination/previous_link.rb 9393042bc6330aa0b959c75672f92825c0a217e1
