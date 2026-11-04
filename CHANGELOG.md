@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## [0.4.0]
 
 ### Added
 
@@ -15,8 +15,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - `Flowbite::Toast::CloseButton` component for the close button of toasts
 - `Flowbite::Toast` accepts `button: {options: {...}}` for passing HTML options, e.g. data attributes, to the default close button, or a `button` slot for rendering your own
 - Alert component
-
-### Changed
 
 ### Fixed
 
