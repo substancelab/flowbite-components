@@ -44,6 +44,13 @@ class Docs::ComponentsControllerTest < ActionDispatch::IntegrationTest
     assert_includes template.inner_html, "<button"
   end
 
+  test "renders the logo in the OG Kit template" do
+    get docs_component_path("Flowbite::Button")
+
+    template = Nokogiri::HTML(response.body).at_css("template[data-og-template]")
+    assert template.at_css("svg[data-og-logo]")
+  end
+
   test "renders the OG Kit template for components without previews" do
     get docs_component_path("Flowbite")
 
