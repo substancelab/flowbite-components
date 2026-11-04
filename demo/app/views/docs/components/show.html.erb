@@ -1,3 +1,56 @@
+<% description = strip_tags(render_docstring(@code_object.docstring_introduction, code_object: @code_object)).squish %>
+<% page_url = docs_component_url(@code_object.path) %>
+<% og_image_url = ogkit_image_url(page_url) %>
+
+<% content_for(:title) { "#{@code_object.path} - Flowbite Components for Rails" } %>
+
+<% content_for(:head) do %>
+  <meta content="<%= description %>" name="description">
+  <meta content="<%= description %>" property="og:description">
+  <% if og_image_url %>
+    <meta content="<%= og_image_url %>" property="og:image">
+  <% end %>
+  <meta content="<%= @code_object.path %>" property="og:title">
+  <meta content="website" property="og:type">
+  <meta content="<%= page_url %>" property="og:url">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="<%= description %>" name="twitter:description">
+  <% if og_image_url %>
+    <meta content="<%= og_image_url %>" name="twitter:image">
+  <% end %>
+  <meta content="<%= @code_object.path %>" name="twitter:title">
+<% end %>
+
+<template data-og-template>
+  <div class="flex flex-col justify-between w-full h-full p-16 bg-neutral-primary text-body">
+    <div class="text-3xl font-semibold text-heading">flowbite-components</div>
+
+    <div class="flex items-center gap-12">
+      <div class="flex-1 space-y-6 min-w-0">
+        <p class="font-mono text-2xl"><%= @code_object.namespace.root? ? "Rails meets Flowbite" : @code_object.namespace.path %></p>
+        <h1 class="text-7xl font-bold tracking-tighter text-heading"><%= @code_object.name %></h1>
+        <p class="text-2xl line-clamp-3"><%= description %></p>
+      </div>
+
+      <% if @og_preview_render_args %>
+        <div
+          class="
+            flex items-center justify-center w-[540px] h-[360px] shrink-0 p-8
+            overflow-hidden bg-neutral-secondary-soft border border-default rounded-2xl
+            transform-gpu
+          "
+        >
+          <div class="[zoom:1.5] max-w-full">
+            <%= render(@og_preview_render_args[:component], @og_preview_render_args[:args], &@og_preview_render_args[:block]) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="text-xl">UI component library for Rails, built using ViewComponents, Flowbite, and Tailwind CSS.</div>
+  </div>
+</template>
+
 <article class="flex flex-wrap md:flex-nowrap gap-8 w-full justify-between mx-auto">
   <nav
     aria-label="Sidebar"
