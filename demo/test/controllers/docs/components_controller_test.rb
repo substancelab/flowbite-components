@@ -2,10 +2,6 @@ require "test_helper"
 
 class Docs::ComponentsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    # Lookbook populates the YARD registry when parsing previews, which
-    # prevents Yard.code_object from loading the components from .yardoc.
-    YARD::Registry.load!(Yard.yardoc_path)
-
     @original_ogkit_api_key = ENV["OGKIT_API_KEY"]
     ENV["OGKIT_API_KEY"] = "test-api-key"
   end
