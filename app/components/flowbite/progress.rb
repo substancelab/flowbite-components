@@ -37,8 +37,9 @@ module Flowbite
       lg: ["h-2.5"]
     }.freeze
 
+    # Only vertical padding, so the bar can shrink to zero width at 0%.
     INSIDE_LABEL_CLASSES = [
-      "text-xs", "font-medium", "text-white", "text-center", "p-0.5",
+      "text-xs", "font-medium", "text-white", "text-center", "py-0.5",
       "leading-none", "rounded-full", "h-4", "flex", "items-center",
       "justify-center"
     ].freeze

@@ -131,9 +131,16 @@ class Flowbite::ProgressTest < Minitest::Test
     render_inline(Flowbite::Progress.new(label_position: :inside, progress: 45))
 
     assert_selector(
-      "div.bg-brand.text-xs.font-medium.text-white.text-center.p-0\\.5.leading-none.rounded-full.h-4.flex.items-center.justify-center[style='width: 45%']",
+      "div.bg-brand.text-xs.font-medium.text-white.text-center.py-0\\.5.leading-none.rounded-full.h-4.flex.items-center.justify-center[style='width: 45%']",
       text: "45%"
     )
+  end
+
+  def test_label_inside_has_no_horizontal_padding
+    render_inline(Flowbite::Progress.new(label_position: :inside, progress: 0))
+
+    assert_selector("div.bg-brand.py-0\\.5[style='width: 0%']")
+    assert_no_selector("div.bg-brand.p-0\\.5")
   end
 
   def test_label_inside_track_has_no_height
