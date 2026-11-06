@@ -300,6 +300,19 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/subst
 - Follow the existing naming conventions
 - Ensure accessibility standards are met
 
+### How to release
+
+1. Make sure `rake` passes.
+2. Make sure latest build on main is green.
+3. Make sure documentation database is up to date: `rake docs:refresh_registry`
+4. Change version number in version.rb to the version you want to release
+5. Change "Unreleased" in CHANGELOG.md to the version
+6. Build the gem: `rake build`
+7. Update demo site to use the new version
+8. Commit changes
+9. Release it: `rake release`
+10. Tell the world
+
 ## Support
 
 - [Flowbite Documentation](https://flowbite.com/docs/)
