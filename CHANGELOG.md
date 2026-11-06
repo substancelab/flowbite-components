@@ -86,3 +86,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Input components
 * InputField components
 * Basic Card component
+
+[0.4.0]: https://github.com/substancelab/flowbite-components/releases/tag/v0.4.0
+[0.3.0]: https://github.com/substancelab/flowbite-components/releases/tag/v0.3.0
+[0.2.0]: https://github.com/substancelab/flowbite-components/releases/tag/v0.2.0
+[0.1.4]: https://github.com/substancelab/flowbite-components/releases/tag/v0.1.4
+[0.1.3]: https://github.com/substancelab/flowbite-components/releases/tag/v0.1.3
+[0.1.2]: https://github.com/substancelab/flowbite-components/releases/tag/v0.1.2
+[0.1.1]: https://github.com/substancelab/flowbite-components/releases/tag/v0.1.1
+[0.1.0]: https://github.com/substancelab/flowbite-components/releases/tag/v0.1.0
