@@ -1,11 +1,14 @@
 {
   "devDependencies": {
     "@herb-tools/formatter": "^0.10.3",
-    "@herb-tools/linter": "^0.10.1"
+    "@herb-tools/linter": "^0.10.1",
+    "standard": "^17.1.2"
   },
   "scripts": {
-    "herb:format:check": "herb-format --check",
     "herb:format": "herb-format",
-    "herb:lint": "herb-lint"
+    "herb:format:check": "herb-format --check",
+    "herb:lint": "herb-lint",
+    "js:lint": "standard 'app/javascript/**/*.js'",
+    "js:lint:fix": "standard --fix 'app/javascript/**/*.js'"
   }
 }
