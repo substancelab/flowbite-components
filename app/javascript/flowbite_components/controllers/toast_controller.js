@@ -1,5 +1,5 @@
-import { Controller } from "@hotwired/stimulus"
-import { useTransition } from "stimulus-use"
+import { Controller } from '@hotwired/stimulus'
+import { useTransition } from 'stimulus-use'
 
 // Dismisses a Flowbite::Toast rendered with behavior: :stimulus, the same way
 // flowbite.js does: the toast fades out and is then hidden.
@@ -12,25 +12,25 @@ import { useTransition } from "stimulus-use"
 //
 // Requires stimulus-use.
 export default class extends Controller {
-  static classes = ["leaveActive", "leaveFrom", "leaveTo"]
+  static classes = ['leaveActive', 'leaveFrom', 'leaveTo']
 
-  connect() {
+  connect () {
     useTransition(this, {
-      leaveActive: this.classesOrDefault("leaveActive", "transition-opacity duration-300 ease-out"),
-      leaveFrom: this.classesOrDefault("leaveFrom", ""),
-      leaveTo: this.classesOrDefault("leaveTo", "opacity-0"),
+      leaveActive: this.classesOrDefault('leaveActive', 'transition-opacity duration-300 ease-out'),
+      leaveFrom: this.classesOrDefault('leaveFrom', ''),
+      leaveTo: this.classesOrDefault('leaveTo', 'opacity-0'),
       removeToClasses: false,
       transitioned: true
     })
   }
 
-  dismiss() {
-    this.dispatch("hide")
+  dismiss () {
+    this.dispatch('hide')
     this.leave()
   }
 
-  classesOrDefault(name, defaultClasses) {
+  classesOrDefault (name, defaultClasses) {
     const hasClass = `has${name[0].toUpperCase()}${name.slice(1)}Class`
-    return this[hasClass] ? this[`${name}Classes`].join(" ") : defaultClasses
+    return this[hasClass] ? this[`${name}Classes`].join(' ') : defaultClasses
   }
 }

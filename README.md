@@ -273,10 +273,17 @@ To run tests:
 bundle exec rake test
 ```
 
-To check code style:
+To check code style of Ruby, ERB, and JavaScript files:
 
 ```bash
 bundle exec rake lint
+```
+
+JavaScript follows [JavaScript Standard Style](https://standardjs.com). To fix
+offenses automatically:
+
+```bash
+bundle exec rake js:fix
 ```
 
 To install this gem onto your local machine:
