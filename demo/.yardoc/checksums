@@ -4,13 +4,14 @@ app/components/flowbite/alert.rb 413d9c650a2f641de7d00a3e63144ee7e261c7df
 app/components/flowbite/badge.rb ec345c36f41b9dbcd6a61d76256e661fc3888cb2
 app/components/flowbite/input.rb df2ae5f59a7d33a635599632386053f999f65919
 app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
-app/components/flowbite/toast.rb 55b5cc31f1ef81c5672c6b2a7f1c87cb780313e9
+app/components/flowbite/toast.rb fbbc4b7d51a44f6779ef88cd05fbc5696f7fe1d9
 app/components/flowbite/avatar.rb d7f1038203ee065b0bce12f3709b0206bfbcfcba
 app/components/flowbite/button.rb 71e5b444a2a1842b3d7548f09cdb21c3bbba3a16
 app/components/flowbite/rating.rb 3ace06786901bd8091e49000e3a7622d2e1a96e2
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
 app/components/flowbite/sidebar.rb 85033b602a098f3334b9b3e180239ef20a1b6f90
 app/components/flowbite/spinner.rb 5fa35e4203ce005cfcb56a269376f723a47dde43
+app/components/flowbite/behavior.rb 4711e0675db3cbca7e174529e398752b2cd4c8e3
 app/components/flowbite/progress.rb cee1ab1be3c58a14b6b4b13f9ae799582fe8818c
 app/components/flowbite/badge/dot.rb 0e899c005a5e95a6b15b5a60ce9c25706c8521a1
 app/components/flowbite/input/url.rb f1046824f9b06c8df8e0f567979321b82baac6fa

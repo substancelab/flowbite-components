@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+
+### Added
+
+- Opt-in client-side behavior for components using the `behavior:` argument. Components render Flowbite's own markup by default (`:none`). Set `Flowbite::Components.default_behavior` to change the default for all components
+- `Flowbite::Toast` supports `behavior: :stimulus`, dismissing the toast like flowbite.js does, using the `flowbite--toast` Stimulus controller
+- `bin/rails generate flowbite_components:behavior toast` copies the Stimulus controllers for the given components into your application. The controllers require [stimulus-use](https://stimulus-use.dev)
+
 ## [0.4.0]
 
 ### Added
