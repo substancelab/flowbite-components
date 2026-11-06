@@ -188,6 +188,65 @@ renders
 <div class="w-full my-8">
 ```
 
+## JavaScript behavior
+
+Some components, like toasts, have client-side behavior. flowbite-components
+doesn't require any particular JavaScript library for this.
+
+By default components render Flowbite's own markup and leave the behavior up to
+you, so you can attach whichever library you prefer, in whatever manner that
+library requires, fx. using data attributes:
+
+```erb
+<%= render(Flowbite::Toast.new(
+  button: {options: {data: {action: "my-toast#close"}}},
+  message: "Saved!"
+)) %>
+```
+
+### Stimulus controllers
+
+If you use [Stimulus](https://stimulus.hotwired.dev), flowbite-components
+provides controllers that behave like Flowbite's own flowbite.js. They are
+opt-in, so you only install the ones you need.
+
+1. Copy the controllers for the components you want into
+   `app/javascript/controllers/flowbite/`:
+
+   ```bash
+   bin/rails generate flowbite_components:behavior toast
+   ```
+
+   stimulus-rails registers them automatically, ie as `flowbite--toast`.
+
+2. Install [stimulus-use](https://stimulus-use.dev), which the controllers
+   depend on:
+
+   ```bash
+   bin/importmap pin stimulus-use
+   # or
+   npm install stimulus-use
+   ```
+
+3. Render the component with `behavior: :stimulus`:
+
+   ```erb
+   <%= render(Flowbite::Toast.new(behavior: :stimulus, message: "Saved!")) %>
+   ```
+
+To use the controllers for all components that support them, set the default
+behavior in `config/initializers/flowbite_components.rb`:
+
+```ruby
+Flowbite::Components.default_behavior = :stimulus
+```
+
+Components that don't support the default behavior render Flowbite's own
+markup. Pass `behavior: :none` to opt a single component out.
+
+Re-run the generator after upgrading flowbite-components to update the
+controllers.
+
 ## Available Components
 
 ### Form Components

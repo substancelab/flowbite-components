@@ -3,6 +3,21 @@
 module Flowbite
   # Renders a toast notification element.
   #
+  # By default the toast renders Flowbite's markup and leaves dismissing it
+  # up to you, ie by passing data attributes to the close button.
+  #
+  # With +behavior: :stimulus+ the close button dismisses the toast like
+  # flowbite.js does: the toast fades out and is then hidden. This requires
+  # the +flowbite--toast+ Stimulus controller, which you install using
+  #
+  #   bin/rails generate flowbite_components:behavior toast
+  #
+  # and its dependency, stimulus-use. The controller dispatches a
+  # +flowbite--toast:hide+ event when the toast starts hiding. Customize the
+  # transition using the +leave-active+, +leave-from+, and +leave-to+
+  # Stimulus classes, ie
+  # +data: {"flowbite--toast-leave-active-class": "transition-opacity duration-500"}+.
+  #
   # @example Usage
   #  <%= render(Flowbite::Toast.new(message: "Something has happened!")) %>
   #
