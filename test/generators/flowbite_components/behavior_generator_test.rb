@@ -16,6 +16,12 @@ class FlowbiteComponents::Generators::BehaviorGeneratorTest < Rails::Generators:
     end
   end
 
+  def test_mentions_stimulus_use_dependency
+    output = run_generator ["toast"]
+
+    assert_match(/bin\/importmap pin stimulus-use/, output)
+  end
+
   def test_rejects_unknown_behavior
     assert_raises(Thor::Error) do
       run_generator ["nonexistent"], debug: true

@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { useTransition } from "stimulus-use"
 
 // Dismisses a Flowbite::Toast rendered with behavior: :stimulus.
 //
@@ -10,10 +11,21 @@ import { Controller } from "@hotwired/stimulus"
 //     data: {"flowbite--toast-delay-value": 5000},
 //     message: "Saved!"
 //   )) %>
+//
+// Requires stimulus-use.
 export default class extends Controller {
   static values = { delay: Number }
 
   connect() {
+    useTransition(this, {
+      hiddenClass: false,
+      leaveActive: "transition-opacity duration-300 ease-out motion-reduce:duration-0",
+      leaveFrom: "opacity-100",
+      leaveTo: "opacity-0",
+      removeToClasses: false,
+      transitioned: true
+    })
+
     if (this.delayValue > 0) {
       this.timeout = setTimeout(() => this.dismiss(), this.delayValue)
     }
@@ -23,17 +35,11 @@ export default class extends Controller {
     clearTimeout(this.timeout)
   }
 
-  dismiss() {
+  async dismiss() {
     clearTimeout(this.timeout)
     this.dispatch("dismiss")
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      this.element.remove()
-      return
-    }
-
-    this.element
-      .animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, easing: "ease-out" })
-      .finished.then(() => this.element.remove())
+    await this.leave()
+    this.element.remove()
   }
 }

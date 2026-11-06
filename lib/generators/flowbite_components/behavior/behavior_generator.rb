@@ -43,6 +43,20 @@ module FlowbiteComponents
         end
       end
 
+      def show_dependencies
+        say <<~TEXT
+
+          The flowbite-components Stimulus controllers require stimulus-use
+          (https://stimulus-use.dev). Add it to your application using either
+
+            bin/importmap pin stimulus-use
+
+          or
+
+            npm install stimulus-use
+        TEXT
+      end
+
       private
 
       def header(behavior)
