@@ -87,11 +87,11 @@ class Flowbite::ToastTest < Minitest::Test
     render_inline(Flowbite::Toast.new(
       behavior: :stimulus,
       button: {options: {data: {action: "analytics#track"}}},
-      data: {controller: "analytics", "flowbite--toast-delay-value": 5000},
+      data: {controller: "analytics", "analytics-event-value": "toast"},
       message: "Test"
     ))
 
-    assert_selector("div[data-controller='analytics flowbite--toast'][data-flowbite--toast-delay-value='5000']")
+    assert_selector("div[data-controller='analytics flowbite--toast'][data-analytics-event-value='toast']")
     assert_selector("button[data-action='analytics#track flowbite--toast#dismiss']")
   end
 
@@ -106,7 +106,7 @@ class Flowbite::ToastTest < Minitest::Test
 
   def test_raises_on_unsupported_behavior
     assert_raises(ArgumentError) do
-      Flowbite::Toast.new(behavior: :native, message: "Test")
+      render_inline(Flowbite::Toast.new(behavior: :native, message: "Test"))
     end
   end
 

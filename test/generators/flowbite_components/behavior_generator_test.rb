@@ -11,7 +11,7 @@ class FlowbiteComponents::Generators::BehaviorGeneratorTest < Rails::Generators:
     run_generator ["toast"]
 
     assert_file "app/javascript/controllers/flowbite/toast_controller.js" do |content|
-      assert_match(/Installed by flowbite-components #{Regexp.escape(Flowbite::Components::VERSION)}/, content)
+      assert_includes content, "Installed by flowbite-components #{Flowbite::Components::VERSION}."
       assert_match(/export default class extends Controller/, content)
     end
   end

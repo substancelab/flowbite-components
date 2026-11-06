@@ -259,6 +259,10 @@ If you want to replace the entire class attribute for a component, pass it as pa
 render(Component.new(options: {class: "these replace the classes"}))
 ```
 
+### Clientside behavior
+
+The Stimulus controllers we provide, which can be used with `behavior: :stimulus`, must replicate the behavior from Flowbite's flowbite.js.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies.
