@@ -3,6 +3,7 @@ app/components/flowbite/link.rb 1516522405f7cf2021913a4ebbb792f4ae386c16
 app/components/flowbite/alert.rb 413d9c650a2f641de7d00a3e63144ee7e261c7df
 app/components/flowbite/badge.rb ec345c36f41b9dbcd6a61d76256e661fc3888cb2
 app/components/flowbite/input.rb 4c8f6a1ccade70973b5e9d4e845d69591dca55b6
+app/components/flowbite/modal.rb 1360df170bbef6acb5d4befd75bdb2781a4a8396
 app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
 app/components/flowbite/toast.rb 38332bb06abc24844565d4b1691b1896ef352b37
 app/components/flowbite/avatar.rb 9faa3b6d5d75e171a0f9d928b46f32cebf7d1b16
