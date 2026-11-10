@@ -7,48 +7,66 @@ class DrawerPreview < Lookbook::Preview
 
   # The block given to the drawer is used as its body.
   #
-  # Drawers are rendered off screen. They are shown here by adding the
-  # `translate-x-0!` class.
+  # Drawers are rendered fixed and off screen. They are shown here in the
+  # page flow by adding classes from `preview_classes`.
   def example
-    render(Flowbite::Drawer.new(class: "translate-x-0!", id: "example-drawer", title: "Drawer heading")) do
+    render(Flowbite::Drawer.new(class: preview_classes(:left), id: "example-drawer", title: "Drawer heading")) do
       tag.p(BODY, class: "mb-6 text-sm text-body")
     end
   end
 
   def without_icon
-    render(Flowbite::Drawer.new(class: "translate-x-0!", icon: false, id: "no-icon-drawer", title: "Drawer heading")) do
+    render(Flowbite::Drawer.new(class: preview_classes(:left), icon: false, id: "no-icon-drawer", title: "Drawer heading")) do
       tag.p(BODY, class: "mb-6 text-sm text-body")
     end
   end
 
-  # @!group Placement
-  #
-  # Use the `placement` argument to choose the edge of the screen the drawer
-  # slides in from.
-
+  # Use `placement: :left` to slide the drawer in from the left edge of the
+  # screen. This is the default.
   def left
-    render(Flowbite::Drawer.new(class: "translate-x-0!", id: "left-drawer", placement: :left, title: "Left drawer")) do
+    render(Flowbite::Drawer.new(class: preview_classes(:left), id: "left-drawer", placement: :left, title: "Left drawer")) do
       tag.p(BODY, class: "mb-6 text-sm text-body")
     end
   end
 
+  # Use `placement: :right` to slide the drawer in from the right edge of the
+  # screen.
+  #
+  # @display classes w-full
   def right
-    render(Flowbite::Drawer.new(class: "translate-x-0!", id: "right-drawer", placement: :right, title: "Right drawer")) do
+    render(Flowbite::Drawer.new(class: preview_classes(:right), id: "right-drawer", placement: :right, title: "Right drawer")) do
       tag.p(BODY, class: "mb-6 text-sm text-body")
     end
   end
 
+  # Use `placement: :top` to slide the drawer in from the top edge of the
+  # screen.
   def top
-    render(Flowbite::Drawer.new(class: "translate-y-0!", id: "top-drawer", placement: :top, title: "Top drawer")) do
+    render(Flowbite::Drawer.new(class: preview_classes(:top), id: "top-drawer", placement: :top, title: "Top drawer")) do
       tag.p(BODY, class: "mb-6 text-sm text-body max-w-xl")
     end
   end
 
+  # Use `placement: :bottom` to slide the drawer in from the bottom edge of
+  # the screen.
   def bottom
-    render(Flowbite::Drawer.new(class: "translate-y-0!", id: "bottom-drawer", placement: :bottom, title: "Bottom drawer")) do
+    render(Flowbite::Drawer.new(class: preview_classes(:bottom), id: "bottom-drawer", placement: :bottom, title: "Bottom drawer")) do
       tag.p(BODY, class: "mb-6 text-sm text-body max-w-xl")
     end
   end
 
-  # @!endgroup
+  private
+
+  # The embedded previews are only as tall as their content, so the fixed,
+  # off screen drawers are moved into the page flow and onto the screen.
+  def preview_classes(placement)
+    case placement
+    when :left
+      ["relative!", "translate-x-0!", "h-96!"]
+    when :right
+      ["relative!", "translate-x-0!", "h-96!", "ms-auto!"]
+    else
+      ["relative!", "translate-y-0!"]
+    end
+  end
 end
