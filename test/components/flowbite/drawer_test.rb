@@ -71,6 +71,27 @@ class Flowbite::DrawerTest < Minitest::Test
     end
   end
 
+  def test_renders_hidden_by_default
+    render_inline(Flowbite::Drawer.new(id: "info", title: "Info")) { "Body" }
+
+    assert_selector("div#info.-translate-x-full")
+    assert_no_selector("div#info.transform-none")
+    assert_no_selector("div#info[role]")
+  end
+
+  def test_renders_open
+    render_inline(Flowbite::Drawer.new(id: "info", open: true, placement: :right, title: "Info")) { "Body" }
+
+    assert_selector("div#info.transform-none[role='dialog'][aria-modal='true'][aria-labelledby='info-label']")
+    assert_no_selector("div#info.translate-x-full")
+  end
+
+  def test_renders_open_with_stimulus_behavior
+    render_inline(Flowbite::Drawer.new(behavior: :stimulus, id: "info", open: true, title: "Info")) { "Body" }
+
+    assert_selector("div#info.transform-none[data-controller='flowbite--drawer'][role='dialog']")
+  end
+
   def test_renders_with_additional_classes_and_options
     render_inline(Flowbite::Drawer.new(class: ["w-80"], data: {foo: "bar"}, id: "info", title: "Info")) { "Body" }
 

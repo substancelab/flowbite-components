@@ -22,6 +22,7 @@ const PLACEMENT_CLASSES = {
 //   data-flowbite--drawer-backdrop-class="bg-gray-900/50 fixed inset-0 z-30"
 //
 // Show the drawer from outside using the flowbite--drawer-trigger controller.
+// A drawer rendered with Flowbite::Drawer.new(open: true) is shown on connect.
 //
 // Dispatches flowbite--drawer:show and flowbite--drawer:hide.
 export default class extends Controller {
@@ -33,10 +34,16 @@ export default class extends Controller {
   }
 
   connect () {
-    this.element.setAttribute('aria-hidden', 'true')
-
     this.handleKeydown = this.handleKeydown.bind(this)
     document.addEventListener('keydown', this.handleKeydown)
+
+    // A drawer rendered with open: true is already shown
+    const { active } = this.placementClasses()
+    if (active.every((c) => this.element.classList.contains(c))) {
+      this.show()
+    } else {
+      this.element.setAttribute('aria-hidden', 'true')
+    }
   }
 
   disconnect () {

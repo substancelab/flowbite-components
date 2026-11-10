@@ -9,12 +9,20 @@ class DrawerPreview < Lookbook::Preview
     "sale for Flowbite Docs + Job Board. Unlimited access to over 190K " \
     "top-ranked candidates and the #1 design job board."
 
+  # Shows and hides the drawer using `behavior: :stimulus`. The drawer is
+  # rendered shown using `open: true`.
+  #
+  # @display classes w-full min-h-[480px] p-5
+  def example
+    render_with_template(template: "drawer_preview/example")
+  end
+
   # The block given to the drawer is used as its body.
   #
   # Drawers are rendered fixed and off screen. They are shown here in the
   # page flow by adding classes from `preview_classes`.
-  def example
-    render(Flowbite::Drawer.new(class: preview_classes(:left), id: "example-drawer", title: "Drawer heading")) do
+  def body
+    render(Flowbite::Drawer.new(class: preview_classes(:left), id: "body-drawer", title: "Drawer heading")) do
       tag.p(BODY, class: "mb-6 text-sm text-body")
     end
   end

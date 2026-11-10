@@ -38,12 +38,23 @@ module Flowbite
     # The behaviors supported by this component besides :none.
     BEHAVIORS = [:stimulus].freeze
 
-    PLACEMENTS = {
-      bottom: ["bottom-0", "left-0", "right-0", "w-full", "translate-y-full", "border-t"],
-      left: ["top-0", "left-0", "h-screen", "w-96", "-translate-x-full", "border-e"],
-      right: ["top-0", "right-0", "h-screen", "w-96", "translate-x-full", "border-s"],
-      top: ["top-0", "left-0", "right-0", "w-full", "-translate-y-full", "border-b"]
+    # The classes hiding the drawer off screen for each placement.
+    HIDDEN_CLASSES = {
+      bottom: ["translate-y-full"],
+      left: ["-translate-x-full"],
+      right: ["translate-x-full"],
+      top: ["-translate-y-full"]
     }.freeze
+
+    PLACEMENTS = {
+      bottom: ["bottom-0", "left-0", "right-0", "w-full", "border-t"],
+      left: ["top-0", "left-0", "h-screen", "w-96", "border-e"],
+      right: ["top-0", "right-0", "h-screen", "w-96", "border-s"],
+      top: ["top-0", "left-0", "right-0", "w-full", "border-b"]
+    }.freeze
+
+    # The classes showing the drawer, regardless of placement.
+    SHOWN_CLASSES = ["transform-none"].freeze
 
     # The identifier of the Stimulus controller used with behavior: :stimulus.
     STIMULUS_CONTROLLER = "flowbite--drawer"
@@ -82,16 +93,21 @@ module Flowbite
     # @param icon [Boolean] Whether to show an info icon before the title
     #   (default: true).
     # @param id [String] The id of the drawer element, used to target it.
+    # @param open [Boolean] Whether to render the drawer shown, the way
+    #   flowbite.js leaves it after showing it (default: false). With
+    #   behavior: :stimulus the controller adds the backdrop and can hide the
+    #   drawer again.
     # @param options [Hash] Additional HTML options for the drawer element.
     # @param placement [Symbol] The edge of the screen the drawer slides in
     #   from (:bottom, :left, :right, :top).
     # @param title [String] The title shown in the drawer header.
-    def initialize(id:, title:, behavior: nil, class: nil, close_button: {}, icon: true, placement: :left, **options)
+    def initialize(id:, title:, behavior: nil, class: nil, close_button: {}, icon: true, open: false, placement: :left, **options)
       @behavior = Flowbite::Behavior.resolve(behavior, supported: BEHAVIORS)
       @class = Array.wrap(binding.local_variable_get(:class))
       @close_button = close_button
       @icon = icon
       @id = id
+      @open = open
       @options = options
       @placement = placement
       @title = title
@@ -116,7 +132,12 @@ module Flowbite
         class: drawer_classes,
         id: id,
         tabindex: -1
-      }.merge(@options)
+      }
+      if open?
+        result[:aria][:modal] = true
+        result[:role] = "dialog"
+      end
+      result.merge!(@options)
       return result unless stimulus?
 
       result = Flowbite::Behavior.merge_data_tokens(result, controller: STIMULUS_CONTROLLER)
@@ -126,6 +147,10 @@ module Flowbite
 
     def icon?
       !!@icon
+    end
+
+    def open?
+      !!@open
     end
 
     def stimulus?
@@ -142,6 +167,7 @@ module Flowbite
     def drawer_classes
       ["fixed", "z-40", "p-4", "overflow-y-auto", "transition-transform", "bg-neutral-primary-soft", "border-default"] +
         PLACEMENTS.fetch(placement) +
+        (open? ? SHOWN_CLASSES : HIDDEN_CLASSES.fetch(placement)) +
         @class
     end
   end

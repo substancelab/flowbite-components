@@ -1,0 +1,5 @@
+<%= render(Flowbite::Button.new(**Flowbite::Drawer.trigger_options("example-drawer"))) { "Show drawer" } %>
+
+<%= render(Flowbite::Drawer.new(behavior: :stimulus, id: "example-drawer", open: true, title: "Drawer heading")) do %>
+  <p class="mb-6 text-sm text-body"><%= DrawerPreview::BODY %></p>
+<% end %>

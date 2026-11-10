@@ -7,7 +7,7 @@ app/components/flowbite/style.rb ef063360cc99cd7a6b8e67a7693326bb5dfb0e42
 app/components/flowbite/toast.rb 38332bb06abc24844565d4b1691b1896ef352b37
 app/components/flowbite/avatar.rb 9faa3b6d5d75e171a0f9d928b46f32cebf7d1b16
 app/components/flowbite/button.rb 71e5b444a2a1842b3d7548f09cdb21c3bbba3a16
-app/components/flowbite/drawer.rb 8081fbfff71ea8a88dea36fa378a9bf7fef9e9ee
+app/components/flowbite/drawer.rb 373aad16e11a2423adbb19eb9f28f0b4179e5f1e
 app/components/flowbite/rating.rb 31e6a033a426d86a5e8a9b5d4c978675be832ab1
 app/components/flowbite/styles.rb 929c42e428ba5a8e16efacaae0f35380e2f5f95c
 app/components/flowbite/sidebar.rb 85033b602a098f3334b9b3e180239ef20a1b6f90
