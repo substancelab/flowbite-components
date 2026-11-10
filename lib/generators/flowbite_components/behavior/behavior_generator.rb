@@ -17,9 +17,24 @@ module FlowbiteComponents
       CONTROLLERS_PATH = File.expand_path("../../../../app/javascript/flowbite_components/controllers", __dir__)
 
       class << self
-        # @return [Array<String>] The components with a Stimulus controller.
+        # @return [Array<String>] The components with Stimulus controllers.
+        #   Controllers prefixed by another component's name, ie
+        #   modal_trigger_controller.js, belong to that component.
         def available_behaviors
-          Dir.children(CONTROLLERS_PATH).map { |file| file.delete_suffix("_controller.js") }.sort
+          names = controller_names
+          names.reject { |name| names.any? { |other| name.start_with?("#{other}_") } }.sort
+        end
+
+        # @return [Array<String>] The names of the controllers for behavior,
+        #   ie ["modal", "modal_trigger"].
+        def controllers_for(behavior)
+          controller_names.select { |name| name == behavior || name.start_with?("#{behavior}_") }.sort
+        end
+
+        private
+
+        def controller_names
+          Dir.children(CONTROLLERS_PATH).map { |file| file.delete_suffix("_controller.js") }
         end
       end
 
@@ -36,10 +51,12 @@ module FlowbiteComponents
               "Unknown behavior #{behavior.inspect}. Available: #{self.class.available_behaviors.join(", ")}"
           end
 
-          create_file(
-            "app/javascript/controllers/flowbite/#{behavior}_controller.js",
-            header(behavior) + File.read(File.join(CONTROLLERS_PATH, "#{behavior}_controller.js"))
-          )
+          self.class.controllers_for(behavior).each do |name|
+            create_file(
+              "app/javascript/controllers/flowbite/#{name}_controller.js",
+              header(behavior) + File.read(File.join(CONTROLLERS_PATH, "#{name}_controller.js"))
+            )
+          end
         end
       end
 
