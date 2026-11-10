@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# Drawers are attached to the edges of the screen, so they are previewed
+# without padding.
+#
+# @display padding false
 class DrawerPreview < Lookbook::Preview
   BODY = "Supercharge your hiring by taking advantage of our limited-time " \
     "sale for Flowbite Docs + Job Board. Unlimited access to over 190K " \
