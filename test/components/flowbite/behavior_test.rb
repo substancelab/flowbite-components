@@ -49,6 +49,25 @@ class Flowbite::BehaviorTest < Minitest::Test
     assert_equal :stimulus, Flowbite::Behavior.resolve(nil, supported: [:stimulus])
   end
 
+  def test_trigger_options
+    expected = {
+      aria: {controls: "info"},
+      data: {
+        action: "flowbite--drawer-trigger#show",
+        controller: "flowbite--drawer-trigger",
+        "flowbite--drawer-trigger-flowbite--drawer-outlet": "#info"
+      }
+    }
+
+    assert_equal expected, Flowbite::Behavior.trigger_options(action: :show, controller: "flowbite--drawer", id: "info")
+  end
+
+  def test_trigger_options_raises_on_unknown_action
+    assert_raises(ArgumentError) do
+      Flowbite::Behavior.trigger_options(action: :explode, controller: "flowbite--drawer", id: "info")
+    end
+  end
+
   def test_merge_data_tokens_adds_tokens
     result = Flowbite::Behavior.merge_data_tokens({id: "x"}, controller: "flowbite--toast")
 

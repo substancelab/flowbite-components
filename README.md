@@ -214,7 +214,7 @@ opt-in, so you only install the ones you need.
    `app/javascript/controllers/flowbite/`:
 
    ```bash
-   bin/rails generate flowbite_components:behavior toast
+   bin/rails generate flowbite_components:behavior toast drawer
    ```
 
    stimulus-rails registers them automatically, ie as `flowbite--toast`. If
