@@ -7,8 +7,6 @@ module Flowbite
   # up to you (+:none+), so you can use whichever JavaScript library you
   # prefer. Opting into a behavior changes the rendered markup:
   #
-  # - +:native+ uses HTML platform features like +<dialog>+, requiring no
-  #   JavaScript.
   # - +:stimulus+ adds data attributes for the Stimulus controllers installed
   #   using +bin/rails generate flowbite_components:behavior+.
   #
