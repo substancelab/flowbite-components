@@ -27,6 +27,9 @@ export default class extends Controller {
   }
 
   dismiss () {
+    // Ignore toasts that are already hidden or hiding
+    if (!this.transitioned) return
+
     this.dispatch('hide')
     this.leave()
   }
