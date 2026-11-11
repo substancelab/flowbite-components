@@ -4,7 +4,7 @@ module Flowbite
   class Avatar
     # Renders a status dot indicator positioned on top of an avatar.
     #
-    # Usually added through the +top_dot+ or +bottom_dot+ slots of
+    # Usually added through the `top_dot` or `bottom_dot` slots of
     # Flowbite::Avatar, which set the position and size. When rendered on its
     # own, the dot must be placed inside a relatively positioned container
     # together with the avatar.

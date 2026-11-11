@@ -5,7 +5,7 @@ module Flowbite
     # Renders a sidebar navigation item.
     #
     # Each item renders as a list item containing a link. Optionally, an icon
-    # can be provided using the +icon+ slot, which will be displayed before the
+    # can be provided using the `icon` slot, which will be displayed before the
     # label text.
     #
     # @example Basic item

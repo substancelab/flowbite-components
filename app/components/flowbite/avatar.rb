@@ -3,8 +3,8 @@
 module Flowbite
   # Renders an avatar representing a user.
   #
-  # The avatar shows an image when +src+ is given. Without an image it falls
-  # back to the given +initials+, and without initials it renders a
+  # The avatar shows an image when `src` is given. Without an image it falls
+  # back to the given `initials`, and without initials it renders a
   # placeholder person icon.
   #
   # @example Image
@@ -19,9 +19,9 @@ module Flowbite
   #  <% end %>
   #
   # @viewcomponent_slot [Flowbite::Avatar::Dot] bottom_dot A status dot placed
-  #   at the bottom of the avatar. Use +with_bottom_dot+ to add one.
+  #   at the bottom of the avatar. Use `with_bottom_dot` to add one.
   # @viewcomponent_slot [Flowbite::Avatar::Dot] top_dot A status dot placed at
-  #   the top of the avatar. Use +with_top_dot+ to add one.
+  #   the top of the avatar. Use `with_top_dot` to add one.
   #
   # @see https://flowbite.com/docs/components/avatar/
   # @lookbook_embed AvatarPreview

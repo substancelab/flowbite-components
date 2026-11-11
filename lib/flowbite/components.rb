@@ -10,8 +10,8 @@ module Flowbite
     class Error < StandardError; end
 
     # The client-side behavior components render markup for, unless given
-    # explicitly using their +behavior+ argument. Either +:none+ (Flowbite's
-    # own markup) or +:stimulus+. Components that don't support the behavior
+    # explicitly using their `behavior` argument. Either `:none` (Flowbite's
+    # own markup) or `:stimulus`. Components that don't support the behavior
     # render Flowbite's own markup. See Flowbite::Behavior.
     #
     # @example In config/initializers/flowbite_components.rb

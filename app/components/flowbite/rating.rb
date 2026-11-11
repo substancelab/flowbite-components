@@ -4,7 +4,7 @@ module Flowbite
   # Renders a star rating, showing a value out of a maximum number of stars.
   #
   # The number of filled stars is the value rounded to the nearest whole
-  # number (halves round up), clamped between 0 and +max+. The remaining stars
+  # number (halves round up), clamped between 0 and `max`. The remaining stars
   # are rendered as empty stars. The exact value is announced to screen
   # readers.
   #

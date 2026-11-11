@@ -7,8 +7,8 @@ module Flowbite
   # width of the bar.
   #
   # The track is rendered with role="progressbar" and the matching ARIA
-  # value attributes. The +label+, if given, is used as its accessible name.
-  # Pass +aria: {label: "..."}+ to name a progress bar without a visible
+  # value attributes. The `label`, if given, is used as its accessible name.
+  # Pass `aria: {label: "..."}` to name a progress bar without a visible
   # label.
   #
   # @example Basic usage

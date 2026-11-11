@@ -5,7 +5,7 @@ module Flowbite
   #
   # This component doesn't know about pages, page numbers, or any pagination
   # library. The caller decides which pages to show (including where to
-  # place gaps) using the +pages+ slot, and provides the URLs for the
+  # place gaps) using the `pages` slot, and provides the URLs for the
   # previous/next links directly.
   #
   # @example Usage

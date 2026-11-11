@@ -8,9 +8,9 @@ module Flowbite
     # standalone if needed.
     #
     # @param disabled [Boolean] Whether to disable the link. When disabled, a
-    #   non-interactive +<span>+ is rendered instead of a link, so the control
+    #   non-interactive `<span>` is rendered instead of a link, so the control
     #   can't be focused or activated.
-    # @param url [String] The URL for the next page. Ignored if +disabled+.
+    # @param url [String] The URL for the next page. Ignored if `disabled`.
     #
     # @example Standalone usage
     #   <%= render Flowbite::Pagination::NextLink.new(url: "/posts?page=2") %>
