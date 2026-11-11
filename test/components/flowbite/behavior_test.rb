@@ -52,4 +52,28 @@ class Flowbite::BehaviorTest < Minitest::Test
 
     assert_equal({controller: "mine flowbite--toast", other: "value"}, result[:data])
   end
+
+  def test_merge_data_tokens_moves_string_keyed_data_into_data
+    options = {"data" => {"controller" => "mine"}, :id => "x"}
+
+    result = Flowbite::Behavior.merge_data_tokens(options, controller: "flowbite--toast")
+
+    assert_equal({id: "x", data: {controller: "mine flowbite--toast"}}, result)
+  end
+
+  def test_merge_data_tokens_skips_existing_tokens
+    options = {data: {action: "flowbite--toast#dismiss", controller: "mine  flowbite--toast"}}
+
+    result = Flowbite::Behavior.merge_data_tokens(options, action: "flowbite--toast#dismiss", controller: "flowbite--toast")
+
+    assert_equal({action: "flowbite--toast#dismiss", controller: "mine flowbite--toast"}, result[:data])
+  end
+
+  def test_merge_data_tokens_moves_flat_tokens_into_data
+    options = {"data-controller" => "mine", :"data-action" => "click->mine#go", :id => "x"}
+
+    result = Flowbite::Behavior.merge_data_tokens(options, action: "flowbite--toast#dismiss", controller: "flowbite--toast")
+
+    assert_equal({id: "x", data: {action: "click->mine#go flowbite--toast#dismiss", controller: "mine flowbite--toast"}}, result)
+  end
 end

@@ -20,15 +20,21 @@ module Flowbite
 
     class << self
       # Merges space separated tokens, like Stimulus controllers and actions,
-      # into the data attributes in options, keeping any existing tokens.
+      # into the data attributes in options, keeping any existing tokens and
+      # skipping tokens that are already present.
+      # Existing tokens given as flat attributes, like +"data-controller"+, or
+      # in a String keyed +"data"+ Hash are moved into the +data+ Hash to avoid
+      # rendering duplicate attributes.
       #
       # @param options [Hash] HTML options, possibly with a +data+ Hash.
       # @param tokens [Hash] The data attributes to add tokens to.
       # @return [Hash] A copy of options with the tokens added.
       def merge_data_tokens(options, **tokens)
-        data = (options[:data] || {}).symbolize_keys
+        options = options.dup
+        data = (options.delete("data") || {}).merge(options.delete(:data) || {}).symbolize_keys
         tokens.each do |key, value|
-          data[key] = [data[key], value].compact_blank.join(" ")
+          flat = [options.delete(:"data-#{key}"), options.delete("data-#{key}")]
+          data[key] = [data[key], *flat, value].flat_map { |list| list.to_s.split }.uniq.join(" ")
         end
         options.merge(data: data)
       end

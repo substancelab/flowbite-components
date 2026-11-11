@@ -83,6 +83,19 @@ class Flowbite::ToastTest < Minitest::Test
     assert_selector("button[aria-label='Close'][data-action='flowbite--toast#dismiss']")
   end
 
+  def test_stimulus_behavior_merges_flat_data_attributes
+    render_inline(Flowbite::Toast.new(
+      behavior: :stimulus,
+      button: {options: {"data-action": "analytics#track"}},
+      "data-controller": "analytics",
+      message: "Test"
+    ))
+
+    assert_selector("div[role='alert'][data-controller='analytics flowbite--toast']")
+    assert_selector("button[aria-label='Close'][data-action='analytics#track flowbite--toast#dismiss']")
+    assert_equal 1, page.native.to_html.scan("data-controller=").size
+  end
+
   def test_stimulus_behavior_keeps_custom_data_attributes
     render_inline(Flowbite::Toast.new(
       behavior: :stimulus,
