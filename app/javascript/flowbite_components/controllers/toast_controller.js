@@ -15,14 +15,16 @@ export default class extends Controller {
   static classes = ['leaveActive', 'leaveFrom', 'leaveTo']
 
   connect () {
+    const leaveTo = this.classesOrDefault('leaveTo', 'opacity-0')
+
     useTransition(this, {
       leaveActive: this.classesOrDefault('leaveActive', 'transition-opacity duration-300 ease-out'),
       leaveFrom: this.classesOrDefault('leaveFrom', ''),
-      leaveTo: this.classesOrDefault('leaveTo', 'opacity-0'),
+      leaveTo,
       removeToClasses: false,
       // Keeps dismissed toasts hidden when reconnected, ie when restored from
       // the Turbo cache.
-      transitioned: !this.element.classList.contains('hidden')
+      transitioned: !this.isDismissed(leaveTo)
     })
   }
 
@@ -32,6 +34,16 @@ export default class extends Controller {
 
     this.dispatch('hide')
     this.leave()
+  }
+
+  // Toasts that were hiding when disconnected, ie captured mid-fade in a Turbo
+  // cache snapshot, have the leave-to classes but aren't hidden yet.
+  isDismissed (leaveTo) {
+    const classList = this.element.classList
+    const leaveToClasses = leaveTo.split(' ').filter(Boolean)
+
+    return classList.contains('hidden') ||
+      (leaveToClasses.length > 0 && leaveToClasses.every((name) => classList.contains(name)))
   }
 
   // Returns a blank string rather than an empty one when there are no classes,
