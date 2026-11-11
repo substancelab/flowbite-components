@@ -39,8 +39,8 @@ module Flowbite
         options.merge(data: data)
       end
 
-      # @param behavior [Symbol, nil] The requested behavior, or nil to use
-      #   Flowbite::Components.default_behavior.
+      # @param behavior [Symbol, String, nil] The requested behavior, or nil to
+      #   use Flowbite::Components.default_behavior.
       # @param supported [Array<Symbol>] The behaviors the component supports
       #   besides +:none+.
       # @return [Symbol] The behavior to render markup for. +:none+ when using
@@ -49,9 +49,10 @@ module Flowbite
       #   supported by the component.
       def resolve(behavior, supported:)
         if behavior.nil?
-          default = Flowbite::Components.default_behavior
+          default = Flowbite::Components.default_behavior&.to_sym
           return supported.include?(default) ? default : NONE
         end
+        behavior = behavior.to_sym
         return behavior if behavior == NONE || supported.include?(behavior)
 
         raise ArgumentError,

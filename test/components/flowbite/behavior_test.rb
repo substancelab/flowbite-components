@@ -39,6 +39,16 @@ class Flowbite::BehaviorTest < Minitest::Test
     assert_equal :none, Flowbite::Behavior.resolve(nil, supported: [:stimulus])
   end
 
+  def test_resolve_accepts_strings
+    assert_equal :stimulus, Flowbite::Behavior.resolve("stimulus", supported: [:stimulus])
+  end
+
+  def test_resolve_accepts_string_default_behavior
+    Flowbite::Components.default_behavior = "stimulus"
+
+    assert_equal :stimulus, Flowbite::Behavior.resolve(nil, supported: [:stimulus])
+  end
+
   def test_merge_data_tokens_adds_tokens
     result = Flowbite::Behavior.merge_data_tokens({id: "x"}, controller: "flowbite--toast")
 
