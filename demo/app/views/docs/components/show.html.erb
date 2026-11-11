@@ -115,9 +115,7 @@
         <%- @examples.each do |example| %>
           <%= render(Docs::Headline::H2.new) { example.name } %>
 
-          <%= render(Docs::CodeExample.new) do %>
-            <%= example.text %>
-          <% end %>
+          <%= render(Docs::CodeExample.new(source: example.text)) %>
         <% end %>
       </section>
     <% end %>

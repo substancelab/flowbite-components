@@ -23,8 +23,8 @@ module FormattingHelper
       return "" unless content
       return "" unless content.strip.present?
 
-      output = Kramdown::Document.new(content, input: "GFM").to_html
-      remove_line_breaks(output)
+      output = Kramdown::Document.new(content, input: "GFM", syntax_highlighter: nil).to_html
+      view_context.highlight_code_blocks(remove_line_breaks(output))
     end
 
     def render
@@ -69,6 +69,25 @@ module FormattingHelper
   end
 
   def render_markdown(content)
-    Kramdown::Document.new(content, input: "GFM").to_html.html_safe
+    highlight_code_blocks(Kramdown::Document.new(content, input: "GFM", syntax_highlighter: nil).to_html).html_safe
+  end
+
+  # Renders source as a syntax highlighted code block, formatted like the
+  # source panels in Lookbook embeds.
+  def highlight_code(source, language:)
+    tag.div(
+      Lookbook::CodeHighlighter.call(source.strip_heredoc.strip, language: language, line_numbers: true),
+      class: "code-block numbered not-format theme-github"
+    )
+  end
+
+  # Replaces the code blocks in html with syntax highlighted code blocks.
+  def highlight_code_blocks(html)
+    fragment = Nokogiri::HTML5.fragment(html)
+    fragment.css("pre > code").each do |code|
+      language = code["class"].to_s[/language-(\S+)/, 1] || "plaintext"
+      code.parent.replace(highlight_code(code.text, language: language))
+    end
+    fragment.to_html
   end
 end

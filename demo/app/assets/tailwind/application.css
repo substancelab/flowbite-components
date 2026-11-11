@@ -11,6 +11,8 @@
 /* Include CSS classes used by the components in the final CSS */
 @import "../builds/tailwind/flowbite_components";
 
+@import "./code.css";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 footer a {

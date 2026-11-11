@@ -1,0 +1,25 @@
+/*
+ * Dark mode for the Lookbook UI in preview embeds. Injected into the embed
+ * iframes by the docs layout, which toggles the dark class on their root.
+ */
+html.dark {
+  color-scheme: dark;
+
+  --lookbook-white: #030712;
+  --lookbook-base-50: #111827;
+  --lookbook-base-100: #1f2937;
+  --lookbook-base-200: #374151;
+  --lookbook-base-300: #4b5563;
+  --lookbook-base-400: #6b7280;
+  --lookbook-base-500: #9ca3af;
+  --lookbook-base-600: #d1d5db;
+  --lookbook-base-700: #e5e7eb;
+  --lookbook-base-800: #f3f4f6;
+  --lookbook-base-900: #f9fafb;
+
+  --lookbook-text: var(--lookbook-base-500);
+  --lookbook-divider: var(--lookbook-base-100);
+  --lookbook-embed-title: #ffffff;
+  --lookbook-button-text: #ffffff;
+  --lookbook-tooltip-text: #ffffff;
+}
