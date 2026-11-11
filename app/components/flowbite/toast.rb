@@ -3,6 +3,25 @@
 module Flowbite
   # Renders a toast notification element.
   #
+  # By default the toast renders Flowbite's markup and leaves dismissing it
+  # up to you, ie by passing data attributes to the close button.
+  #
+  # With +behavior: :stimulus+ the close button dismisses the toast like
+  # flowbite.js does: the toast fades out and is then hidden. This requires
+  # the +flowbite--toast+ Stimulus controller, which you install using
+  #
+  #   bin/rails generate flowbite_components:behavior toast
+  #
+  # and its dependency, stimulus-use. The controller dispatches a
+  # +flowbite--toast:hide+ event when the toast starts hiding. Customize the
+  # transition using the +leave-active+, +leave-from+, and +leave-to+
+  # Stimulus classes, ie
+  # +data: {"flowbite--toast-leave-active-class": "transition-opacity duration-500"}+.
+  #
+  # The controller is only wired to the default close button. When using the
+  # +button+ slot, add +data: {action: "flowbite--toast#dismiss"}+ to your
+  # button yourself.
+  #
   # @example Usage
   #  <%= render(Flowbite::Toast.new(message: "Something has happened!")) %>
   #
@@ -12,10 +31,23 @@ module Flowbite
   #    message: "Something has happened!"
   #  )) %>
   #
+  # @example Dismissing using the bundled Stimulus controller
+  #  <%= render(Flowbite::Toast.new(
+  #    behavior: :stimulus,
+  #    message: "Something has happened!"
+  #  )) %>
+  #
   # @example Using the button slot
   #  <%= render(Flowbite::Toast.new(message: "Something has happened!")) do |toast| %>
   #    <% toast.with_button do %>
   #      <%= render(Flowbite::Toast::CloseButton.new(data: {action: "toast#dismiss"})) %>
+  #    <% end %>
+  #  <% end %>
+  #
+  # @example Using the button slot with the bundled Stimulus controller
+  #  <%= render(Flowbite::Toast.new(behavior: :stimulus, message: "Something has happened!")) do |toast| %>
+  #    <% toast.with_button do %>
+  #      <%= render(Flowbite::Toast::CloseButton.new(data: {action: "flowbite--toast#dismiss"})) %>
   #    <% end %>
   #  <% end %>
   #
@@ -34,8 +66,19 @@ module Flowbite
       end
     end
 
-    attr_reader :dismissible, :message, :options, :style
+    # The behaviors supported by this component besides :none.
+    BEHAVIORS = [:stimulus].freeze
 
+    # The identifier of the Stimulus controller used with behavior: :stimulus.
+    STIMULUS_CONTROLLER = "flowbite--toast"
+
+    attr_reader :behavior, :dismissible, :message, :style
+
+    # @param behavior [Symbol, nil] The client-side behavior to render markup
+    #   for (:none, :stimulus). Use :stimulus to dismiss the toast using the
+    #   Stimulus controller installed by
+    #   +bin/rails generate flowbite_components:behavior toast+. Defaults to
+    #   Flowbite::Components.default_behavior. See Flowbite::Behavior.
     # @param button [Hash] Configuration for the default button, rendered
     #   using the Toast::CloseButton component. The hash can contain:
     #   - `options`: Additional HTML options to pass to the button element,
@@ -47,7 +90,8 @@ module Flowbite
     # @param message [String] The message to display in the toast.
     # @param options [Hash] Additional HTML options for the toast container.
     # @param style [Symbol] The color style of the toast (:default, :success, :danger, :warning).
-    def initialize(message:, button: {}, dismissible: true, style: :default, class: nil, **options)
+    def initialize(message:, behavior: nil, button: {}, dismissible: true, style: :default, class: nil, **options)
+      @behavior = Flowbite::Behavior.resolve(behavior, supported: BEHAVIORS)
       @button = button
       @message = message
       @style = style
@@ -60,6 +104,17 @@ module Flowbite
       self.class.classes + @class
     end
 
+    # @return [Hash] The HTML options for the toast container
+    def options
+      return @options unless stimulus?
+
+      Flowbite::Behavior.merge_data_tokens(@options, controller: STIMULUS_CONTROLLER)
+    end
+
+    def stimulus?
+      behavior == :stimulus
+    end
+
     protected
 
     # Returns the HTML to use for the button, unless the button slot is used
@@ -69,7 +124,10 @@ module Flowbite
 
     # @return [Hash] The options to pass to the default button component
     def default_button_options
-      @button[:options] || {}
+      button_options = @button[:options] || {}
+      return button_options unless stimulus?
+
+      Flowbite::Behavior.merge_data_tokens(button_options, action: "#{STIMULUS_CONTROLLER}#dismiss")
     end
   end
 end

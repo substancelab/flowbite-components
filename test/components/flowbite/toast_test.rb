@@ -69,6 +69,60 @@ class Flowbite::ToastTest < Minitest::Test
     assert_selector("div[id='my-toast'][data-controller='toast']")
   end
 
+  def test_renders_no_behavior_by_default
+    render_inline(Flowbite::Toast.new(message: "Test"))
+
+    assert_no_selector("[data-controller]")
+    assert_no_selector("[data-action]")
+  end
+
+  def test_renders_stimulus_behavior
+    render_inline(Flowbite::Toast.new(behavior: :stimulus, message: "Test"))
+
+    assert_selector("div[role='alert'][data-controller='flowbite--toast']")
+    assert_selector("button[aria-label='Close'][data-action='flowbite--toast#dismiss']")
+  end
+
+  def test_stimulus_behavior_merges_flat_data_attributes
+    render_inline(Flowbite::Toast.new(
+      behavior: :stimulus,
+      button: {options: {"data-action": "analytics#track"}},
+      "data-controller": "analytics",
+      message: "Test"
+    ))
+
+    assert_selector("div[role='alert'][data-controller='analytics flowbite--toast']")
+    assert_selector("button[aria-label='Close'][data-action='analytics#track flowbite--toast#dismiss']")
+    assert_equal 1, page.native.to_html.scan("data-controller=").size
+  end
+
+  def test_stimulus_behavior_keeps_custom_data_attributes
+    render_inline(Flowbite::Toast.new(
+      behavior: :stimulus,
+      button: {options: {data: {action: "analytics#track"}}},
+      data: {controller: "analytics", "analytics-event-value": "toast"},
+      message: "Test"
+    ))
+
+    assert_selector("div[data-controller='analytics flowbite--toast'][data-analytics-event-value='toast']")
+    assert_selector("button[data-action='analytics#track flowbite--toast#dismiss']")
+  end
+
+  def test_uses_default_behavior
+    Flowbite::Components.default_behavior = :stimulus
+    render_inline(Flowbite::Toast.new(message: "Test"))
+
+    assert_selector("div[data-controller='flowbite--toast']")
+  ensure
+    Flowbite::Components.default_behavior = :none
+  end
+
+  def test_raises_on_unsupported_behavior
+    assert_raises(ArgumentError) do
+      render_inline(Flowbite::Toast.new(behavior: :native, message: "Test"))
+    end
+  end
+
   def test_renders_default_style_icon
     render_inline(Flowbite::Toast.new(message: "Test", style: :default))
 
