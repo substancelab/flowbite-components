@@ -34,8 +34,11 @@ export default class extends Controller {
     this.leave()
   }
 
+  // Returns a blank string rather than an empty one when there are no classes,
+  // as useTransition otherwise falls back to data attributes like data-leave.
   classesOrDefault (name, defaultClasses) {
     const hasClass = `has${name[0].toUpperCase()}${name.slice(1)}Class`
-    return this[hasClass] ? this[`${name}Classes`].join(' ') : defaultClasses
+    const classes = this[hasClass] ? this[`${name}Classes`].join(' ') : defaultClasses
+    return classes || ' '
   }
 }
