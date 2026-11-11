@@ -54,6 +54,12 @@ module FlowbiteComponents
           or
 
             npm install stimulus-use
+
+          If your application registers its Stimulus controllers in
+          app/javascript/controllers/index.js, ie when using jsbundling-rails,
+          update it using
+
+            bin/rails stimulus:manifest:update
         TEXT
       end
 

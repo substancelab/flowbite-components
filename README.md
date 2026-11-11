@@ -217,7 +217,14 @@ opt-in, so you only install the ones you need.
    bin/rails generate flowbite_components:behavior toast
    ```
 
-   stimulus-rails registers them automatically, ie as `flowbite--toast`.
+   stimulus-rails registers them automatically, ie as `flowbite--toast`. If
+   your application registers its controllers in
+   `app/javascript/controllers/index.js`, ie when using jsbundling-rails,
+   update it afterwards:
+
+   ```bash
+   bin/rails stimulus:manifest:update
+   ```
 
 2. Install [stimulus-use](https://stimulus-use.dev), which the controllers
    depend on:
