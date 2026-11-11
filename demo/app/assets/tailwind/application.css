@@ -16,3 +16,10 @@
 footer a {
   @apply font-medium text-brand hover:underline;
 }
+
+/* Keep the space of dismissed toasts in the component previews, so the
+   preview height doesn't change while the toast is hidden. */
+[data-controller~="flowbite--toast"].hidden {
+  display: flex;
+  visibility: hidden;
+}
