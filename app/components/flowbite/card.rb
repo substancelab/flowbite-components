@@ -14,7 +14,7 @@ module Flowbite
   #     <% end %>
   #
   # @viewcomponent_slot [Flowbite::Card::Title] title The title of the card,
-  #   rendered at the top. Use +with_title+ to set custom content.
+  #   rendered at the top. Use `with_title` to set custom content.
   #
   # @see https://flowbite.com/docs/components/cards/
   # @lookbook_embed CardPreview

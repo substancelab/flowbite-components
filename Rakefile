@@ -19,7 +19,7 @@ task lint: ["rubocop", "herb:lint", "js:lint"]
 namespace :docs do
   desc "Refresh YARD documentation registry for the documentation site"
   task :refresh_registry do
-    sh "yard doc --db demo/.yardoc --no-output -e lib/yard/flowbite_viewcomponent.rb --tag lookbook_embed:name app/components"
+    sh "yard doc --db demo/.yardoc --no-output --markup markdown -e lib/yard/flowbite_viewcomponent.rb --tag lookbook_embed:name app/components"
   end
 end
 

@@ -34,7 +34,7 @@ module Flowbite
 
     class << self
       # @return [Array<String>] The CSS classes to apply to the input field
-      #   given the specified +size+, +state+, and +style+.
+      #   given the specified `size`, `state`, and `style`.
       def classes(size: :default, state: :default, style: :default)
         style = styles.fetch(style)
         state_classes = style.fetch(state)
@@ -81,10 +81,10 @@ module Flowbite
     #
     # @param options [Hash] Additional HTML attributes to pass to the input
     #   field. For example, you can use this to set placeholder text by
-    #   passing +options: {placeholder: "Enter your name"}+
+    #   passing `options: {placeholder: "Enter your name"}`
     #
-    # @param size [Symbol] The size of the input field. Can be one of +:sm+,
-    #   +:default+, or +:lg+.
+    # @param size [Symbol] The size of the input field. Can be one of `:sm`,
+    #   `:default`, or `:lg`.
     def initialize(attribute:, form:, class: nil, disabled: false, options: {}, size: :default)
       @attribute = attribute
       @class = Array.wrap(binding.local_variable_get(:class))
@@ -113,7 +113,7 @@ module Flowbite
 
     # Returns the name of the method used to generate HTML for the input field
     #
-    # @return [Symbol] The form helper method name to call on +form+.
+    # @return [Symbol] The form helper method name to call on `form`.
     def input_field_type
       :text_field
     end

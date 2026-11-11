@@ -5,7 +5,7 @@ module FormattingHelper
     include YARD::Templates::Helpers::BaseHelper
     include YARD::Templates::Helpers::HtmlHelper
 
-    Options = Data.define(:markup)
+    Options = Data.define(:markup, :highlight)
 
     attr_reader :view_context
 
@@ -40,7 +40,8 @@ module FormattingHelper
 
     def options
       @options ||= Options.new(
-        markup: :markdown
+        markup: :markdown,
+        highlight: false
       )
     end
 

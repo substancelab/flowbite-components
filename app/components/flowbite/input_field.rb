@@ -84,8 +84,8 @@ module Flowbite
     #
     # @param class [String, Array<String>] Additional CSS classes to apply to
     #   the input field container, i.e. the outermost element. To add classes to
-    #   individual components of the InputField, use the +input+, +label+ and
-    #   +hint+ arguments.
+    #   individual components of the InputField, use the `input`, `label` and
+    #   `hint` arguments.
     #
     # @param disabled [Boolean] Whether the input field should be disabled.
     #
@@ -113,8 +113,8 @@ module Flowbite
     # @param options [Hash] Additional HTML attributes to pass to the input
     #   field container element.
     #
-    # @param size [Symbol] The size of the input field. Can be one of +:sm+,
-    #   +:default+, or +:lg+.
+    # @param size [Symbol] The size of the input field. Can be one of `:sm`,
+    #   `:default`, or `:lg`.
     def initialize(attribute:, form:, class: nil, disabled: false, hint: nil, input: {}, label: {}, options: {}, size: :default)
       @attribute = attribute
       @class = Array.wrap(binding.local_variable_get(:class))

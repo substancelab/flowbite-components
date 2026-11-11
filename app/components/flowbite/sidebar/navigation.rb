@@ -4,7 +4,7 @@ module Flowbite
   class Sidebar
     # Renders the navigation list for a sidebar.
     #
-    # This component renders a +<ul>+ with navigation items. It can be used
+    # This component renders a `<ul>` with navigation items. It can be used
     # inside a {Flowbite::Sidebar} for a fixed-position sidebar, or standalone
     # in any layout that needs sidebar-style navigation.
     #

@@ -5,7 +5,7 @@ module Flowbite
     # Renders the info icon shown inside an alert.
     #
     # Flowbite uses the same outlined info icon for all alert styles; the
-    # icon inherits its color from the alert via +currentColor+.
+    # icon inherits its color from the alert via `currentColor`.
     #
     # @param class [String, Array<String>] Additional CSS classes for the svg
     #   element.

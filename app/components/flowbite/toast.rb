@@ -6,20 +6,22 @@ module Flowbite
   # By default the toast renders Flowbite's markup and leaves dismissing it
   # up to you, ie by passing data attributes to the close button.
   #
-  # With +behavior: :stimulus+ the close button dismisses the toast like
+  # With `behavior: :stimulus` the close button dismisses the toast like
   # flowbite.js does: the toast fades out and is then hidden. This requires
-  # the +flowbite--toast+ Stimulus controller, which you install using
+  # the `flowbite--toast` Stimulus controller, which you install using
   #
-  #   bin/rails generate flowbite_components:behavior toast
+  # ```sh
+  # bin/rails generate flowbite_components:behavior toast
+  # ```
   #
   # and its dependency, stimulus-use. The controller dispatches a
-  # +flowbite--toast:hide+ event when the toast starts hiding. Customize the
-  # transition using the +leave-active+, +leave-from+, and +leave-to+
+  # `flowbite--toast:hide` event when the toast starts hiding. Customize the
+  # transition using the `leave-active`, `leave-from`, and `leave-to`
   # Stimulus classes, ie
-  # +data: {"flowbite--toast-leave-active-class": "transition-opacity duration-500"}+.
+  # `data: {"flowbite--toast-leave-active-class": "transition-opacity duration-500"}`.
   #
   # The controller is only wired to the default close button. When using the
-  # +button+ slot, add +data: {action: "flowbite--toast#dismiss"}+ to your
+  # `button` slot, add `data: {action: "flowbite--toast#dismiss"}` to your
   # button yourself.
   #
   # @example Usage
@@ -53,7 +55,7 @@ module Flowbite
   #
   # @viewcomponent_slot [Flowbite::Toast::CloseButton] button The button
   #   rendered at the end of the toast. Defaults to a close button. Use
-  #   +with_button+ to set custom content.
+  #   `with_button` to set custom content.
   #
   # @see https://flowbite.com/docs/components/toast/
   # @lookbook_embed ToastPreview
@@ -77,7 +79,7 @@ module Flowbite
     # @param behavior [Symbol, nil] The client-side behavior to render markup
     #   for (:none, :stimulus). Use :stimulus to dismiss the toast using the
     #   Stimulus controller installed by
-    #   +bin/rails generate flowbite_components:behavior toast+. Defaults to
+    #   `bin/rails generate flowbite_components:behavior toast`. Defaults to
     #   Flowbite::Components.default_behavior. See Flowbite::Behavior.
     # @param button [Hash] Configuration for the default button, rendered
     #   using the Toast::CloseButton component. The hash can contain:

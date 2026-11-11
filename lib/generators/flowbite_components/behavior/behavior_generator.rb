@@ -6,7 +6,7 @@ module FlowbiteComponents
   module Generators
     # Copies the Stimulus controllers for the given components into the
     # application, where stimulus-rails registers them automatically, ie as
-    # +flowbite--toast+.
+    # `flowbite--toast`.
     #
     # Re-run the generator after upgrading flowbite-components to update the
     # controllers.
