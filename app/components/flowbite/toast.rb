@@ -18,6 +18,10 @@ module Flowbite
   # Stimulus classes, ie
   # +data: {"flowbite--toast-leave-active-class": "transition-opacity duration-500"}+.
   #
+  # The controller is only wired to the default close button. When using the
+  # +button+ slot, add +data: {action: "flowbite--toast#dismiss"}+ to your
+  # button yourself.
+  #
   # @example Usage
   #  <%= render(Flowbite::Toast.new(message: "Something has happened!")) %>
   #
@@ -37,6 +41,13 @@ module Flowbite
   #  <%= render(Flowbite::Toast.new(message: "Something has happened!")) do |toast| %>
   #    <% toast.with_button do %>
   #      <%= render(Flowbite::Toast::CloseButton.new(data: {action: "toast#dismiss"})) %>
+  #    <% end %>
+  #  <% end %>
+  #
+  # @example Using the button slot with the bundled Stimulus controller
+  #  <%= render(Flowbite::Toast.new(behavior: :stimulus, message: "Something has happened!")) do |toast| %>
+  #    <% toast.with_button do %>
+  #      <%= render(Flowbite::Toast::CloseButton.new(data: {action: "flowbite--toast#dismiss"})) %>
   #    <% end %>
   #  <% end %>
   #
