@@ -29,13 +29,16 @@ module FlowbiteComponents
 
       argument :behaviors, banner: "component component", type: :array
 
+      def check_behaviors
+        unknown = behaviors - self.class.available_behaviors
+        return if unknown.empty?
+
+        raise Thor::Error,
+          "Unknown behavior #{unknown.map(&:inspect).join(", ")}. Available: #{self.class.available_behaviors.join(", ")}"
+      end
+
       def copy_controllers
         behaviors.each do |behavior|
-          unless self.class.available_behaviors.include?(behavior)
-            raise Thor::Error,
-              "Unknown behavior #{behavior.inspect}. Available: #{self.class.available_behaviors.join(", ")}"
-          end
-
           create_file(
             "app/javascript/controllers/flowbite/#{behavior}_controller.js",
             header(behavior) + File.read(File.join(CONTROLLERS_PATH, "#{behavior}_controller.js"))

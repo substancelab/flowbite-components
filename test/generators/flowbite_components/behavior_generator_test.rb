@@ -36,6 +36,14 @@ class FlowbiteComponents::Generators::BehaviorGeneratorTest < Rails::Generators:
     assert_no_file "app/javascript/controllers/flowbite/nonexistent_controller.js"
   end
 
+  def test_copies_nothing_when_any_behavior_is_unknown
+    assert_raises(Thor::Error) do
+      run_generator ["toast", "nonexistent"], debug: true
+    end
+
+    assert_no_file "app/javascript/controllers/flowbite/toast_controller.js"
+  end
+
   def test_lists_available_behaviors
     assert_includes FlowbiteComponents::Generators::BehaviorGenerator.available_behaviors, "toast"
   end
