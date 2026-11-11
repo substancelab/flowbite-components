@@ -20,7 +20,9 @@ export default class extends Controller {
       leaveFrom: this.classesOrDefault('leaveFrom', ''),
       leaveTo: this.classesOrDefault('leaveTo', 'opacity-0'),
       removeToClasses: false,
-      transitioned: true
+      // Keeps dismissed toasts hidden when reconnected, ie when restored from
+      // the Turbo cache.
+      transitioned: !this.element.classList.contains('hidden')
     })
   }
 
