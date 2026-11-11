@@ -97,7 +97,8 @@
   --hl-word: var(--light-black);
   --hl-whitespace: var(--light-gray-7);
 
-  &.dark {
+  &.dark,
+  .dark & {
     --hl-bg: var(--dark-bg);
     --hl-hll-bg: var(--dark-gray-1);
     --hl-border: var(--dark-gray-4);

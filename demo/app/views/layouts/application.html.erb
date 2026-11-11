@@ -189,7 +189,12 @@
       </div>
     </footer>
 
-    <script nonce="<%= request.content_security_policy_nonce %>">
+    <script
+      data-embed-stylesheet="<%= asset_path("lookbook_embed.css") %>"
+      nonce="<%= request.content_security_policy_nonce %>"
+    >
+      const embedStylesheet = document.currentScript.dataset.embedStylesheet;
+
       function setTheme(theme) {
         if (theme === "dark") {
           document.documentElement.classList.add("dark");
@@ -199,7 +204,47 @@
           document.documentElement.classList.remove("dark");
         }
         localStorage.setItem("theme", theme);
+
+        // Lookbook renders previews using the theme in this cookie
+        document.cookie = `lookbook-display-theme=${theme}; path=/; SameSite=Lax`;
+        document.querySelectorAll("[data-lookbook-embed-iframe]").forEach((iframe) => {
+          setEmbedTheme(iframe, theme);
+        });
       }
+
+      function setEmbedTheme(iframe, theme) {
+        const embed = iframe.contentDocument;
+        if (!embed?.head) {
+          return;
+        }
+
+        if (!embed.querySelector("link[data-embed-theme]")) {
+          const stylesheet = embed.createElement("link");
+          stylesheet.rel = "stylesheet";
+          stylesheet.href = embedStylesheet;
+          stylesheet.dataset.embedTheme = "";
+          embed.head.appendChild(stylesheet);
+        }
+
+        const dark = theme === "dark";
+        embed.documentElement.classList.toggle("dark", dark);
+        embed.querySelectorAll(".theme-github").forEach((code) => {
+          code.classList.toggle("dark", dark);
+        });
+        embed.querySelectorAll("iframe").forEach((preview) => {
+          const root = preview.contentDocument?.documentElement;
+          root?.classList.toggle("dark", dark);
+          root?.classList.toggle("light", !dark);
+        });
+      }
+
+      // Embeds are created by Lookbook after this script has run
+      document.addEventListener("load", (event) => {
+        if (event.target.matches?.("[data-lookbook-embed-iframe]")) {
+          setEmbedTheme(event.target, localStorage.getItem("theme") || "light");
+        }
+      }, true);
+
       setTheme(localStorage.getItem("theme") || "light");
 
       document.querySelectorAll("[data-theme-toggle]").forEach((element) => {
