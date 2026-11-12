@@ -20,6 +20,28 @@ module Flowbite
     TRIGGER_ACTIONS = [:hide, :show, :toggle].freeze
 
     class << self
+      # Returns a CSS selector matching the element with id, escaping
+      # characters that aren't valid in a CSS identifier, like CSS.escape does.
+      #
+      # @example
+      #   Flowbite::Behavior.id_selector("terms.v2") # => "#terms\\.v2"
+      #
+      # @param id [String] The id of the element.
+      # @return [String] The CSS selector, ie "#terms".
+      def id_selector(id)
+        id = id.to_s
+        escaped = id.each_char.with_index.map do |char, index|
+          if char.match?(/[0-9]/) && (index.zero? || (index == 1 && id.start_with?("-")))
+            "\\#{char.ord.to_s(16)} "
+          elsif char.match?(/[a-zA-Z0-9_-]/) || char.ord >= 0x80
+            char
+          else
+            "\\#{char}"
+          end
+        end
+        "##{escaped.join}"
+      end
+
       # Merges space separated tokens, like Stimulus controllers and actions,
       # into the data attributes in options, keeping any existing tokens and
       # skipping tokens that are already present.
@@ -84,7 +106,7 @@ module Flowbite
           data: {
             action: "#{trigger_controller}##{action}",
             controller: trigger_controller,
-            "#{trigger_controller}-#{controller}-outlet": "##{id}"
+            "#{trigger_controller}-#{controller}-outlet": id_selector(id)
           }
         }
       end
