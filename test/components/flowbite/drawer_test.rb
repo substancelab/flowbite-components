@@ -90,6 +90,7 @@ class Flowbite::DrawerTest < Minitest::Test
     render_inline(Flowbite::Drawer.new(behavior: :stimulus, id: "info", open: true, title: "Info")) { "Body" }
 
     assert_selector("div#info.transform-none[data-controller='flowbite--drawer'][role='dialog']")
+    assert_no_selector("div#info[inert]")
   end
 
   def test_renders_with_additional_classes_and_options
@@ -110,6 +111,18 @@ class Flowbite::DrawerTest < Minitest::Test
 
     assert_selector("div#info[data-controller='flowbite--drawer'][data-flowbite--drawer-placement-value='right']")
     assert_selector("button[data-action='flowbite--drawer#hide']", text: "Close menu")
+  end
+
+  def test_renders_hidden_stimulus_behavior_inert
+    render_inline(Flowbite::Drawer.new(behavior: :stimulus, id: "info", title: "Info")) { "Body" }
+
+    assert_selector("div#info[inert]")
+  end
+
+  def test_renders_no_inert_without_behavior
+    render_inline(Flowbite::Drawer.new(id: "info", title: "Info")) { "Body" }
+
+    assert_no_selector("div#info[inert]")
   end
 
   def test_stimulus_behavior_keeps_custom_data_attributes

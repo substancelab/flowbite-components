@@ -15,7 +15,8 @@ const PLACEMENT_CLASSES = {
 // same way flowbite.js does.
 //
 // While shown, the drawer is hidden again by pressing Escape or clicking the
-// backdrop. Set the backdrop value to false to show the drawer without a
+// backdrop. While hidden, the drawer is inert, so its contents can't be
+// focused off screen. Set the backdrop value to false to show the drawer without a
 // backdrop, and the body-scrolling value to true to allow scrolling the page
 // while the drawer is shown.
 //
@@ -45,6 +46,7 @@ export default class extends Controller {
       this.show()
     } else {
       this.element.setAttribute('aria-hidden', 'true')
+      this.element.inert = true
     }
   }
 
@@ -60,6 +62,7 @@ export default class extends Controller {
     this.element.classList.remove(...active)
     this.element.classList.add(...inactive)
     this.element.setAttribute('aria-hidden', 'true')
+    this.element.inert = true
     this.element.removeAttribute('aria-modal')
     this.element.removeAttribute('role')
 
@@ -79,6 +82,7 @@ export default class extends Controller {
     this.element.setAttribute('aria-modal', 'true')
     this.element.setAttribute('role', 'dialog')
     this.element.removeAttribute('aria-hidden')
+    this.element.inert = false
 
     if (!this.bodyScrollingValue) document.body.classList.add('overflow-hidden')
     if (this.backdropValue) this.createBackdrop()

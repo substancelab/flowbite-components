@@ -18,7 +18,8 @@ module Flowbite
   # Elements outside the drawer show, hide, or toggle it using the data
   # attributes from Drawer.trigger_options. Elements inside the drawer hide
   # it using +data: {action: "flowbite--drawer#hide"}+. The drawer is also
-  # hidden by pressing Escape or clicking the backdrop.
+  # hidden by pressing Escape or clicking the backdrop. While hidden, the
+  # drawer is inert, so its contents can't be focused off screen.
   #
   # @example Usage
   #  <%= render(Flowbite::Drawer.new(id: "info", title: "Info")) do %>
@@ -141,6 +142,7 @@ module Flowbite
       return result unless stimulus?
 
       result = Flowbite::Behavior.merge_data_tokens(result, controller: STIMULUS_CONTROLLER)
+      result[:inert] = true unless open? || result.key?(:inert)
       result[:data][:"#{STIMULUS_CONTROLLER}-placement-value"] ||= placement.to_s
       result
     end
