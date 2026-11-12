@@ -84,7 +84,7 @@ module Flowbite
           data: {
             action: "#{STIMULUS_TRIGGER_CONTROLLER}##{action}",
             controller: STIMULUS_TRIGGER_CONTROLLER,
-            "#{STIMULUS_TRIGGER_CONTROLLER}-#{STIMULUS_CONTROLLER}-outlet": "##{id}"
+            "#{STIMULUS_TRIGGER_CONTROLLER}-#{STIMULUS_CONTROLLER}-outlet": Flowbite::Behavior.id_selector(id)
           }
         }
       end

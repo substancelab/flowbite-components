@@ -49,6 +49,21 @@ class Flowbite::BehaviorTest < Minitest::Test
     assert_equal :stimulus, Flowbite::Behavior.resolve(nil, supported: [:stimulus])
   end
 
+  def test_id_selector
+    assert_equal "#info", Flowbite::Behavior.id_selector("info")
+    assert_equal "#drawer-info_2", Flowbite::Behavior.id_selector("drawer-info_2")
+  end
+
+  def test_id_selector_escapes_special_characters
+    assert_equal "#info\\.v2", Flowbite::Behavior.id_selector("info.v2")
+    assert_equal "#user\\:1", Flowbite::Behavior.id_selector("user:1")
+  end
+
+  def test_id_selector_escapes_leading_digits
+    assert_equal "#\\31 23", Flowbite::Behavior.id_selector("123")
+    assert_equal "#-\\31 ", Flowbite::Behavior.id_selector("-1")
+  end
+
   def test_merge_data_tokens_adds_tokens
     result = Flowbite::Behavior.merge_data_tokens({id: "x"}, controller: "flowbite--toast")
 

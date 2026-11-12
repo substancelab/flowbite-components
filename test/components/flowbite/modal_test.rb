@@ -104,6 +104,12 @@ class Flowbite::ModalTest < Minitest::Test
     end
   end
 
+  def test_trigger_options_escapes_id_in_outlet_selector
+    options = Flowbite::Modal.trigger_options("terms.v2")
+
+    assert_equal "#terms\\.v2", options[:data][:"flowbite--modal-trigger-flowbite--modal-outlet"]
+  end
+
   def test_trigger_options_toggle_by_default
     expected = {
       data: {
