@@ -12,7 +12,9 @@
           md:pb-5
         "
       >
-        <h3 class="text-lg font-medium text-heading"><%= title %></h3>
+        <h3 id="<%= title_id %>" class="text-lg font-medium text-heading">
+          <%= title %>
+        </h3>
 
         <%= tag.button(**close_button_options) do %>
           <svg

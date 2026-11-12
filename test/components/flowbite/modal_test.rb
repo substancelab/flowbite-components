@@ -17,6 +17,13 @@ class Flowbite::ModalTest < Minitest::Test
     assert_selector("div.space-y-4", text: "Body text", visible: :all)
   end
 
+  def test_is_labelled_by_its_title
+    render_inline(Flowbite::Modal.new(id: "terms", title: "Terms of Service")) { "Body" }
+
+    assert_selector("div#terms[aria-labelledby='terms-label']", visible: :all)
+    assert_selector("h3#terms-label", text: "Terms of Service", visible: :all)
+  end
+
   def test_renders_close_button
     render_inline(Flowbite::Modal.new(id: "terms", title: "Terms")) { "Body" }
 

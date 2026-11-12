@@ -138,7 +138,7 @@ module Flowbite
     # @return [Hash] The HTML options for the modal element.
     def modal_options
       result = {
-        aria: {hidden: true},
+        aria: {hidden: true, labelledby: title_id},
         class: modal_classes,
         id: id,
         tabindex: -1
@@ -150,6 +150,11 @@ module Flowbite
 
     def stimulus?
       behavior == :stimulus
+    end
+
+    # @return [String] The id of the title element, labelling the modal.
+    def title_id
+      "#{id}-label"
     end
 
     private
