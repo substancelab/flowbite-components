@@ -214,7 +214,7 @@ opt-in, so you only install the ones you need.
    `app/javascript/controllers/flowbite/`:
 
    ```bash
-   bin/rails generate flowbite_components:behavior toast
+   bin/rails generate flowbite_components:behavior toast modal
    ```
 
    stimulus-rails registers them automatically, ie as `flowbite--toast`. If
@@ -225,6 +225,9 @@ opt-in, so you only install the ones you need.
    ```bash
    bin/rails stimulus:manifest:update
    ```
+
+   Run `bin/rails generate flowbite_components:behavior --help` to list the
+   available components.
 
 2. Install [stimulus-use](https://stimulus-use.dev), which the controllers
    depend on:

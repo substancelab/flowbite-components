@@ -16,6 +16,21 @@ class FlowbiteComponents::Generators::BehaviorGeneratorTest < Rails::Generators:
     end
   end
 
+  def test_copies_all_controllers_for_component
+    run_generator ["modal"]
+
+    assert_file "app/javascript/controllers/flowbite/modal_controller.js"
+    assert_file "app/javascript/controllers/flowbite/modal_trigger_controller.js" do |content|
+      assert_includes content, "Update using bin/rails generate flowbite_components:behavior modal"
+    end
+  end
+
+  def test_copies_only_controllers_for_given_component
+    run_generator ["toast"]
+
+    assert_no_file "app/javascript/controllers/flowbite/modal_controller.js"
+  end
+
   def test_mentions_stimulus_use_dependency
     output = run_generator ["toast"]
 
@@ -45,6 +60,6 @@ class FlowbiteComponents::Generators::BehaviorGeneratorTest < Rails::Generators:
   end
 
   def test_lists_available_behaviors
-    assert_includes FlowbiteComponents::Generators::BehaviorGenerator.available_behaviors, "toast"
+    assert_equal ["modal", "toast"], FlowbiteComponents::Generators::BehaviorGenerator.available_behaviors
   end
 end
