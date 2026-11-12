@@ -123,7 +123,7 @@ module Flowbite
       result = {
         class: ["text-body", "bg-transparent", "hover:bg-neutral-tertiary", "hover:text-heading", "rounded-base", "text-sm", "w-9", "h-9", "ms-auto", "inline-flex", "justify-center", "items-center"],
         type: "button"
-      }.merge(@close_button[:options] || {})
+      }.deep_merge(@close_button[:options] || {})
       return result unless stimulus?
 
       Flowbite::Behavior.merge_data_tokens(result, action: "#{STIMULUS_CONTROLLER}#hide")
@@ -142,7 +142,7 @@ module Flowbite
         class: modal_classes,
         id: id,
         tabindex: -1
-      }.merge(@options)
+      }.deep_merge(@options)
       return result unless stimulus?
 
       Flowbite::Behavior.merge_data_tokens(result, controller: STIMULUS_CONTROLLER)

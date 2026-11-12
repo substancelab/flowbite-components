@@ -24,6 +24,12 @@ class Flowbite::ModalTest < Minitest::Test
     assert_selector("h3#terms-label", text: "Terms of Service", visible: :all)
   end
 
+  def test_keeps_aria_attributes_when_given_more
+    render_inline(Flowbite::Modal.new(aria: {describedby: "terms-description"}, id: "terms", title: "Terms")) { "Body" }
+
+    assert_selector("div#terms[aria-describedby='terms-description'][aria-labelledby='terms-label'][aria-hidden='true']", visible: :all)
+  end
+
   def test_renders_close_button
     render_inline(Flowbite::Modal.new(id: "terms", title: "Terms")) { "Body" }
 
