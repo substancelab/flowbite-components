@@ -99,6 +99,18 @@ class Flowbite::DrawerTest < Minitest::Test
     assert_selector("div#info.w-80[data-foo='bar']")
   end
 
+  def test_keeps_aria_attributes_when_given_more
+    render_inline(Flowbite::Drawer.new(aria: {describedby: "info-description"}, id: "info", open: true, title: "Info")) { "Body" }
+
+    assert_selector("div#info[aria-describedby='info-description'][aria-labelledby='info-label'][aria-modal='true']")
+  end
+
+  def test_close_button_keeps_aria_controls_when_given_more_aria_attributes
+    render_inline(Flowbite::Drawer.new(close_button: {options: {aria: {label: "Close"}}}, id: "info", title: "Info")) { "Body" }
+
+    assert_selector("button[aria-controls='info'][aria-label='Close']")
+  end
+
   def test_renders_no_behavior_by_default
     render_inline(Flowbite::Drawer.new(id: "info", title: "Info")) { "Body" }
 

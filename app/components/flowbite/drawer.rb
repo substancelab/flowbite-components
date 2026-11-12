@@ -120,7 +120,7 @@ module Flowbite
         aria: {controls: id},
         class: ["text-body", "bg-transparent", "hover:text-heading", "hover:bg-neutral-tertiary", "rounded-base", "w-9", "h-9", "absolute", "top-2.5", "end-2.5", "flex", "items-center", "justify-center"],
         type: "button"
-      }.merge(@close_button[:options] || {})
+      }.deep_merge(@close_button[:options] || {})
       return result unless stimulus?
 
       Flowbite::Behavior.merge_data_tokens(result, action: "#{STIMULUS_CONTROLLER}#hide")
@@ -138,7 +138,7 @@ module Flowbite
         result[:aria][:modal] = true
         result[:role] = "dialog"
       end
-      result.merge!(@options)
+      result = result.deep_merge(@options)
       return result unless stimulus?
 
       result = Flowbite::Behavior.merge_data_tokens(result, controller: STIMULUS_CONTROLLER)
