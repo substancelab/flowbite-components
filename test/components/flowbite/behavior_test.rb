@@ -84,6 +84,10 @@ class Flowbite::BehaviorTest < Minitest::Test
     assert_equal "#-\\31 ", Flowbite::Behavior.id_selector("-1")
   end
 
+  def test_id_selector_escapes_lone_hyphen
+    assert_equal "#\\-", Flowbite::Behavior.id_selector("-")
+  end
+
   def test_trigger_options_raises_on_unknown_action
     assert_raises(ArgumentError) do
       Flowbite::Behavior.trigger_options(action: :explode, controller: "flowbite--drawer", id: "info")

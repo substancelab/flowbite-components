@@ -33,6 +33,8 @@ module Flowbite
         escaped = id.each_char.with_index.map do |char, index|
           if char.match?(/[0-9]/) && (index.zero? || (index == 1 && id.start_with?("-")))
             "\\#{char.ord.to_s(16)} "
+          elsif id == "-"
+            "\\-"
           elsif char.match?(/[a-zA-Z0-9_-]/) || char.ord >= 0x80
             char
           else
