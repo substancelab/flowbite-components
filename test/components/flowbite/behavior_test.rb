@@ -53,7 +53,7 @@ class Flowbite::BehaviorTest < Minitest::Test
     expected = {
       aria: {controls: "info"},
       data: {
-        action: "flowbite--drawer-trigger#show",
+        action: "click->flowbite--drawer-trigger#show:prevent",
         controller: "flowbite--drawer-trigger",
         "flowbite--drawer-trigger-flowbite--drawer-outlet": "#info"
       }

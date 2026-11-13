@@ -104,7 +104,7 @@ module Flowbite
         {
           aria: {controls: id},
           data: {
-            action: "#{trigger_controller}##{action}",
+            action: "click->#{trigger_controller}##{action}:prevent",
             controller: trigger_controller,
             "#{trigger_controller}-#{controller}-outlet": id_selector(id)
           }

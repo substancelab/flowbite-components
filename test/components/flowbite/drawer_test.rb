@@ -160,7 +160,7 @@ class Flowbite::DrawerTest < Minitest::Test
     options = Flowbite::Drawer.trigger_options("info", action: :show)
 
     assert_equal({controls: "info"}, options[:aria])
-    assert_equal "flowbite--drawer-trigger#show", options[:data][:action]
+    assert_equal "click->flowbite--drawer-trigger#show:prevent", options[:data][:action]
     assert_equal "#info", options[:data][:"flowbite--drawer-trigger-flowbite--drawer-outlet"]
   end
 end
