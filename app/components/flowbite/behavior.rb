@@ -16,7 +16,34 @@ module Flowbite
     # Renders Flowbite's own markup without any behavior.
     NONE = :none
 
+    # The actions a trigger can perform on the element it controls.
+    TRIGGER_ACTIONS = [:hide, :show, :toggle].freeze
+
     class << self
+      # Returns a CSS selector matching the element with id, escaping
+      # characters that aren't valid in a CSS identifier, like CSS.escape does.
+      #
+      # @example
+      #   Flowbite::Behavior.id_selector("terms.v2") # => "#terms\\.v2"
+      #
+      # @param id [String] The id of the element.
+      # @return [String] The CSS selector, ie "#terms".
+      def id_selector(id)
+        id = id.to_s
+        escaped = id.each_char.with_index.map do |char, index|
+          if char.match?(/[0-9]/) && (index.zero? || (index == 1 && id.start_with?("-")))
+            "\\#{char.ord.to_s(16)} "
+          elsif id == "-"
+            "\\-"
+          elsif char.match?(/[a-zA-Z0-9_-]/) || char.ord >= 0x80
+            char
+          else
+            "\\#{char}"
+          end
+        end
+        "##{escaped.join}"
+      end
+
       # Merges space separated tokens, like Stimulus controllers and actions,
       # into the data attributes in options, keeping any existing tokens and
       # skipping tokens that are already present.
@@ -56,6 +83,34 @@ module Flowbite
         raise ArgumentError,
           "Unsupported behavior #{behavior.inspect}, expected one of " \
           "#{([NONE] + supported).inspect}"
+      end
+
+      # Returns HTML options for an element that shows, hides, or toggles
+      # another element when clicked, using a "<controller>-trigger" Stimulus
+      # controller with an outlet for controller.
+      #
+      # @param action [Symbol] What to do with the element (:hide, :show,
+      #   :toggle).
+      # @param controller [String] The identifier of the Stimulus controller
+      #   on the element to control, ie "flowbite--drawer".
+      # @param id [String] The id of the element to control.
+      # @return [Hash] HTML options with the data attributes for the trigger
+      #   controller.
+      # @raise [ArgumentError] If action isn't supported.
+      def trigger_options(action:, controller:, id:)
+        unless TRIGGER_ACTIONS.include?(action)
+          raise ArgumentError, "Unsupported action #{action.inspect}, expected one of #{TRIGGER_ACTIONS.inspect}"
+        end
+
+        trigger_controller = "#{controller}-trigger"
+        {
+          aria: {controls: id},
+          data: {
+            action: "click->#{trigger_controller}##{action}:prevent",
+            controller: trigger_controller,
+            "#{trigger_controller}-#{controller}-outlet": id_selector(id)
+          }
+        }
       end
     end
   end

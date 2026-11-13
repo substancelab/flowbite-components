@@ -49,6 +49,51 @@ class Flowbite::BehaviorTest < Minitest::Test
     assert_equal :stimulus, Flowbite::Behavior.resolve(nil, supported: [:stimulus])
   end
 
+  def test_trigger_options
+    expected = {
+      aria: {controls: "info"},
+      data: {
+        action: "click->flowbite--drawer-trigger#show:prevent",
+        controller: "flowbite--drawer-trigger",
+        "flowbite--drawer-trigger-flowbite--drawer-outlet": "#info"
+      }
+    }
+
+    assert_equal expected, Flowbite::Behavior.trigger_options(action: :show, controller: "flowbite--drawer", id: "info")
+  end
+
+  def test_trigger_options_escapes_id_in_outlet_selector
+    result = Flowbite::Behavior.trigger_options(action: :show, controller: "flowbite--drawer", id: "info.v2")
+
+    assert_equal "info.v2", result[:aria][:controls]
+    assert_equal "#info\\.v2", result[:data][:"flowbite--drawer-trigger-flowbite--drawer-outlet"]
+  end
+
+  def test_id_selector
+    assert_equal "#info", Flowbite::Behavior.id_selector("info")
+    assert_equal "#drawer-info_2", Flowbite::Behavior.id_selector("drawer-info_2")
+  end
+
+  def test_id_selector_escapes_special_characters
+    assert_equal "#info\\.v2", Flowbite::Behavior.id_selector("info.v2")
+    assert_equal "#user\\:1", Flowbite::Behavior.id_selector("user:1")
+  end
+
+  def test_id_selector_escapes_leading_digits
+    assert_equal "#\\31 23", Flowbite::Behavior.id_selector("123")
+    assert_equal "#-\\31 ", Flowbite::Behavior.id_selector("-1")
+  end
+
+  def test_id_selector_escapes_lone_hyphen
+    assert_equal "#\\-", Flowbite::Behavior.id_selector("-")
+  end
+
+  def test_trigger_options_raises_on_unknown_action
+    assert_raises(ArgumentError) do
+      Flowbite::Behavior.trigger_options(action: :explode, controller: "flowbite--drawer", id: "info")
+    end
+  end
+
   def test_merge_data_tokens_adds_tokens
     result = Flowbite::Behavior.merge_data_tokens({id: "x"}, controller: "flowbite--toast")
 
