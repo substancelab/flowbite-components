@@ -38,6 +38,11 @@ export default class extends Controller {
     this.handleKeydown = this.handleKeydown.bind(this)
     document.addEventListener('keydown', this.handleKeydown)
 
+    // Hide before Turbo caches the page, so the snapshot doesn't include the
+    // backdrop
+    this.hide = this.hide.bind(this)
+    document.addEventListener('turbo:before-cache', this.hide)
+
     // A drawer rendered with open: true is already shown
     const { active } = this.placementClasses()
     if (active.every((c) => this.element.classList.contains(c))) {
@@ -51,6 +56,7 @@ export default class extends Controller {
   disconnect () {
     this.hide()
     document.removeEventListener('keydown', this.handleKeydown)
+    document.removeEventListener('turbo:before-cache', this.hide)
   }
 
   hide () {
